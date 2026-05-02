@@ -1,0 +1,17 @@
+{
+  "name": "moskitki",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "vite build"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "lucide-react": "^0.263.1",
+    "wouter": "^2.12.1"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0"
+  }
+}
