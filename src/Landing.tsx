@@ -4,14 +4,13 @@ import {
   Send,
   ShieldCheck,
   Clock,
+  Hammer,
   CheckCircle2,
   Star,
+  ChevronRight,
   Sparkles,
   Wrench,
   Wind,
-  MapPin,
-  Timer,
-  ChevronRight,
 } from "lucide-react";
 
 // === CONTACTS ===
@@ -24,8 +23,8 @@ const SERVICES = [
   {
     key: "moskitnaya-setka",
     title: "Москитные сетки",
-    price: "от 75 000 сум",
-    old: "от 100 000 сум",
+    price: "Форточки от 75 000 сум\nОкна от 120 000 сум",
+    old: "Форточки от 100 000 сум\nОкна от 150 000 сум",
     desc: "Защита от комаров, мошек и пыли. Изготовление за 1 день.",
     icon: <Wind className="h-6 w-6" />,
     features: ["Замер бесплатно", "Срок 1 день", "Гарантия 1 года"],
@@ -37,15 +36,16 @@ const SERVICES = [
     old: "от 320 000 сум",
     desc: "Горизонтальные, вертикальные, рулонные.",
     icon: <Sparkles className="h-6 w-6" />,
-    features: ["50+ цветов", "Монтаж включён"],
+    features: ["50+ цветов", "Тканевые и алюминиевые", "Монтаж включён"],
   },
   {
     key: "remont-okon",
     title: "Ремонт окон",
     price: "от 50 000 сум",
-    desc: "Замена фурнитуры, регулировка.",
+    old: "",
+    desc: "Замена фурнитуры, уплотнителей, регулировка створок.",
     icon: <Wrench className="h-6 w-6" />,
-    features: ["Выезд мастера", "Гарантия"],
+    features: ["Выезд мастера", "Запчасти в наличии", "Чек и гарантия"],
   },
 ];
 
@@ -68,7 +68,7 @@ export default function Landing() {
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [timeLeft, setTimeLeft] = useState({ hours: 1, minutes: 50, seconds: 57 });
+  const [timeLeft, setTimeLeft] = useState({ hours: 1, minutes: 59, seconds: 41 });
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -115,13 +115,10 @@ export default function Landing() {
           <Wind className="h-6 w-6 text-green-400" />
           <span className="text-xl font-bold">Москитки.uz</span>
         </div>
-        <div className="flex items-center gap-2 text-sm text-gray-400">
-          <MapPin className="h-4 w-4" />
-          <span>Ташкент · c 2019</span>
-        </div>
+        <div className="text-sm text-gray-400">Ташкент · c 2019</div>
       </header>
 
-      {/* Hero Section */}
+      {/* Hero */}
       <section className="text-center px-4 py-8 max-w-4xl mx-auto">
         <div className="inline-block bg-green-500/20 text-green-400 px-4 py-1 rounded-full text-sm mb-4">
           Сезонная акция -25%
@@ -130,8 +127,7 @@ export default function Landing() {
           Москитные сетки в Ташкенте за 1 день
         </h1>
         <p className="text-gray-400 text-lg mb-6 max-w-2xl mx-auto">
-          Изготавливаем и устанавливаем москитные сетки, жалюзи и ремонтируем окна. 
-          Замер — бесплатно, гарантия 1 года, выезд по всему городу.
+          Изготавливаем и устанавливаем москитные сетки, жалюзи и ремонтируем окна. Замер — бесплатно, гарантия 1 года, выезд по всему городу.
         </p>
         <div className="flex gap-3 justify-center flex-wrap">
           <a href={PHONE_LINK} className="flex items-center gap-2 bg-green-500 hover:bg-green-600 text-black font-semibold px-6 py-3 rounded-xl transition">
@@ -143,24 +139,25 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* Stats */}
+      {/* Преимущества */}
       <section className="max-w-4xl mx-auto px-4 pb-10">
-        <div className="grid grid-cols-3 gap-4 text-center bg-white/5 rounded-2xl p-6 backdrop-blur">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
           {[
-            { icon: <ShieldCheck className="h-6 w-6 mx-auto text-green-400" />, title: "12+ лет", sub: "на рынке" },
-            { icon: <Star className="h-6 w-6 mx-auto text-yellow-400" />, title: "8 200", sub: "клиентов" },
-            { icon: <Clock className="h-6 w-6 mx-auto text-blue-400" />, title: "2 года", sub: "гарантии" },
-          ].map((s, i) => (
-            <div key={i}>
-              {s.icon}
-              <div className="font-bold text-lg mt-1">{s.title}</div>
-              <div className="text-gray-400 text-sm">{s.sub}</div>
+            { icon: <Clock className="h-6 w-6 mx-auto text-green-400" />, title: "За 1 день", sub: "Изготовим и установим в течение 24 часов" },
+            { icon: <ShieldCheck className="h-6 w-6 mx-auto text-green-400" />, title: "Гарантия 1 года", sub: "Качественные материалы и фурнитура" },
+            { icon: <Hammer className="h-6 w-6 mx-auto text-green-400" />, title: "Своё производство", sub: "Без посредников — низкие цены" },
+            { icon: <Star className="h-6 w-6 mx-auto text-green-400" />, title: "Опыт с 2019", sub: "Более 8 200 клиентов в Ташкенте" },
+          ].map((item, i) => (
+            <div key={i} className="p-4 bg-white/5 rounded-xl backdrop-blur">
+              {item.icon}
+              <div className="font-semibold mt-2">{item.title}</div>
+              <div className="text-gray-400 text-xs mt-1">{item.sub}</div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Timer */}
+      {/* Таймер */}
       <section className="text-center pb-10">
         <p className="text-gray-400 mb-2">Скидка действует ещё:</p>
         <div className="flex justify-center gap-3 text-3xl font-mono font-bold">
@@ -172,56 +169,82 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* Services */}
+      {/* Услуги */}
       <section className="max-w-4xl mx-auto px-4 pb-12">
         <h2 className="text-2xl font-bold text-center mb-8">Наши услуги</h2>
         <div className="grid md:grid-cols-3 gap-4">
           {SERVICES.map((s) => (
-            <div key={s.key} className="bg-white/5 rounded-2xl p-6 backdrop-blur hover:bg-white/10 transition border border-white/10">
+            <div key={s.key} className="bg-white/5 rounded-2xl p-6 backdrop-blur border border-white/10 flex flex-col">
               <div className="text-green-400 mb-3">{s.icon}</div>
               <h3 className="font-bold text-lg mb-1">{s.title}</h3>
               <p className="text-gray-400 text-sm mb-3">{s.desc}</p>
-              <div className="flex items-baseline gap-2 mb-3">
-                <span className="text-green-400 font-bold text-xl">{s.price}</span>
-                {s.old && <span className="text-gray-500 line-through text-sm">{s.old}</span>}
+              <div className="mb-3">
+                <span className="text-green-400 font-bold whitespace-pre-line">{s.price}</span>
+                {s.old && <span className="text-gray-500 line-through text-sm ml-2 whitespace-pre-line">{s.old}</span>}
               </div>
-              <ul className="space-y-1">
+              <ul className="space-y-1 mb-4">
                 {s.features.map((f, i) => (
-                  <li key={i} className="flex items-center gap-1 text-sm text-gray-400">
-                    <CheckCircle2 className="h-3 w-3 text-green-400" /> {f}
+                  <li key={i} className="flex items-center gap-2 text-sm text-gray-300">
+                    <span className="text-green-400 text-lg leading-none">☐</span> {f}
                   </li>
                 ))}
               </ul>
+              <a href="#form" className="mt-auto flex items-center justify-center gap-1 bg-green-500 hover:bg-green-600 text-black font-semibold py-2 px-4 rounded-xl transition">
+                Заказать <ChevronRight className="h-4 w-4" />
+              </a>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Form */}
-      <section className="max-w-xl mx-auto px-4 pb-16">
-        <h2 className="text-2xl font-bold text-center mb-6">Быстрый заказ</h2>
+      {/* Контакты */}
+      <section className="max-w-4xl mx-auto px-4 pb-12 text-center">
+        <h2 className="text-2xl font-bold mb-4">Готовы сделать заказ?</h2>
+        <p className="text-gray-400 mb-6">Позвоните или напишите в Telegram — ответим моментально и подскажем стоимость</p>
+        <div className="flex gap-3 justify-center flex-wrap">
+          <a href={PHONE_LINK} className="flex items-center gap-2 bg-green-500 hover:bg-green-600 text-black font-semibold px-8 py-4 rounded-xl text-lg transition">
+            <Phone className="h-5 w-5" /> {PHONE_NUMBER}
+          </a>
+          <a href={TELEGRAM_LINK} target="_blank" className="flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white font-semibold px-8 py-4 rounded-xl text-lg transition">
+            <Send className="h-5 w-5" /> Написать в Telegram
+          </a>
+        </div>
+      </section>
+
+      {/* Форма */}
+      <section id="form" className="max-w-xl mx-auto px-4 pb-16">
+        <h2 className="text-2xl font-bold text-center mb-6">Оставьте заявку — перезвоним за 5 минут</h2>
         <form onSubmit={onSubmit} className="bg-white/5 backdrop-blur rounded-2xl p-6 space-y-4 border border-white/10">
-          <select
-            value={selectedService}
-            onChange={(e) => setSelectedService(e.target.value)}
-            className="w-full p-3 rounded-xl bg-white/10 text-white border border-white/20"
-          >
-            {SERVICES.map((s) => (
-              <option key={s.key} value={s.title} className="text-black">{s.title}</option>
-            ))}
-          </select>
-          <input
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            placeholder="Имя"
-            className="w-full p-3 rounded-xl bg-white/10 text-white border border-white/20 placeholder-gray-400"
-          />
-          <input
-            value={phone}
-            onChange={(e) => setPhone(formatPhone(e.target.value))}
-            placeholder="+998..."
-            className="w-full p-3 rounded-xl bg-white/10 text-white border border-white/20 placeholder-gray-400"
-          />
+          <div>
+            <label className="text-sm text-gray-400 mb-1 block">Услуга</label>
+            <select
+              value={selectedService}
+              onChange={(e) => setSelectedService(e.target.value)}
+              className="w-full p-3 rounded-xl bg-white/10 text-white border border-white/20"
+            >
+              {SERVICES.map((s) => (
+                <option key={s.key} value={s.title} className="text-black">{s.title}</option>
+              ))}
+            </select>
+          </div>
+          <div>
+            <label className="text-sm text-gray-400 mb-1 block">Имя (необязательно)</label>
+            <input
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Как к Вам обращаться"
+              className="w-full p-3 rounded-xl bg-white/10 text-white border border-white/20 placeholder-gray-500"
+            />
+          </div>
+          <div>
+            <label className="text-sm text-gray-400 mb-1 block">Телефон</label>
+            <input
+              value={phone}
+              onChange={(e) => setPhone(formatPhone(e.target.value))}
+              placeholder="+998..."
+              className="w-full p-3 rounded-xl bg-white/10 text-white border border-white/20 placeholder-gray-500"
+            />
+          </div>
           {error && <div className="text-red-400 text-sm">{error}</div>}
           {submitted ? (
             <div className="text-green-400 text-center font-semibold py-3">✅ Заявка отправлена! Скоро свяжемся.</div>
@@ -231,9 +254,10 @@ export default function Landing() {
               disabled={submitting}
               className="w-full bg-green-500 hover:bg-green-600 disabled:opacity-50 text-black font-bold py-3 rounded-xl flex items-center justify-center gap-2 transition"
             >
-              {submitting ? "Отправка..." : <>Заказать <ChevronRight className="h-5 w-5" /></>}
+              {submitting ? "Отправка..." : <>Заказать со скидкой <ChevronRight className="h-5 w-5" /></>}
             </button>
           )}
+          <p className="text-gray-500 text-xs text-center">Нажимая кнопку, вы соглашаетесь на обработку данных</p>
         </form>
       </section>
 
