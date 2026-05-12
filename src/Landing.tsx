@@ -1,19 +1,17 @@
-// УДАЛЕНО: import { createOrder } from "@/lib/api";
-
-import { useEffect, useMemo, useRef, useState } from "react";
-import { Link } from "wouter";
+import { useState, useEffect } from "react";
 import {
   Phone,
   Send,
   ShieldCheck,
   Clock,
-  Hammer,
   CheckCircle2,
   Star,
-  ChevronRight,
   Sparkles,
   Wrench,
   Wind,
+  MapPin,
+  Timer,
+  ChevronRight,
 } from "lucide-react";
 
 // === CONTACTS ===
@@ -21,16 +19,13 @@ const PHONE_NUMBER = "+998 99 055 06 60";
 const PHONE_LINK = "tel:+998990550660";
 const TELEGRAM_USERNAME = "moskitki_uz";
 const TELEGRAM_LINK = `https://t.me/${TELEGRAM_USERNAME}`;
-// =================
-
-type ServiceKey = "moskitnaya-setka" | "zhalyuzi" | "remont-okon";
 
 const SERVICES = [
   {
     key: "moskitnaya-setka",
     title: "Москитные сетки",
-    price: "Форточки от 75 000 сум\nОкна от 120 000 сум",
-    old: "Форточки от 100 000 сум\nОкна от 150 000 сум",
+    price: "от 75 000 сум",
+    old: "от 100 000 сум",
     desc: "Защита от комаров, мошек и пыли. Изготовление за 1 день.",
     icon: <Wind className="h-6 w-6" />,
     features: ["Замер бесплатно", "Срок 1 день", "Гарантия 1 года"],
@@ -73,81 +68,179 @@ export default function Landing() {
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [timeLeft, setTimeLeft] = useState({ hours: 1, minutes: 50, seconds: 57 });
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft((prev) => {
+        let { hours, minutes, seconds } = prev;
+        if (seconds > 0) seconds--;
+        else if (minutes > 0) { minutes--; seconds = 59; }
+        else if (hours > 0) { hours--; minutes = 59; seconds = 59; }
+        if (hours === 0 && minutes === 0 && seconds === 0) {
+          return { hours: 24, minutes: 0, seconds: 0 };
+        }
+        return { hours, minutes, seconds };
+      });
+    }, 1000);
+    return () => clearInterval(timer);
+  }, []);
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
     setError(null);
-
     const digits = phone.replace(/\D/g, "");
-    if (digits.length < 9) {
-      setError("Введите корректный номер");
-      return;
-    }
-
+    if (digits.length < 9) { setError("Введите корректный номер"); return; }
     setSubmitting(true);
-
     try {
       await fetch("/api/order", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          service: selectedService,
-          phone,
-          name,
-        }),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ service: selectedService, phone, name }),
       });
-
       setSubmitted(true);
       setPhone("+998 ");
       setName("");
-    } catch {
-      setError("Ошибка отправки");
-    } finally {
-      setSubmitting(false);
-    }
+    } catch { setError("Ошибка отправки"); }
+    finally { setSubmitting(false); }
   }
 
+  const formatTime = (n: number) => String(n).padStart(2, "0");
+
   return (
-    <div className="min-h-screen bg-black text-white p-6">
-      <h1 className="text-3xl font-bold">Москитки.uz</h1>
+    <div className="min-h-screen bg-gradient-to-b from-gray-900 via-black to-gray-900 text-white">
+      {/* Header */}
+      <header className="flex items-center justify-between px-4 py-3 max-w-6xl mx-auto">
+        <div className="flex items-center gap-2">
+          <Wind className="h-6 w-6 text-green-400" />
+          <span className="text-xl font-bold">Москитки.uz</span>
+        </div>
+        <div className="flex items-center gap-2 text-sm text-gray-400">
+          <MapPin className="h-4 w-4" />
+          <span>Ташкент · c 2019</span>
+        </div>
+      </header>
 
-      <form onSubmit={onSubmit} className="mt-6 space-y-4">
-        <select
-          value={selectedService}
-          onChange={(e) => setSelectedService(e.target.value)}
-          className="w-full p-2 text-black"
-        >
-          {SERVICES.map((s) => (
-            <option key={s.key}>{s.title}</option>
+      {/* Hero Section */}
+      <section className="text-center px-4 py-8 max-w-4xl mx-auto">
+        <div className="inline-block bg-green-500/20 text-green-400 px-4 py-1 rounded-full text-sm mb-4">
+          Сезонная акция -25%
+        </div>
+        <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-4">
+          Москитные сетки в Ташкенте за 1 день
+        </h1>
+        <p className="text-gray-400 text-lg mb-6 max-w-2xl mx-auto">
+          Изготавливаем и устанавливаем москитные сетки, жалюзи и ремонтируем окна. 
+          Замер — бесплатно, гарантия 1 года, выезд по всему городу.
+        </p>
+        <div className="flex gap-3 justify-center flex-wrap">
+          <a href={PHONE_LINK} className="flex items-center gap-2 bg-green-500 hover:bg-green-600 text-black font-semibold px-6 py-3 rounded-xl transition">
+            <Phone className="h-5 w-5" /> Позвонить
+          </a>
+          <a href={TELEGRAM_LINK} target="_blank" className="flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white font-semibold px-6 py-3 rounded-xl transition">
+            <Send className="h-5 w-5" /> Telegram
+          </a>
+        </div>
+      </section>
+
+      {/* Stats */}
+      <section className="max-w-4xl mx-auto px-4 pb-10">
+        <div className="grid grid-cols-3 gap-4 text-center bg-white/5 rounded-2xl p-6 backdrop-blur">
+          {[
+            { icon: <ShieldCheck className="h-6 w-6 mx-auto text-green-400" />, title: "12+ лет", sub: "на рынке" },
+            { icon: <Star className="h-6 w-6 mx-auto text-yellow-400" />, title: "8 200", sub: "клиентов" },
+            { icon: <Clock className="h-6 w-6 mx-auto text-blue-400" />, title: "2 года", sub: "гарантии" },
+          ].map((s, i) => (
+            <div key={i}>
+              {s.icon}
+              <div className="font-bold text-lg mt-1">{s.title}</div>
+              <div className="text-gray-400 text-sm">{s.sub}</div>
+            </div>
           ))}
-        </select>
+        </div>
+      </section>
 
-        <input
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          placeholder="Имя"
-          className="w-full p-2 text-black"
-        />
+      {/* Timer */}
+      <section className="text-center pb-10">
+        <p className="text-gray-400 mb-2">Скидка действует ещё:</p>
+        <div className="flex justify-center gap-3 text-3xl font-mono font-bold">
+          <span className="bg-white/10 px-4 py-2 rounded-xl">{formatTime(timeLeft.hours)}</span>
+          <span className="text-gray-500">:</span>
+          <span className="bg-white/10 px-4 py-2 rounded-xl">{formatTime(timeLeft.minutes)}</span>
+          <span className="text-gray-500">:</span>
+          <span className="bg-white/10 px-4 py-2 rounded-xl">{formatTime(timeLeft.seconds)}</span>
+        </div>
+      </section>
 
-        <input
-          value={phone}
-          onChange={(e) => setPhone(formatPhone(e.target.value))}
-          placeholder="+998..."
-          className="w-full p-2 text-black"
-        />
+      {/* Services */}
+      <section className="max-w-4xl mx-auto px-4 pb-12">
+        <h2 className="text-2xl font-bold text-center mb-8">Наши услуги</h2>
+        <div className="grid md:grid-cols-3 gap-4">
+          {SERVICES.map((s) => (
+            <div key={s.key} className="bg-white/5 rounded-2xl p-6 backdrop-blur hover:bg-white/10 transition border border-white/10">
+              <div className="text-green-400 mb-3">{s.icon}</div>
+              <h3 className="font-bold text-lg mb-1">{s.title}</h3>
+              <p className="text-gray-400 text-sm mb-3">{s.desc}</p>
+              <div className="flex items-baseline gap-2 mb-3">
+                <span className="text-green-400 font-bold text-xl">{s.price}</span>
+                {s.old && <span className="text-gray-500 line-through text-sm">{s.old}</span>}
+              </div>
+              <ul className="space-y-1">
+                {s.features.map((f, i) => (
+                  <li key={i} className="flex items-center gap-1 text-sm text-gray-400">
+                    <CheckCircle2 className="h-3 w-3 text-green-400" /> {f}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </section>
 
-        {error && <div className="text-red-400">{error}</div>}
+      {/* Form */}
+      <section className="max-w-xl mx-auto px-4 pb-16">
+        <h2 className="text-2xl font-bold text-center mb-6">Быстрый заказ</h2>
+        <form onSubmit={onSubmit} className="bg-white/5 backdrop-blur rounded-2xl p-6 space-y-4 border border-white/10">
+          <select
+            value={selectedService}
+            onChange={(e) => setSelectedService(e.target.value)}
+            className="w-full p-3 rounded-xl bg-white/10 text-white border border-white/20"
+          >
+            {SERVICES.map((s) => (
+              <option key={s.key} value={s.title} className="text-black">{s.title}</option>
+            ))}
+          </select>
+          <input
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Имя"
+            className="w-full p-3 rounded-xl bg-white/10 text-white border border-white/20 placeholder-gray-400"
+          />
+          <input
+            value={phone}
+            onChange={(e) => setPhone(formatPhone(e.target.value))}
+            placeholder="+998..."
+            className="w-full p-3 rounded-xl bg-white/10 text-white border border-white/20 placeholder-gray-400"
+          />
+          {error && <div className="text-red-400 text-sm">{error}</div>}
+          {submitted ? (
+            <div className="text-green-400 text-center font-semibold py-3">✅ Заявка отправлена! Скоро свяжемся.</div>
+          ) : (
+            <button
+              type="submit"
+              disabled={submitting}
+              className="w-full bg-green-500 hover:bg-green-600 disabled:opacity-50 text-black font-bold py-3 rounded-xl flex items-center justify-center gap-2 transition"
+            >
+              {submitting ? "Отправка..." : <>Заказать <ChevronRight className="h-5 w-5" /></>}
+            </button>
+          )}
+        </form>
+      </section>
 
-        {submitted ? (
-          <div className="text-green-400">Заявка отправлена</div>
-        ) : (
-          <button className="bg-green-400 text-black px-4 py-2">
-            Заказать
-          </button>
-        )}
-      </form>
+      {/* Footer */}
+      <footer className="text-center text-gray-600 text-sm py-6 border-t border-white/5">
+        Москитки.uz © {new Date().getFullYear()} — Ташкент
+      </footer>
     </div>
   );
 }
