@@ -247,19 +247,10 @@ export default function Landing() {
         </form>
       </section>
 
-      {/* Контакты (теперь после формы) */}
-      <section className="max-w-4xl mx-auto px-4 pb-12 text-center">
-        <h2 className="text-2xl font-bold mb-4">Готовы сделать заказ?</h2>
-        <p className="text-gray-400 mb-6">Позвоните или напишите в Telegram — ответим моментально и подскажем стоимость</p>
-        <div className="flex gap-3 justify-center flex-wrap">
-          <a href={PHONE_LINK} className="flex items-center gap-2 bg-green-500 hover:bg-green-600 text-black font-semibold px-8 py-4 rounded-xl text-lg transition">
-            <Phone className="h-5 w-5" /> {PHONE_NUMBER}
-          </a>
-          <a href={TELEGRAM_LINK} target="_blank" className="flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white font-semibold px-8 py-4 rounded-xl text-lg transition">
-            <Send className="h-5 w-5" /> Написать в Telegram
-          </a>
-        </div>
-      </section>
+    {/* Контакты (теперь после формы) */}
+<section className="max-w-4xl mx-auto px-4 pb-12">
+  <h2 className="text-2xl font-bold mb-4">Готово</h2>   ← Замени на «Готовы сделать заказ?»
+  <p className="text-gray-400 mb-6">Позвоните мне!</p>   ← Замени на «Позвоните или напишите в Telegram — ответим моментально и подскажем стоимость»
 
       <footer className="text-center text-gray-600 text-sm">
   <div className="mb-2">Москвитки.uz © {new Date().getFullYear()}</div>   ← «Москвитки» → «Москитки»
