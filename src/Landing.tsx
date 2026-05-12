@@ -360,18 +360,18 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* Футер */}
-      <footer className="text-center text-gray-600 text-sm py-6 border-t border-white/5">
-        <div className="mb-2">
-          Moskitki.uz © 2019 – {new Date().getFullYear()} — Ташкент
-        </div>
-       <div id="counter-container" style={{ display: 'none' }}>
-  <a href="https://www.hitwebcounter.com/protect-pdf" target="_blank" rel="noopener" title="hitwebcounter.com Password PDFs">
-    <img
-      src="https://www.hitwebcounter.com/counter/counter.php?page=21497695&amp;style=0006&amp;nbdigits=5&amp;type=page"
-      alt="счётчик"
-      decoding="async"
-      style={{ border: 0, maxWidth: "100%", height: "auto" }}
-    />
-  </a>
-</div>
+     <footer className="text-center text-gray-600 text-sm py-6 border-t border-white/5">
+  <div className="mb-2">
+    Moskitki.uz © 2019 – {new Date().getFullYear()} — Ташкент
+  </div>
+  <div id="counter-container" style={{ display: 'none' }}>
+    <a href="https://www.hitwebcounter.com/protect-pdf" target="_blank" rel="noopener" title="hitwebcounter.com Password PDFs">
+      <img
+        src="https://www.hitwebcounter.com/counter/counter.php?page=21497695&amp;style=0006&amp;nbdigits=5&amp;type=page"
+        alt="счётчик"
+        decoding="async"
+        style={{ border: 0, maxWidth: "100%", height: "auto" }}
+      />
+    </a>
+  </div>
+</footer>
