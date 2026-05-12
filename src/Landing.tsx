@@ -197,23 +197,9 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* Контакты */}
-      <section className="max-w-4xl mx-auto px-4 pb-12 text-center">
-        <h2 className="text-2xl font-bold mb-4">Готовы сделать заказ?</h2>
-        <p className="text-gray-400 mb-6">Позвоните или напишите в Telegram — ответим моментально и подскажем стоимость</p>
-        <div className="flex gap-3 justify-center flex-wrap">
-          <a href={PHONE_LINK} className="flex items-center gap-2 bg-green-500 hover:bg-green-600 text-black font-semibold px-8 py-4 rounded-xl text-lg transition">
-            <Phone className="h-5 w-5" /> {PHONE_NUMBER}
-          </a>
-          <a href={TELEGRAM_LINK} target="_blank" className="flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white font-semibold px-8 py-4 rounded-xl text-lg transition">
-            <Send className="h-5 w-5" /> Написать в Telegram
-          </a>
-        </div>
-      </section>
-
-      {/* Форма */}
+      {/* Форма (теперь перед контактами) */}
       <section id="form" className="max-w-xl mx-auto px-4 pb-16">
-        <h2 className="text-2xl font-bold text-center mb-6">Оставьте заявку — перезвоним за 5 минут</h2>
+        <h2 className="text-2xl font-bold text-center mb-6">Заказать со скидкой</h2>
         <form onSubmit={onSubmit} className="bg-white/5 backdrop-blur rounded-2xl p-6 space-y-4 border border-white/10">
           <div>
             <label className="text-sm text-gray-400 mb-1 block">Услуга</label>
@@ -261,9 +247,27 @@ export default function Landing() {
         </form>
       </section>
 
-      {/* Footer */}
+      {/* Контакты (теперь после формы) */}
+      <section className="max-w-4xl mx-auto px-4 pb-12 text-center">
+        <h2 className="text-2xl font-bold mb-4">Готовы сделать заказ?</h2>
+        <p className="text-gray-400 mb-6">Позвоните или напишите в Telegram — ответим моментально и подскажем стоимость</p>
+        <div className="flex gap-3 justify-center flex-wrap">
+          <a href={PHONE_LINK} className="flex items-center gap-2 bg-green-500 hover:bg-green-600 text-black font-semibold px-8 py-4 rounded-xl text-lg transition">
+            <Phone className="h-5 w-5" /> {PHONE_NUMBER}
+          </a>
+          <a href={TELEGRAM_LINK} target="_blank" className="flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white font-semibold px-8 py-4 rounded-xl text-lg transition">
+            <Send className="h-5 w-5" /> Написать в Telegram
+          </a>
+        </div>
+      </section>
+
+      {/* Footer + место для счётчика */}
       <footer className="text-center text-gray-600 text-sm py-6 border-t border-white/5">
-        Москитки.uz © {new Date().getFullYear()} — Ташкент
+        <div className="mb-2">Москитки.uz © {new Date().getFullYear()} — Ташкент</div>
+        {/* Сюда вставь код счётчика */}
+        <div id="counter-container" className="mt-2">
+          <!-- Например, счётчик от hitwebcounter.com -->
+        </div>
       </footer>
     </div>
   );
