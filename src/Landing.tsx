@@ -261,10 +261,9 @@ export default function Landing() {
   </div>
 </section>
 
-{/* Footer + место для счётчика */}
 <footer className="text-center text-gray-600 text-sm py-6 border-t border-white/5">
   <div className="mb-2">Москитки.uz © {new Date().getFullYear()} — Ташкент</div>
   <div id="counter-container" className="mt-2">
-    {/* Сюда потом вставишь код счётчика */}
+    {/* Место для счётчика — вставь сюда тег <img> позже */}
   </div>
 </footer>
