@@ -363,9 +363,11 @@ export default function Landing() {
       {/* Футер */}
       <footer className="text-center text-gray-600 text-sm py-6 border-t border-white/5">
         <div className="mb-2">
-          Москитки.uz © 2019 – {new Date().getFullYear()} — Ташкент
+          Moskitki.uz © 2019 – {new Date().getFullYear()} — Ташкент
         </div>
-        <div id="counter-container" className="mt-2">
+        <div id="counter-container" style={{ display: "none" }}>
+  <!-- остальной код счётчика -->
+</div>
           <a
             href="https://www.hitwebcounter.com/protect-pdf"
             target="_blank"
