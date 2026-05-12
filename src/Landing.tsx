@@ -360,7 +360,7 @@ export default function Landing() {
         </div>
       </section>
 
-     <footer className="text-center text-gray-600 text-sm py-6 border-t border-white/5">
+    <footer className="text-center text-gray-600 text-sm py-6 border-t border-white/5">
   <div className="mb-2">
     Moskitki.uz © 2019 – {new Date().getFullYear()} — Ташкент
   </div>
