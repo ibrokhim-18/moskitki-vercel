@@ -1,5 +1,4 @@
 export default async function handler(req, res) {
-  // Только POST
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method Not Allowed' });
   }
@@ -8,7 +7,6 @@ export default async function handler(req, res) {
   const BOT_TOKEN = process.env.BOT_TOKEN;
   const CHAT_ID = process.env.CHAT_ID;
 
-  // Проверка наличия переменных
   if (!BOT_TOKEN || !CHAT_ID) {
     console.error('BOT_TOKEN или CHAT_ID не заданы');
     return res.status(500).json({
