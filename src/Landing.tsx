@@ -261,14 +261,10 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* Footer + место для счётчика */}
-      <footer className="text-center text-gray-600 text-sm py-6 border-t border-white/5">
-        <div className="mb-2">Москитки.uz © {new Date().getFullYear()} — Ташкент</div>
-        {/* Сюда вставь код счётчика */}
-        <div id="counter-container" className="mt-2">
-          <!-- Например, счётчик от hitwebcounter.com -->
-        </div>
-      </footer>
-    </div>
-  );
-}
+      <footer className="text-center text-gray-600 text-sm">
+  <div className="mb-2">Москвитки.uz © {new Date().getFullYear()}</div>   ← «Москвитки» → «Москитки»
+  <div id="counter-container" className="mt-2">
+    <!-- Например, счётчик от hitwebcounter.com -->   ← УДАЛИ ЭТУ СТРОКУ ПОЛНОСТЬЮ
+    <div></div>
+  </div>
+</footer>
