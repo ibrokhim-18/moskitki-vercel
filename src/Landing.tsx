@@ -143,7 +143,7 @@ export default function Landing() {
       {/* Герой */}
       <section className="text-center px-4 py-8 max-w-4xl mx-auto">
         <div className="inline-block bg-green-500/20 text-green-400 px-4 py-1 rounded-full text-sm mb-4">
-          Сезонная акция -25%
+          Сезонная акция -20%
         </div>
         <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-4">
           Москитные сетки в Ташкенте за 1 день
