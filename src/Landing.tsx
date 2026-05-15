@@ -69,7 +69,7 @@ export default function Landing() {
   const changeLanguage = (lng: string) => i18n.changeLanguage(lng);
   const [location] = useLocation();
 
-  // Отслеживание просмотров страницы (GA4)
+  // GA4 pageview
   useEffect(() => {
     ReactGA.send({ hitType: "pageview", page: location });
   }, [location]);
@@ -108,6 +108,18 @@ export default function Landing() {
     }, 1000);
     return () => clearInterval(timer);
   }, []);
+
+  // Обработчик клика на "Заказать" в карточке услуги
+  const handleOrderClick = (serviceTitleKey: string) => {
+    setSelectedService(serviceTitleKey);
+    setSubmitted(false);      // сбросить статус отправки, если был
+    setError(null);           // очистить ошибку
+    // Плавная прокрутка к форме
+    const formElement = document.getElementById('form');
+    if (formElement) {
+      formElement.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   // Отправка формы
   async function onSubmit(e: React.FormEvent) {
@@ -255,12 +267,12 @@ export default function Landing() {
                   </li>
                 ))}
               </ul>
-              <a
-                href="#form"
+              <button
+                onClick={() => handleOrderClick(s.titleKey)}
                 className="mt-auto flex items-center justify-center gap-1 bg-green-500 hover:bg-green-600 text-black font-semibold py-2 px-4 rounded-xl transition"
               >
                 {t("order_btn")} <ChevronRight className="h-4 w-4" />
-              </a>
+              </button>
             </div>
           ))}
         </div>
@@ -384,7 +396,7 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* Футер без счётчика */}
+      {/* Футер */}
       <footer className="text-center text-gray-600 text-sm py-6 border-t border-white/5">
         Moskitki.uz © 2019 – {new Date().getFullYear()} — {t("footer_city")}
       </footer>
