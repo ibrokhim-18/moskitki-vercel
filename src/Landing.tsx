@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { useTranslation } from 'react-i18next';
+import { useLocation } from 'wouter';
+import ReactGA from "react-ga4";
 import {
   Phone,
   Send,
@@ -19,7 +21,7 @@ const PHONE_LINK = "tel:+998990550660";
 const TELEGRAM_USERNAME = "moskitki_uz";
 const TELEGRAM_LINK = `https://t.me/${TELEGRAM_USERNAME}`;
 
-// === Услуги (тексты будут браться из t(), но цены и ключи остаются) ===
+// === Услуги ===
 const SERVICES = [
   {
     key: "moskitnaya-setka",
@@ -65,6 +67,12 @@ function formatPhone(input: string) {
 export default function Landing() {
   const { t, i18n } = useTranslation();
   const changeLanguage = (lng: string) => i18n.changeLanguage(lng);
+  const [location] = useLocation();
+
+  // Отслеживание просмотров страницы (GA4)
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: location });
+  }, [location]);
 
   const [selectedService, setSelectedService] = useState(SERVICES[0].titleKey);
   const [phone, setPhone] = useState("+998 ");
@@ -132,9 +140,6 @@ export default function Landing() {
   }
 
   const formatTime = (n: number) => String(n).padStart(2, "0");
-
-  // Получение переведённых названий услуг для выпадающего списка
-  const getServiceTitle = (key: string) => t(key);
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 via-black to-gray-900 text-white">
@@ -339,7 +344,7 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* ОТЗЫВЫ (ручное добавление) */}
+      {/* ОТЗЫВЫ */}
       <section className="max-w-4xl mx-auto px-4 pb-12">
         <h2 className="text-2xl font-bold text-center mb-4">{t("reviews_title")}</h2>
         <p className="text-gray-400 text-center mb-8">{t("reviews_subtitle")}</p>
@@ -379,21 +384,9 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* Футер */}
+      {/* Футер без счётчика */}
       <footer className="text-center text-gray-600 text-sm py-6 border-t border-white/5">
-        <div className="mb-2">
-          Moskitki.uz © 2019 – {new Date().getFullYear()} — {t("footer_city")}
-        </div>
-        <div id="counter-container" style={{ display: 'none' }}>
-          <a href="https://www.hitwebcounter.com/protect-pdf" target="_blank" rel="noopener" title="hitwebcounter.com Password PDFs">
-            <img
-              src="https://www.hitwebcounter.com/counter/counter.php?page=21497695&amp;style=0006&amp;nbdigits=5&amp;type=page"
-              alt="счётчик"
-              decoding="async"
-              style={{ border: 0, maxWidth: "100%", height: "auto" }}
-            />
-          </a>
-        </div>
+        Moskitki.uz © 2019 – {new Date().getFullYear()} — {t("footer_city")}
       </footer>
     </div>
   );
