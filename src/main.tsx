@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import ReactGA from "react-ga4";
 import Landing from "./Landing";
 import "./index.css";
+import "./i18n";
 
 ReactGA.initialize("G-GPD3KZLEFQ");
 
