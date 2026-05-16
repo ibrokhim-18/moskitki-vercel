@@ -80,41 +80,12 @@ export default function Landing() {
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [timeLeft, setTimeLeft] = useState({
-    hours: 1,
-    minutes: 59,
-    seconds: 41,
-  });
-
-  // Таймер
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeLeft((prev) => {
-        let { hours, minutes, seconds } = prev;
-        if (seconds > 0) seconds--;
-        else if (minutes > 0) {
-          minutes--;
-          seconds = 59;
-        } else if (hours > 0) {
-          hours--;
-          minutes = 59;
-          seconds = 59;
-        }
-        if (hours === 0 && minutes === 0 && seconds === 0) {
-          return { hours: 24, minutes: 0, seconds: 0 };
-        }
-        return { hours, minutes, seconds };
-      });
-    }, 1000);
-    return () => clearInterval(timer);
-  }, []);
 
   // Обработчик клика на "Заказать" в карточке услуги
   const handleOrderClick = (serviceTitleKey: string) => {
     setSelectedService(serviceTitleKey);
-    setSubmitted(false);      // сбросить статус отправки, если был
-    setError(null);           // очистить ошибку
-    // Плавная прокрутка к форме
+    setSubmitted(false);
+    setError(null);
     const formElement = document.getElementById('form');
     if (formElement) {
       formElement.scrollIntoView({ behavior: 'smooth' });
@@ -150,8 +121,6 @@ export default function Landing() {
       setSubmitting(false);
     }
   }
-
-  const formatTime = (n: number) => String(n).padStart(2, "0");
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 via-black to-gray-900 text-white">
@@ -232,15 +201,36 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* Таймер */}
-      <section className="text-center pb-10">
-        <p className="text-gray-400 mb-2">{t("discount_ends")}</p>
-        <div className="flex justify-center gap-3 text-3xl font-mono font-bold">
-          <span className="bg-white/10 px-4 py-2 rounded-xl">{formatTime(timeLeft.hours)}</span>
-          <span className="text-gray-500">:</span>
-          <span className="bg-white/10 px-4 py-2 rounded-xl">{formatTime(timeLeft.minutes)}</span>
-          <span className="text-gray-500">:</span>
-          <span className="bg-white/10 px-4 py-2 rounded-xl">{formatTime(timeLeft.seconds)}</span>
+      {/* НОВЫЙ БЛОК: две москитные сетки (фото) */}
+      <section className="max-w-5xl mx-auto px-4 py-8">
+        <h2 className="text-2xl font-bold text-center mb-8">
+          Наши москитные сетки
+        </h2>
+        <div className="grid md:grid-cols-2 gap-8">
+          {/* Стандартная сетка */}
+          <div className="bg-white/5 rounded-2xl p-6 backdrop-blur border border-white/10 text-center">
+            <img
+              src="/images/standart.jpg"
+              alt="Стандартная москитная сетка"
+              className="w-full h-auto rounded-xl mb-4"
+            />
+            <h3 className="text-xl font-bold mb-2">Стандартная москитная сетка</h3>
+            <p className="text-gray-400 text-sm">
+              Прочный уголок, удобные ручки-кольца, усиленная рама. Надёжная защита от насекомых.
+            </p>
+          </div>
+          {/* Сетка Синакс */}
+          <div className="bg-white/5 rounded-2xl p-6 backdrop-blur border border-white/10 text-center">
+            <img
+              src="/images/synax.jpg"
+              alt="Сетка Синакс (антипыль)"
+              className="w-full h-auto rounded-xl mb-4"
+            />
+            <h3 className="text-xl font-bold mb-2">Сетка Синакс (антипыль)</h3>
+            <p className="text-gray-400 text-sm">
+              Мелкая ячейка, защита от пыли и тополиного пуха. Идеально для аллергиков.
+            </p>
+          </div>
         </div>
       </section>
 
