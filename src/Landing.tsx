@@ -10,7 +10,6 @@ import {
   Hammer,
   Star,
   ChevronRight,
-  Sparkles,
   Wrench,
   Wind,
 } from "lucide-react";
@@ -19,18 +18,6 @@ const PHONE_NUMBER = "+998 99 055 06 60";
 const PHONE_LINK = "tel:+998990550660";
 const TELEGRAM_USERNAME = "moskitki_uz";
 const TELEGRAM_LINK = `https://t.me/${TELEGRAM_USERNAME}`;
-
-// Услуги (только ремонт окон)
-const SERVICES = [
-  {
-    key: "remont-okon",
-    titleKey: "service_window_title",
-    price: "от 50 000 сум",
-    descKey: "service_window_desc",
-    icon: <Wrench className="h-6 w-6" />,
-    featuresKeys: ["master_visit", "parts_stock", "receipt_guarantee"],
-  },
-];
 
 function formatPhone(input: string) {
   const digits = input.replace(/\D/g, "").slice(0, 12);
@@ -53,7 +40,7 @@ export default function Landing() {
     ReactGA.send({ hitType: "pageview", page: location });
   }, [location]);
 
-  const [selectedService, setSelectedService] = useState("Стандартная москитная сетка");
+  const [selectedService, setSelectedService] = useState("Москитная сетка");
   const [phone, setPhone] = useState("+998 ");
   const [name, setName] = useState("");
   const [submitting, setSubmitting] = useState(false);
@@ -137,12 +124,11 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* ========== 1 КАРТОЧКА: МОСКИТНЫЕ СЕТКИ ========== */}
+      {/* КАРТОЧКА 1: МОСКИТНЫЕ СЕТКИ */}
       <section className="max-w-4xl mx-auto px-4 py-8">
         <div className="bg-white/5 rounded-2xl p-6 backdrop-blur border border-white/10">
           <h2 className="text-2xl font-bold text-center mb-6">Москитные сетки</h2>
           <div className="grid md:grid-cols-2 gap-6">
-            {/* Стандартная сетка */}
             <div className="text-center">
               <img src="/images/standart.jpg" alt="Стандартная сетка" className="w-full h-auto rounded-xl mb-3" />
               <h3 className="text-lg font-bold">Стандартная москитная сетка</h3>
@@ -157,7 +143,6 @@ export default function Landing() {
                 <li>☐ Гарантия 1 года</li>
               </ul>
             </div>
-            {/* Сетка Синакс */}
             <div className="text-center">
               <img src="/images/synax.jpg" alt="Сетка Синакс" className="w-full h-auto rounded-xl mb-3" />
               <h3 className="text-lg font-bold">Сетка Синакс</h3>
@@ -179,7 +164,7 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* ========== 1 КАРТОЧКА: ЖАЛЮЗИ ========== */}
+      {/* КАРТОЧКА 2: ЖАЛЮЗИ */}
       <section className="max-w-4xl mx-auto px-4 py-8">
         <div className="bg-white/5 rounded-2xl p-6 backdrop-blur border border-white/10">
           <h2 className="text-2xl font-bold text-center mb-6">Жалюзи и рулонные шторы</h2>
@@ -219,43 +204,42 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* ========== НАШИ УСЛУГИ (ремонт окон) ========== */}
-      <section className="max-w-4xl mx-auto px-4 pb-12">
-        <h2 className="text-2xl font-bold text-center mb-8">{t("services_title")}</h2>
-        <div className="grid md:grid-cols-1 gap-4">
-          {SERVICES.map((s) => (
-            <div key={s.key} className="bg-white/5 rounded-2xl p-6 backdrop-blur border border-white/10 flex flex-col">
-              <div className="text-green-400 mb-3">{s.icon}</div>
-              <h3 className="font-bold text-lg mb-1">{t(s.titleKey)}</h3>
-              <p className="text-gray-400 text-sm mb-3">{t(s.descKey)}</p>
-              <div className="mb-3"><span className="text-green-400 font-bold">{s.price}</span></div>
-              <ul className="space-y-1 mb-4">
-                {s.featuresKeys.map((f, i) => (
-                  <li key={i} className="flex items-center gap-2 text-sm text-gray-300">
-                    <span className="text-green-400 text-lg leading-none">☐</span> {t(f)}
-                  </li>
-                ))}
-              </ul>
-              <button onClick={() => handleOrderClick(t(s.titleKey))} className="mt-auto flex items-center justify-center gap-1 bg-green-500 hover:bg-green-600 text-black font-semibold py-2 px-4 rounded-xl transition">
-                {t("order_btn")} <ChevronRight className="h-4 w-4" />
-              </button>
+      {/* КАРТОЧКА 3: РЕМОНТ ОКОН */}
+      <section className="max-w-4xl mx-auto px-4 py-8">
+        <div className="bg-white/5 rounded-2xl p-6 backdrop-blur border border-white/10">
+          <h2 className="text-2xl font-bold text-center mb-6">Ремонт окон</h2>
+          <div className="max-w-md mx-auto text-center">
+            <Wrench className="h-12 w-12 text-green-400 mx-auto mb-3" />
+            <p className="text-gray-300 mb-3">Замена фурнитуры, уплотнителей, регулировка створок.</p>
+            <div className="mt-2">
+              <span className="text-green-400 font-bold text-2xl">от 50 000 сум</span>
             </div>
-          ))}
+            <ul className="text-left max-w-xs mx-auto mt-4 space-y-1 text-sm text-gray-300">
+              <li>☐ Выезд мастера</li>
+              <li>☐ Запчасти в наличии</li>
+              <li>☐ Чек и гарантия</li>
+            </ul>
+          </div>
+          <div className="text-center mt-6">
+            <button onClick={() => handleOrderClick("Ремонт окон")} className="bg-green-500 hover:bg-green-600 text-black font-semibold px-8 py-3 rounded-xl transition inline-flex items-center gap-2">Заказать ремонт <ChevronRight className="h-5 w-5" /></button>
+          </div>
         </div>
       </section>
 
-      {/* Форма заказа */}
+      {/* ФОРМА ЗАКАЗА с тремя пунктами */}
       <section id="form" className="max-w-xl mx-auto px-4 pb-16">
         <h2 className="text-2xl font-bold text-center mb-6">{t("form_title")}</h2>
         <form onSubmit={onSubmit} className="bg-white/5 backdrop-blur rounded-2xl p-6 space-y-4 border border-white/10">
           <div>
             <label className="text-sm text-gray-400 mb-1 block">{t("service_label")}</label>
-            <select value={selectedService} onChange={(e) => setSelectedService(e.target.value)} className="w-full p-3 rounded-xl bg-white/10 text-white border border-white/20">
-              <option>Стандартная москитная сетка</option>
-              <option>Сетка Синакс</option>
-              <option>Горизонтальные жалюзи</option>
-              <option>Вертикальные / рулонные шторы</option>
-              <option>{t("service_window_title")}</option>
+            <select 
+              value={selectedService} 
+              onChange={(e) => setSelectedService(e.target.value)} 
+              className="w-full p-3 rounded-xl bg-white/10 text-white border border-white/20"
+            >
+              <option>Москитная сетка</option>
+              <option>Жалюзи</option>
+              <option>Ремонт окон</option>
             </select>
           </div>
           <div>
