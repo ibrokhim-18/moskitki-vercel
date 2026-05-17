@@ -40,7 +40,7 @@ export default function Landing() {
     ReactGA.send({ hitType: "pageview", page: location });
   }, [location]);
 
-  const [selectedService, setSelectedService] = useState("Москитная сетка");
+  const [selectedService, setSelectedService] = useState(t("mosquito_title"));
   const [phone, setPhone] = useState("+998 ");
   const [name, setName] = useState("");
   const [submitting, setSubmitting] = useState(false);
@@ -127,39 +127,39 @@ export default function Landing() {
       {/* КАРТОЧКА 1: МОСКИТНЫЕ СЕТКИ */}
       <section className="max-w-4xl mx-auto px-4 py-8">
         <div className="bg-white/5 rounded-2xl p-6 backdrop-blur border border-white/10">
-          <h2 className="text-2xl font-bold text-center mb-6">Москитные сетки</h2>
+          <h2 className="text-2xl font-bold text-center mb-6">{t("mosquito_title")}</h2>
           <div className="grid md:grid-cols-2 gap-6">
             <div className="text-center">
-              <img src="/images/standart.png" alt="Стандартная сетка" className="w-full h-auto rounded-xl mb-3" />
-              <h3 className="text-lg font-bold">Стандартная москитная сетка</h3>
-              <p className="text-gray-400 text-sm mt-1">Прочный уголок, ручки-кольца, усиленная рама.</p>
+              <img src="/images/standart.png" alt="Standart" className="w-full h-auto rounded-xl mb-3" />
+              <h3 className="text-lg font-bold">{t("standart_title")}</h3>
+              <p className="text-gray-400 text-sm mt-1">{t("standart_desc")}</p>
               <div className="mt-2">
                 <span className="text-green-400 font-bold text-xl">от 120 000 сум</span>
                 <span className="text-gray-500 line-through text-sm ml-2">от 150 000 сум</span>
               </div>
               <ul className="text-left mt-3 space-y-1 text-sm text-gray-300">
-                <li>☐ Замер бесплатно</li>
-                <li>☐ Срок 1 день</li>
-                <li>☐ Гарантия 1 года</li>
+                <li>☐ {t("feature_free_measure")}</li>
+                <li>☐ {t("feature_one_day")}</li>
+                <li>☐ {t("feature_year_guarantee")}</li>
               </ul>
             </div>
             <div className="text-center">
-              <img src="/images/synax.png" alt="Сетка Синакс" className="w-full h-auto rounded-xl mb-3" />
-              <h3 className="text-lg font-bold">Сетка Синакс</h3>
-              <p className="text-gray-400 text-sm mt-1">Без сверления, крепление в проём, не повреждает раму.</p>
+              <img src="/images/synax.png" alt="Synax" className="w-full h-auto rounded-xl mb-3" />
+              <h3 className="text-lg font-bold">{t("synax_title")}</h3>
+              <p className="text-gray-400 text-sm mt-1">{t("synax_desc")}</p>
               <div className="mt-2">
                 <span className="text-green-400 font-bold text-xl">от 150 000 сум</span>
                 <span className="text-gray-500 line-through text-sm ml-2">от 180 000 сум</span>
               </div>
               <ul className="text-left mt-3 space-y-1 text-sm text-gray-300">
-                <li>☐ Без сверления</li>
-                <li>☐ Срок 1 день</li>
-                <li>☐ Гарантия 1 года</li>
+                <li>☐ {t("feature_no_drilling")}</li>
+                <li>☐ {t("feature_one_day")}</li>
+                <li>☐ {t("feature_year_guarantee")}</li>
               </ul>
             </div>
           </div>
           <div className="text-center mt-6">
-            <button onClick={() => handleOrderClick("Москитная сетка")} className="bg-green-500 hover:bg-green-600 text-black font-semibold px-8 py-3 rounded-xl transition inline-flex items-center gap-2">Заказать москитную сетку <ChevronRight className="h-5 w-5" /></button>
+            <button onClick={() => handleOrderClick(t("mosquito_title"))} className="bg-green-500 hover:bg-green-600 text-black font-semibold px-8 py-3 rounded-xl transition inline-flex items-center gap-2">{t("order_mosquito_btn")} <ChevronRight className="h-5 w-5" /></button>
           </div>
         </div>
       </section>
@@ -167,39 +167,39 @@ export default function Landing() {
       {/* КАРТОЧКА 2: ЖАЛЮЗИ */}
       <section className="max-w-4xl mx-auto px-4 py-8">
         <div className="bg-white/5 rounded-2xl p-6 backdrop-blur border border-white/10">
-          <h2 className="text-2xl font-bold text-center mb-6">Жалюзи и рулонные шторы</h2>
+          <h2 className="text-2xl font-bold text-center mb-6">{t("blinds_title")}</h2>
           <div className="grid md:grid-cols-2 gap-6">
             <div className="text-center">
-              <img src="/images/gorizontal.png" alt="Горизонтальные жалюзи" className="w-full h-auto rounded-xl mb-3" />
-              <h3 className="text-lg font-bold">Горизонтальные жалюзи</h3>
-              <p className="text-gray-400 text-sm mt-1">Алюминий, регулировка света, компактные.</p>
+              <img src="/images/gorizontal.png" alt="Gorizontal" className="w-full h-auto rounded-xl mb-3" />
+              <h3 className="text-lg font-bold">{t("horizontal_title")}</h3>
+              <p className="text-gray-400 text-sm mt-1">{t("horizontal_desc")}</p>
               <div className="mt-2">
                 <span className="text-green-400 font-bold text-xl">от 250 000 сум</span>
                 <span className="text-gray-500 line-through text-sm ml-2">от 320 000 сум</span>
               </div>
               <ul className="text-left mt-3 space-y-1 text-sm text-gray-300">
-                <li>☐ 50+ цветов</li>
-                <li>☐ Ткань / алюминий</li>
-                <li>☐ Монтаж включён</li>
+                <li>☐ {t("feature_50_colors")}</li>
+                <li>☐ {t("feature_material_aluminum")}</li>
+                <li>☐ {t("feature_mounting_included")}</li>
               </ul>
             </div>
             <div className="text-center">
-              <img src="/images/vertical.png" alt="Вертикальные жалюзи" className="w-full h-auto rounded-xl mb-3" />
-              <h3 className="text-lg font-bold">Вертикальные / рулонные</h3>
-              <p className="text-gray-400 text-sm mt-1">Тканевые ламели, мягкий свет, для дома и офиса.</p>
+              <img src="/images/vertical.png" alt="Vertical" className="w-full h-auto rounded-xl mb-3" />
+              <h3 className="text-lg font-bold">{t("vertical_title")}</h3>
+              <p className="text-gray-400 text-sm mt-1">{t("vertical_desc")}</p>
               <div className="mt-2">
                 <span className="text-green-400 font-bold text-xl">от 280 000 сум</span>
                 <span className="text-gray-500 line-through text-sm ml-2">от 350 000 сум</span>
               </div>
               <ul className="text-left mt-3 space-y-1 text-sm text-gray-300">
-                <li>☐ Ткань разных плотностей</li>
-                <li>☐ Замер и установка</li>
-                <li>☐ Гарантия 1 год</li>
+                <li>☐ {t("feature_fabric_density")}</li>
+                <li>☐ {t("feature_measure_install")}</li>
+                <li>☐ {t("feature_year_guarantee")}</li>
               </ul>
             </div>
           </div>
           <div className="text-center mt-6">
-            <button onClick={() => handleOrderClick("Жалюзи")} className="bg-green-500 hover:bg-green-600 text-black font-semibold px-8 py-3 rounded-xl transition inline-flex items-center gap-2">Заказать жалюзи <ChevronRight className="h-5 w-5" /></button>
+            <button onClick={() => handleOrderClick(t("blinds_title"))} className="bg-green-500 hover:bg-green-600 text-black font-semibold px-8 py-3 rounded-xl transition inline-flex items-center gap-2">{t("order_blinds_btn")} <ChevronRight className="h-5 w-5" /></button>
           </div>
         </div>
       </section>
@@ -207,26 +207,26 @@ export default function Landing() {
       {/* КАРТОЧКА 3: РЕМОНТ ОКОН */}
       <section className="max-w-4xl mx-auto px-4 py-8">
         <div className="bg-white/5 rounded-2xl p-6 backdrop-blur border border-white/10">
-          <h2 className="text-2xl font-bold text-center mb-6">Ремонт окон</h2>
+          <h2 className="text-2xl font-bold text-center mb-6">{t("window_repair_title")}</h2>
           <div className="max-w-md mx-auto text-center">
             <Wrench className="h-12 w-12 text-green-400 mx-auto mb-3" />
-            <p className="text-gray-300 mb-3">Замена фурнитуры, уплотнителей, регулировка створок.</p>
+            <p className="text-gray-300 mb-3">{t("window_repair_desc")}</p>
             <div className="mt-2">
               <span className="text-green-400 font-bold text-2xl">от 50 000 сум</span>
             </div>
             <ul className="text-left max-w-xs mx-auto mt-4 space-y-1 text-sm text-gray-300">
-              <li>☐ Выезд мастера</li>
-              <li>☐ Запчасти в наличии</li>
-              <li>☐ Чек и гарантия</li>
+              <li>☐ {t("feature_master_visit")}</li>
+              <li>☐ {t("feature_parts_stock")}</li>
+              <li>☐ {t("feature_receipt_guarantee")}</li>
             </ul>
           </div>
           <div className="text-center mt-6">
-            <button onClick={() => handleOrderClick("Ремонт окон")} className="bg-green-500 hover:bg-green-600 text-black font-semibold px-8 py-3 rounded-xl transition inline-flex items-center gap-2">Заказать ремонт <ChevronRight className="h-5 w-5" /></button>
+            <button onClick={() => handleOrderClick(t("window_repair_title"))} className="bg-green-500 hover:bg-green-600 text-black font-semibold px-8 py-3 rounded-xl transition inline-flex items-center gap-2">{t("order_repair_btn")} <ChevronRight className="h-5 w-5" /></button>
           </div>
         </div>
       </section>
 
-      {/* ФОРМА ЗАКАЗА с тремя пунктами */}
+      {/* ФОРМА ЗАКАЗА */}
       <section id="form" className="max-w-xl mx-auto px-4 pb-16">
         <h2 className="text-2xl font-bold text-center mb-6">{t("form_title")}</h2>
         <form onSubmit={onSubmit} className="bg-white/5 backdrop-blur rounded-2xl p-6 space-y-4 border border-white/10">
@@ -237,9 +237,9 @@ export default function Landing() {
               onChange={(e) => setSelectedService(e.target.value)} 
               className="w-full p-3 rounded-xl bg-white/10 text-white border border-white/20"
             >
-              <option>Москитная сетка</option>
-              <option>Жалюзи</option>
-              <option>Ремонт окон</option>
+              <option>{t("mosquito_title")}</option>
+              <option>{t("blinds_title")}</option>
+              <option>{t("window_repair_title")}</option>
             </select>
           </div>
           <div>
