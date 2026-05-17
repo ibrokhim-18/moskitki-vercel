@@ -130,7 +130,7 @@ export default function Landing() {
           <h2 className="text-2xl font-bold text-center mb-6">Москитные сетки</h2>
           <div className="grid md:grid-cols-2 gap-6">
             <div className="text-center">
-              <img src="/images/standart.jpg" alt="Стандартная сетка" className="w-full h-auto rounded-xl mb-3" />
+              <img src="/images/standart.png" alt="Стандартная сетка" className="w-full h-auto rounded-xl mb-3" />
               <h3 className="text-lg font-bold">Стандартная москитная сетка</h3>
               <p className="text-gray-400 text-sm mt-1">Прочный уголок, ручки-кольца, усиленная рама.</p>
               <div className="mt-2">
@@ -144,7 +144,7 @@ export default function Landing() {
               </ul>
             </div>
             <div className="text-center">
-              <img src="/images/synax.jpg" alt="Сетка Синакс" className="w-full h-auto rounded-xl mb-3" />
+              <img src="/images/synax.png" alt="Сетка Синакс" className="w-full h-auto rounded-xl mb-3" />
               <h3 className="text-lg font-bold">Сетка Синакс</h3>
               <p className="text-gray-400 text-sm mt-1">Без сверления, крепление в проём, не повреждает раму.</p>
               <div className="mt-2">
@@ -170,7 +170,7 @@ export default function Landing() {
           <h2 className="text-2xl font-bold text-center mb-6">Жалюзи и рулонные шторы</h2>
           <div className="grid md:grid-cols-2 gap-6">
             <div className="text-center">
-              <img src="/images/gorizontal.jpg" alt="Горизонтальные жалюзи" className="w-full h-auto rounded-xl mb-3" />
+              <img src="/images/gorizontal.png" alt="Горизонтальные жалюзи" className="w-full h-auto rounded-xl mb-3" />
               <h3 className="text-lg font-bold">Горизонтальные жалюзи</h3>
               <p className="text-gray-400 text-sm mt-1">Алюминий, регулировка света, компактные.</p>
               <div className="mt-2">
@@ -184,7 +184,7 @@ export default function Landing() {
               </ul>
             </div>
             <div className="text-center">
-              <img src="/images/vertical.jpg" alt="Вертикальные жалюзи" className="w-full h-auto rounded-xl mb-3" />
+              <img src="/images/vertical.png" alt="Вертикальные жалюзи" className="w-full h-auto rounded-xl mb-3" />
               <h3 className="text-lg font-bold">Вертикальные / рулонные</h3>
               <p className="text-gray-400 text-sm mt-1">Тканевые ламели, мягкий свет, для дома и офиса.</p>
               <div className="mt-2">
