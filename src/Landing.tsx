@@ -134,8 +134,8 @@ export default function Landing() {
               <h3 className="text-lg font-bold">{t("standart_title")}</h3>
               <p className="text-gray-400 text-sm mt-1">{t("standart_desc")}</p>
               <div className="mt-2">
-                <span className="text-green-400 font-bold text-xl">от 120 000 сум</span>
-                <span className="text-gray-500 line-through text-sm ml-2">от 150 000 сум</span>
+                <span className="text-green-400 font-bold text-xl">{t("standart_price_from")}</span>
+                <span className="text-gray-500 line-through text-sm ml-2">{t("standart_price_old")}</span>
               </div>
               <ul className="text-left mt-3 space-y-1 text-sm text-gray-300">
                 <li>☐ {t("feature_free_measure")}</li>
@@ -148,8 +148,8 @@ export default function Landing() {
               <h3 className="text-lg font-bold">{t("synax_title")}</h3>
               <p className="text-gray-400 text-sm mt-1">{t("synax_desc")}</p>
               <div className="mt-2">
-                <span className="text-green-400 font-bold text-xl">от 150 000 сум</span>
-                <span className="text-gray-500 line-through text-sm ml-2">от 180 000 сум</span>
+                <span className="text-green-400 font-bold text-xl">{t("synax_price_from")}</span>
+                <span className="text-gray-500 line-through text-sm ml-2">{t("synax_price_old")}</span>
               </div>
               <ul className="text-left mt-3 space-y-1 text-sm text-gray-300">
                 <li>☐ {t("feature_no_drilling")}</li>
@@ -174,8 +174,8 @@ export default function Landing() {
               <h3 className="text-lg font-bold">{t("horizontal_title")}</h3>
               <p className="text-gray-400 text-sm mt-1">{t("horizontal_desc")}</p>
               <div className="mt-2">
-                <span className="text-green-400 font-bold text-xl">от 250 000 сум</span>
-                <span className="text-gray-500 line-through text-sm ml-2">от 320 000 сум</span>
+                <span className="text-green-400 font-bold text-xl">{t("horizontal_price_from")}</span>
+                <span className="text-gray-500 line-through text-sm ml-2">{t("horizontal_price_old")}</span>
               </div>
               <ul className="text-left mt-3 space-y-1 text-sm text-gray-300">
                 <li>☐ {t("feature_50_colors")}</li>
@@ -188,8 +188,8 @@ export default function Landing() {
               <h3 className="text-lg font-bold">{t("vertical_title")}</h3>
               <p className="text-gray-400 text-sm mt-1">{t("vertical_desc")}</p>
               <div className="mt-2">
-                <span className="text-green-400 font-bold text-xl">от 280 000 сум</span>
-                <span className="text-gray-500 line-through text-sm ml-2">от 350 000 сум</span>
+                <span className="text-green-400 font-bold text-xl">{t("vertical_price_from")}</span>
+                <span className="text-gray-500 line-through text-sm ml-2">{t("vertical_price_old")}</span>
               </div>
               <ul className="text-left mt-3 space-y-1 text-sm text-gray-300">
                 <li>☐ {t("feature_fabric_density")}</li>
@@ -212,7 +212,7 @@ export default function Landing() {
             <Wrench className="h-12 w-12 text-green-400 mx-auto mb-3" />
             <p className="text-gray-300 mb-3">{t("window_repair_desc")}</p>
             <div className="mt-2">
-              <span className="text-green-400 font-bold text-2xl">от 50 000 сум</span>
+              <span className="text-green-400 font-bold text-2xl">{t("repair_price")}</span>
             </div>
             <ul className="text-left max-w-xs mx-auto mt-4 space-y-1 text-sm text-gray-300">
               <li>☐ {t("feature_master_visit")}</li>
