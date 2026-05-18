@@ -62,5 +62,15 @@
   "review_verified": "Tasdiqlangan sharh",
   "leave_review_btn": "Sharh qoldirish",
   "review_hint": "Telegramda sharh yozish uchun bosing",
-  "footer_city": "Toshkentda ishlaymiz"
+  "footer_city": "Toshkentda ishlaymiz",
+
+  "standart_price_from": "120 000 so‘mdan",
+  "standart_price_old": "150 000 so‘mdan",
+  "synax_price_from": "150 000 so‘mdan",
+  "synax_price_old": "180 000 so‘mdan",
+  "horizontal_price_from": "250 000 so‘mdan",
+  "horizontal_price_old": "320 000 so‘mdan",
+  "vertical_price_from": "280 000 so‘mdan",
+  "vertical_price_old": "350 000 so‘mdan",
+  "repair_price": "50 000 so‘mdan"
 }
