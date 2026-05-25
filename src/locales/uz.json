@@ -20,7 +20,7 @@
   "synax_title": "Sinax to‘ri",
   "synax_desc": "Burg‘ulashsiz, teshikka o‘rnatish, ramkaga zarar yetkazmaydi.",
   "blinds_title": "Jalyuzi va rulonli pardalar",
-  "horizontal_title": "Pilse jalyuzi",
+  "horizontal_title": "Plise jalyuzi",
   "horizontal_desc": "Alyuminiy, yorug'likni sozlash, ixcham.",
   "vertical_title": "Rulonli jalyuzi",
   "vertical_desc": "Matodan lamellar, yumshoq yorug‘lik, uy va ofis uchun.",
@@ -66,10 +66,10 @@
 
   "standart_price_from": "120 000 so‘mdan",
   "standart_price_old": "150 000 so‘mdan",
-  "synax_price_from": "150 000 so‘mdan",
-  "synax_price_old": "180 000 so‘mdan",
-  "horizontal_price_from": "250 000 so‘mdan",
-  "horizontal_price_old": "320 000 so‘mdan",
+  "synax_price_from": "160 000 so‘mdan",
+  "synax_price_old": "190 000 so‘mdan",
+  "horizontal_price_from": "150 000 so‘mdan",
+  "horizontal_price_old": "180 000 so‘mdan",
   "vertical_price_from": "280 000 so‘mdan",
   "vertical_price_old": "350 000 so‘mdan",
   "repair_price": "50 000 so‘mdan"
