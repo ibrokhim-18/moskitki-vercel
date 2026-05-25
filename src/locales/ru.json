@@ -20,7 +20,7 @@
   "synax_title": "Сетка Синакс",
   "synax_desc": "Без сверления, крепление в проём, не повреждает раму.",
   "blinds_title": "Жалюзи и рулонные шторы",
-  "horizontal_title": "Пилсе жалюзи",
+  "horizontal_title": "Плисе жалюзи",
   "horizontal_desc": "Алюминий, регулировка света, компактные.",
   "vertical_title": "Рулонные Жалюзи",
   "vertical_desc": "Тканевое полотно, мягкий свет, для дома и офиса.",
@@ -66,10 +66,10 @@
 
   "standart_price_from": "от 120 000 сум",
   "standart_price_old": "от 150 000 сум",
-  "synax_price_from": "от 150 000 сум",
-  "synax_price_old": "от 180 000 сум",
-  "horizontal_price_from": "от 250 000 сум",
-  "horizontal_price_old": "от 320 000 сум",
+  "synax_price_from": "от 160 000 сум",
+  "synax_price_old": "от 190 000 сум",
+  "horizontal_price_from": "от 150 000 сум",
+  "horizontal_price_old": "от 180 000 сум",
   "vertical_price_from": "от 280 000 сум",
   "vertical_price_old": "от 350 000 сум",
   "repair_price": "от 50 000 сум"
