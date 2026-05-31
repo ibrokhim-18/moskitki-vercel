@@ -64,12 +64,12 @@
   "review_hint": "Telegramda sharh yozish uchun bosing",
   "footer_city": "Toshkentda ishlaymiz",
 
-  "standart_price_from": "120 000 so‘mdan",
-  "standart_price_old": "150 000 so‘mdan",
-  "synax_price_from": "160 000 so‘mdan",
-  "synax_price_old": "190 000 so‘mdan",
-  "horizontal_price_from": "150 000 so‘mdan",
-  "horizontal_price_old": "180 000 so‘mdan",
+  "standart_price_from": "150 000 so‘mdan",
+  "standart_price_old": "170 000 so‘mdan",
+  "synax_price_from": "190 000 so‘mdan",
+  "synax_price_old": "220 000 so‘mdan",
+  "horizontal_price_from": "180 000 so‘mdan",
+  "horizontal_price_old": "220 000 so‘mdan",
   "vertical_price_from": "280 000 so‘mdan",
   "vertical_price_old": "350 000 so‘mdan",
   "repair_price": "50 000 so‘mdan"
