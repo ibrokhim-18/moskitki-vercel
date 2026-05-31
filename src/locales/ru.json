@@ -64,12 +64,12 @@
   "review_hint": "Нажмите, чтобы написать отзыв в Telegram",
   "footer_city": "Работаем в Ташкенте",
 
-  "standart_price_from": "от 120 000 сум",
-  "standart_price_old": "от 150 000 сум",
-  "synax_price_from": "от 160 000 сум",
-  "synax_price_old": "от 190 000 сум",
-  "horizontal_price_from": "от 150 000 сум",
-  "horizontal_price_old": "от 180 000 сум",
+  "standart_price_from": "от 150 000 сум",
+  "standart_price_old": "от 180 000 сум",
+  "synax_price_from": "от 190 000 сум",
+  "synax_price_old": "от 220 000 сум",
+  "horizontal_price_from": "от 180 000 сум",
+  "horizontal_price_old": "от 210 000 сум",
   "vertical_price_from": "от 280 000 сум",
   "vertical_price_old": "от 350 000 сум",
   "repair_price": "от 50 000 сум"
