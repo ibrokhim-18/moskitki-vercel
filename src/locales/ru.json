@@ -66,11 +66,11 @@
 
   "standart_price_from": "от 150 000 сум",
   "standart_price_old": "от 180 000 сум",
-  "synax_price_from": "от 200 000 сум",
-  "synax_price_old": "от 230 000 сум",
+  "synax_price_from": "от 250 000 сум",
+  "synax_price_old": "от 280 000 сум",
   "horizontal_price_from": "от 180 000 сум",
   "horizontal_price_old": "от 210 000 сум",
-  "vertical_price_from": "от 280 000 сум",
+  "vertical_price_from": "от 320 000 сум",
   "vertical_price_old": "от 350 000 сум",
   "repair_price": "от 50 000 сум"
 }
