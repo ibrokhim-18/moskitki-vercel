@@ -471,7 +471,7 @@ export default function Landing() {
       </section>
 
       <footer className="text-center text-gray-500 text-sm py-6 border-t border-gray-200 bg-white">
-        Moskitki.uz © 2019 – {new Date().getFullYear()} — {t("footer_city")}
+        Moskitki.uz © 2019 – {new Date().getFullYear()} — {t("Toshkent")}
       </footer>
     </div>
   );
