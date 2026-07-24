@@ -16,7 +16,6 @@ import {
   ArrowUpDown,
   Droplets,
   Menu,
-  X,
 } from "lucide-react";
 
 const PHONE_NUMBER = "+998 99 055 06 60";
@@ -52,7 +51,6 @@ export default function Landing() {
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  // Рефы для скролла к разделам
   const acRef = useRef<HTMLDivElement>(null);
   const mosquitoRef = useRef<HTMLDivElement>(null);
   const blindsRef = useRef<HTMLDivElement>(null);
@@ -99,27 +97,28 @@ export default function Landing() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 via-black to-gray-900 text-white">
-      <header className="flex flex-wrap items-center justify-between px-4 py-3 max-w-6xl mx-auto gap-2">
+    <div className="min-h-screen bg-gray-50 text-gray-900">
+      {/* Хедер – светлый */}
+      <header className="flex flex-wrap items-center justify-between px-4 py-3 max-w-6xl mx-auto gap-2 border-b border-gray-200 bg-white">
         <div className="flex items-center gap-2">
-          <Wind className="h-6 w-6 text-green-400" />
-          <span className="text-xl font-bold">{t("header")}</span>
+          <Wind className="h-6 w-6 text-green-600" />
+          <span className="text-xl font-bold text-gray-800">{t("header")}</span>
         </div>
         <div className="flex items-center gap-3">
-          <button onClick={() => changeLanguage("ru")} className={`px-3 py-1 rounded-md transition ${i18n.language === "ru" ? "bg-green-500 text-black font-semibold" : "bg-white/10 text-gray-300 hover:bg-white/20"}`}>Русский</button>
-          <button onClick={() => changeLanguage("uz")} className={`px-3 py-1 rounded-md transition ${i18n.language === "uz" ? "bg-green-500 text-black font-semibold" : "bg-white/10 text-gray-300 hover:bg-white/20"}`}>O‘zbekcha</button>
+          <button onClick={() => changeLanguage("ru")} className={`px-3 py-1 rounded-md transition ${i18n.language === "ru" ? "bg-green-600 text-white" : "bg-gray-200 text-gray-700 hover:bg-gray-300"}`}>Русский</button>
+          <button onClick={() => changeLanguage("uz")} className={`px-3 py-1 rounded-md transition ${i18n.language === "uz" ? "bg-green-600 text-white" : "bg-gray-200 text-gray-700 hover:bg-gray-300"}`}>O‘zbekcha</button>
         </div>
-        <div className="text-sm text-gray-400">{t("city_since")}</div>
+        <div className="text-sm text-gray-500">{t("city_since")}</div>
       </header>
 
-      {/* HERO */}
-      <section className="text-center px-4 py-8 max-w-4xl mx-auto">
-        <div className="inline-block bg-green-500/20 text-green-400 px-4 py-1 rounded-full text-sm mb-4">{t("badge_sale")}</div>
-        <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-4">{t("hero_title")}</h1>
-        <p className="text-gray-400 text-lg mb-6 max-w-2xl mx-auto">{t("hero_desc")}</p>
+      {/* HERO – светлый фон с зелёным акцентом */}
+      <section className="text-center px-4 py-12 max-w-4xl mx-auto">
+        <div className="inline-block bg-green-100 text-green-700 px-4 py-1 rounded-full text-sm mb-4">{t("badge_sale")}</div>
+        <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-4 text-gray-900">{t("hero_title")}</h1>
+        <p className="text-gray-600 text-lg mb-6 max-w-2xl mx-auto">{t("hero_desc")}</p>
         <div className="flex gap-3 justify-center flex-wrap">
-          <a href={PHONE_LINK} className="flex items-center gap-2 bg-green-500 hover:bg-green-600 text-black font-semibold px-6 py-3 rounded-xl transition"><Phone className="h-5 w-5" /> {t("call_btn")}</a>
-          <a href={TELEGRAM_LINK} target="_blank" className="flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white font-semibold px-6 py-3 rounded-xl transition"><Send className="h-5 w-5" /> {t("telegram_btn")}</a>
+          <a href={PHONE_LINK} className="flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-3 rounded-xl transition"><Phone className="h-5 w-5" /> {t("call_btn")}</a>
+          <a href={TELEGRAM_LINK} target="_blank" className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-xl transition"><Send className="h-5 w-5" /> {t("telegram_btn")}</a>
         </div>
       </section>
 
@@ -128,96 +127,93 @@ export default function Landing() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <button
             onClick={() => scrollTo(acRef)}
-            className="group p-4 rounded-xl bg-blue-500/20 hover:bg-blue-500/40 border border-blue-400/30 transition flex flex-col items-center gap-2"
+            className="group p-4 rounded-xl bg-blue-50 hover:bg-blue-100 border border-blue-200 transition flex flex-col items-center gap-2 text-blue-700"
           >
-            <Snowflake className="h-8 w-8 text-blue-400 group-hover:scale-110 transition" />
+            <Snowflake className="h-8 w-8 group-hover:scale-110 transition" />
             <span className="font-semibold text-sm">{t("nav_ac")}</span>
           </button>
           <button
             onClick={() => scrollTo(mosquitoRef)}
-            className="group p-4 rounded-xl bg-green-500/20 hover:bg-green-500/40 border border-green-400/30 transition flex flex-col items-center gap-2"
+            className="group p-4 rounded-xl bg-green-50 hover:bg-green-100 border border-green-200 transition flex flex-col items-center gap-2 text-green-700"
           >
-            <Wind className="h-8 w-8 text-green-400 group-hover:scale-110 transition" />
+            <Wind className="h-8 w-8 group-hover:scale-110 transition" />
             <span className="font-semibold text-sm">{t("nav_mosquito")}</span>
           </button>
           <button
             onClick={() => scrollTo(blindsRef)}
-            className="group p-4 rounded-xl bg-yellow-500/20 hover:bg-yellow-500/40 border border-yellow-400/30 transition flex flex-col items-center gap-2"
+            className="group p-4 rounded-xl bg-yellow-50 hover:bg-yellow-100 border border-yellow-200 transition flex flex-col items-center gap-2 text-yellow-700"
           >
-            <Menu className="h-8 w-8 text-yellow-400 group-hover:scale-110 transition" />
+            <Menu className="h-8 w-8 group-hover:scale-110 transition" />
             <span className="font-semibold text-sm">{t("nav_blinds")}</span>
           </button>
           <button
             onClick={() => scrollTo(repairRef)}
-            className="group p-4 rounded-xl bg-orange-500/20 hover:bg-orange-500/40 border border-orange-400/30 transition flex flex-col items-center gap-2"
+            className="group p-4 rounded-xl bg-orange-50 hover:bg-orange-100 border border-orange-200 transition flex flex-col items-center gap-2 text-orange-700"
           >
-            <Wrench className="h-8 w-8 text-orange-400 group-hover:scale-110 transition" />
+            <Wrench className="h-8 w-8 group-hover:scale-110 transition" />
             <span className="font-semibold text-sm">{t("nav_repair")}</span>
           </button>
         </div>
       </section>
 
-      {/* БЛОК ПРЕИМУЩЕСТВ (можно оставить после навигации) */}
+      {/* ПРЕИМУЩЕСТВА */}
       <section className="max-w-4xl mx-auto px-4 pb-10">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
           {[
-            { icon: <Clock className="h-6 w-6 mx-auto text-green-400" />, titleKey: "benefit_1_title", subKey: "benefit_1_sub" },
-            { icon: <ShieldCheck className="h-6 w-6 mx-auto text-green-400" />, titleKey: "benefit_2_title", subKey: "benefit_2_sub" },
-            { icon: <Hammer className="h-6 w-6 mx-auto text-green-400" />, titleKey: "benefit_3_title", subKey: "benefit_3_sub" },
-            { icon: <Star className="h-6 w-6 mx-auto text-green-400" />, titleKey: "benefit_4_title", subKey: "benefit_4_sub" },
+            { icon: <Clock className="h-6 w-6 mx-auto text-green-600" />, titleKey: "benefit_1_title", subKey: "benefit_1_sub" },
+            { icon: <ShieldCheck className="h-6 w-6 mx-auto text-green-600" />, titleKey: "benefit_2_title", subKey: "benefit_2_sub" },
+            { icon: <Hammer className="h-6 w-6 mx-auto text-green-600" />, titleKey: "benefit_3_title", subKey: "benefit_3_sub" },
+            { icon: <Star className="h-6 w-6 mx-auto text-green-600" />, titleKey: "benefit_4_title", subKey: "benefit_4_sub" },
           ].map((item, i) => (
-            <div key={i} className="p-4 bg-white/5 rounded-xl backdrop-blur hover:bg-white/10 transition">
+            <div key={i} className="p-4 bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
               {item.icon}
-              <div className="font-semibold mt-2">{t(item.titleKey)}</div>
-              <div className="text-gray-400 text-xs mt-1">{t(item.subKey)}</div>
+              <div className="font-semibold mt-2 text-gray-800">{t(item.titleKey)}</div>
+              <div className="text-gray-500 text-xs mt-1">{t(item.subKey)}</div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* ===== 1. КОНДИЦИОНЕРЫ (самый верх) ===== */}
+      {/* 1. КОНДИЦИОНЕРЫ */}
       <div ref={acRef} className="scroll-mt-16">
         <section className="max-w-6xl mx-auto px-4 py-8">
-          <div className="bg-gradient-to-br from-blue-900/30 via-indigo-900/20 to-cyan-900/30 rounded-2xl p-6 backdrop-blur border border-blue-500/30 shadow-xl shadow-blue-500/10">
-            <h2 className="text-2xl font-bold text-center mb-6 text-blue-300">{t("ac_services_title")}</h2>
+          <div className="bg-white rounded-2xl p-6 shadow-lg border border-blue-100">
+            <h2 className="text-2xl font-bold text-center mb-6 text-blue-700">{t("ac_services_title")}</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {/* Монтаж */}
               <div className="text-center group hover:scale-105 transition-transform duration-300">
-                <div className="flex justify-center"><Snowflake className="h-12 w-12 text-blue-400 mb-2" /></div>
-                <h3 className="text-lg font-bold">{t("ac_install_title")}</h3>
-                <p className="text-gray-400 text-sm mt-1">{t("ac_install_desc")}</p>
+                <Snowflake className="h-12 w-12 text-blue-500 mx-auto mb-2" />
+                <h3 className="text-lg font-bold text-gray-800">{t("ac_install_title")}</h3>
+                <p className="text-gray-500 text-sm mt-1">{t("ac_install_desc")}</p>
                 <div className="mt-2">
-                  <span className="text-green-400 font-bold text-xl">{t("ac_install_price")}</span>
+                  <span className="text-green-600 font-bold text-xl">{t("ac_install_price")}</span>
                 </div>
-                <ul className="text-left max-w-xs mx-auto mt-3 space-y-1 text-sm text-gray-300">
+                <ul className="text-left max-w-xs mx-auto mt-3 space-y-1 text-sm text-gray-600">
                   <li>☐ {t("feature_professional_mount")}</li>
                   <li>☐ {t("feature_connect_units")}</li>
                   <li>☐ {t("feature_test_run")}</li>
                 </ul>
               </div>
-              {/* Демонтаж */}
               <div className="text-center group hover:scale-105 transition-transform duration-300">
-                <div className="flex justify-center"><ArrowUpDown className="h-12 w-12 text-yellow-400 mb-2" /></div>
-                <h3 className="text-lg font-bold">{t("ac_dismantle_title")}</h3>
-                <p className="text-gray-400 text-sm mt-1">{t("ac_dismantle_desc")}</p>
+                <ArrowUpDown className="h-12 w-12 text-yellow-500 mx-auto mb-2" />
+                <h3 className="text-lg font-bold text-gray-800">{t("ac_dismantle_title")}</h3>
+                <p className="text-gray-500 text-sm mt-1">{t("ac_dismantle_desc")}</p>
                 <div className="mt-2">
-                  <span className="text-green-400 font-bold text-xl">{t("ac_dismantle_price")}</span>
+                  <span className="text-green-600 font-bold text-xl">{t("ac_dismantle_price")}</span>
                 </div>
-                <ul className="text-left max-w-xs mx-auto mt-3 space-y-1 text-sm text-gray-300">
+                <ul className="text-left max-w-xs mx-auto mt-3 space-y-1 text-sm text-gray-600">
                   <li>☐ {t("feature_safe_removal")}</li>
                   <li>☐ {t("feature_freon_collect")}</li>
                   <li>☐ {t("feature_dismantle_quick")}</li>
                 </ul>
               </div>
-              {/* Заправка */}
               <div className="text-center group hover:scale-105 transition-transform duration-300">
-                <div className="flex justify-center"><Droplets className="h-12 w-12 text-cyan-400 mb-2" /></div>
-                <h3 className="text-lg font-bold">{t("ac_refill_title")}</h3>
-                <p className="text-gray-400 text-sm mt-1">{t("ac_refill_desc")}</p>
+                <Droplets className="h-12 w-12 text-cyan-500 mx-auto mb-2" />
+                <h3 className="text-lg font-bold text-gray-800">{t("ac_refill_title")}</h3>
+                <p className="text-gray-500 text-sm mt-1">{t("ac_refill_desc")}</p>
                 <div className="mt-2">
-                  <span className="text-green-400 font-bold text-xl">{t("ac_refill_price")}</span>
+                  <span className="text-green-600 font-bold text-xl">{t("ac_refill_price")}</span>
                 </div>
-                <ul className="text-left max-w-xs mx-auto mt-3 space-y-1 text-sm text-gray-300">
+                <ul className="text-left max-w-xs mx-auto mt-3 space-y-1 text-sm text-gray-600">
                   <li>☐ {t("feature_leak_search")}</li>
                   <li>☐ {t("feature_refill_r410a")}</li>
                   <li>☐ {t("feature_pressure_check")}</li>
@@ -225,73 +221,69 @@ export default function Landing() {
               </div>
             </div>
             <div className="text-center mt-6">
-              <button onClick={() => handleOrderClick(t("ac_services_title"))} className="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-8 py-3 rounded-xl transition inline-flex items-center gap-2">{t("order_ac_btn")} <ChevronRight className="h-5 w-5" /></button>
+              <button onClick={() => handleOrderClick(t("ac_services_title"))} className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-3 rounded-xl transition inline-flex items-center gap-2">{t("order_ac_btn")} <ChevronRight className="h-5 w-5" /></button>
             </div>
           </div>
         </section>
       </div>
 
-      {/* ===== 2. МОСКИТНЫЕ СЕТКИ (4 вида) ===== */}
+      {/* 2. МОСКИТНЫЕ СЕТКИ (4 вида) */}
       <div ref={mosquitoRef} className="scroll-mt-16">
         <section className="max-w-6xl mx-auto px-4 py-8">
-          <div className="bg-gradient-to-br from-green-900/30 via-emerald-900/20 to-teal-900/30 rounded-2xl p-6 backdrop-blur border border-green-500/30 shadow-xl shadow-green-500/10">
-            <h2 className="text-2xl font-bold text-center mb-6 text-green-300">{t("mosquito_title")}</h2>
+          <div className="bg-white rounded-2xl p-6 shadow-lg border border-green-100">
+            <h2 className="text-2xl font-bold text-center mb-6 text-green-700">{t("mosquito_title")}</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {/* Стандартная */}
               <div className="text-center group hover:scale-105 transition-transform duration-300">
                 <img src="/images/standart.png" alt="Standart" className="w-full h-auto rounded-xl mb-3 shadow-md group-hover:shadow-green-500/30 transition" />
-                <h3 className="text-lg font-bold">{t("standart_title")}</h3>
-                <p className="text-gray-400 text-sm mt-1">{t("standart_desc")}</p>
+                <h3 className="text-lg font-bold text-gray-800">{t("standart_title")}</h3>
+                <p className="text-gray-500 text-sm mt-1">{t("standart_desc")}</p>
                 <div className="mt-2">
-                  <span className="text-green-400 font-bold text-xl">{t("standart_price_from")}</span>
-                  <span className="text-gray-500 line-through text-sm ml-2">{t("standart_price_old")}</span>
+                  <span className="text-green-600 font-bold text-xl">{t("standart_price_from")}</span>
+                  <span className="text-gray-400 line-through text-sm ml-2">{t("standart_price_old")}</span>
                 </div>
-                <ul className="text-left mt-3 space-y-1 text-sm text-gray-300">
+                <ul className="text-left mt-3 space-y-1 text-sm text-gray-600">
                   <li>☐ {t("feature_free_measure")}</li>
                   <li>☐ {t("feature_one_day")}</li>
                   <li>☐ {t("feature_year_guarantee")}</li>
                 </ul>
               </div>
-              {/* Синакс */}
               <div className="text-center group hover:scale-105 transition-transform duration-300">
                 <img src="/images/synax.png" alt="Synax" className="w-full h-auto rounded-xl mb-3 shadow-md group-hover:shadow-green-500/30 transition" />
-                <h3 className="text-lg font-bold">{t("synax_title")}</h3>
-                <p className="text-gray-400 text-sm mt-1">{t("synax_desc")}</p>
+                <h3 className="text-lg font-bold text-gray-800">{t("synax_title")}</h3>
+                <p className="text-gray-500 text-sm mt-1">{t("synax_desc")}</p>
                 <div className="mt-2">
-                  <span className="text-green-400 font-bold text-xl">{t("synax_price_from")}</span>
-                  <span className="text-gray-500 line-through text-sm ml-2">{t("synax_price_old")}</span>
+                  <span className="text-green-600 font-bold text-xl">{t("synax_price_from")}</span>
+                  <span className="text-gray-400 line-through text-sm ml-2">{t("synax_price_old")}</span>
                 </div>
-                <ul className="text-left mt-3 space-y-1 text-sm text-gray-300">
+                <ul className="text-left mt-3 space-y-1 text-sm text-gray-600">
                   <li>☐ {t("feature_no_drilling")}</li>
                   <li>☐ {t("feature_one_day")}</li>
                   <li>☐ {t("feature_year_guarantee")}</li>
                 </ul>
               </div>
-              {/* UNI */}
               <div className="text-center group hover:scale-105 transition-transform duration-300">
                 <img src="/images/uni.png" alt="UNI" className="w-full h-auto rounded-xl mb-3 shadow-md group-hover:shadow-green-500/30 transition" />
-                <h3 className="text-lg font-bold">{t("uni_title")}</h3>
-                <p className="text-gray-400 text-sm mt-1">{t("uni_desc")}</p>
+                <h3 className="text-lg font-bold text-gray-800">{t("uni_title")}</h3>
+                <p className="text-gray-500 text-sm mt-1">{t("uni_desc")}</p>
                 <div className="mt-2">
-                  <span className="text-green-400 font-bold text-xl">{t("uni_price_from")}</span>
-                  <span className="text-gray-500 line-through text-sm ml-2">{t("uni_price_old")}</span>
+                  <span className="text-green-600 font-bold text-xl">{t("uni_price_from")}</span>
+                  <span className="text-gray-400 line-through text-sm ml-2">{t("uni_price_old")}</span>
                 </div>
-                <ul className="text-left mt-3 space-y-1 text-sm text-gray-300">
+                <ul className="text-left mt-3 space-y-1 text-sm text-gray-600">
                   <li>☐ {t("feature_universal_mount")}</li>
                   <li>☐ {t("feature_reinforced_frame")}</li>
                   <li>☐ {t("feature_year_guarantee")}</li>
                 </ul>
               </div>
-              {/* Plise */}
               <div className="text-center group hover:scale-105 transition-transform duration-300">
                 <img src="/images/plise.png" alt="Plise" className="w-full h-auto rounded-xl mb-3 shadow-md group-hover:shadow-green-500/30 transition" />
-                <h3 className="text-lg font-bold">{t("plise_title")}</h3>
-                <p className="text-gray-400 text-sm mt-1">{t("plise_desc")}</p>
+                <h3 className="text-lg font-bold text-gray-800">{t("plise_title")}</h3>
+                <p className="text-gray-500 text-sm mt-1">{t("plise_desc")}</p>
                 <div className="mt-2">
-                  <span className="text-green-400 font-bold text-xl">{t("plise_price_from")}</span>
-                  <span className="text-gray-500 line-through text-sm ml-2">{t("plise_price_old")}</span>
+                  <span className="text-green-600 font-bold text-xl">{t("plise_price_from")}</span>
+                  <span className="text-gray-400 line-through text-sm ml-2">{t("plise_price_old")}</span>
                 </div>
-                <ul className="text-left mt-3 space-y-1 text-sm text-gray-300">
+                <ul className="text-left mt-3 space-y-1 text-sm text-gray-600">
                   <li>☐ {t("feature_folding")}</li>
                   <li>☐ {t("feature_large_openings")}</li>
                   <li>☐ {t("feature_year_guarantee")}</li>
@@ -299,27 +291,27 @@ export default function Landing() {
               </div>
             </div>
             <div className="text-center mt-6">
-              <button onClick={() => handleOrderClick(t("mosquito_title"))} className="bg-green-500 hover:bg-green-600 text-black font-semibold px-8 py-3 rounded-xl transition inline-flex items-center gap-2">{t("order_mosquito_btn")} <ChevronRight className="h-5 w-5" /></button>
+              <button onClick={() => handleOrderClick(t("mosquito_title"))} className="bg-green-600 hover:bg-green-700 text-white font-semibold px-8 py-3 rounded-xl transition inline-flex items-center gap-2">{t("order_mosquito_btn")} <ChevronRight className="h-5 w-5" /></button>
             </div>
           </div>
         </section>
       </div>
 
-      {/* ===== 3. ЖАЛЮЗИ ===== */}
+      {/* 3. ЖАЛЮЗИ */}
       <div ref={blindsRef} className="scroll-mt-16">
         <section className="max-w-4xl mx-auto px-4 py-8">
-          <div className="bg-gradient-to-br from-yellow-900/30 via-amber-900/20 to-orange-900/30 rounded-2xl p-6 backdrop-blur border border-yellow-500/30 shadow-xl shadow-yellow-500/10">
-            <h2 className="text-2xl font-bold text-center mb-6 text-yellow-300">{t("blinds_title")}</h2>
+          <div className="bg-white rounded-2xl p-6 shadow-lg border border-yellow-100">
+            <h2 className="text-2xl font-bold text-center mb-6 text-yellow-700">{t("blinds_title")}</h2>
             <div className="grid md:grid-cols-2 gap-6">
               <div className="text-center group hover:scale-105 transition-transform duration-300">
                 <img src="/images/gorizontal.png" alt="Gorizontal" className="w-full h-auto rounded-xl mb-3 shadow-md group-hover:shadow-yellow-500/30 transition" />
-                <h3 className="text-lg font-bold">{t("horizontal_title")}</h3>
-                <p className="text-gray-400 text-sm mt-1">{t("horizontal_desc")}</p>
+                <h3 className="text-lg font-bold text-gray-800">{t("horizontal_title")}</h3>
+                <p className="text-gray-500 text-sm mt-1">{t("horizontal_desc")}</p>
                 <div className="mt-2">
-                  <span className="text-green-400 font-bold text-xl">{t("horizontal_price_from")}</span>
-                  <span className="text-gray-500 line-through text-sm ml-2">{t("horizontal_price_old")}</span>
+                  <span className="text-green-600 font-bold text-xl">{t("horizontal_price_from")}</span>
+                  <span className="text-gray-400 line-through text-sm ml-2">{t("horizontal_price_old")}</span>
                 </div>
-                <ul className="text-left mt-3 space-y-1 text-sm text-gray-300">
+                <ul className="text-left mt-3 space-y-1 text-sm text-gray-600">
                   <li>☐ {t("feature_50_colors")}</li>
                   <li>☐ {t("feature_material_aluminum")}</li>
                   <li>☐ {t("feature_mounting_included")}</li>
@@ -327,13 +319,13 @@ export default function Landing() {
               </div>
               <div className="text-center group hover:scale-105 transition-transform duration-300">
                 <img src="/images/vertical.png" alt="Vertical" className="w-full h-auto rounded-xl mb-3 shadow-md group-hover:shadow-yellow-500/30 transition" />
-                <h3 className="text-lg font-bold">{t("vertical_title")}</h3>
-                <p className="text-gray-400 text-sm mt-1">{t("vertical_desc")}</p>
+                <h3 className="text-lg font-bold text-gray-800">{t("vertical_title")}</h3>
+                <p className="text-gray-500 text-sm mt-1">{t("vertical_desc")}</p>
                 <div className="mt-2">
-                  <span className="text-green-400 font-bold text-xl">{t("vertical_price_from")}</span>
-                  <span className="text-gray-500 line-through text-sm ml-2">{t("vertical_price_old")}</span>
+                  <span className="text-green-600 font-bold text-xl">{t("vertical_price_from")}</span>
+                  <span className="text-gray-400 line-through text-sm ml-2">{t("vertical_price_old")}</span>
                 </div>
-                <ul className="text-left mt-3 space-y-1 text-sm text-gray-300">
+                <ul className="text-left mt-3 space-y-1 text-sm text-gray-600">
                   <li>☐ {t("feature_fabric_density")}</li>
                   <li>☐ {t("feature_measure_install")}</li>
                   <li>☐ {t("feature_year_guarantee")}</li>
@@ -341,46 +333,46 @@ export default function Landing() {
               </div>
             </div>
             <div className="text-center mt-6">
-              <button onClick={() => handleOrderClick(t("blinds_title"))} className="bg-green-500 hover:bg-green-600 text-black font-semibold px-8 py-3 rounded-xl transition inline-flex items-center gap-2">{t("order_blinds_btn")} <ChevronRight className="h-5 w-5" /></button>
+              <button onClick={() => handleOrderClick(t("blinds_title"))} className="bg-green-600 hover:bg-green-700 text-white font-semibold px-8 py-3 rounded-xl transition inline-flex items-center gap-2">{t("order_blinds_btn")} <ChevronRight className="h-5 w-5" /></button>
             </div>
           </div>
         </section>
       </div>
 
-      {/* ===== 4. РЕМОНТ ОКОН ===== */}
+      {/* 4. РЕМОНТ ОКОН */}
       <div ref={repairRef} className="scroll-mt-16">
         <section className="max-w-4xl mx-auto px-4 py-8">
-          <div className="bg-gradient-to-br from-orange-900/30 via-red-900/20 to-rose-900/30 rounded-2xl p-6 backdrop-blur border border-orange-500/30 shadow-xl shadow-orange-500/10">
-            <h2 className="text-2xl font-bold text-center mb-6 text-orange-300">{t("window_repair_title")}</h2>
+          <div className="bg-white rounded-2xl p-6 shadow-lg border border-orange-100">
+            <h2 className="text-2xl font-bold text-center mb-6 text-orange-700">{t("window_repair_title")}</h2>
             <div className="max-w-md mx-auto text-center">
-              <Wrench className="h-12 w-12 text-orange-400 mx-auto mb-3" />
-              <p className="text-gray-300 mb-3">{t("window_repair_desc")}</p>
+              <Wrench className="h-12 w-12 text-orange-500 mx-auto mb-3" />
+              <p className="text-gray-600 mb-3">{t("window_repair_desc")}</p>
               <div className="mt-2">
-                <span className="text-green-400 font-bold text-2xl">{t("repair_price")}</span>
+                <span className="text-green-600 font-bold text-2xl">{t("repair_price")}</span>
               </div>
-              <ul className="text-left max-w-xs mx-auto mt-4 space-y-1 text-sm text-gray-300">
+              <ul className="text-left max-w-xs mx-auto mt-4 space-y-1 text-sm text-gray-600">
                 <li>☐ {t("feature_master_visit")}</li>
                 <li>☐ {t("feature_parts_stock")}</li>
                 <li>☐ {t("feature_receipt_guarantee")}</li>
               </ul>
             </div>
             <div className="text-center mt-6">
-              <button onClick={() => handleOrderClick(t("window_repair_title"))} className="bg-green-500 hover:bg-green-600 text-black font-semibold px-8 py-3 rounded-xl transition inline-flex items-center gap-2">{t("order_repair_btn")} <ChevronRight className="h-5 w-5" /></button>
+              <button onClick={() => handleOrderClick(t("window_repair_title"))} className="bg-green-600 hover:bg-green-700 text-white font-semibold px-8 py-3 rounded-xl transition inline-flex items-center gap-2">{t("order_repair_btn")} <ChevronRight className="h-5 w-5" /></button>
             </div>
           </div>
         </section>
       </div>
 
-      {/* ===== ФОРМА ЗАКАЗА ===== */}
+      {/* ФОРМА ЗАКАЗА */}
       <section id="form" className="max-w-xl mx-auto px-4 pb-16">
-        <h2 className="text-2xl font-bold text-center mb-6">{t("form_title")}</h2>
-        <form onSubmit={onSubmit} className="bg-white/5 backdrop-blur rounded-2xl p-6 space-y-4 border border-white/10">
+        <h2 className="text-2xl font-bold text-center mb-6 text-gray-800">{t("form_title")}</h2>
+        <form onSubmit={onSubmit} className="bg-white rounded-2xl p-6 space-y-4 shadow-lg border border-gray-200">
           <div>
-            <label className="text-sm text-gray-400 mb-1 block">{t("service_label")}</label>
+            <label className="text-sm text-gray-600 mb-1 block">{t("service_label")}</label>
             <select 
               value={selectedService} 
               onChange={(e) => setSelectedService(e.target.value)} 
-              className="w-full p-3 rounded-xl bg-white/10 text-white border border-white/20"
+              className="w-full p-3 rounded-xl bg-gray-50 text-gray-800 border border-gray-300 focus:ring-2 focus:ring-green-500"
             >
               <option>{t("ac_services_title")}</option>
               <option>{t("mosquito_title")}</option>
@@ -389,57 +381,98 @@ export default function Landing() {
             </select>
           </div>
           <div>
-            <label className="text-sm text-gray-400 mb-1 block">{t("name_label")}</label>
-            <input value={name} onChange={(e) => setName(e.target.value)} placeholder={t("name_placeholder")} className="w-full p-3 rounded-xl bg-white/10 text-white border border-white/20 placeholder-gray-500" />
+            <label className="text-sm text-gray-600 mb-1 block">{t("name_label")}</label>
+            <input value={name} onChange={(e) => setName(e.target.value)} placeholder={t("name_placeholder")} className="w-full p-3 rounded-xl bg-gray-50 text-gray-800 border border-gray-300 placeholder-gray-400 focus:ring-2 focus:ring-green-500" />
           </div>
           <div>
-            <label className="text-sm text-gray-400 mb-1 block">{t("phone_label")}</label>
-            <input value={phone} onChange={(e) => setPhone(formatPhone(e.target.value))} placeholder="+998..." className="w-full p-3 rounded-xl bg-white/10 text-white border border-white/20 placeholder-gray-500" />
+            <label className="text-sm text-gray-600 mb-1 block">{t("phone_label")}</label>
+            <input value={phone} onChange={(e) => setPhone(formatPhone(e.target.value))} placeholder="+998..." className="w-full p-3 rounded-xl bg-gray-50 text-gray-800 border border-gray-300 placeholder-gray-400 focus:ring-2 focus:ring-green-500" />
           </div>
-          {error && <div className="text-red-400 text-sm">{error}</div>}
+          {error && <div className="text-red-500 text-sm">{error}</div>}
           {submitted ? (
-            <div className="text-green-400 text-center font-semibold py-3">✅ {t("success_message")}</div>
+            <div className="text-green-600 text-center font-semibold py-3">✅ {t("success_message")}</div>
           ) : (
-            <button type="submit" disabled={submitting} className="w-full bg-green-500 hover:bg-green-600 disabled:opacity-50 text-black font-bold py-3 rounded-xl flex items-center justify-center gap-2 transition">
+            <button type="submit" disabled={submitting} className="w-full bg-green-600 hover:bg-green-700 disabled:opacity-50 text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 transition">
               {submitting ? t("submitting") : <>{t("order_btn")} <ChevronRight className="h-5 w-5" /></>}
             </button>
           )}
-          <p className="text-gray-500 text-xs text-center">{t("consent_text")}</p>
+          <p className="text-gray-400 text-xs text-center">{t("consent_text")}</p>
         </form>
       </section>
 
-      {/* ===== ОТЗЫВЫ И КОНТАКТЫ ===== */}
+      {/* КОНТАКТЫ (готовы сделать заказ) */}
       <section className="max-w-4xl mx-auto px-4 pb-12 text-center">
-        <h2 className="text-2xl font-bold mb-4">{t("ready_title")}</h2>
-        <p className="text-gray-400 mb-6">{t("ready_desc")}</p>
+        <h2 className="text-2xl font-bold mb-4 text-gray-800">{t("ready_title")}</h2>
+        <p className="text-gray-600 mb-6">{t("ready_desc")}</p>
         <div className="flex gap-3 justify-center flex-wrap">
-          <a href={PHONE_LINK} className="flex items-center gap-2 bg-green-500 hover:bg-green-600 text-black font-semibold px-8 py-4 rounded-xl text-lg transition"><Phone className="h-5 w-5" /> {PHONE_NUMBER}</a>
-          <a href={TELEGRAM_LINK} target="_blank" className="flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white font-semibold px-8 py-4 rounded-xl text-lg transition"><Send className="h-5 w-5" /> {t("telegram_write")}</a>
+          <a href={PHONE_LINK} className="flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-semibold px-8 py-4 rounded-xl text-lg transition"><Phone className="h-5 w-5" /> {PHONE_NUMBER}</a>
+          <a href={TELEGRAM_LINK} target="_blank" className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-xl text-lg transition"><Send className="h-5 w-5" /> {t("telegram_write")}</a>
         </div>
       </section>
 
-      <section className="max-w-4xl mx-auto px-4 pb-12">
-        <h2 className="text-2xl font-bold text-center mb-4">{t("reviews_title")}</h2>
-        <p className="text-gray-400 text-center mb-8">{t("reviews_subtitle")}</p>
+      {/* ОТЗЫВЫ – ТЕПЕРЬ 4! */}
+      <section className="max-w-5xl mx-auto px-4 pb-12">
+        <h2 className="text-2xl font-bold text-center mb-4 text-gray-800">{t("reviews_title")}</h2>
+        <p className="text-gray-500 text-center mb-8">{t("reviews_subtitle")}</p>
         <div className="grid md:grid-cols-2 gap-6">
-          <div className="bg-white/5 rounded-2xl p-6 backdrop-blur border border-white/10">
-            <div className="flex items-center gap-3 mb-3"><div className="bg-green-500/20 rounded-full w-10 h-10 flex items-center justify-center text-green-400 font-bold">А</div><div><div className="font-semibold">Анна К.</div><div className="text-yellow-400 text-sm">★★★★★</div></div></div>
-            <p className="text-gray-300">{t("review_1_text")}</p>
-            <div className="text-green-400 text-xs mt-3">✅ {t("review_verified")}</div>
+          {/* Отзыв 1 – москитные сетки */}
+          <div className="bg-white rounded-2xl p-6 shadow-md border border-gray-100">
+            <div className="flex items-center gap-3 mb-3">
+              <div className="bg-green-100 rounded-full w-10 h-10 flex items-center justify-center text-green-700 font-bold">А</div>
+              <div>
+                <div className="font-semibold text-gray-800">Анна К.</div>
+                <div className="text-yellow-500 text-sm">★★★★★</div>
+              </div>
+            </div>
+            <p className="text-gray-600">{t("review_1_text")}</p>
+            <div className="text-green-600 text-xs mt-3">✅ {t("review_verified")}</div>
           </div>
-          <div className="bg-white/5 rounded-2xl p-6 backdrop-blur border border-white/10">
-            <div className="flex items-center gap-3 mb-3"><div className="bg-green-500/20 rounded-full w-10 h-10 flex items-center justify-center text-green-400 font-bold">Б</div><div><div className="font-semibold">Бахром Н.</div><div className="text-yellow-400 text-sm">★★★★★</div></div></div>
-            <p className="text-gray-300">{t("review_2_text")}</p>
-            <div className="text-green-400 text-xs mt-3">✅ {t("review_verified")}</div>
+          {/* Отзыв 2 – жалюзи */}
+          <div className="bg-white rounded-2xl p-6 shadow-md border border-gray-100">
+            <div className="flex items-center gap-3 mb-3">
+              <div className="bg-yellow-100 rounded-full w-10 h-10 flex items-center justify-center text-yellow-700 font-bold">Б</div>
+              <div>
+                <div className="font-semibold text-gray-800">Бахром Н.</div>
+                <div className="text-yellow-500 text-sm">★★★★★</div>
+              </div>
+            </div>
+            <p className="text-gray-600">{t("review_2_text")}</p>
+            <div className="text-green-600 text-xs mt-3">✅ {t("review_verified")}</div>
+          </div>
+          {/* Отзыв 3 – кондиционеры (НОВЫЙ) */}
+          <div className="bg-white rounded-2xl p-6 shadow-md border border-gray-100">
+            <div className="flex items-center gap-3 mb-3">
+              <div className="bg-blue-100 rounded-full w-10 h-10 flex items-center justify-center text-blue-700 font-bold">С</div>
+              <div>
+                <div className="font-semibold text-gray-800">Сергей М.</div>
+                <div className="text-yellow-500 text-sm">★★★★★</div>
+              </div>
+            </div>
+            <p className="text-gray-600">{t("review_3_text")}</p>
+            <div className="text-green-600 text-xs mt-3">✅ {t("review_verified")}</div>
+          </div>
+          {/* Отзыв 4 – ремонт окон (НОВЫЙ) */}
+          <div className="bg-white rounded-2xl p-6 shadow-md border border-gray-100">
+            <div className="flex items-center gap-3 mb-3">
+              <div className="bg-orange-100 rounded-full w-10 h-10 flex items-center justify-center text-orange-700 font-bold">Д</div>
+              <div>
+                <div className="font-semibold text-gray-800">Динара Ш.</div>
+                <div className="text-yellow-500 text-sm">★★★★★</div>
+              </div>
+            </div>
+            <p className="text-gray-600">{t("review_4_text")}</p>
+            <div className="text-green-600 text-xs mt-3">✅ {t("review_verified")}</div>
           </div>
         </div>
         <div className="text-center mt-8">
-          <a href={TELEGRAM_LINK} target="_blank" className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white font-semibold px-6 py-3 rounded-xl transition"><Send className="h-5 w-5" /> {t("leave_review_btn")}</a>
-          <p className="text-gray-500 text-xs mt-2">{t("review_hint")}</p>
+          <a href={TELEGRAM_LINK} target="_blank" className="inline-flex items-center gap-2 bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold px-6 py-3 rounded-xl transition"><Send className="h-5 w-5" /> {t("leave_review_btn")}</a>
+          <p className="text-gray-400 text-xs mt-2">{t("review_hint")}</p>
         </div>
       </section>
 
-      <footer className="text-center text-gray-600 text-sm py-6 border-t border-white/5">Moskitki.uz © 2019 – {new Date().getFullYear()} — {t("footer_city")}</footer>
+      <footer className="text-center text-gray-500 text-sm py-6 border-t border-gray-200 bg-white">
+        Moskitki.uz © 2019 – {new Date().getFullYear()} — {t("footer_city")}
+      </footer>
     </div>
   );
 }
