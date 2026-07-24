@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useTranslation } from 'react-i18next';
 import { useLocation } from 'wouter';
 import ReactGA from "react-ga4";
@@ -15,6 +15,8 @@ import {
   Snowflake,
   ArrowUpDown,
   Droplets,
+  Menu,
+  X,
 } from "lucide-react";
 
 const PHONE_NUMBER = "+998 99 055 06 60";
@@ -49,6 +51,16 @@ export default function Landing() {
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  // Рефы для скролла к разделам
+  const acRef = useRef<HTMLDivElement>(null);
+  const mosquitoRef = useRef<HTMLDivElement>(null);
+  const blindsRef = useRef<HTMLDivElement>(null);
+  const repairRef = useRef<HTMLDivElement>(null);
+
+  const scrollTo = (ref: React.RefObject<HTMLDivElement>) => {
+    ref.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
 
   const handleOrderClick = (serviceTitleKey: string) => {
     setSelectedService(serviceTitleKey);
@@ -100,6 +112,7 @@ export default function Landing() {
         <div className="text-sm text-gray-400">{t("city_since")}</div>
       </header>
 
+      {/* HERO */}
       <section className="text-center px-4 py-8 max-w-4xl mx-auto">
         <div className="inline-block bg-green-500/20 text-green-400 px-4 py-1 rounded-full text-sm mb-4">{t("badge_sale")}</div>
         <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-4">{t("hero_title")}</h1>
@@ -110,6 +123,41 @@ export default function Landing() {
         </div>
       </section>
 
+      {/* 4 НАВИГАЦИОННЫЕ КНОПКИ */}
+      <section className="max-w-4xl mx-auto px-4 pb-10">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <button
+            onClick={() => scrollTo(acRef)}
+            className="group p-4 rounded-xl bg-blue-500/20 hover:bg-blue-500/40 border border-blue-400/30 transition flex flex-col items-center gap-2"
+          >
+            <Snowflake className="h-8 w-8 text-blue-400 group-hover:scale-110 transition" />
+            <span className="font-semibold text-sm">{t("nav_ac")}</span>
+          </button>
+          <button
+            onClick={() => scrollTo(mosquitoRef)}
+            className="group p-4 rounded-xl bg-green-500/20 hover:bg-green-500/40 border border-green-400/30 transition flex flex-col items-center gap-2"
+          >
+            <Wind className="h-8 w-8 text-green-400 group-hover:scale-110 transition" />
+            <span className="font-semibold text-sm">{t("nav_mosquito")}</span>
+          </button>
+          <button
+            onClick={() => scrollTo(blindsRef)}
+            className="group p-4 rounded-xl bg-yellow-500/20 hover:bg-yellow-500/40 border border-yellow-400/30 transition flex flex-col items-center gap-2"
+          >
+            <Menu className="h-8 w-8 text-yellow-400 group-hover:scale-110 transition" />
+            <span className="font-semibold text-sm">{t("nav_blinds")}</span>
+          </button>
+          <button
+            onClick={() => scrollTo(repairRef)}
+            className="group p-4 rounded-xl bg-orange-500/20 hover:bg-orange-500/40 border border-orange-400/30 transition flex flex-col items-center gap-2"
+          >
+            <Wrench className="h-8 w-8 text-orange-400 group-hover:scale-110 transition" />
+            <span className="font-semibold text-sm">{t("nav_repair")}</span>
+          </button>
+        </div>
+      </section>
+
+      {/* БЛОК ПРЕИМУЩЕСТВ (можно оставить после навигации) */}
       <section className="max-w-4xl mx-auto px-4 pb-10">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
           {[
@@ -127,195 +175,203 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* ===== МОСКИТНЫЕ СЕТКИ (4 вида) ===== */}
-      <section className="max-w-6xl mx-auto px-4 py-8">
-        <div className="bg-white/5 rounded-2xl p-6 backdrop-blur border border-white/10">
-          <h2 className="text-2xl font-bold text-center mb-6">{t("mosquito_title")}</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {/* Стандартная */}
-            <div className="text-center group hover:scale-105 transition-transform duration-300">
-              <img src="/images/standart.png" alt="Standart" className="w-full h-auto rounded-xl mb-3 shadow-md group-hover:shadow-green-500/30 transition" />
-              <h3 className="text-lg font-bold">{t("standart_title")}</h3>
-              <p className="text-gray-400 text-sm mt-1">{t("standart_desc")}</p>
-              <div className="mt-2">
-                <span className="text-green-400 font-bold text-xl">{t("standart_price_from")}</span>
-                <span className="text-gray-500 line-through text-sm ml-2">{t("standart_price_old")}</span>
+      {/* ===== 1. КОНДИЦИОНЕРЫ (самый верх) ===== */}
+      <div ref={acRef} className="scroll-mt-16">
+        <section className="max-w-6xl mx-auto px-4 py-8">
+          <div className="bg-gradient-to-br from-blue-900/30 via-indigo-900/20 to-cyan-900/30 rounded-2xl p-6 backdrop-blur border border-blue-500/30 shadow-xl shadow-blue-500/10">
+            <h2 className="text-2xl font-bold text-center mb-6 text-blue-300">{t("ac_services_title")}</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {/* Монтаж */}
+              <div className="text-center group hover:scale-105 transition-transform duration-300">
+                <div className="flex justify-center"><Snowflake className="h-12 w-12 text-blue-400 mb-2" /></div>
+                <h3 className="text-lg font-bold">{t("ac_install_title")}</h3>
+                <p className="text-gray-400 text-sm mt-1">{t("ac_install_desc")}</p>
+                <div className="mt-2">
+                  <span className="text-green-400 font-bold text-xl">{t("ac_install_price")}</span>
+                </div>
+                <ul className="text-left max-w-xs mx-auto mt-3 space-y-1 text-sm text-gray-300">
+                  <li>☐ {t("feature_professional_mount")}</li>
+                  <li>☐ {t("feature_connect_units")}</li>
+                  <li>☐ {t("feature_test_run")}</li>
+                </ul>
               </div>
-              <ul className="text-left mt-3 space-y-1 text-sm text-gray-300">
-                <li>☐ {t("feature_free_measure")}</li>
-                <li>☐ {t("feature_one_day")}</li>
-                <li>☐ {t("feature_year_guarantee")}</li>
-              </ul>
+              {/* Демонтаж */}
+              <div className="text-center group hover:scale-105 transition-transform duration-300">
+                <div className="flex justify-center"><ArrowUpDown className="h-12 w-12 text-yellow-400 mb-2" /></div>
+                <h3 className="text-lg font-bold">{t("ac_dismantle_title")}</h3>
+                <p className="text-gray-400 text-sm mt-1">{t("ac_dismantle_desc")}</p>
+                <div className="mt-2">
+                  <span className="text-green-400 font-bold text-xl">{t("ac_dismantle_price")}</span>
+                </div>
+                <ul className="text-left max-w-xs mx-auto mt-3 space-y-1 text-sm text-gray-300">
+                  <li>☐ {t("feature_safe_removal")}</li>
+                  <li>☐ {t("feature_freon_collect")}</li>
+                  <li>☐ {t("feature_dismantle_quick")}</li>
+                </ul>
+              </div>
+              {/* Заправка */}
+              <div className="text-center group hover:scale-105 transition-transform duration-300">
+                <div className="flex justify-center"><Droplets className="h-12 w-12 text-cyan-400 mb-2" /></div>
+                <h3 className="text-lg font-bold">{t("ac_refill_title")}</h3>
+                <p className="text-gray-400 text-sm mt-1">{t("ac_refill_desc")}</p>
+                <div className="mt-2">
+                  <span className="text-green-400 font-bold text-xl">{t("ac_refill_price")}</span>
+                </div>
+                <ul className="text-left max-w-xs mx-auto mt-3 space-y-1 text-sm text-gray-300">
+                  <li>☐ {t("feature_leak_search")}</li>
+                  <li>☐ {t("feature_refill_r410a")}</li>
+                  <li>☐ {t("feature_pressure_check")}</li>
+                </ul>
+              </div>
             </div>
-            {/* Синакс */}
-            <div className="text-center group hover:scale-105 transition-transform duration-300">
-              <img src="/images/synax.png" alt="Synax" className="w-full h-auto rounded-xl mb-3 shadow-md group-hover:shadow-green-500/30 transition" />
-              <h3 className="text-lg font-bold">{t("synax_title")}</h3>
-              <p className="text-gray-400 text-sm mt-1">{t("synax_desc")}</p>
-              <div className="mt-2">
-                <span className="text-green-400 font-bold text-xl">{t("synax_price_from")}</span>
-                <span className="text-gray-500 line-through text-sm ml-2">{t("synax_price_old")}</span>
-              </div>
-              <ul className="text-left mt-3 space-y-1 text-sm text-gray-300">
-                <li>☐ {t("feature_no_drilling")}</li>
-                <li>☐ {t("feature_one_day")}</li>
-                <li>☐ {t("feature_year_guarantee")}</li>
-              </ul>
-            </div>
-            {/* UNI */}
-            <div className="text-center group hover:scale-105 transition-transform duration-300">
-              <img src="/images/uni.png" alt="UNI" className="w-full h-auto rounded-xl mb-3 shadow-md group-hover:shadow-green-500/30 transition" />
-              <h3 className="text-lg font-bold">{t("uni_title")}</h3>
-              <p className="text-gray-400 text-sm mt-1">{t("uni_desc")}</p>
-              <div className="mt-2">
-                <span className="text-green-400 font-bold text-xl">{t("uni_price_from")}</span>
-                <span className="text-gray-500 line-through text-sm ml-2">{t("uni_price_old")}</span>
-              </div>
-              <ul className="text-left mt-3 space-y-1 text-sm text-gray-300">
-                <li>☐ {t("feature_universal_mount")}</li>
-                <li>☐ {t("feature_reinforced_frame")}</li>
-                <li>☐ {t("feature_year_guarantee")}</li>
-              </ul>
-            </div>
-            {/* Plise */}
-            <div className="text-center group hover:scale-105 transition-transform duration-300">
-              <img src="/images/plise.png" alt="Plise" className="w-full h-auto rounded-xl mb-3 shadow-md group-hover:shadow-green-500/30 transition" />
-              <h3 className="text-lg font-bold">{t("plise_title")}</h3>
-              <p className="text-gray-400 text-sm mt-1">{t("plise_desc")}</p>
-              <div className="mt-2">
-                <span className="text-green-400 font-bold text-xl">{t("plise_price_from")}</span>
-                <span className="text-gray-500 line-through text-sm ml-2">{t("plise_price_old")}</span>
-              </div>
-              <ul className="text-left mt-3 space-y-1 text-sm text-gray-300">
-                <li>☐ {t("feature_folding")}</li>
-                <li>☐ {t("feature_large_openings")}</li>
-                <li>☐ {t("feature_year_guarantee")}</li>
-              </ul>
+            <div className="text-center mt-6">
+              <button onClick={() => handleOrderClick(t("ac_services_title"))} className="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-8 py-3 rounded-xl transition inline-flex items-center gap-2">{t("order_ac_btn")} <ChevronRight className="h-5 w-5" /></button>
             </div>
           </div>
-          <div className="text-center mt-6">
-            <button onClick={() => handleOrderClick(t("mosquito_title"))} className="bg-green-500 hover:bg-green-600 text-black font-semibold px-8 py-3 rounded-xl transition inline-flex items-center gap-2">{t("order_mosquito_btn")} <ChevronRight className="h-5 w-5" /></button>
-          </div>
-        </div>
-      </section>
+        </section>
+      </div>
 
-      {/* ===== ЖАЛЮЗИ (оставляем как есть) ===== */}
-      <section className="max-w-4xl mx-auto px-4 py-8">
-        <div className="bg-white/5 rounded-2xl p-6 backdrop-blur border border-white/10">
-          <h2 className="text-2xl font-bold text-center mb-6">{t("blinds_title")}</h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="text-center group hover:scale-105 transition-transform duration-300">
-              <img src="/images/gorizontal.png" alt="Gorizontal" className="w-full h-auto rounded-xl mb-3 shadow-md group-hover:shadow-green-500/30 transition" />
-              <h3 className="text-lg font-bold">{t("horizontal_title")}</h3>
-              <p className="text-gray-400 text-sm mt-1">{t("horizontal_desc")}</p>
-              <div className="mt-2">
-                <span className="text-green-400 font-bold text-xl">{t("horizontal_price_from")}</span>
-                <span className="text-gray-500 line-through text-sm ml-2">{t("horizontal_price_old")}</span>
+      {/* ===== 2. МОСКИТНЫЕ СЕТКИ (4 вида) ===== */}
+      <div ref={mosquitoRef} className="scroll-mt-16">
+        <section className="max-w-6xl mx-auto px-4 py-8">
+          <div className="bg-gradient-to-br from-green-900/30 via-emerald-900/20 to-teal-900/30 rounded-2xl p-6 backdrop-blur border border-green-500/30 shadow-xl shadow-green-500/10">
+            <h2 className="text-2xl font-bold text-center mb-6 text-green-300">{t("mosquito_title")}</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {/* Стандартная */}
+              <div className="text-center group hover:scale-105 transition-transform duration-300">
+                <img src="/images/standart.png" alt="Standart" className="w-full h-auto rounded-xl mb-3 shadow-md group-hover:shadow-green-500/30 transition" />
+                <h3 className="text-lg font-bold">{t("standart_title")}</h3>
+                <p className="text-gray-400 text-sm mt-1">{t("standart_desc")}</p>
+                <div className="mt-2">
+                  <span className="text-green-400 font-bold text-xl">{t("standart_price_from")}</span>
+                  <span className="text-gray-500 line-through text-sm ml-2">{t("standart_price_old")}</span>
+                </div>
+                <ul className="text-left mt-3 space-y-1 text-sm text-gray-300">
+                  <li>☐ {t("feature_free_measure")}</li>
+                  <li>☐ {t("feature_one_day")}</li>
+                  <li>☐ {t("feature_year_guarantee")}</li>
+                </ul>
               </div>
-              <ul className="text-left mt-3 space-y-1 text-sm text-gray-300">
-                <li>☐ {t("feature_50_colors")}</li>
-                <li>☐ {t("feature_material_aluminum")}</li>
-                <li>☐ {t("feature_mounting_included")}</li>
-              </ul>
+              {/* Синакс */}
+              <div className="text-center group hover:scale-105 transition-transform duration-300">
+                <img src="/images/synax.png" alt="Synax" className="w-full h-auto rounded-xl mb-3 shadow-md group-hover:shadow-green-500/30 transition" />
+                <h3 className="text-lg font-bold">{t("synax_title")}</h3>
+                <p className="text-gray-400 text-sm mt-1">{t("synax_desc")}</p>
+                <div className="mt-2">
+                  <span className="text-green-400 font-bold text-xl">{t("synax_price_from")}</span>
+                  <span className="text-gray-500 line-through text-sm ml-2">{t("synax_price_old")}</span>
+                </div>
+                <ul className="text-left mt-3 space-y-1 text-sm text-gray-300">
+                  <li>☐ {t("feature_no_drilling")}</li>
+                  <li>☐ {t("feature_one_day")}</li>
+                  <li>☐ {t("feature_year_guarantee")}</li>
+                </ul>
+              </div>
+              {/* UNI */}
+              <div className="text-center group hover:scale-105 transition-transform duration-300">
+                <img src="/images/uni.png" alt="UNI" className="w-full h-auto rounded-xl mb-3 shadow-md group-hover:shadow-green-500/30 transition" />
+                <h3 className="text-lg font-bold">{t("uni_title")}</h3>
+                <p className="text-gray-400 text-sm mt-1">{t("uni_desc")}</p>
+                <div className="mt-2">
+                  <span className="text-green-400 font-bold text-xl">{t("uni_price_from")}</span>
+                  <span className="text-gray-500 line-through text-sm ml-2">{t("uni_price_old")}</span>
+                </div>
+                <ul className="text-left mt-3 space-y-1 text-sm text-gray-300">
+                  <li>☐ {t("feature_universal_mount")}</li>
+                  <li>☐ {t("feature_reinforced_frame")}</li>
+                  <li>☐ {t("feature_year_guarantee")}</li>
+                </ul>
+              </div>
+              {/* Plise */}
+              <div className="text-center group hover:scale-105 transition-transform duration-300">
+                <img src="/images/plise.png" alt="Plise" className="w-full h-auto rounded-xl mb-3 shadow-md group-hover:shadow-green-500/30 transition" />
+                <h3 className="text-lg font-bold">{t("plise_title")}</h3>
+                <p className="text-gray-400 text-sm mt-1">{t("plise_desc")}</p>
+                <div className="mt-2">
+                  <span className="text-green-400 font-bold text-xl">{t("plise_price_from")}</span>
+                  <span className="text-gray-500 line-through text-sm ml-2">{t("plise_price_old")}</span>
+                </div>
+                <ul className="text-left mt-3 space-y-1 text-sm text-gray-300">
+                  <li>☐ {t("feature_folding")}</li>
+                  <li>☐ {t("feature_large_openings")}</li>
+                  <li>☐ {t("feature_year_guarantee")}</li>
+                </ul>
+              </div>
             </div>
-            <div className="text-center group hover:scale-105 transition-transform duration-300">
-              <img src="/images/vertical.png" alt="Vertical" className="w-full h-auto rounded-xl mb-3 shadow-md group-hover:shadow-green-500/30 transition" />
-              <h3 className="text-lg font-bold">{t("vertical_title")}</h3>
-              <p className="text-gray-400 text-sm mt-1">{t("vertical_desc")}</p>
-              <div className="mt-2">
-                <span className="text-green-400 font-bold text-xl">{t("vertical_price_from")}</span>
-                <span className="text-gray-500 line-through text-sm ml-2">{t("vertical_price_old")}</span>
-              </div>
-              <ul className="text-left mt-3 space-y-1 text-sm text-gray-300">
-                <li>☐ {t("feature_fabric_density")}</li>
-                <li>☐ {t("feature_measure_install")}</li>
-                <li>☐ {t("feature_year_guarantee")}</li>
-              </ul>
+            <div className="text-center mt-6">
+              <button onClick={() => handleOrderClick(t("mosquito_title"))} className="bg-green-500 hover:bg-green-600 text-black font-semibold px-8 py-3 rounded-xl transition inline-flex items-center gap-2">{t("order_mosquito_btn")} <ChevronRight className="h-5 w-5" /></button>
             </div>
           </div>
-          <div className="text-center mt-6">
-            <button onClick={() => handleOrderClick(t("blinds_title"))} className="bg-green-500 hover:bg-green-600 text-black font-semibold px-8 py-3 rounded-xl transition inline-flex items-center gap-2">{t("order_blinds_btn")} <ChevronRight className="h-5 w-5" /></button>
-          </div>
-        </div>
-      </section>
+        </section>
+      </div>
 
-      {/* ===== РЕМОНТ ОКОН ===== */}
-      <section className="max-w-4xl mx-auto px-4 py-8">
-        <div className="bg-white/5 rounded-2xl p-6 backdrop-blur border border-white/10">
-          <h2 className="text-2xl font-bold text-center mb-6">{t("window_repair_title")}</h2>
-          <div className="max-w-md mx-auto text-center">
-            <Wrench className="h-12 w-12 text-green-400 mx-auto mb-3" />
-            <p className="text-gray-300 mb-3">{t("window_repair_desc")}</p>
-            <div className="mt-2">
-              <span className="text-green-400 font-bold text-2xl">{t("repair_price")}</span>
+      {/* ===== 3. ЖАЛЮЗИ ===== */}
+      <div ref={blindsRef} className="scroll-mt-16">
+        <section className="max-w-4xl mx-auto px-4 py-8">
+          <div className="bg-gradient-to-br from-yellow-900/30 via-amber-900/20 to-orange-900/30 rounded-2xl p-6 backdrop-blur border border-yellow-500/30 shadow-xl shadow-yellow-500/10">
+            <h2 className="text-2xl font-bold text-center mb-6 text-yellow-300">{t("blinds_title")}</h2>
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="text-center group hover:scale-105 transition-transform duration-300">
+                <img src="/images/gorizontal.png" alt="Gorizontal" className="w-full h-auto rounded-xl mb-3 shadow-md group-hover:shadow-yellow-500/30 transition" />
+                <h3 className="text-lg font-bold">{t("horizontal_title")}</h3>
+                <p className="text-gray-400 text-sm mt-1">{t("horizontal_desc")}</p>
+                <div className="mt-2">
+                  <span className="text-green-400 font-bold text-xl">{t("horizontal_price_from")}</span>
+                  <span className="text-gray-500 line-through text-sm ml-2">{t("horizontal_price_old")}</span>
+                </div>
+                <ul className="text-left mt-3 space-y-1 text-sm text-gray-300">
+                  <li>☐ {t("feature_50_colors")}</li>
+                  <li>☐ {t("feature_material_aluminum")}</li>
+                  <li>☐ {t("feature_mounting_included")}</li>
+                </ul>
+              </div>
+              <div className="text-center group hover:scale-105 transition-transform duration-300">
+                <img src="/images/vertical.png" alt="Vertical" className="w-full h-auto rounded-xl mb-3 shadow-md group-hover:shadow-yellow-500/30 transition" />
+                <h3 className="text-lg font-bold">{t("vertical_title")}</h3>
+                <p className="text-gray-400 text-sm mt-1">{t("vertical_desc")}</p>
+                <div className="mt-2">
+                  <span className="text-green-400 font-bold text-xl">{t("vertical_price_from")}</span>
+                  <span className="text-gray-500 line-through text-sm ml-2">{t("vertical_price_old")}</span>
+                </div>
+                <ul className="text-left mt-3 space-y-1 text-sm text-gray-300">
+                  <li>☐ {t("feature_fabric_density")}</li>
+                  <li>☐ {t("feature_measure_install")}</li>
+                  <li>☐ {t("feature_year_guarantee")}</li>
+                </ul>
+              </div>
             </div>
-            <ul className="text-left max-w-xs mx-auto mt-4 space-y-1 text-sm text-gray-300">
-              <li>☐ {t("feature_master_visit")}</li>
-              <li>☐ {t("feature_parts_stock")}</li>
-              <li>☐ {t("feature_receipt_guarantee")}</li>
-            </ul>
+            <div className="text-center mt-6">
+              <button onClick={() => handleOrderClick(t("blinds_title"))} className="bg-green-500 hover:bg-green-600 text-black font-semibold px-8 py-3 rounded-xl transition inline-flex items-center gap-2">{t("order_blinds_btn")} <ChevronRight className="h-5 w-5" /></button>
+            </div>
           </div>
-          <div className="text-center mt-6">
-            <button onClick={() => handleOrderClick(t("window_repair_title"))} className="bg-green-500 hover:bg-green-600 text-black font-semibold px-8 py-3 rounded-xl transition inline-flex items-center gap-2">{t("order_repair_btn")} <ChevronRight className="h-5 w-5" /></button>
-          </div>
-        </div>
-      </section>
+        </section>
+      </div>
 
-      {/* ===== НОВАЯ СЕКЦИЯ: УСЛУГИ ПО КОНДИЦИОНЕРАМ ===== */}
-      <section className="max-w-6xl mx-auto px-4 py-8">
-        <div className="bg-gradient-to-br from-green-900/20 to-blue-900/20 rounded-2xl p-6 backdrop-blur border border-green-500/30">
-          <h2 className="text-2xl font-bold text-center mb-6 text-green-300">{t("ac_services_title")}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Монтаж */}
-            <div className="text-center group hover:scale-105 transition-transform duration-300">
-              <div className="flex justify-center"><Snowflake className="h-12 w-12 text-blue-400 mb-2" /></div>
-              <h3 className="text-lg font-bold">{t("ac_install_title")}</h3>
-              <p className="text-gray-400 text-sm mt-1">{t("ac_install_desc")}</p>
+      {/* ===== 4. РЕМОНТ ОКОН ===== */}
+      <div ref={repairRef} className="scroll-mt-16">
+        <section className="max-w-4xl mx-auto px-4 py-8">
+          <div className="bg-gradient-to-br from-orange-900/30 via-red-900/20 to-rose-900/30 rounded-2xl p-6 backdrop-blur border border-orange-500/30 shadow-xl shadow-orange-500/10">
+            <h2 className="text-2xl font-bold text-center mb-6 text-orange-300">{t("window_repair_title")}</h2>
+            <div className="max-w-md mx-auto text-center">
+              <Wrench className="h-12 w-12 text-orange-400 mx-auto mb-3" />
+              <p className="text-gray-300 mb-3">{t("window_repair_desc")}</p>
               <div className="mt-2">
-                <span className="text-green-400 font-bold text-xl">{t("ac_install_price")}</span>
+                <span className="text-green-400 font-bold text-2xl">{t("repair_price")}</span>
               </div>
-              <ul className="text-left max-w-xs mx-auto mt-3 space-y-1 text-sm text-gray-300">
-                <li>☐ {t("feature_professional_mount")}</li>
-                <li>☐ {t("feature_connect_units")}</li>
-                <li>☐ {t("feature_test_run")}</li>
+              <ul className="text-left max-w-xs mx-auto mt-4 space-y-1 text-sm text-gray-300">
+                <li>☐ {t("feature_master_visit")}</li>
+                <li>☐ {t("feature_parts_stock")}</li>
+                <li>☐ {t("feature_receipt_guarantee")}</li>
               </ul>
             </div>
-            {/* Демонтаж */}
-            <div className="text-center group hover:scale-105 transition-transform duration-300">
-              <div className="flex justify-center"><ArrowUpDown className="h-12 w-12 text-yellow-400 mb-2" /></div>
-              <h3 className="text-lg font-bold">{t("ac_dismantle_title")}</h3>
-              <p className="text-gray-400 text-sm mt-1">{t("ac_dismantle_desc")}</p>
-              <div className="mt-2">
-                <span className="text-green-400 font-bold text-xl">{t("ac_dismantle_price")}</span>
-              </div>
-              <ul className="text-left max-w-xs mx-auto mt-3 space-y-1 text-sm text-gray-300">
-                <li>☐ {t("feature_safe_removal")}</li>
-                <li>☐ {t("feature_freon_collect")}</li>
-                <li>☐ {t("feature_dismantle_quick")}</li>
-              </ul>
-            </div>
-            {/* Заправка фреона */}
-            <div className="text-center group hover:scale-105 transition-transform duration-300">
-              <div className="flex justify-center"><Droplets className="h-12 w-12 text-cyan-400 mb-2" /></div>
-              <h3 className="text-lg font-bold">{t("ac_refill_title")}</h3>
-              <p className="text-gray-400 text-sm mt-1">{t("ac_refill_desc")}</p>
-              <div className="mt-2">
-                <span className="text-green-400 font-bold text-xl">{t("ac_refill_price")}</span>
-              </div>
-              <ul className="text-left max-w-xs mx-auto mt-3 space-y-1 text-sm text-gray-300">
-                <li>☐ {t("feature_leak_search")}</li>
-                <li>☐ {t("feature_refill_r410a")}</li>
-                <li>☐ {t("feature_pressure_check")}</li>
-              </ul>
+            <div className="text-center mt-6">
+              <button onClick={() => handleOrderClick(t("window_repair_title"))} className="bg-green-500 hover:bg-green-600 text-black font-semibold px-8 py-3 rounded-xl transition inline-flex items-center gap-2">{t("order_repair_btn")} <ChevronRight className="h-5 w-5" /></button>
             </div>
           </div>
-          <div className="text-center mt-6">
-            <button onClick={() => handleOrderClick(t("ac_services_title"))} className="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-8 py-3 rounded-xl transition inline-flex items-center gap-2">{t("order_ac_btn")} <ChevronRight className="h-5 w-5" /></button>
-          </div>
-        </div>
-      </section>
+        </section>
+      </div>
 
-      {/* ===== ФОРМА ЗАКАЗА (с новым пунктом) ===== */}
+      {/* ===== ФОРМА ЗАКАЗА ===== */}
       <section id="form" className="max-w-xl mx-auto px-4 pb-16">
         <h2 className="text-2xl font-bold text-center mb-6">{t("form_title")}</h2>
         <form onSubmit={onSubmit} className="bg-white/5 backdrop-blur rounded-2xl p-6 space-y-4 border border-white/10">
@@ -326,10 +382,10 @@ export default function Landing() {
               onChange={(e) => setSelectedService(e.target.value)} 
               className="w-full p-3 rounded-xl bg-white/10 text-white border border-white/20"
             >
+              <option>{t("ac_services_title")}</option>
               <option>{t("mosquito_title")}</option>
               <option>{t("blinds_title")}</option>
               <option>{t("window_repair_title")}</option>
-              <option>{t("ac_services_title")}</option> {/* Новый пункт */}
             </select>
           </div>
           <div>
@@ -352,7 +408,7 @@ export default function Landing() {
         </form>
       </section>
 
-      {/* ===== ОТЗЫВЫ И ФУТЕР (без изменений) ===== */}
+      {/* ===== ОТЗЫВЫ И КОНТАКТЫ ===== */}
       <section className="max-w-4xl mx-auto px-4 pb-12 text-center">
         <h2 className="text-2xl font-bold mb-4">{t("ready_title")}</h2>
         <p className="text-gray-400 mb-6">{t("ready_desc")}</p>
