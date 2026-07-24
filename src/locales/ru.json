@@ -103,7 +103,7 @@
   "form_title": "Оставьте заявку",
   "service_label": "Услуга",
   "name_label": "Ваше имя",
-  "name_placeholder": "Анна",
+  "name_placeholder": "Дильноза",
   "phone_label": "Номер телефона",
   "error_invalid_phone": "Введите корректный номер (не менее 9 цифр)",
   "error_send": "Ошибка отправки. Попробуйте позже.",
