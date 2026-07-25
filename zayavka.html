@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Оставить заявку | Moskitki.uz</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* копируем стили из index.html (шапка, форма, футер) */
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, sans-serif; }
+    body { background: #f8faff; color: #1e293b; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+    .header { background: #0b2b5c; color: white; padding: 16px 0; border-bottom: 3px solid #f7b731; }
+    .header .container { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; }
+    .logo-area { display: flex; align-items: center; gap: 12px; }
+    .logo-text { font-weight: 700; font-size: 24px; letter-spacing: -0.5px; display: flex; align-items: center; gap: 10px; }
+    .logo-text span { color: #f7b731; }
+    .logo-text img { height: 36px; width: auto; border-radius: 8px; }
+    .lang-switch { display: flex; gap: 12px; font-size: 14px; font-weight: 500; background: rgba(255,255,255,0.08); padding: 6px 14px; border-radius: 40px; }
+    .lang-switch a { color: rgba(255,255,255,0.7); text-decoration: none; transition: 0.2s; }
+    .lang-switch a.active { color: white; font-weight: 600; }
+    .header-tag { font-size: 14px; background: #1d3d72; padding: 6px 14px; border-radius: 40px; display: inline-block; }
+    .form-section { padding: 60px 0; background: #f2f7fe; min-height: 70vh; }
+    .form-card { max-width: 700px; margin: 0 auto; background: white; padding: 40px 36px; border-radius: 36px; box-shadow: 0 12px 30px rgba(11,43,92,0.06); }
+    .form-card h2 { font-size: 28px; font-weight: 700; color: #0b2b5c; margin-bottom: 8px; }
+    .form-card .sub { color: #4b5b6e; margin-bottom: 24px; }
+    .form-group { margin-bottom: 20px; }
+    .form-group label { font-weight: 500; display: block; margin-bottom: 6px; color: #1e293b; }
+    .form-group input, .form-group select { width: 100%; padding: 14px 18px; border: 1px solid #dce6f0; border-radius: 30px; font-size: 16px; background: #fafcff; transition: 0.2s; }
+    .form-group input:focus { border-color: #0b2b5c; outline: none; background: white; box-shadow: 0 0 0 4px rgba(11,43,92,0.05); }
+    .form-btn { background: #0b2b5c; color: white; border: none; padding: 16px 32px; font-size: 18px; font-weight: 600; border-radius: 60px; width: 100%; cursor: pointer; transition: 0.2s; display: flex; align-items: center; justify-content: center; gap: 12px; }
+    .form-btn i { color: #f7b731; }
+    .form-btn:hover { background: #1a3d72; }
+    .form-agree { font-size: 13px; color: #6b7b8e; margin-top: 16px; text-align: center; }
+    .footer { background: #061f41; padding: 24px 0; color: rgba(255,255,255,0.7); border-top: 1px solid #1a3d72; }
+    .footer .container { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; }
+    .footer .footer-logo { color: white; font-weight: 600; font-size: 18px; }
+    .footer .footer-logo i { color: #f7b731; margin-right: 6px; }
+    .back-link { display: inline-block; margin-bottom: 20px; font-weight: 600; color: #0b2b5c; text-decoration: none; border-bottom: 2px solid #f7b731; padding-bottom: 2px; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="logo-area">
+        <div class="logo-text">
+          <img src="/logo.png" alt="Логотип" style="height:36px; border-radius:8px;">
+          Moskitki.<span>uz</span>
+        </div>
+      </div>
+      <div class="lang-switch">
+        <a href="#" class="active">Русский</a>
+        <a href="#">O'zbekcha</a>
+        <span class="header-tag">Ташкент с 2019</span>
+      </div>
+    </div>
+  </header>
+
+  <section class="form-section">
+    <div class="container">
+      <div class="form-card">
+        <a href="javascript:history.back()" class="back-link"><i class="fas fa-arrow-left"></i> Назад</a>
+        <h2><i class="fas fa-pencil-alt" style="color:#f7b731;"></i> Оставьте заявку</h2>
+        <p class="sub">Мы перезвоним в течение 15 минут</p>
+        <form id="zayavkaForm">
+          <div class="form-group">
+            <label>Услуга</label>
+            <select id="uslugaSelect" name="usluga">
+              <option value="Монтаж, демонтаж и заправка кондиционера">Монтаж, демонтаж и заправка кондиционера</option>
+              <option value="Москитная сетка">Москитная сетка</option>
+              <option value="Ремонт окон">Ремонт окон</option>
+              <option value="Жалюзи">Жалюзи</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Ваше имя</label>
+            <input type="text" placeholder="Ваше имя" id="userName">
+          </div>
+          <div class="form-group">
+            <label>Номер телефона</label>
+            <input type="tel" placeholder="+998 99 055 06 60" id="userPhone">
+          </div>
+          <button type="submit" class="form-btn"><i class="fas fa-paper-plane"></i> Отправить заявку</button>
+          <div class="form-agree">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных</div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-logo"><i class="fas fa-shield-alt"></i> Moskitki.uz</div>
+      <div class="copy">© 2019 – 2026 — Toshkent</div>
+    </div>
+  </footer>
+
+  <script>
+    // получаем параметр usluga из URL и устанавливаем выбранный option
+    const urlParams = new URLSearchParams(window.location.search);
+    const usluga = urlParams.get('usluga');
+    if (usluga) {
+      const select = document.getElementById('uslugaSelect');
+      for (let option of select.options) {
+        if (option.value === usluga) {
+          option.selected = true;
+          break;
+        }
+      }
+    }
+  </script>
+</body>
+</html>
