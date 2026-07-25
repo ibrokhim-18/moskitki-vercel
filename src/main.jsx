@@ -7,7 +7,7 @@ import "./i18n";
 
 ReactGA.initialize("G-GPD3KZLEFQ");
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Landing />
   </React.StrictMode>
