@@ -1,1 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Москитные сетки | Moskitki.uz</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* те же стили, что в remont-okon.html, можно скопировать оттуда */
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, sans-serif; }
+    body { background: #f8faff; color: #1e293b; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+    .header { background: #0b2b5c; color: white; padding: 16px 0; border-bottom: 3px solid #f7b731; }
+    .header .container { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; }
+    .logo-area { display: flex; align-items: center; gap: 12px; }
+    .logo-icon { font-size: 28px; color: #f7b731; }
+    .logo-text { font-weight: 700; font-size: 24px; letter-spacing: -0.5px; display: flex; align-items: center; gap: 10px; }
+    .logo-text span { color: #f7b731; }
+    .logo-text img { height: 36px; width: auto; border-radius: 8px; }
+    .lang-switch { display: flex; gap: 12px; font-size: 14px; font-weight: 500; background: rgba(255,255,255,0.08); padding: 6px 14px; border-radius: 40px; }
+    .lang-switch a { color: rgba(255,255,255,0.7); text-decoration: none; transition: 0.2s; }
+    .lang-switch a.active { color: white; font-weight: 600; }
+    .header-tag { font-size: 14px; background: #1d3d72; padding: 6px 14px; border-radius: 40px; display: inline-block; }
+    .services { padding: 50px 0 30px; background: white; }
+    .services h2 { font-size: 30px; font-weight: 700; color: #0b2b5c; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+    .services h2 i { color: #f7b731; }
+    .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; margin-top: 12px; }
+    .service-item { background: #f8fcff; padding: 20px 16px; border-radius: 20px; text-align: center; border: 1px solid #eaf1f9; text-decoration: none; color: inherit; transition: 0.2s; display: block; }
+    .service-item:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(0,0,0,0.05); }
+    .service-item i { font-size: 34px; color: #0b2b5c; background: #e2edfa; padding: 14px; border-radius: 20px; margin-bottom: 12px; display: inline-block; }
+    .service-item h4 { font-weight: 600; font-size: 18px; }
+    .service-item p { font-size: 14px; color: #4b5b6e; margin-top: 6px; }
+    .more-link { display: inline-block; margin-top: 20px; font-weight: 600; color: #0b2b5c; text-decoration: none; border-bottom: 2px solid #f7b731; padding-bottom: 2px; }
+    .footer { background: #061f41; padding: 24px 0; color: rgba(255,255,255,0.7); border-top: 1px solid #1a3d72; }
+    .footer .container { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; }
+    .footer .footer-logo { color: white; font-weight: 600; font-size: 18px; }
+    .footer .footer-logo i { color: #f7b731; margin-right: 6px; }
+    @media (max-width: 600px) { .service-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="logo-area">
+        <i class="fas fa-shield-alt logo-icon"></i>
+        <div class="logo-text">
+          <img src="/logo.png" alt="Logo" style="height:36px; border-radius:8px;">
+          Moskitki.<span>uz</span>
+        </div>
+      </div>
+      <div class="lang-switch">
+        <a href="#" class="active">Русский</a>
+        <a href="#">O'zbekcha</a>
+        <span class="header-tag">Ташкент с 2019</span>
+      </div>
+    </div>
+  </header>
 
+  <section class="services">
+    <div class="container">
+      <h2><i class="fas fa-mosquito-net"></i> Москитные сетки</h2>
+      <p style="color: #4b5b6e; margin-bottom: 20px;">Выберите тип сетки:</p>
+      <div class="service-grid">
+        <a href="#" class="service-item"><i class="fas fa-border-all"></i><h4>Стандартные</h4><p>Классические рамные, любые размеры</p></a>
+        <a href="#" class="service-item"><i class="fas fa-vector-square"></i><h4>Synax</h4><p>Антипылевая, мелкая ячейка</p></a>
+        <a href="#" class="service-item"><i class="fas fa-expand-arrows-alt"></i><h4>Uni</h4><p>Универсальная, усиленная конструкция</p></a>
+        <a href="#" class="service-item"><i class="fas fa-accordion"></i><h4>Plise</h4><p>Складная гармошка, компактное хранение</p></a>
+      </div>
+      <div style="margin-top: 30px;"><a href="index.html" class="more-link"><i class="fas fa-arrow-left"></i> На главную</a></div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-logo"><i class="fas fa-shield-alt"></i> Moskitki.uz</div>
+      <div class="copy">© 2019 – 2026 — Toshkent</div>
+    </div>
+  </footer>
+</body>
+</html>
