@@ -17,6 +17,7 @@
     "react-i18next": "^13.0.0",
     "i18next-browser-languagedetector": "^7.1.0",
     "react-ga4": "^2.1.0"
+    "@vercel/analytics": "latest"
   },
   "devDependencies": {
     "vite": "^5.0.0",
