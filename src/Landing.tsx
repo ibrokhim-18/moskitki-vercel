@@ -1,601 +1,857 @@
-import { useState, useEffect, useRef } from "react";
-import { useTranslation } from 'react-i18next';
-import { useLocation, Switch, Route, Link } from 'wouter';
-import ReactGA from "react-ga4";
-import {
-  Phone, Send, ShieldCheck, Clock, Hammer, Star, ChevronRight,
-  Wrench, Wind, Snowflake, ArrowUpDown, Droplets, Menu
-} from "lucide-react";
-import { Analytics } from '@vercel/analytics/react';
-
-const PHONE_NUMBER = "+998 99 055 06 60";
-const PHONE_LINK = "tel:+998990550660";
-const TELEGRAM_USERNAME = "moskitki_uz";
-const TELEGRAM_LINK = `https://t.me/${TELEGRAM_USERNAME}`;
-
-function formatPhone(input: string) {
-  const digits = input.replace(/\D/g, "").slice(0, 12);
-  let out = "+";
-  out += digits.slice(0, 3);
-  if (digits.length > 3) out += " (" + digits.slice(3, 5);
-  if (digits.length >= 5) out += ")";
-  if (digits.length > 5) out += " " + digits.slice(5, 8);
-  if (digits.length > 8) out += "-" + digits.slice(8, 10);
-  if (digits.length > 10) out += "-" + digits.slice(10, 12);
-  return out;
-}
-
-// ------------------------------------------------------------
-// ОБЩИЕ КОМПОНЕНТЫ
-// ------------------------------------------------------------
-
-function Header() {
-  const { t, i18n } = useTranslation();
-  const changeLanguage = (lng: string) => i18n.changeLanguage(lng);
-  return (
-    <header className="flex flex-wrap items-center justify-between px-4 py-3 max-w-6xl mx-auto gap-2 border-b border-gray-200 bg-white">
-      <div className="flex items-center gap-2">
-        <Wind className="h-6 w-6 text-green-600" />
-        <span className="text-xl font-bold text-gray-800">{t("header")}</span>
-      </div>
-      <div className="flex items-center gap-3">
-        <button onClick={() => changeLanguage("ru")} className={`px-3 py-1 rounded-md transition ${i18n.language === "ru" ? "bg-green-600 text-white" : "bg-gray-200 text-gray-700 hover:bg-gray-300"}`}>Русский</button>
-        <button onClick={() => changeLanguage("uz")} className={`px-3 py-1 rounded-md transition ${i18n.language === "uz" ? "bg-green-600 text-white" : "bg-gray-200 text-gray-700 hover:bg-gray-300"}`}>O‘zbekcha</button>
-      </div>
-      <div className="text-sm text-gray-500">{t("city_since")}</div>
-    </header>
-  );
-}
-
-function Benefits() {
-  const { t } = useTranslation();
-  const items = [
-    { icon: <Clock className="h-6 w-6 mx-auto text-green-600" />, titleKey: "benefit_1_title", subKey: "benefit_1_sub" },
-    { icon: <ShieldCheck className="h-6 w-6 mx-auto text-green-600" />, titleKey: "benefit_2_title", subKey: "benefit_2_sub" },
-    { icon: <Hammer className="h-6 w-6 mx-auto text-green-600" />, titleKey: "benefit_3_title", subKey: "benefit_3_sub" },
-    { icon: <Star className="h-6 w-6 mx-auto text-green-600" />, titleKey: "benefit_4_title", subKey: "benefit_4_sub" },
-  ];
-  return (
-    <section className="max-w-4xl mx-auto px-4 py-10">
-      <h2 className="text-2xl font-bold text-center mb-6 text-gray-800">{t("why_we")}</h2>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-        {items.map((item, i) => (
-          <div key={i} className="p-4 bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
-            {item.icon}
-            <div className="font-semibold mt-2 text-gray-800">{t(item.titleKey)}</div>
-            <div className="text-gray-500 text-xs mt-1">{t(item.subKey)}</div>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-// ГАЛЕРЕЯ готовых проектов (4 фото)
-function Gallery() {
-  const { t } = useTranslation();
-  const items = [
-    {
-      img: "/images/standart.png", // замените на реальные фото
-      title: "mosquito_title",
-      desc: "gallery_mosquito_desc",
-      link: "/moskitnye-setki",
-      bg: "bg-green-100"
-    },
-    {
-      img: "/images/gorizontal.png",
-      title: "blinds_title",
-      desc: "gallery_blinds_desc",
-      link: "/zhalyuzi",
-      bg: "bg-yellow-100"
-    },
-    {
-      img: "/images/ac_install.jpg", // если нет, используйте иконку
-      title: "ac_services_title",
-      desc: "gallery_ac_desc",
-      link: "/montazh-konditsionerov",
-      bg: "bg-blue-100"
-    },
-    {
-      img: "/images/window_repair.jpg", // если нет, используйте иконку
-      title: "window_repair_title",
-      desc: "gallery_repair_desc",
-      link: "/remont-okon",
-      bg: "bg-orange-100"
-    },
-  ];
-
-  return (
-    <section className="max-w-6xl mx-auto px-4 py-8">
-      <h2 className="text-2xl font-bold text-center mb-8 text-gray-800">{t("gallery_title")}</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {items.map((item, idx) => (
-          <div key={idx} className={`${item.bg} rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition duration-300`}>
-            <img src={item.img} alt={t(item.title)} className="w-full h-48 object-cover" />
-            <div className="p-4 text-center">
-              <h3 className="text-lg font-bold text-gray-800">{t(item.title)}</h3>
-              <p className="text-gray-600 text-sm mt-1">{t(item.desc)}</p>
-              <Link href={item.link} className="inline-block mt-3 bg-white hover:bg-gray-100 text-gray-800 font-semibold px-4 py-2 rounded-full text-sm transition shadow">
-                {t("more_btn")} <ChevronRight className="inline h-4 w-4" />
-              </Link>
-            </div>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function Reviews() {
-  const { t } = useTranslation();
-  const reviews = [
-    { initial: "А", name: "Анна К.", textKey: "review_1_text", bg: "bg-green-100", textColor: "text-green-700" },
-    { initial: "Б", name: "Бахром Н.", textKey: "review_2_text", bg: "bg-yellow-100", textColor: "text-yellow-700" },
-    { initial: "С", name: "Сергей М.", textKey: "review_3_text", bg: "bg-blue-100", textColor: "text-blue-700" },
-    { initial: "Д", name: "Динара Ш.", textKey: "review_4_text", bg: "bg-orange-100", textColor: "text-orange-700" },
-  ];
-  return (
-    <section className="max-w-5xl mx-auto px-4 pb-12">
-      <h2 className="text-2xl font-bold text-center mb-4 text-gray-800">{t("reviews_title")}</h2>
-      <p className="text-gray-500 text-center mb-8">{t("reviews_subtitle")}</p>
-      <div className="grid md:grid-cols-2 gap-6">
-        {reviews.map((rev, idx) => (
-          <div key={idx} className="bg-white rounded-2xl p-6 shadow-md border border-gray-100">
-            <div className="flex items-center gap-3 mb-3">
-              <div className={`${rev.bg} rounded-full w-10 h-10 flex items-center justify-center ${rev.textColor} font-bold`}>{rev.initial}</div>
-              <div>
-                <div className="font-semibold text-gray-800">{rev.name}</div>
-                <div className="text-yellow-500 text-sm">★★★★★</div>
-              </div>
-            </div>
-            <p className="text-gray-600">{t(rev.textKey)}</p>
-            <div className="text-green-600 text-xs mt-3">✅ {t("review_verified")}</div>
-          </div>
-        ))}
-      </div>
-      <div className="text-center mt-8">
-        <a href={TELEGRAM_LINK} target="_blank" className="inline-flex items-center gap-2 bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold px-6 py-3 rounded-xl transition">
-          <Send className="h-5 w-5" /> {t("leave_review_btn")}
-        </a>
-        <p className="text-gray-400 text-xs mt-2">{t("review_hint")}</p>
-      </div>
-    </section>
-  );
-}
-
-function Contacts() {
-  const { t } = useTranslation();
-  return (
-    <section className="max-w-4xl mx-auto px-4 pb-12 text-center">
-      <h2 className="text-2xl font-bold mb-4 text-gray-800">{t("ready_title")}</h2>
-      <p className="text-gray-600 mb-6">{t("ready_desc")}</p>
-      <div className="flex gap-3 justify-center flex-wrap">
-        <a href={PHONE_LINK} className="flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-semibold px-8 py-4 rounded-xl text-lg transition">
-          <Phone className="h-5 w-5" /> {PHONE_NUMBER}
-        </a>
-        <a href={TELEGRAM_LINK} target="_blank" className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-xl text-lg transition">
-          <Send className="h-5 w-5" /> {t("telegram_write")}
-        </a>
-      </div>
-    </section>
-  );
-}
-
-function Footer() {
-  const { t } = useTranslation();
-  return (
-    <footer className="text-center text-gray-500 text-sm py-6 border-t border-gray-200 bg-white">
-      Moskitki.uz © 2019 – {new Date().getFullYear()} — {t("Toshkent")}
-    </footer>
-  );
-}
-
-// ------------------------------------------------------------
-// БЛОКИ УСЛУГ (для страниц услуг)
-// ------------------------------------------------------------
-
-function ACBlock({ onOrderClick }: { onOrderClick: (service: string) => void }) {
-  const { t } = useTranslation();
-  return (
-    <div className="scroll-mt-16">
-      <section className="max-w-6xl mx-auto px-4 py-8">
-        <div className="bg-white rounded-2xl p-6 shadow-lg border border-blue-100">
-          <h2 className="text-2xl font-bold text-center mb-6 text-blue-700">{t("ac_services_title")}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="text-center group hover:scale-105 transition-transform duration-300">
-              <Snowflake className="h-12 w-12 text-blue-500 mx-auto mb-2" />
-              <h3 className="text-lg font-bold text-gray-800">{t("ac_install_title")}</h3>
-              <p className="text-gray-500 text-sm mt-1">{t("ac_install_desc")}</p>
-              <div className="mt-2"><span className="text-green-600 font-bold text-xl">{t("ac_install_price")}</span></div>
-              <ul className="text-left max-w-xs mx-auto mt-3 space-y-1 text-sm text-gray-600">
-                <li>☐ {t("feature_professional_mount")}</li>
-                <li>☐ {t("feature_connect_units")}</li>
-                <li>☐ {t("feature_test_run")}</li>
-              </ul>
-            </div>
-            <div className="text-center group hover:scale-105 transition-transform duration-300">
-              <ArrowUpDown className="h-12 w-12 text-yellow-500 mx-auto mb-2" />
-              <h3 className="text-lg font-bold text-gray-800">{t("ac_dismantle_title")}</h3>
-              <p className="text-gray-500 text-sm mt-1">{t("ac_dismantle_desc")}</p>
-              <div className="mt-2"><span className="text-green-600 font-bold text-xl">{t("ac_dismantle_price")}</span></div>
-              <ul className="text-left max-w-xs mx-auto mt-3 space-y-1 text-sm text-gray-600">
-                <li>☐ {t("feature_safe_removal")}</li>
-                <li>☐ {t("feature_freon_collect")}</li>
-                <li>☐ {t("feature_dismantle_quick")}</li>
-              </ul>
-            </div>
-            <div className="text-center group hover:scale-105 transition-transform duration-300">
-              <Droplets className="h-12 w-12 text-cyan-500 mx-auto mb-2" />
-              <h3 className="text-lg font-bold text-gray-800">{t("ac_refill_title")}</h3>
-              <p className="text-gray-500 text-sm mt-1">{t("ac_refill_desc")}</p>
-              <div className="mt-2"><span className="text-green-600 font-bold text-xl">{t("ac_refill_price")}</span></div>
-              <ul className="text-left max-w-xs mx-auto mt-3 space-y-1 text-sm text-gray-600">
-                <li>☐ {t("feature_leak_search")}</li>
-                <li>☐ {t("feature_refill_r410a")}</li>
-                <li>☐ {t("feature_pressure_check")}</li>
-              </ul>
-            </div>
-          </div>
-          <div className="text-center mt-6">
-            <button onClick={() => onOrderClick(t("ac_services_title"))} className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-3 rounded-xl transition inline-flex items-center gap-2">
-              {t("order_ac_btn")} <ChevronRight className="h-5 w-5" />
-            </button>
-          </div>
-        </div>
-      </section>
-    </div>
-  );
-}
-
-function MosquitoBlock({ onOrderClick }: { onOrderClick: (service: string) => void }) {
-  const { t } = useTranslation();
-  const items = [
-    { img: "/images/standart.png", title: "standart_title", desc: "standart_desc", price: "standart_price_from", old: "standart_price_old", features: ["feature_free_measure", "feature_one_day", "feature_year_guarantee"] },
-    { img: "/images/synax.png", title: "synax_title", desc: "synax_desc", price: "synax_price_from", old: "synax_price_old", features: ["feature_no_drilling", "feature_one_day", "feature_year_guarantee"] },
-    { img: "/images/uni.png", title: "uni_title", desc: "uni_desc", price: "uni_price_from", old: "uni_price_old", features: ["feature_universal_mount", "feature_reinforced_frame", "feature_year_guarantee"] },
-    { img: "/images/plise.png", title: "plise_title", desc: "plise_desc", price: "plise_price_from", old: "plise_price_old", features: ["feature_folding", "feature_large_openings", "feature_year_guarantee"] },
-  ];
-  return (
-    <div className="scroll-mt-16">
-      <section className="max-w-6xl mx-auto px-4 py-8">
-        <div className="bg-white rounded-2xl p-6 shadow-lg border border-green-100">
-          <h2 className="text-2xl font-bold text-center mb-6 text-green-700">{t("mosquito_title")}</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {items.map((item, idx) => (
-              <div key={idx} className="text-center group hover:scale-105 transition-transform duration-300">
-                <img src={item.img} alt={t(item.title)} className="w-full h-auto rounded-xl mb-3 shadow-md group-hover:shadow-green-500/30 transition" />
-                <h3 className="text-lg font-bold text-gray-800">{t(item.title)}</h3>
-                <p className="text-gray-500 text-sm mt-1">{t(item.desc)}</p>
-                <div className="mt-2">
-                  <span className="text-green-600 font-bold text-xl">{t(item.price)}</span>
-                  <span className="text-gray-400 line-through text-sm ml-2">{t(item.old)}</span>
-                </div>
-                <ul className="text-left mt-3 space-y-1 text-sm text-gray-600">
-                  {item.features.map((f, i) => <li key={i}>☐ {t(f)}</li>)}
-                </ul>
-              </div>
-            ))}
-          </div>
-          <div className="text-center mt-6">
-            <button onClick={() => onOrderClick(t("mosquito_title"))} className="bg-green-600 hover:bg-green-700 text-white font-semibold px-8 py-3 rounded-xl transition inline-flex items-center gap-2">
-              {t("order_mosquito_btn")} <ChevronRight className="h-5 w-5" />
-            </button>
-          </div>
-        </div>
-      </section>
-    </div>
-  );
-}
-
-function BlindsBlock({ onOrderClick }: { onOrderClick: (service: string) => void }) {
-  const { t } = useTranslation();
-  return (
-    <div className="scroll-mt-16">
-      <section className="max-w-4xl mx-auto px-4 py-8">
-        <div className="bg-white rounded-2xl p-6 shadow-lg border border-yellow-100">
-          <h2 className="text-2xl font-bold text-center mb-6 text-yellow-700">{t("blinds_title")}</h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="text-center group hover:scale-105 transition-transform duration-300">
-              <img src="/images/gorizontal.png" alt="Gorizontal" className="w-full h-auto rounded-xl mb-3 shadow-md group-hover:shadow-yellow-500/30 transition" />
-              <h3 className="text-lg font-bold text-gray-800">{t("horizontal_title")}</h3>
-              <p className="text-gray-500 text-sm mt-1">{t("horizontal_desc")}</p>
-              <div className="mt-2">
-                <span className="text-green-600 font-bold text-xl">{t("horizontal_price_from")}</span>
-                <span className="text-gray-400 line-through text-sm ml-2">{t("horizontal_price_old")}</span>
-              </div>
-              <ul className="text-left mt-3 space-y-1 text-sm text-gray-600">
-                <li>☐ {t("feature_50_colors")}</li>
-                <li>☐ {t("feature_material_aluminum")}</li>
-                <li>☐ {t("feature_mounting_included")}</li>
-              </ul>
-            </div>
-            <div className="text-center group hover:scale-105 transition-transform duration-300">
-              <img src="/images/vertical.png" alt="Vertical" className="w-full h-auto rounded-xl mb-3 shadow-md group-hover:shadow-yellow-500/30 transition" />
-              <h3 className="text-lg font-bold text-gray-800">{t("vertical_title")}</h3>
-              <p className="text-gray-500 text-sm mt-1">{t("vertical_desc")}</p>
-              <div className="mt-2">
-                <span className="text-green-600 font-bold text-xl">{t("vertical_price_from")}</span>
-                <span className="text-gray-400 line-through text-sm ml-2">{t("vertical_price_old")}</span>
-              </div>
-              <ul className="text-left mt-3 space-y-1 text-sm text-gray-600">
-                <li>☐ {t("feature_fabric_density")}</li>
-                <li>☐ {t("feature_measure_install")}</li>
-                <li>☐ {t("feature_year_guarantee")}</li>
-              </ul>
-            </div>
-          </div>
-          <div className="text-center mt-6">
-            <button onClick={() => onOrderClick(t("blinds_title"))} className="bg-green-600 hover:bg-green-700 text-white font-semibold px-8 py-3 rounded-xl transition inline-flex items-center gap-2">
-              {t("order_blinds_btn")} <ChevronRight className="h-5 w-5" />
-            </button>
-          </div>
-        </div>
-      </section>
-    </div>
-  );
-}
-
-function RepairBlock({ onOrderClick }: { onOrderClick: (service: string) => void }) {
-  const { t } = useTranslation();
-  return (
-    <div className="scroll-mt-16">
-      <section className="max-w-4xl mx-auto px-4 py-8">
-        <div className="bg-white rounded-2xl p-6 shadow-lg border border-orange-100">
-          <h2 className="text-2xl font-bold text-center mb-6 text-orange-700">{t("window_repair_title")}</h2>
-          <div className="max-w-md mx-auto text-center">
-            <Wrench className="h-12 w-12 text-orange-500 mx-auto mb-3" />
-            <p className="text-gray-600 mb-3">{t("window_repair_desc")}</p>
-            <div className="mt-2"><span className="text-green-600 font-bold text-2xl">{t("repair_price")}</span></div>
-            <ul className="text-left max-w-xs mx-auto mt-4 space-y-1 text-sm text-gray-600">
-              <li>☐ {t("feature_master_visit")}</li>
-              <li>☐ {t("feature_parts_stock")}</li>
-              <li>☐ {t("feature_receipt_guarantee")}</li>
-            </ul>
-          </div>
-          <div className="text-center mt-6">
-            <button onClick={() => onOrderClick(t("window_repair_title"))} className="bg-green-600 hover:bg-green-700 text-white font-semibold px-8 py-3 rounded-xl transition inline-flex items-center gap-2">
-              {t("order_repair_btn")} <ChevronRight className="h-5 w-5" />
-            </button>
-          </div>
-        </div>
-      </section>
-    </div>
-  );
-}
-
-// ------------------------------------------------------------
-// НАВИГАЦИОННЫЕ КНОПКИ (всегда ведут на страницы)
-// ------------------------------------------------------------
-function NavButtons() {
-  const { t } = useTranslation();
-  const navItems = [
-    { label: "nav_ac", icon: <Snowflake className="h-8 w-8 group-hover:scale-110 transition" />, path: "/montazh-konditsionerov", color: "blue" },
-    { label: "nav_mosquito", icon: <Wind className="h-8 w-8 group-hover:scale-110 transition" />, path: "/moskitnye-setki", color: "green" },
-    { label: "nav_blinds", icon: <Menu className="h-8 w-8 group-hover:scale-110 transition" />, path: "/zhalyuzi", color: "yellow" },
-    { label: "nav_repair", icon: <Wrench className="h-8 w-8 group-hover:scale-110 transition" />, path: "/remont-okon", color: "orange" },
-  ];
-  const colorClasses = {
-    blue: "bg-blue-50 hover:bg-blue-100 border-blue-200 text-blue-700",
-    green: "bg-green-50 hover:bg-green-100 border-green-200 text-green-700",
-    yellow: "bg-yellow-50 hover:bg-yellow-100 border-yellow-200 text-yellow-700",
-    orange: "bg-orange-50 hover:bg-orange-100 border-orange-200 text-orange-700",
-  };
-
-  return (
-    <section className="max-w-4xl mx-auto px-4 pb-6">
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        {navItems.map((item, idx) => (
-          <Link
-            key={idx}
-            href={item.path}
-            className={`group p-4 rounded-xl border transition flex flex-col items-center gap-2 ${colorClasses[item.color as keyof typeof colorClasses]}`}
-          >
-            {item.icon}
-            <span className="font-semibold text-sm">{t(item.label)}</span>
-          </Link>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-// ------------------------------------------------------------
-// HERO (только на главной)
-// ------------------------------------------------------------
-function Hero() {
-  const { t } = useTranslation();
-  return (
-    <section className="text-center px-4 py-12 max-w-4xl mx-auto">
-      <div className="inline-block bg-green-100 text-green-700 px-4 py-1 rounded-full text-sm mb-4">{t("badge_sale")}</div>
-      <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-4 text-gray-900">{t("hero_title")}</h1>
-      <p className="text-gray-600 text-lg mb-6 max-w-2xl mx-auto">{t("hero_desc")}</p>
-      <div className="flex gap-3 justify-center flex-wrap">
-        <a href={PHONE_LINK} className="flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-3 rounded-xl transition">
-          <Phone className="h-5 w-5" /> {t("call_btn")}
-        </a>
-        <a href={TELEGRAM_LINK} target="_blank" className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-xl transition">
-          <Send className="h-5 w-5" /> {t("telegram_btn")}
-        </a>
-      </div>
-    </section>
-  );
-}
-
-// ------------------------------------------------------------
-// ФОРМА ЗАКАЗА (принимает selectedService и setter)
-// ------------------------------------------------------------
-function OrderForm({
-  selectedService,
-  setSelectedService
-}: {
-  selectedService: string;
-  setSelectedService: (service: string) => void;
-}) {
-  const { t } = useTranslation();
-  const [phone, setPhone] = useState("+998 ");
-  const [name, setName] = useState("");
-  const [submitting, setSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-
-  async function onSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    setError(null);
-    const digits = phone.replace(/\D/g, "");
-    if (digits.length < 9) {
-      setError(t("error_invalid_phone"));
-      return;
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>Moskitki.uz — Москитные сетки, жалюзи, ремонт окон</title>
+  <!-- Font Awesome 6 (бесплатная) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
     }
-    setSubmitting(true);
-    try {
-      await fetch("/api/order", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ service: selectedService, phone, name }),
-      });
-      setSubmitted(true);
-      setPhone("+998 ");
-      setName("");
-    } catch {
-      setError(t("error_send"));
-    } finally {
-      setSubmitting(false);
+
+    body {
+      background: #f8faff;
+      color: #1e293b;
     }
-  }
 
-  return (
-    <section id="form" className="max-w-xl mx-auto px-4 pb-16">
-      <h2 className="text-2xl font-bold text-center mb-6 text-gray-800">{t("form_title")}</h2>
-      <form onSubmit={onSubmit} className="bg-white rounded-2xl p-6 space-y-4 shadow-lg border border-gray-200">
-        <div>
-          <label className="text-sm text-gray-600 mb-1 block">{t("service_label")}</label>
-          <select
-            value={selectedService}
-            onChange={(e) => setSelectedService(e.target.value)}
-            className="w-full p-3 rounded-xl bg-gray-50 text-gray-800 border border-gray-300 focus:ring-2 focus:ring-green-500"
-          >
-            <option>{t("ac_services_title")}</option>
-            <option>{t("mosquito_title")}</option>
-            <option>{t("blinds_title")}</option>
-            <option>{t("window_repair_title")}</option>
-          </select>
-        </div>
-        <div>
-          <label className="text-sm text-gray-600 mb-1 block">{t("name_label")}</label>
-          <input value={name} onChange={(e) => setName(e.target.value)} placeholder={t("name_placeholder")} className="w-full p-3 rounded-xl bg-gray-50 text-gray-800 border border-gray-300 placeholder-gray-400 focus:ring-2 focus:ring-green-500" />
-        </div>
-        <div>
-          <label className="text-sm text-gray-600 mb-1 block">{t("phone_label")}</label>
-          <input value={phone} onChange={(e) => setPhone(formatPhone(e.target.value))} placeholder="+998..." className="w-full p-3 rounded-xl bg-gray-50 text-gray-800 border border-gray-300 placeholder-gray-400 focus:ring-2 focus:ring-green-500" />
-        </div>
-        {error && <div className="text-red-500 text-sm">{error}</div>}
-        {submitted ? (
-          <div className="text-green-600 text-center font-semibold py-3">✅ {t("success_message")}</div>
-        ) : (
-          <button type="submit" disabled={submitting} className="w-full bg-green-600 hover:bg-green-700 disabled:opacity-50 text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 transition">
-            {submitting ? t("submitting") : <>{t("order_btn")} <ChevronRight className="h-5 w-5" /></>}
-          </button>
-        )}
-        <p className="text-gray-400 text-xs text-center">{t("consent_text")}</p>
-      </form>
-    </section>
-  );
-}
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
 
-// ------------------------------------------------------------
-// ГЛАВНЫЙ КОМПОНЕНТ
-// ------------------------------------------------------------
-export default function Landing() {
-  const { t } = useTranslation();
-  const [location] = useLocation();
-  const [selectedService, setSelectedService] = useState(t("mosquito_title"));
+    /* ===== HEADER ===== */
+    .header {
+      background: #0b2b5c;
+      color: white;
+      padding: 16px 0;
+      border-bottom: 3px solid #f7b731;
+    }
 
-  // Отслеживаем просмотры страниц для Google Analytics
-  useEffect(() => {
-    ReactGA.send({ hitType: "pageview", page: location });
-  }, [location]);
+    .header .container {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+    }
 
-  // При переходе на страницу услуги обновляем выбранную услугу в форме
-  useEffect(() => {
-    if (location === "/montazh-konditsionerov") setSelectedService(t("ac_services_title"));
-    else if (location === "/moskitnye-setki") setSelectedService(t("mosquito_title"));
-    else if (location === "/zhalyuzi") setSelectedService(t("blinds_title"));
-    else if (location === "/remont-okon") setSelectedService(t("window_repair_title"));
-  }, [location, t]);
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
 
-  const scrollToForm = (service: string) => {
-    setSelectedService(service);
-    document.getElementById('form')?.scrollIntoView({ behavior: 'smooth' });
-  };
+    .logo-icon {
+      font-size: 28px;
+      color: #f7b731;
+    }
 
-  return (
-    <div className="min-h-screen bg-gray-50 text-gray-900">
-      <Header />
-      <NavButtons />
+    .logo-text {
+      font-weight: 700;
+      font-size: 24px;
+      letter-spacing: -0.5px;
+    }
 
-      <Switch>
-        {/* Главная страница */}
-        <Route path="/">
-          <Hero />
-          <Benefits />
-          <Gallery />
-          <Reviews />
-          <OrderForm selectedService={selectedService} setSelectedService={setSelectedService} />
-          <Contacts />
-          <Footer />
-        </Route>
+    .logo-text span {
+      color: #f7b731;
+    }
 
-        {/* Страница кондиционеров */}
-        <Route path="/montazh-konditsionerov">
-          <Benefits />
-          <ACBlock onOrderClick={scrollToForm} />
-          <OrderForm selectedService={selectedService} setSelectedService={setSelectedService} />
-          <Reviews />
-          <Contacts />
-          <Footer />
-        </Route>
+    .lang-switch {
+      display: flex;
+      gap: 12px;
+      font-size: 14px;
+      font-weight: 500;
+      background: rgba(255,255,255,0.08);
+      padding: 6px 14px;
+      border-radius: 40px;
+    }
 
-        {/* Страница москитных сеток */}
-        <Route path="/moskitnye-setki">
-          <Benefits />
-          <MosquitoBlock onOrderClick={scrollToForm} />
-          <OrderForm selectedService={selectedService} setSelectedService={setSelectedService} />
-          <Reviews />
-          <Contacts />
-          <Footer />
-        </Route>
+    .lang-switch a {
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      transition: 0.2s;
+    }
 
-        {/* Страница жалюзи */}
-        <Route path="/zhalyuzi">
-          <Benefits />
-          <BlindsBlock onOrderClick={scrollToForm} />
-          <OrderForm selectedService={selectedService} setSelectedService={setSelectedService} />
-          <Reviews />
-          <Contacts />
-          <Footer />
-        </Route>
+    .lang-switch a.active {
+      color: white;
+      font-weight: 600;
+    }
 
-        {/* Страница ремонта окон */}
-        <Route path="/remont-okon">
-          <Benefits />
-          <RepairBlock onOrderClick={scrollToForm} />
-          <OrderForm selectedService={selectedService} setSelectedService={setSelectedService} />
-          <Reviews />
-          <Contacts />
-          <Footer />
-        </Route>
+    .header-tag {
+      font-size: 14px;
+      background: #1d3d72;
+      padding: 6px 14px;
+      border-radius: 40px;
+      display: inline-block;
+      font-weight: 400;
+    }
 
-        {/* 404 */}
-        <Route>
-          <div className="text-center py-20">
-            <h1 className="text-3xl font-bold">404</h1>
-            <p>Страница не найдена</p>
-            <Link href="/" className="text-green-600 underline">Вернуться на главную</Link>
-          </div>
-        </Route>
-      </Switch>
+    /* ===== HERO / ПЕРВЫЙ ЭКРАН ===== */
+    .hero {
+      padding: 40px 0 20px;
+      background: white;
+      border-bottom: 1px solid #e6edf5;
+    }
 
-      <Analytics />
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .hero-left h1 {
+      font-size: 38px;
+      font-weight: 700;
+      line-height: 1.2;
+      color: #0b2b5c;
+    }
+
+    .hero-left h1 i {
+      color: #f7b731;
+      margin-right: 8px;
+    }
+
+    .hero-left p {
+      font-size: 18px;
+      color: #334155;
+      margin: 16px 0 24px;
+      max-width: 500px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: #eaf4ff;
+      color: #0b2b5c;
+      font-weight: 600;
+      padding: 6px 18px;
+      border-radius: 40px;
+      font-size: 14px;
+      margin-bottom: 12px;
+    }
+
+    /* 4 КНОПКИ (вместо блоков) */
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px 20px;
+      margin-top: 28px;
+    }
+
+    .hero-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: #f1f6fc;
+      padding: 14px 28px;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 16px;
+      color: #0b2b5c;
+      text-decoration: none;
+      transition: 0.2s;
+      border: 1px solid transparent;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+      flex: 1 0 auto;
+      min-width: 180px;
+      justify-content: center;
+    }
+
+    .hero-btn i {
+      font-size: 20px;
+      color: #f7b731;
+    }
+
+    .hero-btn:hover {
+      background: #e3edf9;
+      border-color: #cbddee;
+      transform: translateY(-2px);
+    }
+
+    .hero-btn.primary {
+      background: #0b2b5c;
+      color: white;
+    }
+
+    .hero-btn.primary i {
+      color: #f7b731;
+    }
+
+    .hero-btn.primary:hover {
+      background: #1a3d72;
+    }
+
+    /* правый блок: "Позвонить / Написать в Telegram" */
+    .hero-right {
+      background: #f2f7fe;
+      border-radius: 30px;
+      padding: 28px 30px;
+      box-shadow: 0 8px 20px rgba(11,43,92,0.06);
+    }
+
+    .hero-right .cta-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+    }
+
+    .hero-right .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: white;
+      padding: 16px 28px;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 18px;
+      color: #0b2b5c;
+      text-decoration: none;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+      border: 1px solid #dbe7f2;
+      transition: 0.2s;
+      flex: 1 1 auto;
+      justify-content: center;
+    }
+
+    .hero-right .cta-btn i {
+      font-size: 22px;
+      color: #f7b731;
+    }
+
+    .hero-right .cta-btn.telegram {
+      background: #0b2b5c;
+      color: white;
+      border-color: #0b2b5c;
+    }
+
+    .hero-right .cta-btn.telegram i {
+      color: #f7b731;
+    }
+
+    .hero-right .cta-btn.telegram:hover {
+      background: #1a3d72;
+    }
+
+    .hero-right .cta-btn:hover {
+      background: #e9f0f8;
+    }
+
+    .hero-right .subnote {
+      margin-top: 16px;
+      font-size: 14px;
+      color: #4b5b6e;
+      text-align: center;
+      border-top: 1px dashed #cddcec;
+      padding-top: 16px;
+    }
+
+    /* ===== УСЛУГИ (ремонт окон и т.д.) ===== */
+    .services {
+      padding: 50px 0 30px;
+      background: white;
+    }
+
+    .services h2 {
+      font-size: 30px;
+      font-weight: 700;
+      color: #0b2b5c;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .services h2 i {
+      color: #f7b731;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 24px;
+      margin-top: 12px;
+    }
+
+    .service-item {
+      background: #f8fcff;
+      padding: 20px 16px;
+      border-radius: 20px;
+      text-align: center;
+      border: 1px solid #eaf1f9;
+      transition: 0.2s;
+    }
+
+    .service-item i {
+      font-size: 34px;
+      color: #0b2b5c;
+      background: #e2edfa;
+      padding: 14px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+      display: inline-block;
+    }
+
+    .service-item h4 {
+      font-weight: 600;
+      font-size: 18px;
+    }
+
+    .service-item p {
+      font-size: 14px;
+      color: #4b5b6e;
+      margin-top: 6px;
+    }
+
+    .more-link {
+      display: inline-block;
+      margin-top: 20px;
+      font-weight: 600;
+      color: #0b2b5c;
+      text-decoration: none;
+      border-bottom: 2px solid #f7b731;
+      padding-bottom: 2px;
+    }
+
+    /* ===== ФОРМА ЗАЯВКИ ===== */
+    .form-section {
+      padding: 40px 0;
+      background: #f2f7fe;
+    }
+
+    .form-card {
+      max-width: 700px;
+      margin: 0 auto;
+      background: white;
+      padding: 40px 36px;
+      border-radius: 36px;
+      box-shadow: 0 12px 30px rgba(11,43,92,0.06);
+    }
+
+    .form-card h2 {
+      font-size: 28px;
+      font-weight: 700;
+      color: #0b2b5c;
+      margin-bottom: 8px;
+    }
+
+    .form-card .sub {
+      color: #4b5b6e;
+      margin-bottom: 24px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      font-weight: 500;
+      display: block;
+      margin-bottom: 6px;
+      color: #1e293b;
+    }
+
+    .form-group input, .form-group select {
+      width: 100%;
+      padding: 14px 18px;
+      border: 1px solid #dce6f0;
+      border-radius: 30px;
+      font-size: 16px;
+      background: #fafcff;
+      transition: 0.2s;
+    }
+
+    .form-group input:focus {
+      border-color: #0b2b5c;
+      outline: none;
+      background: white;
+      box-shadow: 0 0 0 4px rgba(11,43,92,0.05);
+    }
+
+    .form-btn {
+      background: #0b2b5c;
+      color: white;
+      border: none;
+      padding: 16px 32px;
+      font-size: 18px;
+      font-weight: 600;
+      border-radius: 60px;
+      width: 100%;
+      cursor: pointer;
+      transition: 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .form-btn i {
+      color: #f7b731;
+    }
+
+    .form-btn:hover {
+      background: #1a3d72;
+      transform: scale(1.01);
+    }
+
+    .form-agree {
+      font-size: 13px;
+      color: #6b7b8e;
+      margin-top: 16px;
+      text-align: center;
+    }
+
+    /* ===== ОТЗЫВЫ ===== */
+    .reviews {
+      padding: 50px 0 30px;
+      background: white;
+    }
+
+    .reviews h2 {
+      font-size: 30px;
+      font-weight: 700;
+      color: #0b2b5c;
+      margin-bottom: 28px;
+    }
+
+    .review-card {
+      background: #f8fcff;
+      border-radius: 24px;
+      padding: 24px 28px;
+      border: 1px solid #eaf1f9;
+      max-width: 500px;
+    }
+
+    .review-card .stars {
+      color: #f7b731;
+      letter-spacing: 2px;
+      font-size: 18px;
+    }
+
+    .review-card .name {
+      font-weight: 600;
+      font-size: 18px;
+      margin: 6px 0 4px;
+    }
+
+    .review-card .text {
+      color: #2d3a4f;
+      line-height: 1.5;
+      margin: 8px 0;
+    }
+
+    .review-card .verified {
+      color: #0e7b3a;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .review-card .verified i {
+      margin-right: 4px;
+    }
+
+    .reviews-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+
+    /* ===== ГАЛЕРЕЯ (5 фото) ===== */
+    .gallery {
+      padding: 40px 0 30px;
+      background: #f2f7fe;
+    }
+
+    .gallery h2 {
+      font-size: 30px;
+      font-weight: 700;
+      color: #0b2b5c;
+      margin-bottom: 24px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+    }
+
+    .gallery-item {
+      aspect-ratio: 1/1;
+      background: #cbddee;
+      border-radius: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      color: #0b2b5c;
+      font-weight: 500;
+      background-image: linear-gradient(145deg, #dce6f0, #b8cde0);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+      transition: 0.2s;
+      border: 2px solid white;
+    }
+
+    .gallery-item i {
+      font-size: 42px;
+      color: #0b2b5c;
+      opacity: 0.5;
+    }
+
+    .gallery-item span {
+      background: rgba(255,255,255,0.7);
+      padding: 4px 12px;
+      border-radius: 40px;
+      font-size: 12px;
+    }
+
+    /* ===== ПРЕИМУЩЕСТВА (ПОЧЕМУ МЫ) ===== */
+    .why-us {
+      padding: 50px 0 30px;
+      background: white;
+    }
+
+    .why-us h2 {
+      font-size: 30px;
+      font-weight: 700;
+      color: #0b2b5c;
+      margin-bottom: 30px;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+    }
+
+    .why-item {
+      background: #f8fcff;
+      padding: 24px 20px;
+      border-radius: 28px;
+      border: 1px solid #eaf1f9;
+      text-align: center;
+    }
+
+    .why-item i {
+      font-size: 32px;
+      color: #f7b731;
+      background: #eaf4ff;
+      padding: 14px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+    }
+
+    .why-item h4 {
+      font-weight: 700;
+      font-size: 20px;
+      margin-bottom: 4px;
+    }
+
+    .why-item p {
+      color: #4b5b6e;
+    }
+
+    /* ===== ГОТОВЫ СДЕЛАТЬ ЗАКАЗ ===== */
+    .cta-final {
+      padding: 50px 0 30px;
+      background: #0b2b5c;
+      color: white;
+      text-align: center;
+    }
+
+    .cta-final h2 {
+      font-size: 34px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .cta-final p {
+      font-size: 18px;
+      opacity: 0.9;
+      margin-bottom: 28px;
+    }
+
+    .cta-final .final-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .cta-final .final-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      background: white;
+      color: #0b2b5c;
+      padding: 16px 34px;
+      border-radius: 60px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 20px;
+      transition: 0.2s;
+    }
+
+    .cta-final .final-links a i {
+      color: #f7b731;
+      font-size: 24px;
+    }
+
+    .cta-final .final-links a.telegram {
+      background: #f7b731;
+      color: #0b2b5c;
+    }
+
+    .cta-final .final-links a.telegram i {
+      color: #0b2b5c;
+    }
+
+    .cta-final .final-links a:hover {
+      transform: scale(1.04);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      background: #061f41;
+      padding: 24px 0;
+      color: rgba(255,255,255,0.7);
+      border-top: 1px solid #1a3d72;
+    }
+
+    .footer .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer .copy {
+      font-size: 14px;
+    }
+
+    .footer .copy strong {
+      color: white;
+      font-weight: 500;
+    }
+
+    .footer .footer-logo {
+      color: white;
+      font-weight: 600;
+      font-size: 18px;
+    }
+
+    .footer .footer-logo i {
+      color: #f7b731;
+      margin-right: 6px;
+    }
+
+    /* адаптив */
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+      .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero-left h1 { font-size: 28px; }
+      .hero-actions { flex-direction: column; }
+      .hero-right .cta-line { flex-direction: column; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .form-card { padding: 28px 18px; }
+      .cta-final h2 { font-size: 26px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container">
+      <div class="logo-area">
+        <i class="fas fa-shield-alt logo-icon"></i>
+        <div class="logo-text">Moskitki.<span>uz</span></div>
+      </div>
+      <div class="lang-switch">
+        <a href="#" class="active">Русский</a>
+        <a href="#">O'zbekcha</a>
+        <span class="header-tag">Ташкент с 2019</span>
+      </div>
     </div>
-  );
-}
+  </header>
+
+  <!-- HERO (1-й экран: убраны 4 блока, теперь кнопки + позвонить/телеграм) -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-left">
+        <div class="hero-badge"><i class="fas fa-tag"></i> Скидки до 20%</div>
+        <h1><i class="fas fa-wind"></i> Москитные сетки, жалюзи, ремонт окон</h1>
+        <p>Монтаж кондиционеров в Ташкенте. Бесплатный замер, гарантия 1 год.</p>
+        <!-- 4 кнопки вместо блоков -->
+        <div class="hero-actions">
+          <a href="#" class="hero-btn"><i class="fas fa-ruler"></i> Бесплатный замер</a>
+          <a href="#" class="hero-btn"><i class="fas fa-check-circle"></i> Гарантия 1 год</a>
+          <a href="#" class="hero-btn"><i class="fas fa-clock"></i> Изготовление за 3 дня</a>
+          <a href="#" class="hero-btn"><i class="fas fa-user-friends"></i> 8200+ клиентов</a>
+        </div>
+      </div>
+      <div class="hero-right">
+        <!-- Только "Позвонить" и "Написать в Telegram", без "почему мы" -->
+        <div class="cta-line">
+          <a href="tel:+998990550660" class="cta-btn"><i class="fas fa-phone-alt"></i> Позвонить</a>
+          <a href="#" class="cta-btn telegram"><i class="fab fa-telegram-plane"></i> Написать в Telegram</a>
+        </div>
+        <div class="subnote">
+          <i class="fas fa-shield-alt" style="color:#0b2b5c;"></i> Бесплатный выезд мастера
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- УСЛУГИ (ремонт окон и пр.) -->
+  <section class="services">
+    <div class="container">
+      <h2><i class="fas fa-tools"></i> Ремонт окон</h2>
+      <div class="service-grid">
+        <div class="service-item">
+          <i class="fas fa-window-restore"></i>
+          <h4>Ремонт окон</h4>
+          <p>Замена фурнитуры, уплотнителей</p>
+        </div>
+        <div class="service-item">
+          <i class="fas fa-mosquito-net"></i>
+          <h4>Москитные сетки</h4>
+          <p>Любые размеры, рамные и рулонные</p>
+        </div>
+        <div class="service-item">
+          <i class="fas fa-blinds"></i>
+          <h4>Жалюзи</h4>
+          <p>Вертикальные, горизонтальные</p>
+        </div>
+        <div class="service-item">
+          <i class="fas fa-snowflake"></i>
+          <h4>Кондиционеры</h4>
+          <p>Монтаж, демонтаж, заправка</p>
+        </div>
+      </div>
+      <a href="#" class="more-link">Все услуги <i class="fas fa-arrow-right"></i></a>
+    </div>
+  </section>
+
+  <!-- ФОРМА ЗАЯВКИ (после ремонт окон) -->
+  <section class="form-section">
+    <div class="container">
+      <div class="form-card">
+        <h2><i class="fas fa-pencil-alt" style="color:#f7b731;"></i> Оставьте заявку</h2>
+        <p class="sub">Мы перезвоним в течение 15 минут</p>
+        <form>
+          <div class="form-group">
+            <label>Услуга</label>
+            <select>
+              <option>Монтаж, демонтаж и заправка кондиционера</option>
+              <option>Москитная сетка</option>
+              <option>Ремонт окон</option>
+              <option>Жалюзи</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Ваше имя</label>
+            <input type="text" placeholder="Дильноза" value="Дильноза">
+          </div>
+          <div class="form-group">
+            <label>Номер телефона</label>
+            <input type="tel" placeholder="+998 99 055 06 60" value="+998">
+          </div>
+          <button type="submit" class="form-btn"><i class="fas fa-paper-plane"></i> Отправить заявку</button>
+          <div class="form-agree">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных</div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ОТЗЫВЫ -->
+  <section class="reviews">
+    <div class="container">
+      <h2><i class="fas fa-star" style="color:#f7b731;"></i> Отзывы</h2>
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <div class="name">Анна К.</div>
+          <div class="text">Заказала москитную сетку, приехали на следующий день, всё аккуратно установили. Рекомендую!</div>
+          <div class="verified"><i class="fas fa-check-circle"></i> Проверенный отзыв</div>
+        </div>
+        <!-- можно добавить ещё отзывы, но оставим один как на фото -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ГАЛЕРЕЯ (5 фото команды / продуктов) -->
+  <section class="gallery">
+    <div class="container">
+      <h2><i class="fas fa-images" style="color:#f7b731;"></i> Наша команда и работы</h2>
+      <div class="gallery-grid">
+        <div class="gallery-item"><i class="fas fa-users"></i><span>Команда</span></div>
+        <div class="gallery-item"><i class="fas fa-window-maximize"></i><span>Сетки</span></div>
+        <div class="gallery-item"><i class="fas fa-tools"></i><span>Монтаж</span></div>
+        <div class="gallery-item"><i class="fas fa-blinds"></i><span>Жалюзи</span></div>
+        <div class="gallery-item"><i class="fas fa-snowflake"></i><span>Кондиционеры</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ПОЧЕМУ МЫ (преимущества) -->
+  <section class="why-us">
+    <div class="container">
+      <h2><i class="fas fa-medal" style="color:#f7b731;"></i> Почему мы</h2>
+      <div class="why-grid">
+        <div class="why-item">
+          <i class="fas fa-industry"></i>
+          <h4>Свое производство</h4>
+          <p>Собственный цех в Ташкенте</p>
+        </div>
+        <div class="why-item">
+          <i class="fas fa-check-double"></i>
+          <h4>Качество материала</h4>
+          <p>Только проверенные поставщики</p>
+        </div>
+        <div class="why-item">
+          <i class="fas fa-user-graduate"></i>
+          <h4>Квалифицированные сотрудники</h4>
+          <p>Опыт от 5 лет, сертификаты</p>
+        </div>
+        <div class="why-item">
+          <i class="fas fa-clock"></i>
+          <h4>Скорость</h4>
+          <p>Изготовление от 3 дней</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ГОТОВЫ СДЕЛАТЬ ЗАКАЗ? -->
+  <section class="cta-final">
+    <div class="container">
+      <h2>Готовы сделать заказ?</h2>
+      <p>Позвоните или напишите нам в Telegram – мы ответим на все вопросы.</p>
+      <div class="final-links">
+        <a href="tel:+998990550660"><i class="fas fa-phone-alt"></i> +998 99 055 06 60</a>
+        <a href="#" class="telegram"><i class="fab fa-telegram-plane"></i> Написать в Telegram</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ФУТЕР -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-logo"><i class="fas fa-shield-alt"></i> Moskitki.uz</div>
+      <div class="copy">© 2019 – 2026 — Toshkent</div>
+    </div>
+  </footer>
+</body>
+</html>
