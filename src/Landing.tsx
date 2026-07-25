@@ -17,6 +17,7 @@ import {
   Droplets,
   Menu,
 } from "lucide-react";
+import { Analytics } from '@vercel/analytics/react';
 
 const PHONE_NUMBER = "+998 99 055 06 60";
 const PHONE_LINK = "tel:+998990550660";
@@ -473,6 +474,9 @@ export default function Landing() {
       <footer className="text-center text-gray-500 text-sm py-6 border-t border-gray-200 bg-white">
         Moskitki.uz © 2019 – {new Date().getFullYear()} — {t("Toshkent")}
       </footer>
+
+      {/* Vercel Analytics */}
+      <Analytics />
     </div>
   );
 }
