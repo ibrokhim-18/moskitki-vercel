@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Кондиционеры | Moskitki.uz</title>
+  <meta property="og:title" content="Кондиционеры — Moskitki.uz" />
+  <meta property="og:description" content="Монтаж, демонтаж, заправка фреона в Ташкенте. Цены от 200 000 сум. Бесплатный выезд мастера." />
+  <meta property="og:image" content="https://moskitki.uz/images/logo.png" />
+  <meta property="og:url" content="https://moskitki.uz/konditsionery.html" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Кондиционеры — Moskitki.uz" />
+  <meta name="twitter:description" content="Услуги по кондиционерам в Ташкенте." />
+  <meta name="twitter:image" content="https://moskitki.uz/images/logo.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* все стили – такие же, как на предыдущих страницах, я их не дублирую для краткости */
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, system-ui, sans-serif; }
+    body { background: #f8faff; color: #1e293b; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+    .header { background: #0b2b5c; color: #fff; padding: 16px 0; border-bottom: 3px solid #f7b731; }
+    .header .container { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; }
+    .logo-area { display: flex; align-items: center; gap: 12px; }
+    .logo-text { font-weight: 700; font-size: 24px; letter-spacing: -0.5px; display: flex; align-items: center; gap: 10px; }
+    .logo-text span { color: #f7b731; }
+    .logo-text img { height: 36px; width: auto; border-radius: 8px; }
+    .lang-switch { display: flex; gap: 8px; font-size: 14px; font-weight: 500; background: rgba(255,255,255,0.08); padding: 6px 14px; border-radius: 40px; flex-wrap: wrap; align-items: center; }
+    .lang-switch a { color: rgba(255,255,255,0.7); text-decoration: none; transition: .2s; display: flex; align-items: center; gap: 5px; font-size: 15px; cursor: pointer; }
+    .lang-switch a.active { color: #fff; font-weight: 600; }
+    .lang-switch a .flag { font-size: 20px; line-height: 1; }
+    .header-tag { font-size: 14px; background: #1d3d72; padding: 6px 14px; border-radius: 40px; display: inline-block; font-weight: 400; }
+    .services { padding: 50px 0 30px; background: #fff; }
+    .services h2 { font-size: 30px; font-weight: 700; color: #0b2b5c; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+    .services h2 i { color: #f7b731; }
+    .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; margin-top: 12px; }
+    .service-item { background: #f8fcff; padding: 20px 16px; border-radius: 20px; text-align: center; border: 1px solid #eaf1f9; text-decoration: none; color: inherit; transition: .2s; display: block; }
+    .service-item:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(0,0,0,.05); }
+    .service-item img { width: 100%; aspect-ratio: 946 / 1367; object-fit: cover; border-radius: 16px; margin-bottom: 12px; background: #dce6f0; }
+    .service-item h4 { font-weight: 600; font-size: 18px; }
+    .service-item p { font-size: 14px; color: #4b5b6e; margin-top: 6px; }
+    .service-item .price { font-size: 18px; font-weight: 700; color: #0b2b5c; margin-top: 8px; display: inline-block; background: #eaf4ff; padding: 6px 16px; border-radius: 30px; }
+    .more-link { display: inline-block; margin-top: 20px; font-weight: 600; color: #0b2b5c; text-decoration: none; border-bottom: 2px solid #f7b731; padding-bottom: 2px; }
+    .form-section { padding: 40px 0; background: #f2f7fe; }
+    .form-card { max-width: 700px; margin: 0 auto; background: #fff; padding: 40px 36px; border-radius: 36px; box-shadow: 0 12px 30px rgba(11,43,92,.06); }
+    .form-card h2 { font-size: 28px; font-weight: 700; color: #0b2b5c; margin-bottom: 8px; }
+    .form-card .sub { color: #4b5b6e; margin-bottom: 24px; }
+    .form-group { margin-bottom: 20px; }
+    .form-group label { font-weight: 500; display: block; margin-bottom: 6px; color: #1e293b; }
+    .form-group input, .form-group select { width: 100%; padding: 14px 18px; border: 1px solid #dce6f0; border-radius: 30px; font-size: 16px; background: #fafcff; transition: .2s; }
+    .form-group input:focus { border-color: #0b2b5c; outline: none; background: #fff; box-shadow: 0 0 0 4px rgba(11,43,92,.05); }
+    .form-btn { background: #0b2b5c; color: #fff; border: none; padding: 16px 32px; font-size: 18px; font-weight: 600; border-radius: 60px; width: 100%; cursor: pointer; transition: .2s; display: flex; align-items: center; justify-content: center; gap: 12px; }
+    .form-btn i { color: #f7b731; }
+    .form-btn:hover { background: #1a3d72; }
+    .form-agree { font-size: 13px; color: #6b7b8e; margin-top: 16px; text-align: center; }
+    .cta-final { padding: 40px 0; background: #0b2b5c; color: #fff; text-align: center; }
+    .cta-final h2 { font-size: 30px; font-weight: 700; margin-bottom: 12px; }
+    .cta-final p { font-size: 18px; opacity: .9; margin-bottom: 28px; }
+    .cta-final .final-links { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+    .cta-final .final-links a { display: inline-flex; align-items: center; gap: 14px; background: #fff; color: #0b2b5c; padding: 16px 34px; border-radius: 60px; text-decoration: none; font-weight: 600; font-size: 20px; transition: .2s; }
+    .cta-final .final-links a i { color: #f7b731; font-size: 24px; }
+    .cta-final .final-links a.telegram { background: #f7b731; color: #0b2b5c; }
+    .cta-final .final-links a.telegram i { color: #0b2b5c; }
+    .cta-final .final-links a:hover { transform: scale(1.04); }
+    .footer { background: #061f41; padding: 24px 0; color: rgba(255,255,255,.7); border-top: 1px solid #1a3d72; }
+    .footer .container { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; }
+    .footer .copy { font-size: 14px; }
+    .footer .footer-logo { color: #fff; font-weight: 600; font-size: 18px; display: flex; align-items: center; gap: 8px; }
+    .footer .footer-logo img { height: 28px; width: auto; border-radius: 6px; }
+    @media(max-width:600px){ .service-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="logo-area">
+        <div class="logo-text"><img src="/images/logo.png" alt="Логотип"> Moskitki.<span>uz</span></div>
+      </div>
+      <div class="lang-switch" id="langSwitcher">
+        <a data-lang="ru" class="active"><span class="flag">🇷🇺</span> RU</a>
+        <a data-lang="uz"><span class="flag">🇺🇿</span> UZ</a>
+        <a data-lang="en"><span class="flag">🇬🇧</span> EN</a>
+        <span class="header-tag" data-i18n="header-tag">Ташкент с 2019</span>
+      </div>
+    </div>
+  </header>
+
+  <section class="services">
+    <div class="container">
+      <h2><i class="fas fa-snowflake"></i> <span data-i18n="page-title">Кондиционеры</span></h2>
+      <p style="color:#4b5b6e;margin-bottom:20px;" data-i18n="subtitle">Выберите вид работ:</p>
+      <div class="service-grid">
+        <a href="?usluga=Монтаж" class="service-item">
+          <img src="/images/montazh.png" alt="Монтаж">
+          <h4 data-i18n="item1-title">Монтаж</h4>
+          <p data-i18n="item1-desc">Установка сплит-систем, прокладка трасс</p>
+          <span class="price" data-i18n="price1">от 350 000 сум</span>
+        </a>
+        <a href="?usluga=Демонтаж" class="service-item">
+          <img src="/images/demontazh.png" alt="Демонтаж">
+          <h4 data-i18n="item2-title">Демонтаж</h4>
+          <p data-i18n="item2-desc">Снятие, утилизация фреона</p>
+          <span class="price" data-i18n="price2">от 250 000 сум</span>
+        </a>
+        <a href="?usluga=Заправка фреона" class="service-item">
+          <img src="/images/zapravka.png" alt="Заправка фреона">
+          <h4 data-i18n="item3-title">Заправка фреона</h4>
+          <p data-i18n="item3-desc">Дозаправка, устранение утечек</p>
+          <span class="price" data-i18n="price3">от 200 000 сум</span>
+        </a>
+        <a href="?usluga=Ремонт кондиционера" class="service-item">
+          <img src="/images/remont-kond.png" alt="Ремонт">
+          <h4 data-i18n="item4-title">Ремонт</h4>
+          <p data-i18n="item4-desc">Диагностика, замена компрессора</p>
+          <!-- цена отсутствует -->
+        </a>
+      </div>
+      <div style="margin-top:30px;"><a href="index.html" class="more-link"><i class="fas fa-arrow-left"></i> <span data-i18n="back">На главную</span></a></div>
+    </div>
+  </section>
+
+  <!-- форма и скрипты – такие же, как на предыдущих страницах, только переводы свои -->
+  <section class="form-section">
+    <div class="container">
+      <div class="form-card">
+        <h2><i class="fas fa-pencil-alt" style="color:#f7b731;"></i> <span data-i18n="form-title">Оставьте заявку</span></h2>
+        <p class="sub" data-i18n="form-sub">Мы перезвоним в течение 15 минут</p>
+        <form id="orderForm">
+          <div class="form-group">
+            <label data-i18n="form-service">Услуга</label>
+            <select name="usluga" id="uslugaSelect">
+              <option value="Монтаж" data-i18n="form-opt1">Монтаж</option>
+              <option value="Демонтаж" data-i18n="form-opt2">Демонтаж</option>
+              <option value="Заправка фреона" data-i18n="form-opt3">Заправка фреона</option>
+              <option value="Ремонт кондиционера" data-i18n="form-opt4">Ремонт</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label data-i18n="form-name">Ваше имя</label>
+            <input type="text" name="name" placeholder="Ваше имя" required>
+          </div>
+          <div class="form-group">
+            <label data-i18n="form-phone">Номер телефона</label>
+            <div style="display: flex; align-items: center; border: 1px solid #dce6f0; border-radius: 30px; background: #fafcff; padding: 0 18px;">
+              <span style="font-weight: 600; color: #0b2b5c; padding-right: 6px;">+998</span>
+              <input type="tel" id="phoneInput" name="phone" placeholder="99 055 06 60" 
+                     style="border: none; outline: none; background: transparent; width: 100%; padding: 14px 0; font-size: 16px;"
+                     required pattern="[0-9]{9}" maxlength="9" title="Введите 9 цифр после +998">
+            </div>
+          </div>
+          <button type="submit" class="form-btn"><i class="fas fa-paper-plane"></i> <span data-i18n="form-submit">Отправить заявку</span></button>
+          <div class="form-agree" data-i18n="form-agree">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных</div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-final">
+    <div class="container">
+      <h2 data-i18n="cta-title">Готовы сделать заказ?</h2>
+      <p data-i18n="cta-desc">Позвоните или напишите нам в Telegram – мы ответим на все вопросы.</p>
+      <div class="final-links">
+        <a href="tel:+998990550660"><i class="fas fa-phone-alt"></i> +998 99 055 06 60</a>
+        <a href="https://t.me/moskitki_uz" class="telegram" target="_blank"><i class="fab fa-telegram-plane"></i> <span data-i18n="cta-telegram">Написать в Telegram</span></a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-logo"><img src="/images/logo.png" alt="Moskitki.uz"> Moskitki.uz</div>
+      <div class="copy">© 2019 – 2026 — Toshkent</div>
+    </div>
+  </footer>
+
+  <script>
+    // ===== ПЕРЕВОДЫ ДЛЯ КОНДИЦИОНЕРОВ =====
+    const translations = {
+      ru: {
+        "header-tag": "Ташкент с 2019",
+        "page-title": "Кондиционеры",
+        "subtitle": "Выберите вид работ:",
+        "item1-title": "Монтаж",
+        "item1-desc": "Установка сплит-систем, прокладка трасс",
+        "price1": "от 350 000 сум",
+        "item2-title": "Демонтаж",
+        "item2-desc": "Снятие, утилизация фреона",
+        "price2": "от 250 000 сум",
+        "item3-title": "Заправка фреона",
+        "item3-desc": "Дозаправка, устранение утечек",
+        "price3": "от 200 000 сум",
+        "item4-title": "Ремонт",
+        "item4-desc": "Диагностика, замена компрессора",
+        "back": "На главную",
+        "form-title": "Оставьте заявку",
+        "form-sub": "Мы перезвоним в течение 15 минут",
+        "form-service": "Услуга",
+        "form-opt1": "Монтаж",
+        "form-opt2": "Демонтаж",
+        "form-opt3": "Заправка фреона",
+        "form-opt4": "Ремонт",
+        "form-name": "Ваше имя",
+        "form-phone": "Номер телефона",
+        "form-submit": "Отправить заявку",
+        "form-agree": "Нажимая кнопку, вы соглашаетесь с обработкой персональных данных",
+        "cta-title": "Готовы сделать заказ?",
+        "cta-desc": "Позвоните или напишите нам в Telegram – мы ответим на все вопросы.",
+        "cta-telegram": "Написать в Telegram"
+      },
+      uz: {
+        "header-tag": "Toshkent 2019 dan",
+        "page-title": "Konditsionerlar",
+        "subtitle": "Ish turini tanlang:",
+        "item1-title": "O‘rnatish",
+        "item1-desc": "Split-tizimlarni o‘rnatish, trassalarni yotqizish",
+        "price1": "350 000 so‘mdan",
+        "item2-title": "Demontaj",
+        "item2-desc": "Olib tashlash, freonni utilizatsiya qilish",
+        "price2": "250 000 so‘mdan",
+        "item3-title": "Freon quyish",
+        "item3-desc": "Qo‘shimcha to‘ldirish, oqishlarni bartaraf etish",
+        "price3": "200 000 so‘mdan",
+        "item4-title": "Ta'mirlash",
+        "item4-desc": "Diagnostika, kompressorni almashtirish",
+        "back": "Bosh sahifaga",
+        "form-title": "Ariza qoldiring",
+        "form-sub": "15 daqiqa ichida qayta qo‘ng‘iroq qilamiz",
+        "form-service": "Xizmat",
+        "form-opt1": "O‘rnatish",
+        "form-opt2": "Demontaj",
+        "form-opt3": "Freon quyish",
+        "form-opt4": "Ta'mirlash",
+        "form-name": "Ismingiz",
+        "form-phone": "Telefon raqam",
+        "form-submit": "Arizani yuborish",
+        "form-agree": "Tugmani bosish orqali siz shaxsiy ma'lumotlarni qayta ishlashga rozilik bildirasiz",
+        "cta-title": "Buyurtma berishga tayyormisiz?",
+        "cta-desc": "Qo‘ng‘iroq qiling yoki Telegramda yozing – barcha savollarga javob beramiz.",
+        "cta-telegram": "Telegramda yozish"
+      },
+      en: {
+        "header-tag": "Tashkent since 2019",
+        "page-title": "Air conditioners",
+        "subtitle": "Select type of work:",
+        "item1-title": "Installation",
+        "item1-desc": "Installation of split systems, routing",
+        "price1": "from 350,000 UZS",
+        "item2-title": "Dismantling",
+        "item2-desc": "Removal, refrigerant disposal",
+        "price2": "from 250,000 UZS",
+        "item3-title": "Refrigerant charging",
+        "item3-desc": "Recharging, leak repair",
+        "price3": "from 200,000 UZS",
+        "item4-title": "Repair",
+        "item4-desc": "Diagnostics, compressor replacement",
+        "back": "Main page",
+        "form-title": "Leave a request",
+        "form-sub": "We will call you back within 15 minutes",
+        "form-service": "Service",
+        "form-opt1": "Installation",
+        "form-opt2": "Dismantling",
+        "form-opt3": "Refrigerant charging",
+        "form-opt4": "Repair",
+        "form-name": "Your name",
+        "form-phone": "Phone number",
+        "form-submit": "Submit request",
+        "form-agree": "By clicking the button, you agree to the processing of personal data",
+        "cta-title": "Ready to order?",
+        "cta-desc": "Call or write to Telegram – we will answer all questions.",
+        "cta-telegram": "Write to Telegram"
+      }
+    };
+
+    let currentLang = 'ru';
+    function setLanguage(lang) {
+      currentLang = lang;
+      document.querySelectorAll('.lang-switch a[data-lang]').forEach(el => {
+        el.classList.toggle('active', el.dataset.lang === lang);
+      });
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.dataset.i18n;
+        if (translations[lang] && translations[lang][key]) {
+          el.textContent = translations[lang][key];
+        }
+      });
+      localStorage.setItem('lang', lang);
+    }
+    document.querySelectorAll('.lang-switch a[data-lang]').forEach(el => {
+      el.addEventListener('click', function(e) {
+        e.preventDefault();
+        setLanguage(this.dataset.lang);
+      });
+    });
+    const savedLang = localStorage.getItem('lang') || 'ru';
+    setLanguage(savedLang);
+
+    document.getElementById('phoneInput')?.addEventListener('input', function(e) {
+      this.value = this.value.replace(/\D/g, '').slice(0, 9);
+    });
+
+    document.getElementById('orderForm')?.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+      const data = {
+        usluga: formData.get('usluga'),
+        name: formData.get('name'),
+        phone: '+998' + formData.get('phone')
+      };
+      try {
+        const response = await fetch('/api/order', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        const result = await response.json();
+        if (response.ok) {
+          alert('✅ Заявка отправлена! Мы свяжемся с вами.');
+          this.reset();
+          document.getElementById('phoneInput').value = '';
+        } else {
+          alert('❌ Ошибка: ' + (result.error || 'Неизвестная ошибка'));
+        }
+      } catch (err) {
+        alert('❌ Не удалось отправить заявку. Попробуйте позже.');
+      }
+    });
+
+    (function() {
+      const params = new URLSearchParams(window.location.search);
+      const usluga = params.get('usluga');
+      if (usluga) {
+        const select = document.getElementById('uslugaSelect');
+        if (select) {
+          let found = false;
+          for (let option of select.options) {
+            if (option.value === usluga) {
+              option.selected = true;
+              found = true;
+              break;
+            }
+          }
+          if (!found) {
+            const newOpt = document.createElement('option');
+            newOpt.value = usluga;
+            newOpt.textContent = usluga;
+            newOpt.selected = true;
+            select.appendChild(newOpt);
+          }
+          setTimeout(() => {
+            const formCard = document.querySelector('.form-card');
+            if (formCard) {
+              formCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+          }, 300);
+        }
+      }
+    })();
+  </script>
+</body>
+</html>
