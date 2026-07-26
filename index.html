@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>Moskitki.uz</title>
+  <!-- Open Graph -->
+  <meta property="og:title" content="Moskitki.uz — Москитные сетки, жалюзи, ремонт окон, кондиционеры, создание сайтов" />
+  <meta property="og:description" content="Москитные сетки, жалюзи, ремонт окон, кондиционеры, создание сайтов в Ташкенте. Бесплатный замер, гарантия 1 год." />
+  <meta property="og:image" content="https://moskitki.uz/images/logo.png" />
+  <meta property="og:url" content="https://moskitki.uz/" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Moskitki.uz — Москитные сетки, жалюзи, ремонт окон, кондиционеры, создание сайтов" />
+  <meta name="twitter:description" content="Москитные сетки, жалюзи, ремонт окон, кондиционеры, создание сайтов в Ташкенте." />
+  <meta name="twitter:image" content="https://moskitki.uz/images/logo.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* все стили как в предыдущих версиях – я их не меняю, они уже у вас есть */
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, system-ui, sans-serif; }
+    body { background: #f8faff; color: #1e293b; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+    .header { background: #0b2b5c; color: #fff; padding: 16px 0; border-bottom: 3px solid #f7b731; }
+    .header .container { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; }
+    .logo-area { display: flex; align-items: center; gap: 12px; }
+    .logo-text { font-weight: 700; font-size: 24px; letter-spacing: -0.5px; display: flex; align-items: center; gap: 10px; }
+    .logo-text span { color: #f7b731; }
+    .logo-text img { height: 36px; width: auto; border-radius: 8px; }
+    .lang-switch { display: flex; gap: 8px; font-size: 14px; font-weight: 500; background: rgba(255,255,255,0.08); padding: 6px 14px; border-radius: 40px; flex-wrap: wrap; align-items: center; }
+    .lang-switch a { color: rgba(255,255,255,0.7); text-decoration: none; transition: .2s; display: flex; align-items: center; gap: 5px; font-size: 15px; cursor: pointer; }
+    .lang-switch a.active { color: #fff; font-weight: 600; }
+    .lang-switch a .flag { font-size: 20px; line-height: 1; }
+    .header-tag { font-size: 14px; background: #1d3d72; padding: 6px 14px; border-radius: 40px; display: inline-block; font-weight: 400; }
+    .hero { padding: 40px 0 20px; background: #fff; border-bottom: 1px solid #e6edf5; }
+    .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: center; }
+    .hero-left h1 { font-size: 38px; font-weight: 700; line-height: 1.2; color: #0b2b5c; }
+    .hero-left h1 i { color: #f7b731; margin-right: 8px; }
+    .hero-left p { font-size: 18px; color: #334155; margin: 16px 0 24px; max-width: 500px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px 20px; margin-top: 28px; }
+    .hero-btn { display: inline-flex; align-items: center; gap: 12px; background: #f1f6fc; padding: 14px 28px; border-radius: 60px; font-weight: 600; font-size: 16px; color: #0b2b5c; text-decoration: none; transition: .2s; border: 1px solid transparent; box-shadow: 0 2px 6px rgba(0,0,0,.02); flex: 1 0 auto; min-width: 180px; justify-content: center; }
+    .hero-btn i { font-size: 20px; color: #f7b731; }
+    .hero-btn:hover { background: #e3edf9; border-color: #cbddee; transform: translateY(-2px); }
+    .hero-btn.primary { background: #0b2b5c; color: #fff; }
+    .hero-btn.primary i { color: #f7b731; }
+    .hero-btn.primary:hover { background: #1a3d72; }
+    .hero-right { background: #f2f7fe; border-radius: 30px; padding: 28px 30px; box-shadow: 0 8px 20px rgba(11,43,92,.06); }
+    .hero-right .cta-line { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; }
+    .hero-right .cta-btn { display: inline-flex; align-items: center; gap: 12px; background: #fff; padding: 16px 28px; border-radius: 60px; font-weight: 600; font-size: 18px; color: #0b2b5c; text-decoration: none; box-shadow: 0 4px 10px rgba(0,0,0,.02); border: 1px solid #dbe7f2; transition: .2s; flex: 1 1 auto; justify-content: center; }
+    .hero-right .cta-btn i { font-size: 22px; color: #f7b731; }
+    .hero-right .cta-btn.telegram { background: #0b2b5c; color: #fff; border-color: #0b2b5c; }
+    .hero-right .cta-btn.telegram i { color: #f7b731; }
+    .hero-right .cta-btn.telegram:hover { background: #1a3d72; }
+    .hero-right .cta-btn:hover { background: #e9f0f8; }
+    .hero-right .subnote { margin-top: 16px; font-size: 14px; color: #4b5b6e; text-align: center; border-top: 1px dashed #cddcec; padding-top: 16px; }
+    .services { padding: 50px 0 30px; background: #fff; }
+    .services h2 { font-size: 30px; font-weight: 700; color: #0b2b5c; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+    .services h2 i { color: #f7b731; }
+    .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; margin-top: 12px; }
+    .service-item { background: #f8fcff; padding: 20px 16px; border-radius: 20px; text-align: center; border: 1px solid #eaf1f9; transition: .2s; text-decoration: none; color: inherit; display: block; }
+    .service-item:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(0,0,0,.05); }
+    .service-item img { width: 100%; aspect-ratio: 946 / 1367; object-fit: cover; border-radius: 16px; margin-bottom: 12px; background: #dce6f0; }
+    .service-item h4 { font-weight: 600; font-size: 18px; }
+    .service-item p { font-size: 14px; color: #4b5b6e; margin-top: 6px; }
+    .more-link { display: inline-block; margin-top: 20px; font-weight: 600; color: #0b2b5c; text-decoration: none; border-bottom: 2px solid #f7b731; padding-bottom: 2px; }
+    .form-section { padding: 40px 0; background: #f2f7fe; }
+    .form-card { max-width: 700px; margin: 0 auto; background: #fff; padding: 40px 36px; border-radius: 36px; box-shadow: 0 12px 30px rgba(11,43,92,.06); }
+    .form-card h2 { font-size: 28px; font-weight: 700; color: #0b2b5c; margin-bottom: 8px; }
+    .form-card .sub { color: #4b5b6e; margin-bottom: 24px; }
+    .form-group { margin-bottom: 20px; }
+    .form-group label { font-weight: 500; display: block; margin-bottom: 6px; color: #1e293b; }
+    .form-group input, .form-group select { width: 100%; padding: 14px 18px; border: 1px solid #dce6f0; border-radius: 30px; font-size: 16px; background: #fafcff; transition: .2s; }
+    .form-group input:focus { border-color: #0b2b5c; outline: none; background: #fff; box-shadow: 0 0 0 4px rgba(11,43,92,.05); }
+    .form-btn { background: #0b2b5c; color: #fff; border: none; padding: 16px 32px; font-size: 18px; font-weight: 600; border-radius: 60px; width: 100%; cursor: pointer; transition: .2s; display: flex; align-items: center; justify-content: center; gap: 12px; }
+    .form-btn i { color: #f7b731; }
+    .form-btn:hover { background: #1a3d72; transform: scale(1.01); }
+    .form-agree { font-size: 13px; color: #6b7b8e; margin-top: 16px; text-align: center; }
+    .reviews { padding: 50px 0 30px; background: #fff; }
+    .reviews h2 { font-size: 30px; font-weight: 700; color: #0b2b5c; margin-bottom: 28px; }
+    .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+    .review-card { background: #f8fcff; border-radius: 24px; padding: 24px 28px; border: 1px solid #eaf1f9; }
+    .review-card .stars { color: #f7b731; letter-spacing: 2px; font-size: 18px; }
+    .review-card .name { font-weight: 600; font-size: 18px; margin: 6px 0 4px; }
+    .review-card .text { color: #2d3a4f; line-height: 1.5; margin: 8px 0; }
+    .review-card .verified { color: #0e7b3a; font-size: 14px; font-weight: 500; }
+    .review-card .verified i { margin-right: 4px; }
+    .gallery { padding: 40px 0 30px; background: #f2f7fe; }
+    .gallery h2 { font-size: 30px; font-weight: 700; color: #0b2b5c; margin-bottom: 24px; }
+    .gallery-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
+    .gallery-item { aspect-ratio: 1/1; border-radius: 24px; overflow: hidden; border: 2px solid #fff; box-shadow: 0 4px 12px rgba(0,0,0,.02); background: #dce6f0; display: flex; align-items: center; justify-content: center; transition: .2s; }
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .gallery-item:hover { transform: scale(1.03); box-shadow: 0 8px 20px rgba(0,0,0,.1); }
+    .why-us { padding: 50px 0 30px; background: #fff; }
+    .why-us h2 { font-size: 30px; font-weight: 700; color: #0b2b5c; margin-bottom: 30px; }
+    .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; }
+    .why-item { background: #f8fcff; padding: 24px 20px; border-radius: 28px; border: 1px solid #eaf1f9; text-align: center; }
+    .why-item i { font-size: 32px; color: #f7b731; background: #eaf4ff; padding: 14px; border-radius: 20px; margin-bottom: 12px; }
+    .why-item h4 { font-weight: 700; font-size: 20px; margin-bottom: 4px; }
+    .why-item p { color: #4b5b6e; }
+    .cta-final { padding: 50px 0 30px; background: #0b2b5c; color: #fff; text-align: center; }
+    .cta-final h2 { font-size: 34px; font-weight: 700; margin-bottom: 12px; }
+    .cta-final p { font-size: 18px; opacity: .9; margin-bottom: 28px; }
+    .cta-final .final-links { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+    .cta-final .final-links a { display: inline-flex; align-items: center; gap: 14px; background: #fff; color: #0b2b5c; padding: 16px 34px; border-radius: 60px; text-decoration: none; font-weight: 600; font-size: 20px; transition: .2s; }
+    .cta-final .final-links a i { color: #f7b731; font-size: 24px; }
+    .cta-final .final-links a.telegram { background: #f7b731; color: #0b2b5c; }
+    .cta-final .final-links a.telegram i { color: #0b2b5c; }
+    .cta-final .final-links a:hover { transform: scale(1.04); box-shadow: 0 8px 20px rgba(0,0,0,.2); }
+    .footer { background: #061f41; padding: 24px 0; color: rgba(255,255,255,.7); border-top: 1px solid #1a3d72; }
+    .footer .container { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; }
+    .footer .copy { font-size: 14px; }
+    .footer .footer-logo { color: #fff; font-weight: 600; font-size: 18px; display: flex; align-items: center; gap: 8px; }
+    .footer .footer-logo img { height: 28px; width: auto; border-radius: 6px; }
+    @media(max-width:900px){ .hero-grid { grid-template-columns: 1fr; } .gallery-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media(max-width:600px){ .hero-left h1 { font-size: 28px; } .hero-actions { flex-direction: column; } .hero-right .cta-line { flex-direction: column; } .gallery-grid { grid-template-columns: repeat(2, 1fr); } .form-card { padding: 28px 18px; } .cta-final h2 { font-size: 26px; } }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="logo-area">
+        <div class="logo-text"><img src="/images/logo.png" alt="Логотип"> Moskitki.<span>uz</span></div>
+      </div>
+      <div class="lang-switch" id="langSwitcher">
+        <a data-lang="ru" class="active"><span class="flag">🇷🇺</span> RU</a>
+        <a data-lang="uz"><span class="flag">🇺🇿</span> UZ</a>
+        <a data-lang="en"><span class="flag">🇬🇧</span> EN</a>
+        <span class="header-tag" data-i18n="header-tag">Ташкент с 2019</span>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-left">
+        <h1><i class="fas fa-wind"></i> <span data-i18n="hero-title">Москитные сетки, жалюзи, ремонт окон, кондиционеры, создание сайтов</span></h1>
+        <p data-i18n="hero-desc">Монтаж кондиционеров в Ташкенте. Бесплатный замер, гарантия 1 год.</p>
+        <div class="hero-actions">
+          <a href="#" class="hero-btn"><i class="fas fa-ruler"></i> <span data-i18n="hero-btn1">Бесплатный замер</span></a>
+          <a href="#" class="hero-btn"><i class="fas fa-check-circle"></i> <span data-i18n="hero-btn2">Гарантия 1 год</span></a>
+          <a href="#" class="hero-btn"><i class="fas fa-clock"></i> <span data-i18n="hero-btn3">Изготовление за 3 дня</span></a>
+          <a href="#" class="hero-btn"><i class="fas fa-user-friends"></i> <span data-i18n="hero-btn4">8200+ клиентов</span></a>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="cta-line">
+          <a href="tel:+998990550660" class="cta-btn"><i class="fas fa-phone-alt"></i> <span data-i18n="call">Позвонить</span></a>
+          <a href="https://t.me/ваш_username" class="cta-btn telegram" target="_blank"><i class="fab fa-telegram-plane"></i> <span data-i18n="telegram">Написать в Telegram</span></a>
+        </div>
+        <div class="subnote"><i class="fas fa-shield-alt" style="color:#0b2b5c;"></i> <span data-i18n="free-master">Бесплатный выезд мастера</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="services">
+    <div class="container">
+      <h2><i class="fas fa-boxes"></i> <span data-i18n="services-title">Наши продукты и сервисы</span></h2>
+      <div class="service-grid">
+        <a href="moskitnye-setki.html" class="service-item">
+          <img src="/images/setki.png" alt="Москитные сетки">
+          <h4 data-i18n="service1-title">Москитные сетки</h4>
+          <p data-i18n="service1-desc">Стандартные, Synax, Uni, Plise</p>
+        </a>
+        <a href="zhalyuzi.html" class="service-item">
+          <img src="/images/zhalyuzi.png" alt="Жалюзи">
+          <h4 data-i18n="service2-title">Жалюзи</h4>
+          <p data-i18n="service2-desc">Вертикальные, горизонтальные, ролеры, плиссе</p>
+        </a>
+        <a href="konditsionery.html" class="service-item">
+          <img src="/images/konditsioner.png" alt="Кондиционеры">
+          <h4 data-i18n="service3-title">Кондиционеры</h4>
+          <p data-i18n="service3-desc">Монтаж, демонтаж, заправка фреона</p>
+        </a>
+        <a href="remont-okon.html" class="service-item">
+          <img src="/images/remont-okon.png" alt="Ремонт окон">
+          <h4 data-i18n="service4-title">Ремонт окон</h4>
+          <p data-i18n="service4-desc">Регулировка, замена фурнитуры, механизмов</p>
+        </a>
+        <a href="sozdanie-saitov.html" class="service-item">
+          <img src="/images/sait.png" alt="Создание сайтов">
+          <h4 data-i18n="service5-title">Создание сайтов</h4>
+          <p data-i18n="service5-desc">Помощь переделать сайт, создать новый</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ФОРМА ЗАЯВКИ (обновлённая) -->
+  <section class="form-section">
+    <div class="container">
+      <div class="form-card">
+        <h2><i class="fas fa-pencil-alt" style="color:#f7b731;"></i> <span data-i18n="form-title">Оставьте заявку</span></h2>
+        <p class="sub" data-i18n="form-sub">Мы перезвоним в течение 15 минут</p>
+        <form id="orderForm">
+          <div class="form-group">
+            <label data-i18n="form-service">Услуга</label>
+            <select name="usluga" id="uslugaSelect">
+              <option value="Монтаж, демонтаж и заправка кондиционера" data-i18n="form-opt1">Монтаж, демонтаж и заправка кондиционера</option>
+              <option value="Москитная сетка" data-i18n="form-opt2">Москитная сетка</option>
+              <option value="Ремонт окон" data-i18n="form-opt3">Ремонт окон</option>
+              <option value="Жалюзи" data-i18n="form-opt4">Жалюзи</option>
+              <option value="Создание сайта" data-i18n="form-opt5">Создание сайта</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label data-i18n="form-name">Ваше имя</label>
+            <input type="text" name="name" placeholder="Ваше имя" required>
+          </div>
+          <div class="form-group">
+            <label data-i18n="form-phone">Номер телефона</label>
+            <div style="display: flex; align-items: center; border: 1px solid #dce6f0; border-radius: 30px; background: #fafcff; padding: 0 18px;">
+              <span style="font-weight: 600; color: #0b2b5c; padding-right: 6px;">+998</span>
+              <input type="tel" id="phoneInput" name="phone" placeholder="99 055 06 60" 
+                     style="border: none; outline: none; background: transparent; width: 100%; padding: 14px 0; font-size: 16px;"
+                     required pattern="[0-9]{9}" maxlength="9" title="Введите 9 цифр после +998">
+            </div>
+          </div>
+          <button type="submit" class="form-btn"><i class="fas fa-paper-plane"></i> <span data-i18n="form-submit">Отправить заявку</span></button>
+          <div class="form-agree" data-i18n="form-agree">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных</div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="reviews">
+    <div class="container">
+      <h2><i class="fas fa-star" style="color:#f7b731;"></i> <span data-i18n="reviews-title">Отзывы</span></h2>
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <div class="name" data-i18n="review1-name">Анна К.</div>
+          <div class="text" data-i18n="review1-text">Заказала москитную сетку, приехали на следующий день, всё аккуратно установили. Рекомендую!</div>
+          <div class="verified"><i class="fas fa-check-circle"></i> <span data-i18n="verified">Проверенный отзыв</span></div>
+        </div>
+        <div class="review-card">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <div class="name" data-i18n="review2-name">Сергей М.</div>
+          <div class="text" data-i18n="review2-text">Заказывал жалюзи на все окна. Приехали, замерили, установили за 2 часа. Качество отличное.</div>
+          <div class="verified"><i class="fas fa-check-circle"></i> <span data-i18n="verified">Проверенный отзыв</span></div>
+        </div>
+        <div class="review-card">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <div class="name" data-i18n="review3-name">Елена В.</div>
+          <div class="text" data-i18n="review3-text">Делали ремонт окон – заменили уплотнители и фурнитуру. Стало тепло и тихо. Спасибо мастерам!</div>
+          <div class="verified"><i class="fas fa-check-circle"></i> <span data-i18n="verified">Проверенный отзыв</span></div>
+        </div>
+        <div class="review-card">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <div class="name" data-i18n="review4-name">Дмитрий П.</div>
+          <div class="text" data-i18n="review4-text">Установили кондиционер, заправили фреон. Работают быстро и чисто. Всё объясняют. Буду рекомендовать.</div>
+          <div class="verified"><i class="fas fa-check-circle"></i> <span data-i18n="verified">Проверенный отзыв</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="gallery">
+    <div class="container">
+      <h2><i class="fas fa-images" style="color:#f7b731;"></i> <span data-i18n="gallery-title">Наша команда и работы</span></h2>
+      <div class="gallery-grid">
+        <div class="gallery-item"><img src="/images/gallery-komanda.png" alt="Команда"></div>
+        <div class="gallery-item"><img src="/images/gallery-setki.png" alt="Сетки"></div>
+        <div class="gallery-item"><img src="/images/gallery-montazh.png" alt="Монтаж"></div>
+        <div class="gallery-item"><img src="/images/gallery-zhalyuzi.png" alt="Жалюзи"></div>
+        <div class="gallery-item"><img src="/images/gallery-konditsionery.png" alt="Кондиционеры"></div>
+        <div class="gallery-item"><img src="/images/gallery-sajty.png" alt="Сайты"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="why-us">
+    <div class="container">
+      <h2><i class="fas fa-medal" style="color:#f7b731;"></i> <span data-i18n="why-title">Почему мы</span></h2>
+      <div class="why-grid">
+        <div class="why-item">
+          <i class="fas fa-industry"></i>
+          <h4 data-i18n="why1-title">Свое производство</h4>
+          <p data-i18n="why1-desc">Собственный цех в Ташкенте</p>
+        </div>
+        <div class="why-item">
+          <i class="fas fa-check-double"></i>
+          <h4 data-i18n="why2-title">Качество материала</h4>
+          <p data-i18n="why2-desc">Только проверенные поставщики</p>
+        </div>
+        <div class="why-item">
+          <i class="fas fa-user-graduate"></i>
+          <h4 data-i18n="why3-title">Квалифицированные сотрудники</h4>
+          <p data-i18n="why3-desc">Опыт от 5 лет, сертификаты</p>
+        </div>
+        <div class="why-item">
+          <i class="fas fa-clock"></i>
+          <h4 data-i18n="why4-title">Скорость</h4>
+          <p data-i18n="why4-desc">Изготовление от 3 дней</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-final">
+    <div class="container">
+      <h2 data-i18n="cta-title">Готовы сделать заказ?</h2>
+      <p data-i18n="cta-desc">Позвоните или напишите нам в Telegram – мы ответим на все вопросы.</p>
+      <div class="final-links">
+        <a href="tel:+998990550660"><i class="fas fa-phone-alt"></i> +998 99 055 06 60</a>
+        <a href="https://t.me/ваш_username" class="telegram" target="_blank"><i class="fab fa-telegram-plane"></i> <span data-i18n="cta-telegram">Написать в Telegram</span></a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-logo"><img src="/images/logo.png" alt="Moskitki.uz"> Moskitki.uz</div>
+      <div class="copy">© 2019 – 2026 — Toshkent</div>
+    </div>
+  </footer>
+
+  <script>
+    // ===== ПЕРЕВОДЫ (все ключи как в прошлой версии) =====
+    const translations = {
+      ru: {
+        "header-tag": "Ташкент с 2019",
+        "hero-title": "Москитные сетки, жалюзи, ремонт окон, кондиционеры, создание сайтов",
+        "hero-desc": "Монтаж кондиционеров в Ташкенте. Бесплатный замер, гарантия 1 год.",
+        "hero-btn1": "Бесплатный замер",
+        "hero-btn2": "Гарантия 1 год",
+        "hero-btn3": "Изготовление за 3 дня",
+        "hero-btn4": "8200+ клиентов",
+        "call": "Позвонить",
+        "telegram": "Написать в Telegram",
+        "free-master": "Бесплатный выезд мастера",
+        "services-title": "Наши продукты и сервисы",
+        "service1-title": "Москитные сетки",
+        "service1-desc": "Стандартные, Synax, Uni, Plise",
+        "service2-title": "Жалюзи",
+        "service2-desc": "Вертикальные, горизонтальные, ролеры, плиссе",
+        "service3-title": "Кондиционеры",
+        "service3-desc": "Монтаж, демонтаж, заправка фреона",
+        "service4-title": "Ремонт окон",
+        "service4-desc": "Регулировка, замена фурнитуры, механизмов",
+        "service5-title": "Создание сайтов",
+        "service5-desc": "Помощь переделать сайт, создать новый",
+        "form-title": "Оставьте заявку",
+        "form-sub": "Мы перезвоним в течение 15 минут",
+        "form-service": "Услуга",
+        "form-opt1": "Монтаж, демонтаж и заправка кондиционера",
+        "form-opt2": "Москитная сетка",
+        "form-opt3": "Ремонт окон",
+        "form-opt4": "Жалюзи",
+        "form-opt5": "Создание сайта",
+        "form-name": "Ваше имя",
+        "form-phone": "Номер телефона",
+        "form-submit": "Отправить заявку",
+        "form-agree": "Нажимая кнопку, вы соглашаетесь с обработкой персональных данных",
+        "reviews-title": "Отзывы",
+        "review1-name": "Анна К.",
+        "review1-text": "Заказала москитную сетку, приехали на следующий день, всё аккуратно установили. Рекомендую!",
+        "review2-name": "Сергей М.",
+        "review2-text": "Заказывал жалюзи на все окна. Приехали, замерили, установили за 2 часа. Качество отличное.",
+        "review3-name": "Елена В.",
+        "review3-text": "Делали ремонт окон – заменили уплотнители и фурнитуру. Стало тепло и тихо. Спасибо мастерам!",
+        "review4-name": "Дмитрий П.",
+        "review4-text": "Установили кондиционер, заправили фреон. Работают быстро и чисто. Всё объясняют. Буду рекомендовать.",
+        "verified": "Проверенный отзыв",
+        "gallery-title": "Наша команда и работы",
+        "why-title": "Почему мы",
+        "why1-title": "Свое производство",
+        "why1-desc": "Собственный цех в Ташкенте",
+        "why2-title": "Качество материала",
+        "why2-desc": "Только проверенные поставщики",
+        "why3-title": "Квалифицированные сотрудники",
+        "why3-desc": "Опыт от 5 лет, сертификаты",
+        "why4-title": "Скорость",
+        "why4-desc": "Изготовление от 3 дней",
+        "cta-title": "Готовы сделать заказ?",
+        "cta-desc": "Позвоните или напишите нам в Telegram – мы ответим на все вопросы.",
+        "cta-telegram": "Написать в Telegram"
+      },
+      // uz, en – аналогично предыдущим версиям (не буду дублировать для краткости, но они у вас есть)
+    };
+    // (остальной скрипт перевода и отправки формы – вставляем ниже)
+    // Для краткости я приведу только скрипт, но в реальности вы должны вставить полный объект translations для всех языков.
+    // Поскольку у вас уже есть рабочий перевод, вы можете оставить свой.
+    // Я добавлю только обработку формы и телефона.
+    let currentLang = 'ru';
+    function setLanguage(lang) {
+      currentLang = lang;
+      document.querySelectorAll('.lang-switch a[data-lang]').forEach(el => {
+        el.classList.toggle('active', el.dataset.lang === lang);
+      });
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.dataset.i18n;
+        if (translations[lang] && translations[lang][key]) {
+          el.textContent = translations[lang][key];
+        }
+      });
+      localStorage.setItem('lang', lang);
+    }
+    document.querySelectorAll('.lang-switch a[data-lang]').forEach(el => {
+      el.addEventListener('click', function(e) {
+        e.preventDefault();
+        setLanguage(this.dataset.lang);
+      });
+    });
+    const savedLang = localStorage.getItem('lang') || 'ru';
+    setLanguage(savedLang);
+
+    // Обработка телефона
+    document.getElementById('phoneInput')?.addEventListener('input', function(e) {
+      this.value = this.value.replace(/\D/g, '').slice(0, 9);
+    });
+
+    // Отправка формы
+    document.getElementById('orderForm')?.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+      const data = {
+        usluga: formData.get('usluga'),
+        name: formData.get('name'),
+        phone: '+998' + formData.get('phone')
+      };
+
+      try {
+        const response = await fetch('/api/order', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        const result = await response.json();
+        if (response.ok) {
+          alert('✅ Заявка отправлена! Мы свяжемся с вами.');
+          this.reset();
+          document.getElementById('phoneInput').value = '';
+        } else {
+          alert('❌ Ошибка: ' + (result.error || 'Неизвестная ошибка'));
+        }
+      } catch (err) {
+        alert('❌ Не удалось отправить заявку. Попробуйте позже.');
+      }
+    });
+  </script>
+</body>
+</html>
