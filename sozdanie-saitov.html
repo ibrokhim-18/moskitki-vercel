@@ -3,75 +3,161 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Создание сайтов | Moskitki.uz</title>
-  <meta property="og:title" content="Создание сайтов — Moskitki.uz" />
-  <meta property="og:description" content="Разработка сайтов под ключ, рестайлинг в Ташкенте. Цены от 2 000 000 сум." />
+  <title>Разработка сайтов | Moskitki.uz</title>
+  <meta property="og:title" content="Разработка сайтов — Moskitki.uz" />
+  <meta property="og:description" content="Разработка сайтов под ключ, редизайн, поддержка, лендинги в Ташкенте. Скидка 30%." />
   <meta property="og:image" content="https://moskitki.uz/images/logo.png" />
   <meta property="og:url" content="https://moskitki.uz/sozdanie-saitov.html" />
-  <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Создание сайтов — Moskitki.uz" />
-  <meta name="twitter:description" content="Создание и доработка сайтов в Ташкенте." />
-  <meta name="twitter:image" content="https://moskitki.uz/images/logo.png" />
   <link rel="icon" type="image/png" sizes="32x32" href="/images/logo.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
-    /* стили как на предыдущих страницах */
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, system-ui, sans-serif; }
-    body { background: #f8faff; color: #1e293b; }
+    body { background: #0b1a2f; color: #eef4ff; }
     .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-    .header { background: #0b2b5c; color: #fff; padding: 16px 0; border-bottom: 3px solid #f7b731; }
+    
+    .hero-bg {
+      background: radial-gradient(circle at 20% 30%, #1d3a5c, #091629 80%);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: 
+        radial-gradient(circle at 70% 20%, rgba(255, 215, 0, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 10% 80%, rgba(0, 150, 255, 0.06) 0%, transparent 50%),
+        radial-gradient(circle at 90% 70%, rgba(255, 100, 100, 0.04) 0%, transparent 40%);
+      pointer-events: none;
+    }
+    .header { 
+      background: rgba(9, 22, 41, 0.7); 
+      backdrop-filter: blur(6px);
+      color: #fff; 
+      padding: 14px 0; 
+      border-bottom: 2px solid rgba(247, 183, 49, 0.3);
+      position: relative;
+      z-index: 2;
+    }
     .header .container { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; }
     .logo-area { display: flex; align-items: center; gap: 12px; }
     .logo-text { font-weight: 700; font-size: 24px; letter-spacing: -0.5px; display: flex; align-items: center; gap: 10px; }
     .logo-text span { color: #f7b731; }
     .logo-text img { height: 36px; width: auto; border-radius: 8px; }
-    .lang-switch { display: flex; gap: 8px; font-size: 14px; font-weight: 500; background: rgba(255,255,255,0.08); padding: 6px 14px; border-radius: 40px; flex-wrap: wrap; align-items: center; }
-    .lang-switch a { color: rgba(255,255,255,0.7); text-decoration: none; transition: .2s; display: flex; align-items: center; gap: 5px; font-size: 15px; cursor: pointer; }
+    .lang-switch { display: flex; gap: 8px; font-size: 14px; font-weight: 500; background: rgba(255,255,255,0.06); padding: 6px 14px; border-radius: 40px; flex-wrap: wrap; align-items: center; }
+    .lang-switch a { color: rgba(255,255,255,0.6); text-decoration: none; transition: .2s; display: flex; align-items: center; gap: 5px; font-size: 15px; cursor: pointer; }
     .lang-switch a.active { color: #fff; font-weight: 600; }
     .lang-switch a .flag { font-size: 20px; line-height: 1; }
-    .header-tag { font-size: 14px; background: #1d3d72; padding: 6px 14px; border-radius: 40px; display: inline-block; font-weight: 400; }
-    .services { padding: 50px 0 30px; background: #fff; }
-    .services h2 { font-size: 30px; font-weight: 700; color: #0b2b5c; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+    .header-tag { font-size: 14px; background: rgba(247, 183, 49, 0.2); padding: 6px 14px; border-radius: 40px; display: inline-block; font-weight: 400; color: #f7b731; }
+
+    .discount-banner {
+      background: linear-gradient(135deg, #f7b731, #e09d1a);
+      color: #0b1a2f;
+      padding: 12px 24px;
+      border-radius: 60px;
+      display: inline-block;
+      font-weight: 800;
+      font-size: 22px;
+      letter-spacing: 1px;
+      box-shadow: 0 8px 24px rgba(247, 183, 49, 0.3);
+      margin: 20px 0 10px;
+      z-index: 3;
+      position: relative;
+    }
+    .discount-banner i { margin-right: 12px; }
+
+    .social-icons {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      margin: 12px 0;
+      flex-wrap: wrap;
+      z-index: 3;
+      position: relative;
+    }
+    .social-icons a {
+      color: #fff;
+      background: rgba(255,255,255,0.07);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      transition: 0.2s;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .social-icons a:hover { background: #f7b731; color: #0b1a2f; transform: translateY(-3px); border-color: #f7b731; }
+
+    .services { padding: 30px 0 50px; position: relative; z-index: 2; }
+    .services h2 { font-size: 32px; font-weight: 700; color: #fff; margin-bottom: 8px; display: flex; align-items: center; gap: 12px; }
     .services h2 i { color: #f7b731; }
-    .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; margin-top: 12px; }
-    .service-item { background: #f8fcff; padding: 20px 16px; border-radius: 20px; text-align: center; border: 1px solid #eaf1f9; text-decoration: none; color: inherit; transition: .2s; display: block; }
-    .service-item:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(0,0,0,.05); }
-    .service-item img { width: 100%; aspect-ratio: 946 / 1367; object-fit: cover; border-radius: 16px; margin-bottom: 12px; background: #dce6f0; }
-    .service-item h4 { font-weight: 600; font-size: 18px; }
-    .service-item p { font-size: 14px; color: #4b5b6e; margin-top: 6px; }
-    .service-item .price { font-size: 18px; font-weight: 700; color: #0b2b5c; margin-top: 8px; display: inline-block; background: #eaf4ff; padding: 6px 16px; border-radius: 30px; }
-    .more-link { display: inline-block; margin-top: 20px; font-weight: 600; color: #0b2b5c; text-decoration: none; border-bottom: 2px solid #f7b731; padding-bottom: 2px; }
-    .form-section { padding: 40px 0; background: #f2f7fe; }
-    .form-card { max-width: 700px; margin: 0 auto; background: #fff; padding: 40px 36px; border-radius: 36px; box-shadow: 0 12px 30px rgba(11,43,92,.06); }
-    .form-card h2 { font-size: 28px; font-weight: 700; color: #0b2b5c; margin-bottom: 8px; }
-    .form-card .sub { color: #4b5b6e; margin-bottom: 24px; }
+    .services .subhead { color: #b0c8e0; margin-bottom: 30px; font-size: 18px; }
+
+    .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 28px; margin-top: 16px; }
+    .service-item {
+      background: rgba(255,255,255,0.04);
+      backdrop-filter: blur(4px);
+      padding: 28px 20px 24px;
+      border-radius: 28px;
+      border: 1px solid rgba(255,255,255,0.06);
+      transition: 0.25s;
+      text-decoration: none;
+      color: #eef4ff;
+      display: block;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+    .service-item:hover { transform: translateY(-8px); background: rgba(255,255,255,0.08); border-color: rgba(247, 183, 49, 0.3); }
+    .service-item .icon-wrap { font-size: 36px; color: #f7b731; margin-bottom: 14px; }
+    .service-item h4 { font-weight: 700; font-size: 20px; margin-bottom: 8px; color: #fff; }
+    .service-item p { font-size: 14px; color: #b0c8e0; line-height: 1.5; margin-bottom: 14px; }
+    .price-block { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-top: 6px; }
+    .price-old { font-size: 16px; color: #8a9fb0; text-decoration: line-through; }
+    .price-new { font-size: 22px; font-weight: 700; color: #f7b731; background: rgba(247, 183, 49, 0.12); padding: 4px 16px; border-radius: 40px; }
+    .price-new small { font-size: 14px; font-weight: 400; color: #b0c8e0; margin-left: 4px; }
+
+    .form-section { padding: 40px 0; background: rgba(9, 22, 41, 0.6); backdrop-filter: blur(4px); }
+    .form-card { max-width: 700px; margin: 0 auto; background: rgba(255,255,255,0.05); backdrop-filter: blur(8px); padding: 40px 36px; border-radius: 40px; border: 1px solid rgba(255,255,255,0.06); }
+    .form-card h2 { font-size: 28px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+    .form-card .sub { color: #b0c8e0; margin-bottom: 24px; }
     .form-group { margin-bottom: 20px; }
-    .form-group label { font-weight: 500; display: block; margin-bottom: 6px; color: #1e293b; }
-    .form-group input, .form-group select { width: 100%; padding: 14px 18px; border: 1px solid #dce6f0; border-radius: 30px; font-size: 16px; background: #fafcff; transition: .2s; }
-    .form-group input:focus { border-color: #0b2b5c; outline: none; background: #fff; box-shadow: 0 0 0 4px rgba(11,43,92,.05); }
-    .form-btn { background: #0b2b5c; color: #fff; border: none; padding: 16px 32px; font-size: 18px; font-weight: 600; border-radius: 60px; width: 100%; cursor: pointer; transition: .2s; display: flex; align-items: center; justify-content: center; gap: 12px; }
-    .form-btn i { color: #f7b731; }
-    .form-btn:hover { background: #1a3d72; }
-    .form-agree { font-size: 13px; color: #6b7b8e; margin-top: 16px; text-align: center; }
-    .cta-final { padding: 40px 0; background: #0b2b5c; color: #fff; text-align: center; }
+    .form-group label { font-weight: 500; display: block; margin-bottom: 6px; color: #d0e0f0; }
+    .form-group input, .form-group select {
+      width: 100%; padding: 14px 18px; border: 1px solid rgba(255,255,255,0.1); border-radius: 30px;
+      font-size: 16px; background: rgba(255,255,255,0.05); color: #fff; transition: .2s;
+    }
+    .form-group input:focus, .form-group select:focus { border-color: #f7b731; outline: none; background: rgba(255,255,255,0.08); }
+    .form-group input::placeholder { color: #8a9fb0; }
+    .form-btn { background: #f7b731; color: #0b1a2f; border: none; padding: 16px 32px; font-size: 18px; font-weight: 700; border-radius: 60px; width: 100%; cursor: pointer; transition: .2s; display: flex; align-items: center; justify-content: center; gap: 12px; }
+    .form-btn i { color: #0b1a2f; }
+    .form-btn:hover { background: #ffcc5e; transform: scale(1.02); }
+    .form-agree { font-size: 13px; color: #8a9fb0; margin-top: 16px; text-align: center; }
+
+    .cta-final { padding: 40px 0; background: rgba(9, 22, 41, 0.8); backdrop-filter: blur(4px); text-align: center; border-top: 1px solid rgba(255,255,255,0.05); }
     .cta-final h2 { font-size: 30px; font-weight: 700; margin-bottom: 12px; }
-    .cta-final p { font-size: 18px; opacity: .9; margin-bottom: 28px; }
+    .cta-final p { font-size: 18px; opacity: .8; margin-bottom: 28px; }
     .cta-final .final-links { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
-    .cta-final .final-links a { display: inline-flex; align-items: center; gap: 14px; background: #fff; color: #0b2b5c; padding: 16px 34px; border-radius: 60px; text-decoration: none; font-weight: 600; font-size: 20px; transition: .2s; }
+    .cta-final .final-links a { display: inline-flex; align-items: center; gap: 14px; background: rgba(255,255,255,0.06); backdrop-filter: blur(4px); color: #fff; padding: 16px 34px; border-radius: 60px; text-decoration: none; font-weight: 600; font-size: 20px; transition: .2s; border: 1px solid rgba(255,255,255,0.05); }
     .cta-final .final-links a i { color: #f7b731; font-size: 24px; }
-    .cta-final .final-links a.telegram { background: #f7b731; color: #0b2b5c; }
-    .cta-final .final-links a.telegram i { color: #0b2b5c; }
-    .cta-final .final-links a:hover { transform: scale(1.04); }
-    .footer { background: #061f41; padding: 24px 0; color: rgba(255,255,255,.7); border-top: 1px solid #1a3d72; }
+    .cta-final .final-links a.telegram { background: #f7b731; color: #0b1a2f; }
+    .cta-final .final-links a.telegram i { color: #0b1a2f; }
+    .cta-final .final-links a:hover { transform: scale(1.05); background: rgba(255,255,255,0.12); }
+
+    .footer { background: rgba(6, 15, 30, 0.9); padding: 24px 0; color: rgba(255,255,255,.6); border-top: 1px solid rgba(255,255,255,0.05); }
     .footer .container { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; }
     .footer .copy { font-size: 14px; }
     .footer .footer-logo { color: #fff; font-weight: 600; font-size: 18px; display: flex; align-items: center; gap: 8px; }
     .footer .footer-logo img { height: 28px; width: auto; border-radius: 6px; }
+
     @media(max-width:600px){ .service-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
+
+<div class="hero-bg">
   <header class="header">
     <div class="container">
       <div class="logo-area">
@@ -86,241 +172,321 @@
     </div>
   </header>
 
+  <div class="container">
+    <div class="discount-banner">
+      <i class="fas fa-bolt"></i> СКИДКА 30% НА ВСЕ УСЛУГИ
+    </div>
+
+    <div class="social-icons">
+      <a href="https://t.me/moskitki_uz" target="_blank" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+      <a href="https://instagram.com/moskitki.uz" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://facebook.com/moskitki.uz" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://youtube.com/moskitki.uz" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+      <a href="https://wa.me/998990550660" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+    </div>
+  </div>
+
   <section class="services">
     <div class="container">
-      <h2><i class="fas fa-code"></i> <span data-i18n="page-title">Создание сайтов</span></h2>
-      <p style="color:#4b5b6e;margin-bottom:20px;" data-i18n="subtitle">Выберите услугу:</p>
+      <h2><i class="fas fa-code"></i> <span data-i18n="page-title">Разработка сайтов</span></h2>
+      <p class="subhead" data-i18n="subtitle">Создаём сайты любой сложности. Редизайн, поддержка, лендинги, магазины.</p>
       <div class="service-grid">
-        <a href="?usluga=Помощь переделать сайт" class="service-item">
-          <img src="/images/peredelat.png" alt="Помощь переделать сайт">
-          <h4 data-i18n="item1-title">Помощь переделать сайт</h4>
-          <p data-i18n="item1-desc">Рестайлинг, доработка функционала</p>
-          <span class="price" data-i18n="price1">от 2 000 000 сум</span>
-        </a>
-        <a href="?usluga=Создать новый сайт" class="service-item">
-          <img src="/images/novy-sait.png" alt="Создать новый сайт">
-          <h4 data-i18n="item2-title">Создать новый сайт</h4>
-          <p data-i18n="item2-desc">Разработка с нуля под ключ</p>
-          <span class="price" data-i18n="price2">от 5 000 000 сум</span>
-        </a>
+        <!-- 1. Разработка сайта любой сложности -->
+        <div class="service-item">
+          <div class="icon-wrap"><i class="fas fa-laptop-code"></i></div>
+          <h4 data-i18n="item1-title">Разработка сайта любой сложности</h4>
+          <p data-i18n="item1-desc">Уникальный дизайн, адаптивная вёрстка, CMS на выбор.</p>
+          <div class="price-block">
+            <span class="price-old" data-i18n="price1-old">1 500 000 сум</span>
+            <span class="price-new" data-i18n="price1-new">1 050 000 сум <small>со скидкой</small></span>
+          </div>
+        </div>
+        <!-- 2. Редизайн и переделка сайта -->
+        <div class="service-item">
+          <div class="icon-wrap"><i class="fas fa-paint-brush"></i></div>
+          <h4 data-i18n="item2-title">Редизайн и переделка сайта</h4>
+          <p data-i18n="item2-desc">Обновление дизайна, улучшение UI/UX, оптимизация кода.</p>
+          <div class="price-block">
+            <span class="price-old" data-i18n="price2-old">800 000 сум</span>
+            <span class="price-new" data-i18n="price2-new">560 000 сум <small>со скидкой</small></span>
+          </div>
+        </div>
+        <!-- 3. Техническая поддержка, обновления и доработки -->
+        <div class="service-item">
+          <div class="icon-wrap"><i class="fas fa-tools"></i></div>
+          <h4 data-i18n="item3-title">Техподдержка, обновления и доработки</h4>
+          <p data-i18n="item3-desc">Безопасность, обновления ядра, доработка функционала.</p>
+          <div class="price-block">
+            <span class="price-old" data-i18n="price3-old">700 000 сум</span>
+            <span class="price-new" data-i18n="price3-new">490 000 сум <small>со скидкой</small></span>
+          </div>
+        </div>
+        <!-- 4. Лендинг, корпоративные сайты и интернет-магазины -->
+        <div class="service-item">
+          <div class="icon-wrap"><i class="fas fa-store"></i></div>
+          <h4 data-i18n="item4-title">Лендинг, корп. сайты и интернет-магазины</h4>
+          <p data-i18n="item4-desc">Посадочные страницы, сайты компаний, онлайн-каталоги.</p>
+          <div class="price-block">
+            <span class="price-old" data-i18n="price4-old">1 200 000 сум</span>
+            <span class="price-new" data-i18n="price4-new">840 000 сум <small>со скидкой</small></span>
+          </div>
+        </div>
       </div>
-      <div style="margin-top:30px;"><a href="index.html" class="more-link"><i class="fas fa-arrow-left"></i> <span data-i18n="back">На главную</span></a></div>
+      <div style="margin-top:30px;"><a href="index.html" class="more-link" style="color:#f7b731; text-decoration:none; border-bottom:2px solid #f7b731; padding-bottom:4px;"><i class="fas fa-arrow-left"></i> <span data-i18n="back">На главную</span></a></div>
     </div>
   </section>
+</div>
 
-  <!-- форма и скрипты – аналогично -->
-  <section class="form-section">
-    <div class="container">
-      <div class="form-card">
-        <h2><i class="fas fa-pencil-alt" style="color:#f7b731;"></i> <span data-i18n="form-title">Оставьте заявку</span></h2>
-        <p class="sub" data-i18n="form-sub">Мы перезвоним в течение 15 минут</p>
-        <form id="orderForm">
-          <div class="form-group">
-            <label data-i18n="form-service">Услуга</label>
-            <select name="usluga" id="uslugaSelect">
-              <option value="Помощь переделать сайт" data-i18n="form-opt1">Помощь переделать сайт</option>
-              <option value="Создать новый сайт" data-i18n="form-opt2">Создать новый сайт</option>
-            </select>
+<!-- форма -->
+<section class="form-section">
+  <div class="container">
+    <div class="form-card">
+      <h2><i class="fas fa-pencil-alt" style="color:#f7b731;"></i> <span data-i18n="form-title">Оставьте заявку</span></h2>
+      <p class="sub" data-i18n="form-sub">Мы перезвоним в течение 15 минут</p>
+      <form id="orderForm">
+        <div class="form-group">
+          <label data-i18n="form-service">Услуга</label>
+          <select name="usluga" id="uslugaSelect">
+            <option value="Разработка сайта любой сложности" data-i18n="form-opt1">Разработка сайта любой сложности</option>
+            <option value="Редизайн и переделка сайта" data-i18n="form-opt2">Редизайн и переделка сайта</option>
+            <option value="Техподдержка, обновления и доработки" data-i18n="form-opt3">Техподдержка, обновления и доработки</option>
+            <option value="Лендинг, корп. сайты и интернет-магазины" data-i18n="form-opt4">Лендинг, корп. сайты и интернет-магазины</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label data-i18n="form-name">Ваше имя</label>
+          <input type="text" name="name" placeholder="Ваше имя" required>
+        </div>
+        <div class="form-group">
+          <label data-i18n="form-phone">Номер телефона</label>
+          <div style="display: flex; align-items: center; border: 1px solid rgba(255,255,255,0.1); border-radius: 30px; background: rgba(255,255,255,0.05); padding: 0 18px;">
+            <span style="font-weight: 600; color: #f7b731; padding-right: 6px;">+998</span>
+            <input type="tel" id="phoneInput" name="phone" placeholder="99 055 06 60" 
+                   style="border: none; outline: none; background: transparent; width: 100%; padding: 14px 0; font-size: 16px; color:#fff;"
+                   required pattern="[0-9]{9}" maxlength="9" title="Введите 9 цифр после +998">
           </div>
-          <div class="form-group">
-            <label data-i18n="form-name">Ваше имя</label>
-            <input type="text" name="name" placeholder="Ваше имя" required>
-          </div>
-          <div class="form-group">
-            <label data-i18n="form-phone">Номер телефона</label>
-            <div style="display: flex; align-items: center; border: 1px solid #dce6f0; border-radius: 30px; background: #fafcff; padding: 0 18px;">
-              <span style="font-weight: 600; color: #0b2b5c; padding-right: 6px;">+998</span>
-              <input type="tel" id="phoneInput" name="phone" placeholder="99 055 06 60" 
-                     style="border: none; outline: none; background: transparent; width: 100%; padding: 14px 0; font-size: 16px;"
-                     required pattern="[0-9]{9}" maxlength="9" title="Введите 9 цифр после +998">
-            </div>
-          </div>
-          <button type="submit" class="form-btn"><i class="fas fa-paper-plane"></i> <span data-i18n="form-submit">Отправить заявку</span></button>
-          <div class="form-agree" data-i18n="form-agree">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных</div>
-        </form>
-      </div>
+        </div>
+        <button type="submit" class="form-btn"><i class="fas fa-paper-plane"></i> <span data-i18n="form-submit">Отправить заявку</span></button>
+        <div class="form-agree" data-i18n="form-agree">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных</div>
+      </form>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="cta-final">
-    <div class="container">
-      <h2 data-i18n="cta-title">Готовы сделать заказ?</h2>
-      <p data-i18n="cta-desc">Позвоните или напишите нам в Telegram – мы ответим на все вопросы.</p>
-      <div class="final-links">
-        <a href="tel:+998990550660"><i class="fas fa-phone-alt"></i> +998 99 055 06 60</a>
-        <a href="https://t.me/moskitki_uz" class="telegram" target="_blank"><i class="fab fa-telegram-plane"></i> <span data-i18n="cta-telegram">Написать в Telegram</span></a>
-      </div>
+<section class="cta-final">
+  <div class="container">
+    <h2 data-i18n="cta-title">Готовы сделать заказ?</h2>
+    <p data-i18n="cta-desc">Позвоните или напишите нам в Telegram – мы ответим на все вопросы.</p>
+    <div class="final-links">
+      <a href="tel:+998990550660"><i class="fas fa-phone-alt"></i> +998 99 055 06 60</a>
+      <a href="https://t.me/moskitki_uz" class="telegram" target="_blank"><i class="fab fa-telegram-plane"></i> <span data-i18n="cta-telegram">Написать в Telegram</span></a>
     </div>
-  </section>
+  </div>
+</section>
 
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-logo"><img src="/images/logo.png" alt="Moskitki.uz"> Moskitki.uz</div>
-      <div class="copy">© 2019 – 2026 — Toshkent</div>
-    </div>
-  </footer>
+<footer class="footer">
+  <div class="container">
+    <div class="footer-logo"><img src="/images/logo.png" alt="Moskitki.uz"> Moskitki.uz</div>
+    <div class="copy">© 2019 – 2026 — Toshkent</div>
+  </div>
+</footer>
 
-  <script>
-    // переводы для создания сайтов
-    const translations = {
-      ru: {
-        "header-tag": "Ташкент с 2019",
-        "page-title": "Создание сайтов",
-        "subtitle": "Выберите услугу:",
-        "item1-title": "Помощь переделать сайт",
-        "item1-desc": "Рестайлинг, доработка функционала",
-        "price1": "от 1 500 000 сум",
-        "item2-title": "Создать новый сайт",
-        "item2-desc": "Разработка с нуля под ключ",
-        "price2": "от 3 000 000 сум",
-        "back": "На главную",
-        "form-title": "Оставьте заявку",
-        "form-sub": "Мы перезвоним в течение 15 минут",
-        "form-service": "Услуга",
-        "form-opt1": "Помощь переделать сайт",
-        "form-opt2": "Создать новый сайт",
-        "form-name": "Ваше имя",
-        "form-phone": "Номер телефона",
-        "form-submit": "Отправить заявку",
-        "form-agree": "Нажимая кнопку, вы соглашаетесь с обработкой персональных данных",
-        "cta-title": "Готовы сделать заказ?",
-        "cta-desc": "Позвоните или напишите нам в Telegram – мы ответим на все вопросы.",
-        "cta-telegram": "Написать в Telegram"
-      },
-      uz: {
-        "header-tag": "Toshkent 2019 dan",
-        "page-title": "Veb-sayt yaratish",
-        "subtitle": "Xizmatni tanlang:",
-        "item1-title": "Saytni qayta tuzishda yordam",
-        "item1-desc": "Restayling, funksionallikni takomillashtirish",
-        "price1": "1 500 000 so‘mdan",
-        "item2-title": "Yangi sayt yaratish",
-        "item2-desc": "Noldan kalit taslimga qadar ishlab chiqish",
-        "price2": "3 000 000 so‘mdan",
-        "back": "Bosh sahifaga",
-        "form-title": "Ariza qoldiring",
-        "form-sub": "15 daqiqa ichida qayta qo‘ng‘iroq qilamiz",
-        "form-service": "Xizmat",
-        "form-opt1": "Saytni qayta tuzishda yordam",
-        "form-opt2": "Yangi sayt yaratish",
-        "form-name": "Ismingiz",
-        "form-phone": "Telefon raqam",
-        "form-submit": "Arizani yuborish",
-        "form-agree": "Tugmani bosish orqali siz shaxsiy ma'lumotlarni qayta ishlashga rozilik bildirasiz",
-        "cta-title": "Buyurtma berishga tayyormisiz?",
-        "cta-desc": "Qo‘ng‘iroq qiling yoki Telegramda yozing – barcha savollarga javob beramiz.",
-        "cta-telegram": "Telegramda yozish"
-      },
-      en: {
-        "header-tag": "Tashkent since 2019",
-        "page-title": "Website creation",
-        "subtitle": "Select service:",
-        "item1-title": "Website redesign help",
-        "item1-desc": "Restyling, functionality improvement",
-        "price1": "from 1,500,000 UZS",
-        "item2-title": "Create a new website",
-        "item2-desc": "Full-cycle development from scratch",
-        "price2": "from 3,000,000 UZS",
-        "back": "Main page",
-        "form-title": "Leave a request",
-        "form-sub": "We will call you back within 15 minutes",
-        "form-service": "Service",
-        "form-opt1": "Website redesign help",
-        "form-opt2": "Create a new website",
-        "form-name": "Your name",
-        "form-phone": "Phone number",
-        "form-submit": "Submit request",
-        "form-agree": "By clicking the button, you agree to the processing of personal data",
-        "cta-title": "Ready to order?",
-        "cta-desc": "Call or write to Telegram – we will answer all questions.",
-        "cta-telegram": "Write to Telegram"
-      }
-    };
-
-    let currentLang = 'ru';
-    function setLanguage(lang) {
-      currentLang = lang;
-      document.querySelectorAll('.lang-switch a[data-lang]').forEach(el => {
-        el.classList.toggle('active', el.dataset.lang === lang);
-      });
-      document.querySelectorAll('[data-i18n]').forEach(el => {
-        const key = el.dataset.i18n;
-        if (translations[lang] && translations[lang][key]) {
-          el.textContent = translations[lang][key];
-        }
-      });
-      localStorage.setItem('lang', lang);
+<script>
+  const translations = {
+    ru: {
+      "header-tag": "Ташкент с 2019",
+      "page-title": "Разработка сайтов",
+      "subtitle": "Создаём сайты любой сложности. Редизайн, поддержка, лендинги, магазины.",
+      "item1-title": "Разработка сайта любой сложности",
+      "item1-desc": "Уникальный дизайн, адаптивная вёрстка, CMS на выбор.",
+      "price1-old": "1 500 000 сум",
+      "price1-new": "1 050 000 сум",
+      "item2-title": "Редизайн и переделка сайта",
+      "item2-desc": "Обновление дизайна, улучшение UI/UX, оптимизация кода.",
+      "price2-old": "800 000 сум",
+      "price2-new": "560 000 сум",
+      "item3-title": "Техподдержка, обновления и доработки",
+      "item3-desc": "Безопасность, обновления ядра, доработка функционала.",
+      "price3-old": "700 000 сум",
+      "price3-new": "490 000 сум",
+      "item4-title": "Лендинг, корп. сайты и интернет-магазины",
+      "item4-desc": "Посадочные страницы, сайты компаний, онлайн-каталоги.",
+      "price4-old": "1 200 000 сум",
+      "price4-new": "840 000 сум",
+      "back": "На главную",
+      "form-title": "Оставьте заявку",
+      "form-sub": "Мы перезвоним в течение 15 минут",
+      "form-service": "Услуга",
+      "form-opt1": "Разработка сайта любой сложности",
+      "form-opt2": "Редизайн и переделка сайта",
+      "form-opt3": "Техподдержка, обновления и доработки",
+      "form-opt4": "Лендинг, корп. сайты и интернет-магазины",
+      "form-name": "Ваше имя",
+      "form-phone": "Номер телефона",
+      "form-submit": "Отправить заявку",
+      "form-agree": "Нажимая кнопку, вы соглашаетесь с обработкой персональных данных",
+      "cta-title": "Готовы сделать заказ?",
+      "cta-desc": "Позвоните или напишите нам в Telegram – мы ответим на все вопросы.",
+      "cta-telegram": "Написать в Telegram"
+    },
+    uz: {
+      "header-tag": "Toshkent 2019 dan",
+      "page-title": "Veb-sayt ishlab chiqish",
+      "subtitle": "Har xil murakkablikdagi saytlar yaratamiz. Redizayn, qo'llab-quvvatlash, landinglar, do'konlar.",
+      "item1-title": "Har xil murakkablikdagi sayt yaratish",
+      "item1-desc": "Noyob dizayn, moslashuvchan maket, tanlash uchun CMS.",
+      "price1-old": "1 500 000 so'm",
+      "price1-new": "1 050 000 so'm",
+      "item2-title": "Saytni redizayn va qayta ishlash",
+      "item2-desc": "Dizaynni yangilash, UI/UX yaxshilash, kodni optimallashtirish.",
+      "price2-old": "800 000 so'm",
+      "price2-new": "560 000 so'm",
+      "item3-title": "Texnik qo'llab-quvvatlash, yangilanish va takomillashtirish",
+      "item3-desc": "Xavfsizlik, yadro yangilanishlari, funksionallikni takomillashtirish.",
+      "price3-old": "700 000 so'm",
+      "price3-new": "490 000 so'm",
+      "item4-title": "Landing, korporativ saytlar va internet-do'konlar",
+      "item4-desc": "Ochilish sahifalari, kompaniya saytlari, onlayn kataloglar.",
+      "price4-old": "1 200 000 so'm",
+      "price4-new": "840 000 so'm",
+      "back": "Bosh sahifaga",
+      "form-title": "Ariza qoldiring",
+      "form-sub": "15 daqiqa ichida qayta qo‘ng‘iroq qilamiz",
+      "form-service": "Xizmat",
+      "form-opt1": "Har xil murakkablikdagi sayt yaratish",
+      "form-opt2": "Saytni redizayn va qayta ishlash",
+      "form-opt3": "Texnik qo'llab-quvvatlash, yangilanish va takomillashtirish",
+      "form-opt4": "Landing, korporativ saytlar va internet-do'konlar",
+      "form-name": "Ismingiz",
+      "form-phone": "Telefon raqam",
+      "form-submit": "Arizani yuborish",
+      "form-agree": "Tugmani bosish orqali siz shaxsiy ma'lumotlarni qayta ishlashga rozilik bildirasiz",
+      "cta-title": "Buyurtma berishga tayyormisiz?",
+      "cta-desc": "Qo‘ng‘iroq qiling yoki Telegramda yozing – barcha savollarga javob beramiz.",
+      "cta-telegram": "Telegramda yozish"
+    },
+    en: {
+      "header-tag": "Tashkent since 2019",
+      "page-title": "Website development",
+      "subtitle": "Websites of any complexity. Redesign, support, landing pages, online stores.",
+      "item1-title": "Website development of any complexity",
+      "item1-desc": "Unique design, responsive layout, CMS of your choice.",
+      "price1-old": "1,500,000 UZS",
+      "price1-new": "1,050,000 UZS",
+      "item2-title": "Redesign and remake of the site",
+      "item2-desc": "Design update, UI/UX improvement, code optimization.",
+      "price2-old": "800,000 UZS",
+      "price2-new": "560,000 UZS",
+      "item3-title": "Technical support, updates and improvements",
+      "item3-desc": "Security, core updates, functionality improvement.",
+      "price3-old": "700,000 UZS",
+      "price3-new": "490,000 UZS",
+      "item4-title": "Landing, corporate sites and online stores",
+      "item4-desc": "Landing pages, company websites, online catalogs.",
+      "price4-old": "1,200,000 UZS",
+      "price4-new": "840,000 UZS",
+      "back": "Main page",
+      "form-title": "Leave a request",
+      "form-sub": "We will call you back within 15 minutes",
+      "form-service": "Service",
+      "form-opt1": "Website development of any complexity",
+      "form-opt2": "Redesign and remake of the site",
+      "form-opt3": "Technical support, updates and improvements",
+      "form-opt4": "Landing, corporate sites and online stores",
+      "form-name": "Your name",
+      "form-phone": "Phone number",
+      "form-submit": "Submit request",
+      "form-agree": "By clicking the button, you agree to the processing of personal data",
+      "cta-title": "Ready to order?",
+      "cta-desc": "Call or write to Telegram – we will answer all questions.",
+      "cta-telegram": "Write to Telegram"
     }
+  };
+
+  let currentLang = 'ru';
+  function setLanguage(lang) {
+    currentLang = lang;
     document.querySelectorAll('.lang-switch a[data-lang]').forEach(el => {
-      el.addEventListener('click', function(e) {
-        e.preventDefault();
-        setLanguage(this.dataset.lang);
-      });
+      el.classList.toggle('active', el.dataset.lang === lang);
     });
-    const savedLang = localStorage.getItem('lang') || 'ru';
-    setLanguage(savedLang);
-
-    document.getElementById('phoneInput')?.addEventListener('input', function(e) {
-      this.value = this.value.replace(/\D/g, '').slice(0, 9);
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.dataset.i18n;
+      if (translations[lang] && translations[lang][key]) {
+        el.textContent = translations[lang][key];
+      }
     });
-
-    document.getElementById('orderForm')?.addEventListener('submit', async function(e) {
+    localStorage.setItem('lang', lang);
+  }
+  document.querySelectorAll('.lang-switch a[data-lang]').forEach(el => {
+    el.addEventListener('click', function(e) {
       e.preventDefault();
-      const formData = new FormData(this);
-      const data = {
-        usluga: formData.get('usluga'),
-        name: formData.get('name'),
-        phone: '+998' + formData.get('phone')
-      };
-      try {
-        const response = await fetch('/api/order', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data)
-        });
-        const result = await response.json();
-        if (response.ok) {
-          alert('✅ Заявка отправлена! Мы свяжемся с вами.');
-          this.reset();
-          document.getElementById('phoneInput').value = '';
-        } else {
-          alert('❌ Ошибка: ' + (result.error || 'Неизвестная ошибка'));
-        }
-      } catch (err) {
-        alert('❌ Не удалось отправить заявку. Попробуйте позже.');
-      }
+      setLanguage(this.dataset.lang);
     });
+  });
+  const savedLang = localStorage.getItem('lang') || 'ru';
+  setLanguage(savedLang);
 
-    (function() {
-      const params = new URLSearchParams(window.location.search);
-      const usluga = params.get('usluga');
-      if (usluga) {
-        const select = document.getElementById('uslugaSelect');
-        if (select) {
-          let found = false;
-          for (let option of select.options) {
-            if (option.value === usluga) {
-              option.selected = true;
-              found = true;
-              break;
-            }
-          }
-          if (!found) {
-            const newOpt = document.createElement('option');
-            newOpt.value = usluga;
-            newOpt.textContent = usluga;
-            newOpt.selected = true;
-            select.appendChild(newOpt);
-          }
-          setTimeout(() => {
-            const formCard = document.querySelector('.form-card');
-            if (formCard) {
-              formCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
-          }, 300);
-        }
+  document.getElementById('phoneInput')?.addEventListener('input', function(e) {
+    this.value = this.value.replace(/\D/g, '').slice(0, 9);
+  });
+
+  document.getElementById('orderForm')?.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const formData = new FormData(this);
+    const data = {
+      usluga: formData.get('usluga'),
+      name: formData.get('name'),
+      phone: '+998' + formData.get('phone')
+    };
+    try {
+      const response = await fetch('/api/order', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      const result = await response.json();
+      if (response.ok) {
+        alert('✅ Заявка отправлена! Мы свяжемся с вами.');
+        this.reset();
+        document.getElementById('phoneInput').value = '';
+      } else {
+        alert('❌ Ошибка: ' + (result.error || 'Неизвестная ошибка'));
       }
-    })();
-  </script>
+    } catch (err) {
+      alert('❌ Не удалось отправить заявку. Попробуйте позже.');
+    }
+  });
+
+  (function() {
+    const params = new URLSearchParams(window.location.search);
+    const usluga = params.get('usluga');
+    if (usluga) {
+      const select = document.getElementById('uslugaSelect');
+      if (select) {
+        let found = false;
+        for (let option of select.options) {
+          if (option.value === usluga) {
+            option.selected = true;
+            found = true;
+            break;
+          }
+        }
+        if (!found) {
+          const newOpt = document.createElement('option');
+          newOpt.value = usluga;
+          newOpt.textContent = usluga;
+          newOpt.selected = true;
+          select.appendChild(newOpt);
+        }
+        setTimeout(() => {
+          const formCard = document.querySelector('.form-card');
+          if (formCard) {
+            formCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+        }, 300);
+      }
+    }
+  })();
+</script>
 </body>
 </html>
