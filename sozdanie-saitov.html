@@ -17,14 +17,14 @@
     body { min-height: 100vh; color: #eef4ff; }
     .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
     
-    /* ===== ФОН НА ВЕСЬ ЭКРАН ===== */
+    /* ===== ФОН НА ВЕСЬ ЭКРАН БЕЗ РАЗРЫВОВ ===== */
     .hero-bg {
       position: relative;
       min-height: 100vh;
       width: 100%;
+      /* Фото на весь экран — убрал fixed */
       background: url('/images/background.png') center center / cover no-repeat;
       background-color: #0a0e1a;
-      background-attachment: scroll;
     }
     
     .hero-bg::before {
@@ -101,22 +101,18 @@
     .services h2 i { color: #f7b731; }
     .services .subhead { color: rgba(255,255,255,0.6); margin-bottom: 30px; font-size: 18px; }
 
-    /* ===== ОДНА КОЛОНКА ===== */
+    /* ===== 2 КОЛОНКИ КАК БЫЛО ===== */
     .service-grid { 
-      display: flex;
-      flex-direction: column;
+      display: grid; 
+      grid-template-columns: repeat(2, 1fr);
       gap: 28px; 
       margin-top: 16px; 
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-      width: 100%;
     }
 
     .service-item {
       background: rgba(255,255,255,0.06);
       backdrop-filter: blur(12px);
-      padding: 28px 24px 24px;
+      padding: 28px 20px 24px;
       border-radius: 28px;
       border: 1px solid rgba(255,255,255,0.08);
       transition: 0.3s;
@@ -125,7 +121,6 @@
       display: block;
       box-shadow: 0 8px 32px rgba(0,0,0,0.4);
       cursor: pointer;
-      width: 100%;
     }
     .service-item:hover { transform: translateY(-8px); background: rgba(255,255,255,0.10); border-color: rgba(247, 183, 49, 0.3); box-shadow: 0 12px 40px rgba(0,0,0,0.5); }
     .service-item .icon-wrap { font-size: 36px; color: #f7b731; margin-bottom: 14px; }
@@ -135,6 +130,13 @@
     .price-old { font-size: 16px; color: rgba(255,255,255,0.3); text-decoration: line-through; }
     .price-new { font-size: 22px; font-weight: 700; color: #f7b731; background: rgba(247, 183, 49, 0.12); padding: 4px 16px; border-radius: 40px; }
     .price-new small { font-size: 14px; font-weight: 400; color: rgba(255,255,255,0.4); margin-left: 4px; }
+
+    /* МОБИЛЬНЫЕ — 1 КОЛОНКА */
+    @media (max-width: 700px) {
+      .service-grid { 
+        grid-template-columns: 1fr;
+      }
+    }
 
     .form-section { padding: 40px 0; scroll-margin-top: 20px; }
     .form-card { max-width: 700px; margin: 0 auto; background: rgba(255,255,255,0.05); backdrop-filter: blur(16px); padding: 40px 36px; border-radius: 40px; border: 1px solid rgba(255,255,255,0.06); box-shadow: 0 8px 40px rgba(0,0,0,0.3); }
