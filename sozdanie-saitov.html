@@ -17,13 +17,14 @@
     body { min-height: 100vh; color: #eef4ff; }
     .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
     
-    /* ===== ФОН — ВАШЕ ФОТО НА ВЕСЬ ЭКРАН ===== */
+    /* ===== ФОН НА ВЕСЬ ЭКРАН ===== */
     .hero-bg {
       position: relative;
       min-height: 100vh;
       width: 100%;
       background: url('/images/background.png') center center / cover no-repeat;
       background-color: #0a0e1a;
+      background-attachment: scroll;
     }
     
     .hero-bg::before {
@@ -100,15 +101,16 @@
     .services h2 i { color: #f7b731; }
     .services .subhead { color: rgba(255,255,255,0.6); margin-bottom: 30px; font-size: 18px; }
 
-    /* ===== ОДНА КОЛОНКА НА ВСЕХ ЭКРАНАХ ===== */
+    /* ===== ОДНА КОЛОНКА ===== */
     .service-grid { 
-      display: grid; 
-      grid-template-columns: 1fr; /* ТОЛЬКО 1 КОЛОНКА */
+      display: flex;
+      flex-direction: column;
       gap: 28px; 
       margin-top: 16px; 
       max-width: 700px;
       margin-left: auto;
       margin-right: auto;
+      width: 100%;
     }
 
     .service-item {
@@ -123,6 +125,7 @@
       display: block;
       box-shadow: 0 8px 32px rgba(0,0,0,0.4);
       cursor: pointer;
+      width: 100%;
     }
     .service-item:hover { transform: translateY(-8px); background: rgba(255,255,255,0.10); border-color: rgba(247, 183, 49, 0.3); box-shadow: 0 12px 40px rgba(0,0,0,0.5); }
     .service-item .icon-wrap { font-size: 36px; color: #f7b731; margin-bottom: 14px; }
