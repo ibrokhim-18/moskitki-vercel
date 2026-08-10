@@ -24,10 +24,8 @@
       width: 100%;
       background: url('/images/background.png') center center / cover no-repeat;
       background-color: #0a0e1a;
-      /* Убрал fixed чтобы фото не разделялось */
     }
     
-    /* Затемнение для читаемости текста */
     .hero-bg::before {
       content: '';
       position: absolute;
@@ -102,11 +100,21 @@
     .services h2 i { color: #f7b731; }
     .services .subhead { color: rgba(255,255,255,0.6); margin-bottom: 30px; font-size: 18px; }
 
-    .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 28px; margin-top: 16px; }
+    /* ===== ОДНА КОЛОНКА НА ВСЕХ ЭКРАНАХ ===== */
+    .service-grid { 
+      display: grid; 
+      grid-template-columns: 1fr; /* ТОЛЬКО 1 КОЛОНКА */
+      gap: 28px; 
+      margin-top: 16px; 
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
     .service-item {
       background: rgba(255,255,255,0.06);
       backdrop-filter: blur(12px);
-      padding: 28px 20px 24px;
+      padding: 28px 24px 24px;
       border-radius: 28px;
       border: 1px solid rgba(255,255,255,0.08);
       transition: 0.3s;
@@ -205,7 +213,6 @@
     .footer .copy { font-size: 14px; }
 
     @media(max-width:600px){ 
-      .service-grid { grid-template-columns: 1fr; }
       .footer .container { flex-direction: column; text-align: center; justify-content: center; }
     }
   </style>
@@ -236,7 +243,6 @@
       <a href="https://t.me/moskitki_uz" target="_blank" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
       <a href="https://instagram.com/moskitki.uz" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
       <a href="https://facebook.com/moskitki.uz" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-      <!-- YouTube УДАЛЁН -->
       <a href="https://wa.me/998990550660" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
     </div>
   </div>
@@ -246,7 +252,6 @@
       <h2><i class="fas fa-code"></i> <span data-i18n="page-title">Разработка сайтов</span></h2>
       <p class="subhead" data-i18n="subtitle">Создаём сайты любой сложности. Редизайн, поддержка, лендинги, магазины.</p>
       <div class="service-grid">
-        <!-- Добавил data-service и onclick для скролла к форме -->
         <div class="service-item" data-service="Разработка сайта любой сложности" onclick="scrollToForm(this)">
           <div class="icon-wrap"><i class="fas fa-laptop-code"></i></div>
           <h4 data-i18n="item1-title">Разработка сайта любой сложности</h4>
@@ -284,12 +289,11 @@
           </div>
         </div>
       </div>
-      <div style="margin-top:30px;"><a href="index.html" class="more-link" style="color:#f7b731; text-decoration:none; border-bottom:2px solid #f7b731; padding-bottom:4px;"><i class="fas fa-arrow-left"></i> <span data-i18n="back">На главную</span></a></div>
+      <div style="margin-top:30px; text-align:center;"><a href="index.html" class="more-link" style="color:#f7b731; text-decoration:none; border-bottom:2px solid #f7b731; padding-bottom:4px;"><i class="fas fa-arrow-left"></i> <span data-i18n="back">На главную</span></a></div>
     </div>
   </section>
 </div>
 
-<!-- Добавил id="formSection" для якоря -->
 <section class="form-section" id="formSection">
   <div class="container">
     <div class="form-card">
@@ -352,7 +356,6 @@
 </footer>
 
 <script>
-  // ===== ФУНКЦИЯ ДЛЯ СКРОЛЛА К ФОРМЕ =====
   function scrollToForm(el) {
     const service = el.getAttribute('data-service');
     const select = document.getElementById('uslugaSelect');
