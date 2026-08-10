@@ -13,18 +13,21 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, system-ui, sans-serif; }
+    html { scroll-behavior: smooth; }
     body { min-height: 100vh; color: #eef4ff; }
     .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
     
-    /* ===== ФОН — ВАШЕ ФОТО ===== */
+    /* ===== ФОН — ВАШЕ ФОТО НА ВЕСЬ ЭКРАН ===== */
     .hero-bg {
       position: relative;
       min-height: 100vh;
-      background: url('/images/background.png') center center / cover no-repeat fixed;
+      width: 100%;
+      background: url('/images/background.png') center center / cover no-repeat;
       background-color: #0a0e1a;
+      /* Убрал fixed чтобы фото не разделялось */
     }
     
-    /* Затемнение для читаемости текста — СДЕЛАЛ ЯРЧЕ (было 0.55 → стало 0.25) */
+    /* Затемнение для читаемости текста */
     .hero-bg::before {
       content: '';
       position: absolute;
@@ -111,6 +114,7 @@
       color: #eef4ff;
       display: block;
       box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+      cursor: pointer;
     }
     .service-item:hover { transform: translateY(-8px); background: rgba(255,255,255,0.10); border-color: rgba(247, 183, 49, 0.3); box-shadow: 0 12px 40px rgba(0,0,0,0.5); }
     .service-item .icon-wrap { font-size: 36px; color: #f7b731; margin-bottom: 14px; }
@@ -121,7 +125,7 @@
     .price-new { font-size: 22px; font-weight: 700; color: #f7b731; background: rgba(247, 183, 49, 0.12); padding: 4px 16px; border-radius: 40px; }
     .price-new small { font-size: 14px; font-weight: 400; color: rgba(255,255,255,0.4); margin-left: 4px; }
 
-    .form-section { padding: 40px 0; }
+    .form-section { padding: 40px 0; scroll-margin-top: 20px; }
     .form-card { max-width: 700px; margin: 0 auto; background: rgba(255,255,255,0.05); backdrop-filter: blur(16px); padding: 40px 36px; border-radius: 40px; border: 1px solid rgba(255,255,255,0.06); box-shadow: 0 8px 40px rgba(0,0,0,0.3); }
     .form-card h2 { font-size: 28px; font-weight: 700; color: #fff; margin-bottom: 8px; }
     .form-card .sub { color: rgba(255,255,255,0.5); margin-bottom: 24px; }
@@ -232,7 +236,7 @@
       <a href="https://t.me/moskitki_uz" target="_blank" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
       <a href="https://instagram.com/moskitki.uz" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
       <a href="https://facebook.com/moskitki.uz" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-      <a href="https://youtube.com/moskitki.uz" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+      <!-- YouTube УДАЛЁН -->
       <a href="https://wa.me/998990550660" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
     </div>
   </div>
@@ -242,7 +246,8 @@
       <h2><i class="fas fa-code"></i> <span data-i18n="page-title">Разработка сайтов</span></h2>
       <p class="subhead" data-i18n="subtitle">Создаём сайты любой сложности. Редизайн, поддержка, лендинги, магазины.</p>
       <div class="service-grid">
-        <div class="service-item">
+        <!-- Добавил data-service и onclick для скролла к форме -->
+        <div class="service-item" data-service="Разработка сайта любой сложности" onclick="scrollToForm(this)">
           <div class="icon-wrap"><i class="fas fa-laptop-code"></i></div>
           <h4 data-i18n="item1-title">Разработка сайта любой сложности</h4>
           <p data-i18n="item1-desc">Уникальный дизайн, адаптивная вёрстка, CMS на выбор.</p>
@@ -251,7 +256,7 @@
             <span class="price-new" data-i18n="price1-new">1 050 000 сум <small>со скидкой</small></span>
           </div>
         </div>
-        <div class="service-item">
+        <div class="service-item" data-service="Редизайн и переделка сайта" onclick="scrollToForm(this)">
           <div class="icon-wrap"><i class="fas fa-paint-brush"></i></div>
           <h4 data-i18n="item2-title">Редизайн и переделка сайта</h4>
           <p data-i18n="item2-desc">Обновление дизайна, улучшение UI/UX, оптимизация кода.</p>
@@ -260,7 +265,7 @@
             <span class="price-new" data-i18n="price2-new">560 000 сум <small>со скидкой</small></span>
           </div>
         </div>
-        <div class="service-item">
+        <div class="service-item" data-service="Техподдержка, обновления и доработки" onclick="scrollToForm(this)">
           <div class="icon-wrap"><i class="fas fa-tools"></i></div>
           <h4 data-i18n="item3-title">Техподдержка, обновления и доработки</h4>
           <p data-i18n="item3-desc">Безопасность, обновления ядра, доработка функционала.</p>
@@ -269,7 +274,7 @@
             <span class="price-new" data-i18n="price3-new">490 000 сум <small>со скидкой</small></span>
           </div>
         </div>
-        <div class="service-item">
+        <div class="service-item" data-service="Лендинг, корп. сайты и интернет-магазины" onclick="scrollToForm(this)">
           <div class="icon-wrap"><i class="fas fa-store"></i></div>
           <h4 data-i18n="item4-title">Лендинг, корп. сайты и интернет-магазины</h4>
           <p data-i18n="item4-desc">Посадочные страницы, сайты компаний, онлайн-каталоги.</p>
@@ -284,7 +289,8 @@
   </section>
 </div>
 
-<section class="form-section">
+<!-- Добавил id="formSection" для якоря -->
+<section class="form-section" id="formSection">
   <div class="container">
     <div class="form-card">
       <h2><i class="fas fa-pencil-alt" style="color:#f7b731;"></i> <span data-i18n="form-title">Оставьте заявку</span></h2>
@@ -346,6 +352,24 @@
 </footer>
 
 <script>
+  // ===== ФУНКЦИЯ ДЛЯ СКРОЛЛА К ФОРМЕ =====
+  function scrollToForm(el) {
+    const service = el.getAttribute('data-service');
+    const select = document.getElementById('uslugaSelect');
+    if (select) {
+      for (let option of select.options) {
+        if (option.value === service) {
+          option.selected = true;
+          break;
+        }
+      }
+    }
+    const formSection = document.getElementById('formSection');
+    if (formSection) {
+      formSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }
+
   const translations = {
     ru: {
       "header-tag": "Ташкент с 2019",
