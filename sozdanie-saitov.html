@@ -503,3 +503,46 @@
       const result = await response.json();
       if (response.ok) {
         alert('✅ Заявка отправлена! Мы свяжемся с вами.');
+        this.reset();
+        document.getElementById('phoneInput').value = '';
+      } else {
+        alert('❌ Ошибка: ' + (result.error || 'Неизвестная ошибка'));
+      }
+    } catch (err) {
+      alert('❌ Не удалось отправить заявку. Попробуйте позже.');
+    }
+  });
+
+  (function() {
+    const params = new URLSearchParams(window.location.search);
+    const usluga = params.get('usluga');
+    if (usluga) {
+      const select = document.getElementById('uslugaSelect');
+      if (select) {
+        let found = false;
+        for (let option of select.options) {
+          if (option.value === usluga) {
+            option.selected = true;
+            found = true;
+            break;
+          }
+        }
+        if (!found) {
+          const newOpt = document.createElement('option');
+          newOpt.value = usluga;
+          newOpt.textContent = usluga;
+          newOpt.selected = true;
+          select.appendChild(newOpt);
+        }
+        setTimeout(() => {
+          const formCard = document.querySelector('.form-card');
+          if (formCard) {
+            formCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+        }, 300);
+      }
+    }
+  })();
+</script>
+</body>
+</html>
