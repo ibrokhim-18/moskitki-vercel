@@ -21,21 +21,19 @@
       position: relative;
       min-height: 100vh;
       background: url('/images/background.png') center center / cover no-repeat fixed;
-      /* если фото не загрузится — запасной тёмный фон */
       background-color: #0a0e1a;
     }
     
-    /* Затемнение для читаемости текста */
+    /* Затемнение для читаемости текста — СДЕЛАЛ ЯРЧЕ (было 0.55 → стало 0.25) */
     .hero-bg::before {
       content: '';
       position: absolute;
       inset: 0;
-      background: rgba(7, 11, 23, 0.55);
+      background: rgba(7, 11, 23, 0.25);
       pointer-events: none;
       z-index: 0;
     }
     
-    /* Все контенты поверх фона */
     .hero-bg > * {
       position: relative;
       z-index: 1;
