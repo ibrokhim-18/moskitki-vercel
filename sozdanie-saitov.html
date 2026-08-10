@@ -17,28 +17,31 @@
     body { min-height: 100vh; color: #eef4ff; }
     .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
     
-    /* ===== ФОН НА ВЕСЬ ЭКРАН БЕЗ РАЗРЫВОВ ===== */
-    .hero-bg {
-      position: relative;
-      min-height: 100vh;
-      width: 100%;
-      /* Фото на весь экран — убрал fixed */
+    /* ===== ФОН ЧЕРЕЗ FIXED БЛОК ===== */
+    .bg-fixed {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
       background: url('/images/background.png') center center / cover no-repeat;
       background-color: #0a0e1a;
     }
-    
-    .hero-bg::before {
+    /* Затемнение */
+    .bg-fixed::after {
       content: '';
       position: absolute;
       inset: 0;
       background: rgba(7, 11, 23, 0.25);
       pointer-events: none;
-      z-index: 0;
     }
-    
-    .hero-bg > * {
+
+    /* ===== ВСЁ ОСТАЛЬНОЕ ПОВЕРХ ===== */
+    .content {
       position: relative;
       z-index: 1;
+      min-height: 100vh;
     }
 
     .header { 
@@ -101,7 +104,6 @@
     .services h2 i { color: #f7b731; }
     .services .subhead { color: rgba(255,255,255,0.6); margin-bottom: 30px; font-size: 18px; }
 
-    /* ===== 2 КОЛОНКИ КАК БЫЛО ===== */
     .service-grid { 
       display: grid; 
       grid-template-columns: repeat(2, 1fr);
@@ -131,11 +133,8 @@
     .price-new { font-size: 22px; font-weight: 700; color: #f7b731; background: rgba(247, 183, 49, 0.12); padding: 4px 16px; border-radius: 40px; }
     .price-new small { font-size: 14px; font-weight: 400; color: rgba(255,255,255,0.4); margin-left: 4px; }
 
-    /* МОБИЛЬНЫЕ — 1 КОЛОНКА */
     @media (max-width: 700px) {
-      .service-grid { 
-        grid-template-columns: 1fr;
-      }
+      .service-grid { grid-template-columns: 1fr; }
     }
 
     .form-section { padding: 40px 0; scroll-margin-top: 20px; }
@@ -224,7 +223,12 @@
 </head>
 <body>
 
-<div class="hero-bg">
+<!-- ===== ФИКСИРОВАННЫЙ ФОН ===== -->
+<div class="bg-fixed"></div>
+
+<!-- ===== ВЕСЬ КОНТЕНТ ===== -->
+<div class="content">
+
   <header class="header">
     <div class="container">
       <div class="logo-area">
@@ -297,68 +301,70 @@
       <div style="margin-top:30px; text-align:center;"><a href="index.html" class="more-link" style="color:#f7b731; text-decoration:none; border-bottom:2px solid #f7b731; padding-bottom:4px;"><i class="fas fa-arrow-left"></i> <span data-i18n="back">На главную</span></a></div>
     </div>
   </section>
-</div>
 
-<section class="form-section" id="formSection">
-  <div class="container">
-    <div class="form-card">
-      <h2><i class="fas fa-pencil-alt" style="color:#f7b731;"></i> <span data-i18n="form-title">Оставьте заявку</span></h2>
-      <p class="sub" data-i18n="form-sub">Мы перезвоним в течение 15 минут</p>
-      <form id="orderForm">
-        <div class="form-group">
-          <label data-i18n="form-service">Услуга</label>
-          <select name="usluga" id="uslugaSelect">
-            <option value="Разработка сайта любой сложности" data-i18n="form-opt1">Разработка сайта любой сложности</option>
-            <option value="Редизайн и переделка сайта" data-i18n="form-opt2">Редизайн и переделка сайта</option>
-            <option value="Техподдержка, обновления и доработки" data-i18n="form-opt3">Техподдержка, обновления и доработки</option>
-            <option value="Лендинг, корп. сайты и интернет-магазины" data-i18n="form-opt4">Лендинг, корп. сайты и интернет-магазины</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label data-i18n="form-name">Ваше имя</label>
-          <input type="text" name="name" placeholder="Ваше имя" required>
-        </div>
-        <div class="form-group">
-          <label data-i18n="form-phone">Номер телефона</label>
-          <div style="display: flex; align-items: center; border: 1px solid rgba(255,255,255,0.08); border-radius: 30px; background: rgba(255,255,255,0.04); padding: 0 18px;">
-            <span style="font-weight: 600; color: #f7b731; padding-right: 6px;">+998</span>
-            <input type="tel" id="phoneInput" name="phone" placeholder="99 055 06 60" 
-                   style="border: none; outline: none; background: transparent; width: 100%; padding: 14px 0; font-size: 16px; color:#fff;"
-                   required pattern="[0-9]{9}" maxlength="9" title="Введите 9 цифр после +998">
+  <section class="form-section" id="formSection">
+    <div class="container">
+      <div class="form-card">
+        <h2><i class="fas fa-pencil-alt" style="color:#f7b731;"></i> <span data-i18n="form-title">Оставьте заявку</span></h2>
+        <p class="sub" data-i18n="form-sub">Мы перезвоним в течение 15 минут</p>
+        <form id="orderForm">
+          <div class="form-group">
+            <label data-i18n="form-service">Услуга</label>
+            <select name="usluga" id="uslugaSelect">
+              <option value="Разработка сайта любой сложности" data-i18n="form-opt1">Разработка сайта любой сложности</option>
+              <option value="Редизайн и переделка сайта" data-i18n="form-opt2">Редизайн и переделка сайта</option>
+              <option value="Техподдержка, обновления и доработки" data-i18n="form-opt3">Техподдержка, обновления и доработки</option>
+              <option value="Лендинг, корп. сайты и интернет-магазины" data-i18n="form-opt4">Лендинг, корп. сайты и интернет-магазины</option>
+            </select>
           </div>
-        </div>
-        <button type="submit" class="form-btn"><i class="fas fa-paper-plane"></i> <span data-i18n="form-submit">Отправить заявку</span></button>
-        <div class="form-agree" data-i18n="form-agree">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных</div>
-      </form>
+          <div class="form-group">
+            <label data-i18n="form-name">Ваше имя</label>
+            <input type="text" name="name" placeholder="Ваше имя" required>
+          </div>
+          <div class="form-group">
+            <label data-i18n="form-phone">Номер телефона</label>
+            <div style="display: flex; align-items: center; border: 1px solid rgba(255,255,255,0.08); border-radius: 30px; background: rgba(255,255,255,0.04); padding: 0 18px;">
+              <span style="font-weight: 600; color: #f7b731; padding-right: 6px;">+998</span>
+              <input type="tel" id="phoneInput" name="phone" placeholder="99 055 06 60" 
+                     style="border: none; outline: none; background: transparent; width: 100%; padding: 14px 0; font-size: 16px; color:#fff;"
+                     required pattern="[0-9]{9}" maxlength="9" title="Введите 9 цифр после +998">
+            </div>
+          </div>
+          <button type="submit" class="form-btn"><i class="fas fa-paper-plane"></i> <span data-i18n="form-submit">Отправить заявку</span></button>
+          <div class="form-agree" data-i18n="form-agree">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных</div>
+        </form>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="cta-final">
-  <div class="container">
-    <h2 data-i18n="cta-title">Готовы сделать заказ?</h2>
-    <p data-i18n="cta-desc">Позвоните или напишите нам в Telegram – мы ответим на все вопросы.</p>
-    <div class="final-links">
-      <a href="tel:+998990550660"><i class="fas fa-phone-alt"></i> +998 99 055 06 60</a>
-      <a href="https://t.me/moskitki_uz" class="telegram" target="_blank"><i class="fab fa-telegram-plane"></i> <span data-i18n="cta-telegram">Написать в Telegram</span></a>
+  <section class="cta-final">
+    <div class="container">
+      <h2 data-i18n="cta-title">Готовы сделать заказ?</h2>
+      <p data-i18n="cta-desc">Позвоните или напишите нам в Telegram – мы ответим на все вопросы.</p>
+      <div class="final-links">
+        <a href="tel:+998990550660"><i class="fas fa-phone-alt"></i> +998 99 055 06 60</a>
+        <a href="https://t.me/moskitki_uz" class="telegram" target="_blank"><i class="fab fa-telegram-plane"></i> <span data-i18n="cta-telegram">Написать в Telegram</span></a>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<footer class="footer">
-  <div class="container">
-    <div class="footer-logo">
-      <img src="/images/logo.png" alt="Moskitki.uz"> Moskitki.uz
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-logo">
+        <img src="/images/logo.png" alt="Moskitki.uz"> Moskitki.uz
+      </div>
+      <div class="social-links">
+        <a href="https://t.me/moskitki_uz" target="_blank" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+        <a href="https://instagram.com/moskitki.uz" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://wa.me/998990550660" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://facebook.com/moskitki.uz" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+      </div>
+      <div class="copy">© 2019 – 2026 — Toshkent</div>
     </div>
-    <div class="social-links">
-      <a href="https://t.me/moskitki_uz" target="_blank" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
-      <a href="https://instagram.com/moskitki.uz" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-      <a href="https://wa.me/998990550660" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-      <a href="https://facebook.com/moskitki.uz" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-    </div>
-    <div class="copy">© 2019 – 2026 — Toshkent</div>
-  </div>
-</footer>
+  </footer>
+
+</div>
+<!-- ===== КОНЕЦ КОНТЕНТА ===== -->
 
 <script>
   function scrollToForm(el) {
