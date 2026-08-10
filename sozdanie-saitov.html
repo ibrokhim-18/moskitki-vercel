@@ -13,30 +13,61 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, system-ui, sans-serif; }
-    body { background: #0b1a2f; color: #eef4ff; }
+    body { background: #0a0e1a; color: #eef4ff; min-height: 100vh; }
     .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
     
+    /* ===== ФОН ТОЧНО КАК НА ФОТО ===== */
     .hero-bg {
-      background: radial-gradient(circle at 20% 30%, #1d3a5c, #091629 80%);
       position: relative;
       overflow: hidden;
+      min-height: 100vh;
+      background: 
+        radial-gradient(ellipse at 20% 50%, #0d1b3e 0%, #070b17 70%),
+        radial-gradient(ellipse at 80% 20%, #1a0a2e 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 80%, #0a1a2e 0%, transparent 60%);
+      background-blend-mode: normal;
     }
+    
     .hero-bg::before {
       content: '';
       position: absolute;
       inset: 0;
-      background: 
-        radial-gradient(circle at 70% 20%, rgba(255, 215, 0, 0.08) 0%, transparent 40%),
-        radial-gradient(circle at 10% 80%, rgba(0, 150, 255, 0.06) 0%, transparent 50%),
-        radial-gradient(circle at 90% 70%, rgba(255, 100, 100, 0.04) 0%, transparent 40%);
       pointer-events: none;
+      background:
+        radial-gradient(ellipse at 15% 40%, rgba(30, 144, 255, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 85% 15%, rgba(200, 80, 255, 0.12) 0%, transparent 45%),
+        radial-gradient(ellipse at 60% 90%, rgba(120, 60, 255, 0.10) 0%, transparent 40%),
+        radial-gradient(ellipse at 90% 60%, rgba(0, 150, 255, 0.08) 0%, transparent 35%),
+        radial-gradient(circle at 30% 70%, rgba(100, 180, 255, 0.06) 0%, transparent 25%);
     }
+    
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.03) 0%, transparent 30%),
+        radial-gradient(circle at 95% 80%, rgba(255, 255, 255, 0.02) 0%, transparent 25%),
+        radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.01) 0%, transparent 50%);
+    }
+    
+    .noise-overlay {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.04;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 256px 256px;
+    }
+
     .header { 
-      background: rgba(9, 22, 41, 0.7); 
-      backdrop-filter: blur(6px);
+      background: rgba(7, 11, 23, 0.6); 
+      backdrop-filter: blur(8px);
       color: #fff; 
       padding: 14px 0; 
-      border-bottom: 2px solid rgba(247, 183, 49, 0.3);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
       position: relative;
       z-index: 2;
     }
@@ -45,11 +76,11 @@
     .logo-text { font-weight: 700; font-size: 24px; letter-spacing: -0.5px; display: flex; align-items: center; gap: 10px; }
     .logo-text span { color: #f7b731; }
     .logo-text img { height: 36px; width: auto; border-radius: 8px; }
-    .lang-switch { display: flex; gap: 8px; font-size: 14px; font-weight: 500; background: rgba(255,255,255,0.06); padding: 6px 14px; border-radius: 40px; flex-wrap: wrap; align-items: center; }
-    .lang-switch a { color: rgba(255,255,255,0.6); text-decoration: none; transition: .2s; display: flex; align-items: center; gap: 5px; font-size: 15px; cursor: pointer; }
+    .lang-switch { display: flex; gap: 8px; font-size: 14px; font-weight: 500; background: rgba(255,255,255,0.05); padding: 6px 14px; border-radius: 40px; flex-wrap: wrap; align-items: center; border: 1px solid rgba(255,255,255,0.05); }
+    .lang-switch a { color: rgba(255,255,255,0.5); text-decoration: none; transition: .2s; display: flex; align-items: center; gap: 5px; font-size: 15px; cursor: pointer; }
     .lang-switch a.active { color: #fff; font-weight: 600; }
     .lang-switch a .flag { font-size: 20px; line-height: 1; }
-    .header-tag { font-size: 14px; background: rgba(247, 183, 49, 0.2); padding: 6px 14px; border-radius: 40px; display: inline-block; font-weight: 400; color: #f7b731; }
+    .header-tag { font-size: 14px; background: rgba(247, 183, 49, 0.15); padding: 6px 14px; border-radius: 40px; display: inline-block; font-weight: 400; color: #f7b731; border: 1px solid rgba(247, 183, 49, 0.1); }
 
     .discount-banner {
       background: linear-gradient(135deg, #f7b731, #e09d1a);
@@ -60,7 +91,7 @@
       font-weight: 800;
       font-size: 22px;
       letter-spacing: 1px;
-      box-shadow: 0 8px 24px rgba(247, 183, 49, 0.3);
+      box-shadow: 0 8px 32px rgba(247, 183, 49, 0.25);
       margin: 20px 0 10px;
       z-index: 3;
       position: relative;
@@ -78,7 +109,7 @@
     }
     .social-icons a {
       color: #fff;
-      background: rgba(255,255,255,0.07);
+      background: rgba(255,255,255,0.06);
       width: 44px;
       height: 44px;
       border-radius: 50%;
@@ -88,76 +119,130 @@
       font-size: 22px;
       transition: 0.2s;
       text-decoration: none;
-      border: 1px solid rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.06);
     }
     .social-icons a:hover { background: #f7b731; color: #0b1a2f; transform: translateY(-3px); border-color: #f7b731; }
 
     .services { padding: 30px 0 50px; position: relative; z-index: 2; }
     .services h2 { font-size: 32px; font-weight: 700; color: #fff; margin-bottom: 8px; display: flex; align-items: center; gap: 12px; }
     .services h2 i { color: #f7b731; }
-    .services .subhead { color: #b0c8e0; margin-bottom: 30px; font-size: 18px; }
+    .services .subhead { color: rgba(255,255,255,0.6); margin-bottom: 30px; font-size: 18px; }
 
     .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 28px; margin-top: 16px; }
     .service-item {
       background: rgba(255,255,255,0.04);
-      backdrop-filter: blur(4px);
+      backdrop-filter: blur(12px);
       padding: 28px 20px 24px;
       border-radius: 28px;
       border: 1px solid rgba(255,255,255,0.06);
-      transition: 0.25s;
+      transition: 0.3s;
       text-decoration: none;
       color: #eef4ff;
       display: block;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
     }
-    .service-item:hover { transform: translateY(-8px); background: rgba(255,255,255,0.08); border-color: rgba(247, 183, 49, 0.3); }
+    .service-item:hover { transform: translateY(-8px); background: rgba(255,255,255,0.08); border-color: rgba(247, 183, 49, 0.25); box-shadow: 0 12px 40px rgba(0,0,0,0.5); }
     .service-item .icon-wrap { font-size: 36px; color: #f7b731; margin-bottom: 14px; }
     .service-item h4 { font-weight: 700; font-size: 20px; margin-bottom: 8px; color: #fff; }
-    .service-item p { font-size: 14px; color: #b0c8e0; line-height: 1.5; margin-bottom: 14px; }
+    .service-item p { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.5; margin-bottom: 14px; }
     .price-block { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-top: 6px; }
-    .price-old { font-size: 16px; color: #8a9fb0; text-decoration: line-through; }
+    .price-old { font-size: 16px; color: rgba(255,255,255,0.3); text-decoration: line-through; }
     .price-new { font-size: 22px; font-weight: 700; color: #f7b731; background: rgba(247, 183, 49, 0.12); padding: 4px 16px; border-radius: 40px; }
-    .price-new small { font-size: 14px; font-weight: 400; color: #b0c8e0; margin-left: 4px; }
+    .price-new small { font-size: 14px; font-weight: 400; color: rgba(255,255,255,0.4); margin-left: 4px; }
 
-    .form-section { padding: 40px 0; background: rgba(9, 22, 41, 0.6); backdrop-filter: blur(4px); }
-    .form-card { max-width: 700px; margin: 0 auto; background: rgba(255,255,255,0.05); backdrop-filter: blur(8px); padding: 40px 36px; border-radius: 40px; border: 1px solid rgba(255,255,255,0.06); }
+    .form-section { padding: 40px 0; position: relative; z-index: 2; }
+    .form-card { max-width: 700px; margin: 0 auto; background: rgba(255,255,255,0.04); backdrop-filter: blur(16px); padding: 40px 36px; border-radius: 40px; border: 1px solid rgba(255,255,255,0.06); box-shadow: 0 8px 40px rgba(0,0,0,0.3); }
     .form-card h2 { font-size: 28px; font-weight: 700; color: #fff; margin-bottom: 8px; }
-    .form-card .sub { color: #b0c8e0; margin-bottom: 24px; }
+    .form-card .sub { color: rgba(255,255,255,0.5); margin-bottom: 24px; }
     .form-group { margin-bottom: 20px; }
-    .form-group label { font-weight: 500; display: block; margin-bottom: 6px; color: #d0e0f0; }
+    .form-group label { font-weight: 500; display: block; margin-bottom: 6px; color: rgba(255,255,255,0.7); }
     .form-group input, .form-group select {
-      width: 100%; padding: 14px 18px; border: 1px solid rgba(255,255,255,0.1); border-radius: 30px;
-      font-size: 16px; background: rgba(255,255,255,0.05); color: #fff; transition: .2s;
+      width: 100%; padding: 14px 18px; border: 1px solid rgba(255,255,255,0.08); border-radius: 30px;
+      font-size: 16px; background: rgba(255,255,255,0.04); color: #fff; transition: .2s;
     }
     .form-group input:focus, .form-group select:focus { border-color: #f7b731; outline: none; background: rgba(255,255,255,0.08); }
-    .form-group input::placeholder { color: #8a9fb0; }
+    .form-group input::placeholder { color: rgba(255,255,255,0.3); }
+    .form-group select option { background: #0a0e1a; color: #fff; }
     .form-btn { background: #f7b731; color: #0b1a2f; border: none; padding: 16px 32px; font-size: 18px; font-weight: 700; border-radius: 60px; width: 100%; cursor: pointer; transition: .2s; display: flex; align-items: center; justify-content: center; gap: 12px; }
     .form-btn i { color: #0b1a2f; }
     .form-btn:hover { background: #ffcc5e; transform: scale(1.02); }
-    .form-agree { font-size: 13px; color: #8a9fb0; margin-top: 16px; text-align: center; }
+    .form-agree { font-size: 13px; color: rgba(255,255,255,0.3); margin-top: 16px; text-align: center; }
 
-    .cta-final { padding: 40px 0; background: rgba(9, 22, 41, 0.8); backdrop-filter: blur(4px); text-align: center; border-top: 1px solid rgba(255,255,255,0.05); }
+    .cta-final { padding: 40px 0; position: relative; z-index: 2; text-align: center; border-top: 1px solid rgba(255,255,255,0.04); }
     .cta-final h2 { font-size: 30px; font-weight: 700; margin-bottom: 12px; }
-    .cta-final p { font-size: 18px; opacity: .8; margin-bottom: 28px; }
+    .cta-final p { font-size: 18px; opacity: .6; margin-bottom: 28px; }
     .cta-final .final-links { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
-    .cta-final .final-links a { display: inline-flex; align-items: center; gap: 14px; background: rgba(255,255,255,0.06); backdrop-filter: blur(4px); color: #fff; padding: 16px 34px; border-radius: 60px; text-decoration: none; font-weight: 600; font-size: 20px; transition: .2s; border: 1px solid rgba(255,255,255,0.05); }
+    .cta-final .final-links a { display: inline-flex; align-items: center; gap: 14px; background: rgba(255,255,255,0.04); backdrop-filter: blur(8px); color: #fff; padding: 16px 34px; border-radius: 60px; text-decoration: none; font-weight: 600; font-size: 20px; transition: .2s; border: 1px solid rgba(255,255,255,0.06); }
     .cta-final .final-links a i { color: #f7b731; font-size: 24px; }
     .cta-final .final-links a.telegram { background: #f7b731; color: #0b1a2f; }
     .cta-final .final-links a.telegram i { color: #0b1a2f; }
-    .cta-final .final-links a:hover { transform: scale(1.05); background: rgba(255,255,255,0.12); }
+    .cta-final .final-links a:hover { transform: scale(1.05); background: rgba(255,255,255,0.08); }
 
-    .footer { background: rgba(6, 15, 30, 0.9); padding: 24px 0; color: rgba(255,255,255,.6); border-top: 1px solid rgba(255,255,255,0.05); }
-    .footer .container { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; }
-    .footer .copy { font-size: 14px; }
-    .footer .footer-logo { color: #fff; font-weight: 600; font-size: 18px; display: flex; align-items: center; gap: 8px; }
+    /* ===== ФУТЕР С ИКОНКАМИ ===== */
+    .footer { 
+      background: rgba(7, 11, 23, 0.8); 
+      padding: 24px 0; 
+      color: rgba(255,255,255,.4); 
+      border-top: 1px solid rgba(255,255,255,0.03); 
+      position: relative; 
+      z-index: 2; 
+    }
+    .footer .container { 
+      display: flex; 
+      flex-wrap: wrap; 
+      justify-content: space-between; 
+      align-items: center; 
+      gap: 16px;
+    }
+    .footer .footer-logo { 
+      color: #fff; 
+      font-weight: 600; 
+      font-size: 18px; 
+      display: flex; 
+      align-items: center; 
+      gap: 8px; 
+    }
     .footer .footer-logo img { height: 28px; width: auto; border-radius: 6px; }
+    
+    .footer .social-links {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+    }
+    .footer .social-links a {
+      color: rgba(255,255,255,0.4);
+      background: rgba(255,255,255,0.04);
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      transition: 0.25s;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.04);
+    }
+    .footer .social-links a:hover {
+      color: #f7b731;
+      background: rgba(247, 183, 49, 0.12);
+      border-color: rgba(247, 183, 49, 0.2);
+      transform: translateY(-2px);
+    }
+    
+    .footer .copy { font-size: 14px; }
 
-    @media(max-width:600px){ .service-grid { grid-template-columns: 1fr; } }
+    @media(max-width:600px){ 
+      .service-grid { grid-template-columns: 1fr; }
+      .footer .container { flex-direction: column; text-align: center; justify-content: center; }
+    }
   </style>
 </head>
 <body>
 
 <div class="hero-bg">
+  <div class="noise-overlay"></div>
+
   <header class="header">
     <div class="container">
       <div class="logo-area">
@@ -191,7 +276,6 @@
       <h2><i class="fas fa-code"></i> <span data-i18n="page-title">Разработка сайтов</span></h2>
       <p class="subhead" data-i18n="subtitle">Создаём сайты любой сложности. Редизайн, поддержка, лендинги, магазины.</p>
       <div class="service-grid">
-        <!-- 1. Разработка сайта любой сложности -->
         <div class="service-item">
           <div class="icon-wrap"><i class="fas fa-laptop-code"></i></div>
           <h4 data-i18n="item1-title">Разработка сайта любой сложности</h4>
@@ -201,7 +285,6 @@
             <span class="price-new" data-i18n="price1-new">1 050 000 сум <small>со скидкой</small></span>
           </div>
         </div>
-        <!-- 2. Редизайн и переделка сайта -->
         <div class="service-item">
           <div class="icon-wrap"><i class="fas fa-paint-brush"></i></div>
           <h4 data-i18n="item2-title">Редизайн и переделка сайта</h4>
@@ -211,7 +294,6 @@
             <span class="price-new" data-i18n="price2-new">560 000 сум <small>со скидкой</small></span>
           </div>
         </div>
-        <!-- 3. Техническая поддержка, обновления и доработки -->
         <div class="service-item">
           <div class="icon-wrap"><i class="fas fa-tools"></i></div>
           <h4 data-i18n="item3-title">Техподдержка, обновления и доработки</h4>
@@ -221,7 +303,6 @@
             <span class="price-new" data-i18n="price3-new">490 000 сум <small>со скидкой</small></span>
           </div>
         </div>
-        <!-- 4. Лендинг, корпоративные сайты и интернет-магазины -->
         <div class="service-item">
           <div class="icon-wrap"><i class="fas fa-store"></i></div>
           <h4 data-i18n="item4-title">Лендинг, корп. сайты и интернет-магазины</h4>
@@ -237,7 +318,6 @@
   </section>
 </div>
 
-<!-- форма -->
 <section class="form-section">
   <div class="container">
     <div class="form-card">
@@ -259,7 +339,7 @@
         </div>
         <div class="form-group">
           <label data-i18n="form-phone">Номер телефона</label>
-          <div style="display: flex; align-items: center; border: 1px solid rgba(255,255,255,0.1); border-radius: 30px; background: rgba(255,255,255,0.05); padding: 0 18px;">
+          <div style="display: flex; align-items: center; border: 1px solid rgba(255,255,255,0.08); border-radius: 30px; background: rgba(255,255,255,0.04); padding: 0 18px;">
             <span style="font-weight: 600; color: #f7b731; padding-right: 6px;">+998</span>
             <input type="tel" id="phoneInput" name="phone" placeholder="99 055 06 60" 
                    style="border: none; outline: none; background: transparent; width: 100%; padding: 14px 0; font-size: 16px; color:#fff;"
@@ -284,9 +364,18 @@
   </div>
 </section>
 
+<!-- ===== ФУТЕР С ИКОНКАМИ ===== -->
 <footer class="footer">
   <div class="container">
-    <div class="footer-logo"><img src="/images/logo.png" alt="Moskitki.uz"> Moskitki.uz</div>
+    <div class="footer-logo">
+      <img src="/images/logo.png" alt="Moskitki.uz"> Moskitki.uz
+    </div>
+    <div class="social-links">
+      <a href="https://t.me/moskitki_uz" target="_blank" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+      <a href="https://instagram.com/moskitki.uz" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://wa.me/998990550660" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://facebook.com/moskitki.uz" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+    </div>
     <div class="copy">© 2019 – 2026 — Toshkent</div>
   </div>
 </footer>
