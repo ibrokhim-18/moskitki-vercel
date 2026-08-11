@@ -51,8 +51,17 @@
     }
     .header .container { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; }
     .logo-area { display: flex; align-items: center; gap: 12px; }
-    .logo-text { font-weight: 700; font-size: 24px; letter-spacing: -0.5px; display: flex; align-items: center; gap: 10px; }
-    .logo-text span { color: #f7b731; }
+    .logo-text a { 
+      font-weight: 700; 
+      font-size: 24px; 
+      letter-spacing: -0.5px; 
+      display: flex; 
+      align-items: center; 
+      gap: 10px; 
+      color: #fff; 
+      text-decoration: none; 
+    }
+    .logo-text a span { color: #f7b731; }
     .logo-text img { height: 36px; width: auto; border-radius: 8px; }
     .lang-switch { display: flex; gap: 8px; font-size: 14px; font-weight: 500; background: rgba(255,255,255,0.05); padding: 6px 14px; border-radius: 40px; flex-wrap: wrap; align-items: center; border: 1px solid rgba(255,255,255,0.05); }
     .lang-switch a { color: rgba(255,255,255,0.5); text-decoration: none; transition: .2s; display: flex; align-items: center; gap: 5px; font-size: 15px; cursor: pointer; }
@@ -77,7 +86,7 @@
 
     /* ===== ГЕРОЙ ===== */
     .hero {
-      padding: 30px 0 20px;
+      padding: 30px 0 10px;
       text-align: center;
     }
     .hero h1 {
@@ -92,30 +101,8 @@
       font-size: 20px;
       color: rgba(255,255,255,0.6);
       max-width: 700px;
-      margin: 0 auto 30px;
+      margin: 0 auto 10px;
     }
-    .hero .btn-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      justify-content: center;
-    }
-    .btn-primary {
-      background: #f7b731;
-      color: #0b1a2f;
-      padding: 16px 48px;
-      border-radius: 60px;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 18px;
-      transition: .25s;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      border: none;
-      cursor: pointer;
-    }
-    .btn-primary:hover { background: #ffcc5e; transform: scale(1.03); }
 
     /* ===== О РУКОВОДИТЕЛЕ ===== */
     .about-leader {
@@ -135,7 +122,7 @@
 
     /* ===== УСЛУГИ ===== */
     .services {
-      padding: 30px 0 40px;
+      padding: 30px 0 20px;
     }
     .section-title {
       font-size: 34px;
@@ -179,6 +166,25 @@
       .hero h1 { font-size: 30px; }
     }
 
+    /* ===== КНОПКА НА ГЛАВНУЮ ===== */
+    .back-home {
+      text-align: center;
+      margin: 20px 0 10px;
+    }
+    .back-home a {
+      color: #f7b731;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: 600;
+      border-bottom: 2px solid #f7b731;
+      padding-bottom: 4px;
+      transition: .2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .back-home a:hover { opacity: 0.8; }
+
     /* ===== ПОРТФОЛИО ===== */
     .portfolio {
       padding: 30px 0 50px;
@@ -201,20 +207,16 @@
     .portfolio-item:hover { transform: translateY(-6px); border-color: rgba(247, 183, 49, 0.2); }
     .portfolio-item .preview {
       height: 200px;
-      background: rgba(255,255,255,0.03);
+      background-size: cover;
+      background-position: center;
+      background-color: rgba(255,255,255,0.03);
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 64px;
       color: rgba(255,255,255,0.08);
       border-bottom: 1px solid rgba(255,255,255,0.04);
-      background-size: cover;
-      background-position: center;
     }
-    /* Цветные фоны для превью 600×600 */
-    .portfolio-item:nth-child(1) .preview { background: linear-gradient(135deg, #1a2a3a, #0d1b2a); color: rgba(255,255,255,0.15); }
-    .portfolio-item:nth-child(2) .preview { background: linear-gradient(135deg, #1a2a3a, #0d1b2a); color: rgba(255,255,255,0.15); }
-    .portfolio-item:nth-child(3) .preview { background: linear-gradient(135deg, #1a2a3a, #0d1b2a); color: rgba(255,255,255,0.15); }
     .portfolio-item .info { padding: 20px 24px 24px; }
     .portfolio-item .info .tag {
       font-size: 12px;
@@ -310,13 +312,14 @@
       align-items: center; 
       gap: 16px;
     }
-    .footer .footer-logo { 
+    .footer .footer-logo a { 
       color: #fff; 
       font-weight: 600; 
       font-size: 18px; 
       display: flex; 
       align-items: center; 
       gap: 8px; 
+      text-decoration: none;
     }
     .footer .footer-logo img { height: 28px; width: auto; border-radius: 6px; }
     
@@ -364,7 +367,11 @@
   <header class="header">
     <div class="container">
       <div class="logo-area">
-        <div class="logo-text"><img src="/images/logo.png" alt="Логотип"> Moskitki.<span>uz</span></div>
+        <div class="logo-text">
+          <a href="/">
+            <img src="/images/logo.png" alt="Moskitki.uz"> Moskitki.<span>uz</span>
+          </a>
+        </div>
       </div>
       <div class="lang-switch" id="langSwitcher">
         <a data-lang="ru" class="active"><span class="flag">🇷🇺</span> RU</a>
@@ -382,14 +389,11 @@
     </div>
   </div>
 
-  <!-- ===== ГЕРОЙ ===== -->
+  <!-- ===== ГЕРОЙ (БЕЗ КНОПКИ) ===== -->
   <section class="hero">
     <div class="container">
       <h1 data-i18n="hero-title">Создаём сайты, которые <span>приносят клиентов</span></h1>
       <p data-i18n="hero-desc">Разрабатываем современные сайты для бизнеса: от лендингов до интернет-магазинов. С адаптацией под смартфоны и настройкой под ваш проект.</p>
-      <div class="btn-group">
-        <a href="#formSection" class="btn-primary"><i class="fas fa-calculator"></i> <span data-i18n="hero-btn">Получить расчёт</span></a>
-      </div>
     </div>
   </section>
 
@@ -445,17 +449,22 @@
           </div>
         </div>
       </div>
+
+      <!-- ===== КНОПКА НА ГЛАВНУЮ (ПОСЛЕ УСЛУГ) ===== -->
+      <div class="back-home">
+        <a href="/"><i class="fas fa-arrow-left"></i> <span data-i18n="back-home">На главную</span></a>
+      </div>
     </div>
   </section>
 
-  <!-- ===== ПОРТФОЛИО (ПОСЛЕ УСЛУГ) ===== -->
+  <!-- ===== ПОРТФОЛИО ===== -->
   <section class="portfolio" id="portfolio">
     <div class="container">
       <h2 class="section-title" data-i18n="portfolio-title">Наши проекты</h2>
       <p class="section-sub" data-i18n="portfolio-sub">Реальные сайты, которые мы разработали</p>
       <div class="portfolio-grid">
         <a href="https://jalyuzitashkent.uz" target="_blank" class="portfolio-item">
-          <div class="preview"><i class="fas fa-window-maximize"></i></div>
+          <div class="preview" style="background-image: url('/images/jalyuzi.png');"></div>
           <div class="info">
             <span class="tag">Сайт компании</span>
             <h4>JalyuziTashkent.uz</h4>
@@ -464,7 +473,7 @@
           </div>
         </a>
         <a href="https://moskitki.uz" target="_blank" class="portfolio-item">
-          <div class="preview"><i class="fas fa-globe"></i></div>
+          <div class="preview" style="background-image: url('/images/moskitki.png');"></div>
           <div class="info">
             <span class="tag">Мультиуслуги</span>
             <h4>Moskitki.uz</h4>
@@ -473,7 +482,7 @@
           </div>
         </a>
         <a href="https://inflexestate.com" target="_blank" class="portfolio-item">
-          <div class="preview"><i class="fas fa-building"></i></div>
+          <div class="preview" style="background-image: url('/images/inflex.png');"></div>
           <div class="info">
             <span class="tag">Недвижимость</span>
             <h4>InflexEstate.com</h4>
@@ -568,7 +577,9 @@
   <footer class="footer">
     <div class="container">
       <div class="footer-logo">
-        <img src="/images/logo.png" alt="Moskitki.uz"> Moskitki.uz
+        <a href="/">
+          <img src="/images/logo.png" alt="Moskitki.uz"> Moskitki.uz
+        </a>
       </div>
       <div class="social-links">
         <a href="https://t.me/moskitki_uz" target="_blank" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
@@ -606,7 +617,6 @@
       "discount": "СКИДКА 30% НА ВСЕ УСЛУГИ",
       "hero-title": "Создаём сайты, которые приносят клиентов",
       "hero-desc": "Разрабатываем современные сайты для бизнеса: от лендингов до интернет-магазинов. С адаптацией под смартфоны и настройкой под ваш проект.",
-      "hero-btn": "Получить расчёт",
       "leader-title": "Руководитель — Project Manager с опытом в Дубае",
       "leader-desc": "Наш руководитель более 5 лет работал в Дубае в должности Project Manager, управляя крупными проектами по созданию сайтов для международных компаний. Мы применили этот опыт в Узбекистане, чтобы предлагать клиентам качество на мировом уровне.",
       "services-title": "Что мы создаём",
@@ -627,6 +637,7 @@
       "serv4-desc": "Обновление дизайна, улучшение юзабилити, оптимизация скорости и доработка функционала.",
       "serv4-old": "800 000 сум",
       "serv4-new": "560 000 сум",
+      "back-home": "На главную",
       "portfolio-title": "Наши проекты",
       "portfolio-sub": "Реальные сайты, которые мы разработали",
       "reviews-title": "Отзывы наших клиентов",
@@ -651,7 +662,6 @@
       "discount": "BARCHA XIZMATLARGA 30% CHEGIRMA",
       "hero-title": "Biznesga mijozlar olib keladigan saytlarni yaratamiz",
       "hero-desc": "Biznes uchun zamonaviy saytlarni ishlab chiqamiz: landinglardan tortib internet-do'konlargacha. Smartfonlarga moslashuv va loyihangizga sozlash bilan.",
-      "hero-btn": "Hisob-kitob olish",
       "leader-title": "Rahbar — Dubayda Project Manager tajribasiga ega",
       "leader-desc": "Rahbarimiz 5 yildan ortiq Dubayda Project Manager lavozimida ishlab, xalqaro kompaniyalar uchun sayt yaratish bo'yicha yirik loyihalarni boshqargan. Biz bu tajribani O'zbekistonda qo'llab, mijozlarga jahon darajasidagi sifatni taklif qilamiz.",
       "services-title": "Nima yaratamiz",
@@ -672,6 +682,7 @@
       "serv4-desc": "Dizaynni yangilash, foydalanish qulayligini yaxshilash, tezlikni optimallashtirish va funksionallikni takomillashtirish.",
       "serv4-old": "800 000 so'm",
       "serv4-new": "560 000 so'm",
+      "back-home": "Bosh sahifaga",
       "portfolio-title": "Loyihalarimiz",
       "portfolio-sub": "Biz ishlab chiqqan haqiqiy saytlar",
       "reviews-title": "Mijozlarimizning fikrlari",
@@ -696,7 +707,6 @@
       "discount": "30% DISCOUNT ON ALL SERVICES",
       "hero-title": "We create websites that bring customers",
       "hero-desc": "We develop modern websites for businesses: from landing pages to online stores. With mobile adaptation and customization for your project.",
-      "hero-btn": "Get a quote",
       "leader-title": "Director — Project Manager with Dubai experience",
       "leader-desc": "Our director worked as a Project Manager in Dubai for over 5 years, managing large-scale website development projects for international companies. We apply this experience in Uzbekistan to offer clients world-class quality.",
       "services-title": "What we create",
@@ -717,6 +727,7 @@
       "serv4-desc": "Design update, usability improvement, speed optimization and functionality improvement.",
       "serv4-old": "800,000 UZS",
       "serv4-new": "560,000 UZS",
+      "back-home": "Main page",
       "portfolio-title": "Our projects",
       "portfolio-sub": "Real websites we have developed",
       "reviews-title": "Client reviews",
