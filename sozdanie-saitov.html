@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Создание сайтов | Moskitki.uz</title>
   <meta property="og:title" content="Создание сайтов — Moskitki.uz" />
-  <meta property="og:description" content="Разработка сайтов под ключ, редизайн, поддержка, лендинги в Ташкенте. Скидка 30%." />
+  <meta property="og:description" content="Разработка сайтов под ключ, лендинги, корпоративные сайты в Ташкенте." />
   <meta property="og:image" content="https://moskitki.uz/images/logo.png" />
   <meta property="og:url" content="https://moskitki.uz/sozdanie-saitov.html" />
   <meta name="twitter:card" content="summary_large_image" />
@@ -17,7 +17,6 @@
     body { min-height: 100vh; color: #eef4ff; }
     .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
     
-    /* ===== ФОН ЧЕРЕЗ FIXED БЛОК ===== */
     .bg-fixed {
       position: fixed;
       top: 0;
@@ -69,24 +68,8 @@
     .lang-switch a .flag { font-size: 20px; line-height: 1; }
     .header-tag { font-size: 14px; background: rgba(247, 183, 49, 0.15); padding: 6px 14px; border-radius: 40px; display: inline-block; font-weight: 400; color: #f7b731; border: 1px solid rgba(247, 183, 49, 0.1); }
 
-    /* ===== СКИДКА ===== */
-    .discount-banner {
-      background: linear-gradient(135deg, #f7b731, #e09d1a);
-      color: #0b1a2f;
-      padding: 12px 24px;
-      border-radius: 60px;
-      display: inline-block;
-      font-weight: 800;
-      font-size: 22px;
-      letter-spacing: 1px;
-      box-shadow: 0 8px 32px rgba(247, 183, 49, 0.25);
-      margin: 20px 0 10px;
-    }
-    .discount-banner i { margin-right: 12px; }
-
-    /* ===== ГЕРОЙ ===== */
     .hero {
-      padding: 30px 0 10px;
+      padding: 40px 0 20px;
       text-align: center;
     }
     .hero h1 {
@@ -104,7 +87,6 @@
       margin: 0 auto 10px;
     }
 
-    /* ===== О РУКОВОДИТЕЛЕ ===== */
     .about-leader {
       background: rgba(255,255,255,0.04);
       border-radius: 24px;
@@ -120,7 +102,6 @@
     .about-leader h3 { font-size: 20px; color: #fff; margin-bottom: 8px; }
     .about-leader p { font-size: 16px; color: rgba(255,255,255,0.6); line-height: 1.6; }
 
-    /* ===== УСЛУГИ ===== */
     .services {
       padding: 30px 0 20px;
     }
@@ -146,7 +127,7 @@
     .service-item {
       background: rgba(255,255,255,0.06);
       backdrop-filter: blur(12px);
-      padding: 28px 24px 24px;
+      padding: 32px 28px 28px;
       border-radius: 28px;
       border: 1px solid rgba(255,255,255,0.08);
       transition: 0.3s;
@@ -155,21 +136,68 @@
     }
     .service-item:hover { transform: translateY(-6px); background: rgba(255,255,255,0.10); border-color: rgba(247, 183, 49, 0.3); }
     .service-item .icon-wrap { font-size: 36px; color: #f7b731; margin-bottom: 14px; }
-    .service-item h4 { font-weight: 700; font-size: 20px; margin-bottom: 8px; color: #fff; }
-    .service-item p { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.5; margin-bottom: 14px; }
-    .service-item .price-block { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
-    .service-item .price-old { font-size: 16px; color: rgba(255,255,255,0.3); text-decoration: line-through; }
-    .service-item .price-new { font-size: 22px; font-weight: 700; color: #f7b731; }
+    .service-item .badge {
+      font-size: 12px;
+      font-weight: 700;
+      color: #0b1a2f;
+      background: #f7b731;
+      padding: 4px 16px;
+      border-radius: 20px;
+      display: inline-block;
+      margin-bottom: 12px;
+      letter-spacing: 0.5px;
+    }
+    .service-item h4 { font-weight: 700; font-size: 22px; margin-bottom: 4px; color: #fff; }
+    .service-item .subtitle { font-size: 14px; color: rgba(255,255,255,0.3); margin-bottom: 16px; }
+    .service-item ul {
+      list-style: none;
+      margin: 12px 0 16px;
+    }
+    .service-item ul li {
+      padding: 5px 0;
+      font-size: 14px;
+      color: rgba(255,255,255,0.6);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .service-item ul li i { color: #f7b731; font-size: 14px; width: 18px; }
+    .service-item .price-block {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 4px;
+    }
+    .service-item .price {
+      font-size: 26px;
+      font-weight: 700;
+      color: #f7b731;
+    }
+    .service-item .price-note {
+      font-size: 13px;
+      color: rgba(255,255,255,0.3);
+      margin-top: 6px;
+      font-style: italic;
+    }
+    .service-item .time {
+      font-size: 14px;
+      color: rgba(255,255,255,0.4);
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .service-item .time i { color: #f7b731; }
 
     @media (max-width: 700px) {
       .services-grid { grid-template-columns: 1fr; }
       .hero h1 { font-size: 30px; }
     }
 
-    /* ===== КНОПКА НА ГЛАВНУЮ ===== */
     .back-home {
       text-align: center;
-      margin: 20px 0 10px;
+      margin: 30px 0 10px;
     }
     .back-home a {
       color: #f7b731;
@@ -185,7 +213,6 @@
     }
     .back-home a:hover { opacity: 0.8; }
 
-    /* ===== ПОРТФОЛИО ===== */
     .portfolio {
       padding: 30px 0 50px;
     }
@@ -210,11 +237,6 @@
       background-size: cover;
       background-position: center;
       background-color: rgba(255,255,255,0.03);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 64px;
-      color: rgba(255,255,255,0.08);
       border-bottom: 1px solid rgba(255,255,255,0.04);
     }
     .portfolio-item .info { padding: 20px 24px 24px; }
@@ -244,7 +266,6 @@
       .portfolio-grid { grid-template-columns: 1fr; }
     }
 
-    /* ===== ОТЗЫВЫ ===== */
     .reviews {
       padding: 30px 0 50px;
     }
@@ -268,7 +289,6 @@
       .reviews-grid { grid-template-columns: 1fr; }
     }
 
-    /* ===== ФОРМА ===== */
     .form-section { padding: 40px 0; scroll-margin-top: 20px; }
     .form-card { max-width: 700px; margin: 0 auto; background: rgba(255,255,255,0.05); backdrop-filter: blur(16px); padding: 40px 36px; border-radius: 40px; border: 1px solid rgba(255,255,255,0.06); box-shadow: 0 8px 40px rgba(0,0,0,0.3); }
     .form-card h2 { font-size: 28px; font-weight: 700; color: #fff; margin-bottom: 8px; text-align: center; }
@@ -358,10 +378,8 @@
 </head>
 <body>
 
-<!-- ===== ФИКСИРОВАННЫЙ ФОН ===== -->
 <div class="bg-fixed"></div>
 
-<!-- ===== ВЕСЬ КОНТЕНТ ===== -->
 <div class="content">
 
   <header class="header">
@@ -382,14 +400,6 @@
     </div>
   </header>
 
-  <!-- ===== СКИДКА ===== -->
-  <div class="container">
-    <div class="discount-banner">
-      <i class="fas fa-bolt"></i> <span data-i18n="discount">СКИДКА 30% НА ВСЕ УСЛУГИ</span>
-    </div>
-  </div>
-
-  <!-- ===== ГЕРОЙ (БЕЗ КНОПКИ) ===== -->
   <section class="hero">
     <div class="container">
       <h1 data-i18n="hero-title">Создаём сайты, которые <span>приносят клиентов</span></h1>
@@ -397,7 +407,6 @@
     </div>
   </section>
 
-  <!-- ===== О РУКОВОДИТЕЛЕ ===== -->
   <div class="container">
     <div class="about-leader">
       <div class="icon"><i class="fas fa-user-tie"></i></div>
@@ -412,45 +421,93 @@
       <h2 class="section-title" data-i18n="services-title">Что мы создаём</h2>
       <p class="section-sub" data-i18n="services-sub">Выберите тип сайта, который подходит вашему бизнесу</p>
       <div class="services-grid">
+        
+        <!-- LANDING -->
         <div class="service-item" onclick="scrollToForm(this)" data-service="Лендинг">
           <div class="icon-wrap"><i class="fas fa-file-alt"></i></div>
+          <div class="badge">LANDING</div>
           <h4 data-i18n="serv1-title">Лендинг (Landing Page)</h4>
-          <p data-i18n="serv1-desc">Продающая страница для товара или услуги. Высокая конверсия, адаптивный дизайн, формы захвата.</p>
+          <div class="subtitle">Продающая страница для товара или услуги</div>
+          <ul>
+            <li><i class="fas fa-check"></i> 1 страница</li>
+            <li><i class="fas fa-check"></i> адаптивный дизайн</li>
+            <li><i class="fas fa-check"></i> форма заявки</li>
+            <li><i class="fas fa-check"></i> Telegram</li>
+            <li><i class="fas fa-check"></i> базовая SEO-настройка</li>
+            <li><i class="fas fa-check"></i> подключение аналитики</li>
+          </ul>
+          <div class="time"><i class="far fa-clock"></i> Срок: от 3 дней</div>
           <div class="price-block">
-            <span class="price-old" data-i18n="serv1-old">1 200 000 сум</span>
-            <span class="price-new" data-i18n="serv1-new">840 000 сум</span>
+            <div class="price" data-i18n="serv1-price">от 840 000 сум</div>
           </div>
+          <div class="price-note" data-i18n="serv1-note">* финальная стоимость зависит от количества страниц и функционала</div>
         </div>
+
+        <!-- BUSINESS -->
         <div class="service-item" onclick="scrollToForm(this)" data-service="Корпоративный сайт">
           <div class="icon-wrap"><i class="fas fa-building"></i></div>
+          <div class="badge">BUSINESS</div>
           <h4 data-i18n="serv2-title">Корпоративный сайт</h4>
-          <p data-i18n="serv2-desc">Сайт компании с уникальным дизайном, каталогом услуг, страницей о компании и контактами.</p>
+          <div class="subtitle">Сайт компании с уникальным дизайном</div>
+          <ul>
+            <li><i class="fas fa-check"></i> до 10 страниц</li>
+            <li><i class="fas fa-check"></i> уникальный дизайн</li>
+            <li><i class="fas fa-check"></i> адаптивная версия</li>
+            <li><i class="fas fa-check"></i> CMS</li>
+            <li><i class="fas fa-check"></i> формы заявок</li>
+            <li><i class="fas fa-check"></i> SEO-основа</li>
+          </ul>
+          <div class="time"><i class="far fa-clock"></i> Срок: от 7 дней</div>
           <div class="price-block">
-            <span class="price-old" data-i18n="serv2-old">1 700 000 сум</span>
-            <span class="price-new" data-i18n="serv2-new">1 190 000 сум</span>
+            <div class="price" data-i18n="serv2-price">от 1 190 000 сум</div>
           </div>
+          <div class="price-note" data-i18n="serv2-note">* финальная стоимость зависит от количества страниц и функционала</div>
         </div>
+
+        <!-- ИНТЕРНЕТ-МАГАЗИН -->
         <div class="service-item" onclick="scrollToForm(this)" data-service="Интернет-магазин">
           <div class="icon-wrap"><i class="fas fa-shopping-cart"></i></div>
+          <div class="badge">E-COMMERCE</div>
           <h4 data-i18n="serv3-title">Интернет-магазин</h4>
-          <p data-i18n="serv3-desc">Полноценный магазин с каталогом, корзиной, оформлением заказов и интеграцией с оплатой.</p>
+          <div class="subtitle">Полноценный магазин для продажи товаров</div>
+          <ul>
+            <li><i class="fas fa-check"></i> каталог товаров</li>
+            <li><i class="fas fa-check"></i> корзина и оформление заказа</li>
+            <li><i class="fas fa-check"></i> интеграция с оплатой</li>
+            <li><i class="fas fa-check"></i> адаптивная версия</li>
+            <li><i class="fas fa-check"></i> CMS</li>
+            <li><i class="fas fa-check"></i> SEO-основа</li>
+          </ul>
+          <div class="time"><i class="far fa-clock"></i> Срок: от 10–14 дней</div>
           <div class="price-block">
-            <span class="price-old" data-i18n="serv3-old">2 800 000 сум</span>
-            <span class="price-new" data-i18n="serv3-new">1 960 000 сум</span>
+            <div class="price" data-i18n="serv3-price">от 1 960 000 сум</div>
           </div>
+          <div class="price-note" data-i18n="serv3-note">* финальная стоимость зависит от количества страниц и функционала</div>
         </div>
-        <div class="service-item" onclick="scrollToForm(this)" data-service="Редизайн и доработка">
+
+        <!-- РЕДИЗАЙН -->
+        <div class="service-item" onclick="scrollToForm(this)" data-service="Редизайн">
           <div class="icon-wrap"><i class="fas fa-paint-brush"></i></div>
+          <div class="badge">REDESIGN</div>
           <h4 data-i18n="serv4-title">Редизайн и доработка</h4>
-          <p data-i18n="serv4-desc">Обновление дизайна, улучшение юзабилити, оптимизация скорости и доработка функционала.</p>
+          <div class="subtitle">Обновление дизайна и улучшение сайта</div>
+          <ul>
+            <li><i class="fas fa-check"></i> обновление дизайна</li>
+            <li><i class="fas fa-check"></i> улучшение юзабилити</li>
+            <li><i class="fas fa-check"></i> оптимизация скорости</li>
+            <li><i class="fas fa-check"></i> адаптивная вёрстка</li>
+            <li><i class="fas fa-check"></i> доработка функционала</li>
+            <li><i class="fas fa-check"></i> SEO-настройка</li>
+          </ul>
+          <div class="time"><i class="far fa-clock"></i> Срок: от 3–7 дней</div>
           <div class="price-block">
-            <span class="price-old" data-i18n="serv4-old">800 000 сум</span>
-            <span class="price-new" data-i18n="serv4-new">560 000 сум</span>
+            <div class="price" data-i18n="serv4-price">от 560 000 сум</div>
           </div>
+          <div class="price-note" data-i18n="serv4-note">* финальная стоимость зависит от объёма работ</div>
         </div>
+
       </div>
 
-      <!-- ===== КНОПКА НА ГЛАВНУЮ (ПОСЛЕ УСЛУГ) ===== -->
       <div class="back-home">
         <a href="/"><i class="fas fa-arrow-left"></i> <span data-i18n="back-home">На главную</span></a>
       </div>
@@ -548,7 +605,7 @@
               <option value="Лендинг">Лендинг (Landing Page)</option>
               <option value="Корпоративный сайт">Корпоративный сайт</option>
               <option value="Интернет-магазин">Интернет-магазин</option>
-              <option value="Редизайн и доработка">Редизайн и доработка</option>
+              <option value="Редизайн">Редизайн и доработка</option>
             </select>
           </div>
           <div class="form-group">
@@ -562,7 +619,6 @@
     </div>
   </section>
 
-  <!-- ===== CTA ===== -->
   <section class="cta-final">
     <div class="container">
       <h2 data-i18n="cta-title">Готовы обсудить проект?</h2>
@@ -614,7 +670,6 @@
   const translations = {
     ru: {
       "header-tag": "Ташкент с 2019",
-      "discount": "СКИДКА 30% НА ВСЕ УСЛУГИ",
       "hero-title": "Создаём сайты, которые приносят клиентов",
       "hero-desc": "Разрабатываем современные сайты для бизнеса: от лендингов до интернет-магазинов. С адаптацией под смартфоны и настройкой под ваш проект.",
       "leader-title": "Руководитель — Project Manager с опытом в Дубае",
@@ -622,21 +677,17 @@
       "services-title": "Что мы создаём",
       "services-sub": "Выберите тип сайта, который подходит вашему бизнесу",
       "serv1-title": "Лендинг (Landing Page)",
-      "serv1-desc": "Продающая страница для товара или услуги. Высокая конверсия, адаптивный дизайн, формы захвата.",
-      "serv1-old": "1 200 000 сум",
-      "serv1-new": "840 000 сум",
+      "serv1-price": "от 840 000 сум",
+      "serv1-note": "* финальная стоимость зависит от количества страниц и функционала",
       "serv2-title": "Корпоративный сайт",
-      "serv2-desc": "Сайт компании с уникальным дизайном, каталогом услуг, страницей о компании и контактами.",
-      "serv2-old": "1 700 000 сум",
-      "serv2-new": "1 190 000 сум",
+      "serv2-price": "от 1 190 000 сум",
+      "serv2-note": "* финальная стоимость зависит от количества страниц и функционала",
       "serv3-title": "Интернет-магазин",
-      "serv3-desc": "Полноценный магазин с каталогом, корзиной, оформлением заказов и интеграцией с оплатой.",
-      "serv3-old": "2 800 000 сум",
-      "serv3-new": "1 960 000 сум",
+      "serv3-price": "от 1 960 000 сум",
+      "serv3-note": "* финальная стоимость зависит от количества страниц и функционала",
       "serv4-title": "Редизайн и доработка",
-      "serv4-desc": "Обновление дизайна, улучшение юзабилити, оптимизация скорости и доработка функционала.",
-      "serv4-old": "800 000 сум",
-      "serv4-new": "560 000 сум",
+      "serv4-price": "от 560 000 сум",
+      "serv4-note": "* финальная стоимость зависит от объёма работ",
       "back-home": "На главную",
       "portfolio-title": "Наши проекты",
       "portfolio-sub": "Реальные сайты, которые мы разработали",
@@ -659,7 +710,6 @@
     },
     uz: {
       "header-tag": "Toshkent 2019 dan",
-      "discount": "BARCHA XIZMATLARGA 30% CHEGIRMA",
       "hero-title": "Biznesga mijozlar olib keladigan saytlarni yaratamiz",
       "hero-desc": "Biznes uchun zamonaviy saytlarni ishlab chiqamiz: landinglardan tortib internet-do'konlargacha. Smartfonlarga moslashuv va loyihangizga sozlash bilan.",
       "leader-title": "Rahbar — Dubayda Project Manager tajribasiga ega",
@@ -667,21 +717,17 @@
       "services-title": "Nima yaratamiz",
       "services-sub": "Biznesingizga mos sayt turini tanlang",
       "serv1-title": "Landing Page",
-      "serv1-desc": "Mahsulot yoki xizmat uchun sotuvchi sahifa. Yuqori konversiya, moslashuvchan dizayn, shakllar.",
-      "serv1-old": "1 200 000 so'm",
-      "serv1-new": "840 000 so'm",
+      "serv1-price": "840 000 so'mdan",
+      "serv1-note": "* yakuniy narx sahifalar soni va funksionallikka bog'liq",
       "serv2-title": "Korporativ sayt",
-      "serv2-desc": "Noyob dizayn, xizmatlar katalogi, kompaniya haqida sahifa va kontaktlar bilan kompaniya sayti.",
-      "serv2-old": "1 700 000 so'm",
-      "serv2-new": "1 190 000 so'm",
+      "serv2-price": "1 190 000 so'mdan",
+      "serv2-note": "* yakuniy narx sahifalar soni va funksionallikka bog'liq",
       "serv3-title": "Internet-do'kon",
-      "serv3-desc": "Katalog, savat, buyurtma rasmiylashtirish va to'lov integratsiyasi bilan to'liq do'kon.",
-      "serv3-old": "2 800 000 so'm",
-      "serv3-new": "1 960 000 so'm",
+      "serv3-price": "1 960 000 so'mdan",
+      "serv3-note": "* yakuniy narx sahifalar soni va funksionallikka bog'liq",
       "serv4-title": "Redizayn va takomillashtirish",
-      "serv4-desc": "Dizaynni yangilash, foydalanish qulayligini yaxshilash, tezlikni optimallashtirish va funksionallikni takomillashtirish.",
-      "serv4-old": "800 000 so'm",
-      "serv4-new": "560 000 so'm",
+      "serv4-price": "560 000 so'mdan",
+      "serv4-note": "* yakuniy narx ish hajmiga bog'liq",
       "back-home": "Bosh sahifaga",
       "portfolio-title": "Loyihalarimiz",
       "portfolio-sub": "Biz ishlab chiqqan haqiqiy saytlar",
@@ -704,7 +750,6 @@
     },
     en: {
       "header-tag": "Tashkent since 2019",
-      "discount": "30% DISCOUNT ON ALL SERVICES",
       "hero-title": "We create websites that bring customers",
       "hero-desc": "We develop modern websites for businesses: from landing pages to online stores. With mobile adaptation and customization for your project.",
       "leader-title": "Director — Project Manager with Dubai experience",
@@ -712,21 +757,17 @@
       "services-title": "What we create",
       "services-sub": "Choose the type of website that suits your business",
       "serv1-title": "Landing Page",
-      "serv1-desc": "A sales page for a product or service. High conversion, responsive design, capture forms.",
-      "serv1-old": "1,200,000 UZS",
-      "serv1-new": "840,000 UZS",
+      "serv1-price": "from 840,000 UZS",
+      "serv1-note": "* final price depends on number of pages and functionality",
       "serv2-title": "Corporate website",
-      "serv2-desc": "A company website with unique design, service catalog, about page and contacts.",
-      "serv2-old": "1,700,000 UZS",
-      "serv2-new": "1,190,000 UZS",
+      "serv2-price": "from 1,190,000 UZS",
+      "serv2-note": "* final price depends on number of pages and functionality",
       "serv3-title": "Online store",
-      "serv3-desc": "Full-fledged store with catalog, cart, order processing and payment integration.",
-      "serv3-old": "2,800,000 UZS",
-      "serv3-new": "1,960,000 UZS",
+      "serv3-price": "from 1,960,000 UZS",
+      "serv3-note": "* final price depends on number of pages and functionality",
       "serv4-title": "Redesign and improvement",
-      "serv4-desc": "Design update, usability improvement, speed optimization and functionality improvement.",
-      "serv4-old": "800,000 UZS",
-      "serv4-new": "560,000 UZS",
+      "serv4-price": "from 560,000 UZS",
+      "serv4-note": "* final price depends on scope of work",
       "back-home": "Main page",
       "portfolio-title": "Our projects",
       "portfolio-sub": "Real websites we have developed",
