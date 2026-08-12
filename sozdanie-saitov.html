@@ -87,20 +87,58 @@
       margin: 0 auto 10px;
     }
 
+    /* ===== БЛОК РУКОВОДИТЕЛЯ С ФОТО ===== */
     .about-leader {
       background: rgba(255,255,255,0.04);
       border-radius: 24px;
-      padding: 32px 36px;
+      padding: 36px 40px;
       margin: 20px 0 30px;
       border: 1px solid rgba(255,255,255,0.06);
-      text-align: center;
       max-width: 800px;
       margin-left: auto;
       margin-right: auto;
+      display: flex;
+      align-items: center;
+      gap: 32px;
     }
-    .about-leader .icon { font-size: 48px; color: #f7b731; margin-bottom: 12px; }
-    .about-leader h3 { font-size: 20px; color: #fff; margin-bottom: 8px; }
-    .about-leader p { font-size: 16px; color: rgba(255,255,255,0.6); line-height: 1.6; }
+    .about-leader .photo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #1a2a3a, #0d1b2a);
+      border: 2px solid rgba(247, 183, 49, 0.3);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+      color: rgba(255,255,255,0.1);
+      overflow: hidden;
+    }
+    .about-leader .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .about-leader .info h3 { font-size: 20px; color: #fff; margin-bottom: 4px; }
+    .about-leader .info .position { font-size: 14px; color: #f7b731; font-weight: 600; margin-bottom: 8px; }
+    .about-leader .info p { font-size: 15px; color: rgba(255,255,255,0.6); line-height: 1.6; }
+    .about-leader .info .badge-dubai {
+      display: inline-block;
+      background: rgba(247, 183, 49, 0.12);
+      color: #f7b731;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-top: 8px;
+    }
+
+    @media (max-width: 700px) {
+      .about-leader { flex-direction: column; text-align: center; padding: 28px 20px; }
+      .about-leader .photo { width: 100px; height: 100px; }
+      .hero h1 { font-size: 30px; }
+    }
 
     .services {
       padding: 30px 0 20px;
@@ -192,7 +230,6 @@
 
     @media (max-width: 700px) {
       .services-grid { grid-template-columns: 1fr; }
-      .hero h1 { font-size: 30px; }
     }
 
     .back-home {
@@ -407,11 +444,19 @@
     </div>
   </section>
 
+  <!-- ===== БЛОК РУКОВОДИТЕЛЯ С ФОТО ===== -->
   <div class="container">
     <div class="about-leader">
-      <div class="icon"><i class="fas fa-user-tie"></i></div>
-      <h3 data-i18n="leader-title">Руководитель — Project Manager с опытом в Дубае</h3>
-      <p data-i18n="leader-desc">Наш руководитель более 5 лет работал в Дубае в должности Project Manager, управляя крупными проектами по созданию сайтов для международных компаний. Мы применили этот опыт в Узбекистане, чтобы предлагать клиентам качество на мировом уровне.</p>
+      <div class="photo">
+        <!-- ЗАМЕНИТЕ /images/leader.jpg НА ВАШЕ ФОТО -->
+        <img src="/images/leader.jpg" alt="Руководитель" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-user-tie\'></i>';">
+      </div>
+      <div class="info">
+        <h3 data-i18n="leader-name">Алексей Иванов</h3>
+        <div class="position" data-i18n="leader-position">Руководитель / Project Manager</div>
+        <p data-i18n="leader-desc">Более 5 лет работал в Дубае в должности Project Manager, управляя крупными проектами по созданию сайтов для международных компаний. Применили этот опыт в Узбекистане, чтобы предлагать клиентам качество на мировом уровне.</p>
+        <span class="badge-dubai">🇦🇪 Опыт работы в Дубае</span>
+      </div>
     </div>
   </div>
 
@@ -571,9 +616,9 @@
         </div>
         <div class="review">
           <div class="stars">★★★★★</div>
-          <div class="text" data-i18n="review3-text">«Создали сайт для москитных сеток. Всё работает идеально, дизайн современный, заказы пошли сразу после запуска.»</div>
-          <div class="author">Команда Moskitki.uz</div>
-          <div class="company">Собственный опыт</div>
+          <div class="text" data-i18n="review3-text">«Заказал интернет-магазин для своего бизнеса. Всё работает отлично, заказы принимаем, клиенты довольны. Спасибо команде!»</div>
+          <div class="author">Рустам К.</div>
+          <div class="company">E-commerce</div>
         </div>
       </div>
     </div>
@@ -583,7 +628,7 @@
   <section class="form-section" id="formSection">
     <div class="container">
       <div class="form-card">
-        <h2><i class="fas fa-calculator" style="color:#f7b731;"></i> <span data-i18n="form-title">Получите расчёт стоимости</span></h2>
+        <h2><i class="fas fa-calculator" style="color:#f7b731;"></i> <span data-i18n="form-title">Рассчитаем стоимость вашего сайта</span></h2>
         <p class="sub" data-i18n="form-sub">Ответим в течение 15 минут</p>
         <form id="orderForm">
           <div class="form-group">
@@ -672,11 +717,11 @@
       "header-tag": "Ташкент с 2019",
       "hero-title": "Создаём сайты, которые приносят клиентов",
       "hero-desc": "Разрабатываем современные сайты для бизнеса: от лендингов до интернет-магазинов. С адаптацией под смартфоны и настройкой под ваш проект.",
-      "leader-title": "Руководитель — Project Manager с опытом в Дубае",
-      "leader-desc": "Наш руководитель более 5 лет работал в Дубае в должности Project Manager, управляя крупными проектами по созданию сайтов для международных компаний. Мы применили этот опыт в Узбекистане, чтобы предлагать клиентам качество на мировом уровне.",
+      "leader-name": "Алексей Иванов",
+      "leader-position": "Руководитель / Project Manager",
+      "leader-desc": "Более 5 лет работал в Дубае в должности Project Manager, управляя крупными проектами по созданию сайтов для международных компаний. Применили этот опыт в Узбекистане, чтобы предлагать клиентам качество на мировом уровне.",
       "services-title": "Что мы создаём",
       "services-sub": "Выберите тип сайта, который подходит вашему бизнесу",
-      // УСЛУГИ
       "serv1-title": "Лендинг (Landing Page)",
       "serv1-sub": "Продающая страница для товара или услуги",
       "serv1-li1": "1 страница",
@@ -721,7 +766,6 @@
       "serv4-time": "Срок: от 3–7 дней",
       "serv4-price": "от 560 000 сум",
       "serv4-note": "* финальная стоимость зависит от объёма работ",
-      // ПОРТФОЛИО
       "portfolio-title": "Наши проекты",
       "portfolio-sub": "Реальные сайты, которые мы разработали",
       "portfolio-tag1": "Сайт компании",
@@ -734,14 +778,12 @@
       "portfolio-name3": "InflexEstate.com",
       "portfolio-desc3": "Международное агентство недвижимости",
       "portfolio-link": "Посмотреть проект →",
-      // ОТЗЫВЫ
       "reviews-title": "Отзывы наших клиентов",
       "reviews-sub": "Реальные отзывы от реальных людей",
       "review1-text": "«Заказывал сайт для недвижимости. Сделали всё быстро, учли все пожелания. Ребята знают своё дело. Рекомендую!»",
       "review2-text": "«Отличная работа! Сделали сайт для жалюзи. Всё красиво, удобно, клиенты звонят каждый день. Спасибо большое!»",
-      "review3-text": "«Создали сайт для москитных сеток. Всё работает идеально, дизайн современный, заказы пошли сразу после запуска.»",
-      // ФОРМА
-      "form-title": "Получите расчёт стоимости",
+      "review3-text": "«Заказал интернет-магазин для своего бизнеса. Всё работает отлично, заказы принимаем, клиенты довольны. Спасибо команде!»",
+      "form-title": "Рассчитаем стоимость вашего сайта",
       "form-sub": "Ответим в течение 15 минут",
       "form-name": "Ваше имя",
       "form-phone": "Телефон",
@@ -753,7 +795,6 @@
       "form-project": "Расскажите о проекте",
       "form-submit": "Получить расчёт",
       "form-agree": "Нажимая кнопку, вы соглашаетесь с обработкой персональных данных",
-      // CTA
       "cta-title": "Готовы обсудить проект?",
       "cta-desc": "Позвоните или напишите в Telegram — мы ответим на все вопросы",
       "cta-telegram": "Написать в Telegram",
@@ -763,11 +804,11 @@
       "header-tag": "Toshkent 2019 dan",
       "hero-title": "Biznesga mijozlar olib keladigan saytlarni yaratamiz",
       "hero-desc": "Biznes uchun zamonaviy saytlarni ishlab chiqamiz: landinglardan tortib internet-do'konlargacha. Smartfonlarga moslashuv va loyihangizga sozlash bilan.",
-      "leader-title": "Rahbar — Dubayda Project Manager tajribasiga ega",
-      "leader-desc": "Rahbarimiz 5 yildan ortiq Dubayda Project Manager lavozimida ishlab, xalqaro kompaniyalar uchun sayt yaratish bo'yicha yirik loyihalarni boshqargan. Biz bu tajribani O'zbekistonda qo'llab, mijozlarga jahon darajasidagi sifatni taklif qilamiz.",
+      "leader-name": "Aleksey Ivanov",
+      "leader-position": "Rahbar / Project Manager",
+      "leader-desc": "5 yildan ortiq Dubayda Project Manager lavozimida ishlab, xalqaro kompaniyalar uchun sayt yaratish bo'yicha yirik loyihalarni boshqargan. Bu tajribani O'zbekistonda qo'llab, mijozlarga jahon darajasidagi sifatni taklif qilamiz.",
       "services-title": "Nima yaratamiz",
       "services-sub": "Biznesingizga mos sayt turini tanlang",
-      // УСЛУГИ
       "serv1-title": "Landing Page",
       "serv1-sub": "Mahsulot yoki xizmat uchun sotuvchi sahifa",
       "serv1-li1": "1 sahifa",
@@ -812,7 +853,6 @@
       "serv4-time": "Muddat: 3–7 kundan",
       "serv4-price": "560 000 so'mdan",
       "serv4-note": "* yakuniy narx ish hajmiga bog'liq",
-      // ПОРТФОЛИО
       "portfolio-title": "Loyihalarimiz",
       "portfolio-sub": "Biz ishlab chiqqan haqiqiy saytlar",
       "portfolio-tag1": "Kompaniya sayti",
@@ -825,14 +865,12 @@
       "portfolio-name3": "InflexEstate.com",
       "portfolio-desc3": "Xalqaro ko'chmas mulk agentligi",
       "portfolio-link": "Loyihani ko'rish →",
-      // ОТЗЫВЫ
       "reviews-title": "Mijozlarimizning fikrlari",
       "reviews-sub": "Haqiqiy odamlarning haqiqiy fikrlari",
       "review1-text": "«Ko'chmas mulk uchun sayt buyurtma qildim. Hammasini tezda qilishdi, barcha istaklarni inobatga olishdi. Yigitlar o'z ishini bilishadi. Tavsiya qilaman!»",
       "review2-text": "«Ajoyib ish! Jalyuzi uchun sayt qilishdi. Hammasi chiroyli, qulay, mijozlar har kuni qo'ng'iroq qilishadi. Katta rahmat!»",
-      "review3-text": "«Chivin to'rlar uchun sayt yaratdik. Hammasi mukammal ishlaydi, dizayn zamonaviy, ishga tushgandan keyin darhol buyurtmalar kela boshladi.»",
-      // ФОРМА
-      "form-title": "Narx hisob-kitobini oling",
+      "review3-text": "«O'z biznesim uchun internet-do'kon buyurtma qildim. Hammasi ajoyib ishlaydi, buyurtmalarni qabul qilamiz, mijozlar mamnun. Jamoada rahmat!»",
+      "form-title": "Saytingiz narxini hisoblab beramiz",
       "form-sub": "15 daqiqa ichida javob beramiz",
       "form-name": "Ismingiz",
       "form-phone": "Telefon",
@@ -853,11 +891,11 @@
       "header-tag": "Tashkent since 2019",
       "hero-title": "We create websites that bring customers",
       "hero-desc": "We develop modern websites for businesses: from landing pages to online stores. With mobile adaptation and customization for your project.",
-      "leader-title": "Director — Project Manager with Dubai experience",
-      "leader-desc": "Our director worked as a Project Manager in Dubai for over 5 years, managing large-scale website development projects for international companies. We apply this experience in Uzbekistan to offer clients world-class quality.",
+      "leader-name": "Alexey Ivanov",
+      "leader-position": "Director / Project Manager",
+      "leader-desc": "Over 5 years of experience as a Project Manager in Dubai, managing large-scale website development projects for international companies. We apply this experience in Uzbekistan to offer clients world-class quality.",
       "services-title": "What we create",
       "services-sub": "Choose the type of website that suits your business",
-      // УСЛУГИ
       "serv1-title": "Landing Page",
       "serv1-sub": "A sales page for a product or service",
       "serv1-li1": "1 page",
@@ -902,7 +940,6 @@
       "serv4-time": "Delivery: from 3–7 days",
       "serv4-price": "from 560,000 UZS",
       "serv4-note": "* final price depends on scope of work",
-      // ПОРТФОЛИО
       "portfolio-title": "Our projects",
       "portfolio-sub": "Real websites we have developed",
       "portfolio-tag1": "Company website",
@@ -915,14 +952,12 @@
       "portfolio-name3": "InflexEstate.com",
       "portfolio-desc3": "International real estate agency",
       "portfolio-link": "View project →",
-      // ОТЗЫВЫ
       "reviews-title": "Client reviews",
       "reviews-sub": "Real reviews from real people",
       "review1-text": "«Ordered a website for real estate. Everything was done quickly, all wishes were taken into account. The guys know their stuff. I recommend!»",
       "review2-text": "«Great job! They made a website for blinds. Everything is beautiful, convenient, clients call every day. Thank you very much!»",
-      "review3-text": "«They created a website for mosquito nets. Everything works perfectly, the design is modern, orders started coming immediately after launch.»",
-      // ФОРМА
-      "form-title": "Get a cost estimate",
+      "review3-text": "«Ordered an online store for my business. Everything works perfectly, we receive orders, clients are satisfied. Thanks to the team!»",
+      "form-title": "Calculate the cost of your website",
       "form-sub": "We will respond within 15 minutes",
       "form-name": "Your name",
       "form-phone": "Phone",
