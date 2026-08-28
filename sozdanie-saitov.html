@@ -2,431 +2,129 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Создание сайтов | Moskitki.uz</title>
-  <meta property="og:title" content="Создание сайтов — Moskitki.uz" />
-  <meta property="og:description" content="Разработка сайтов под ключ, лендинги, корпоративные сайты в Ташкенте." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>Moskitki.uz</title>
+  <meta property="og:title" content="Moskitki.uz — Создание сайтов, москитные сетки, жалюзи, ремонт окон, кондиционеры" />
+  <meta property="og:description" content="Создание сайтов, москитные сетки, жалюзи, ремонт окон, кондиционеры в Ташкенте. Бесплатный замер, гарантия 1 год." />
   <meta property="og:image" content="https://moskitki.uz/images/logo.png" />
-  <meta property="og:url" content="https://moskitki.uz/sozdanie-saitov.html" />
+  <meta property="og:url" content="https://moskitki.uz/" />
+  <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Moskitki.uz — Создание сайтов, москитные сетки, жалюзи, ремонт окон, кондиционеры" />
+  <meta name="twitter:description" content="Создание сайтов, москитные сетки, жалюзи, ремонт окон, кондиционеры в Ташкенте." />
+  <meta name="twitter:image" content="https://moskitki.uz/images/logo.png" />
   <link rel="icon" type="image/png" sizes="32x32" href="/images/logo.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, system-ui, sans-serif; }
-    html { scroll-behavior: smooth; }
-    body { min-height: 100vh; color: #eef4ff; }
+    body { background: #f8faff; color: #1e293b; }
     .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-    
-    .bg-fixed {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      z-index: -1;
-      background: url('/images/background.png') center center / cover no-repeat;
-      background-color: #0a0e1a;
-    }
-    .bg-fixed::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(7, 11, 23, 0.25);
-      pointer-events: none;
-    }
-
-    .content {
-      position: relative;
-      z-index: 1;
-      min-height: 100vh;
-    }
-
-    .header { 
-      background: rgba(7, 11, 23, 0.5); 
-      backdrop-filter: blur(6px);
-      color: #fff; 
-      padding: 14px 0; 
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-    }
+    .header { background: #0b2b5c; color: #fff; padding: 16px 0; border-bottom: 3px solid #f7b731; }
     .header .container { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; }
     .logo-area { display: flex; align-items: center; gap: 12px; }
-    .logo-text a { 
-      font-weight: 700; 
-      font-size: 24px; 
-      letter-spacing: -0.5px; 
-      display: flex; 
-      align-items: center; 
-      gap: 10px; 
-      color: #fff; 
-      text-decoration: none; 
-    }
-    .logo-text a span { color: #f7b731; }
+    .logo-text { font-weight: 700; font-size: 24px; letter-spacing: -0.5px; display: flex; align-items: center; gap: 10px; }
+    .logo-text span { color: #f7b731; }
     .logo-text img { height: 36px; width: auto; border-radius: 8px; }
-    .lang-switch { display: flex; gap: 8px; font-size: 14px; font-weight: 500; background: rgba(255,255,255,0.05); padding: 6px 14px; border-radius: 40px; flex-wrap: wrap; align-items: center; border: 1px solid rgba(255,255,255,0.05); }
-    .lang-switch a { color: rgba(255,255,255,0.5); text-decoration: none; transition: .2s; display: flex; align-items: center; gap: 5px; font-size: 15px; cursor: pointer; }
+    .lang-switch { display: flex; gap: 8px; font-size: 14px; font-weight: 500; background: rgba(255,255,255,0.08); padding: 6px 14px; border-radius: 40px; flex-wrap: wrap; align-items: center; }
+    .lang-switch a { color: rgba(255,255,255,0.7); text-decoration: none; transition: .2s; display: flex; align-items: center; gap: 5px; font-size: 15px; cursor: pointer; }
     .lang-switch a.active { color: #fff; font-weight: 600; }
     .lang-switch a .flag { font-size: 20px; line-height: 1; }
-    .header-tag { font-size: 14px; background: rgba(247, 183, 49, 0.15); padding: 6px 14px; border-radius: 40px; display: inline-block; font-weight: 400; color: #f7b731; border: 1px solid rgba(247, 183, 49, 0.1); }
-
-    .hero {
-      padding: 40px 0 20px;
-      text-align: center;
-    }
-    .hero h1 {
-      font-size: 44px;
-      font-weight: 800;
-      line-height: 1.15;
-      margin-bottom: 16px;
-      color: #fff;
-    }
-    .hero h1 span { color: #f7b731; }
-    .hero p {
-      font-size: 20px;
-      color: rgba(255,255,255,0.6);
-      max-width: 700px;
-      margin: 0 auto 10px;
-    }
-
-    /* ===== БЛОК РУКОВОДИТЕЛЯ С ФОТО ===== */
-    .about-leader {
-      background: rgba(255,255,255,0.04);
-      border-radius: 24px;
-      padding: 36px 40px;
-      margin: 20px 0 30px;
-      border: 1px solid rgba(255,255,255,0.06);
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-      display: flex;
-      align-items: center;
-      gap: 32px;
-    }
-    .about-leader .photo {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #1a2a3a, #0d1b2a);
-      border: 2px solid rgba(247, 183, 49, 0.3);
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 48px;
-      color: rgba(255,255,255,0.1);
-      overflow: hidden;
-    }
-    .about-leader .photo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .about-leader .info h3 { font-size: 20px; color: #fff; margin-bottom: 4px; }
-    .about-leader .info .position { font-size: 14px; color: #f7b731; font-weight: 600; margin-bottom: 8px; }
-    .about-leader .info p { font-size: 15px; color: rgba(255,255,255,0.6); line-height: 1.6; }
-    .about-leader .info .badge-dubai {
-      display: inline-block;
-      background: rgba(247, 183, 49, 0.12);
-      color: #f7b731;
-      font-size: 12px;
-      font-weight: 600;
-      padding: 4px 14px;
-      border-radius: 20px;
-      margin-top: 8px;
-    }
-
-    @media (max-width: 700px) {
-      .about-leader { flex-direction: column; text-align: center; padding: 28px 20px; }
-      .about-leader .photo { width: 100px; height: 100px; }
-      .hero h1 { font-size: 30px; }
-    }
-
-    .services {
-      padding: 30px 0 20px;
-    }
-    .section-title {
-      font-size: 34px;
-      font-weight: 700;
-      margin-bottom: 10px;
-      color: #fff;
-      text-align: center;
-    }
-    .section-sub {
-      font-size: 18px;
-      color: rgba(255,255,255,0.4);
-      margin-bottom: 40px;
-      text-align: center;
-    }
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 28px;
-      margin-top: 16px;
-    }
-    .service-item {
-      background: rgba(255,255,255,0.06);
-      backdrop-filter: blur(12px);
-      padding: 32px 28px 28px;
-      border-radius: 28px;
-      border: 1px solid rgba(255,255,255,0.08);
-      transition: 0.3s;
-      cursor: pointer;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
-    }
-    .service-item:hover { transform: translateY(-6px); background: rgba(255,255,255,0.10); border-color: rgba(247, 183, 49, 0.3); }
-    .service-item .icon-wrap { font-size: 36px; color: #f7b731; margin-bottom: 14px; }
-    .service-item .badge {
-      font-size: 12px;
-      font-weight: 700;
-      color: #0b1a2f;
-      background: #f7b731;
-      padding: 4px 16px;
-      border-radius: 20px;
-      display: inline-block;
-      margin-bottom: 12px;
-      letter-spacing: 0.5px;
-    }
-    .service-item h4 { font-weight: 700; font-size: 22px; margin-bottom: 4px; color: #fff; }
-    .service-item .subtitle { font-size: 14px; color: rgba(255,255,255,0.3); margin-bottom: 16px; }
-    .service-item ul {
-      list-style: none;
-      margin: 12px 0 16px;
-    }
-    .service-item ul li {
-      padding: 5px 0;
-      font-size: 14px;
-      color: rgba(255,255,255,0.6);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .service-item ul li i { color: #f7b731; font-size: 14px; width: 18px; }
-    .service-item .price-block {
-      display: flex;
-      align-items: baseline;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-top: 4px;
-    }
-    .service-item .price {
-      font-size: 26px;
-      font-weight: 700;
-      color: #f7b731;
-    }
-    .service-item .price-note {
-      font-size: 13px;
-      color: rgba(255,255,255,0.3);
-      margin-top: 6px;
-      font-style: italic;
-    }
-    .service-item .time {
-      font-size: 14px;
-      color: rgba(255,255,255,0.4);
-      margin-top: 10px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .service-item .time i { color: #f7b731; }
-
-    @media (max-width: 700px) {
-      .services-grid { grid-template-columns: 1fr; }
-    }
-
-    .back-home {
-      text-align: center;
-      margin: 30px 0 10px;
-    }
-    .back-home a {
-      color: #f7b731;
-      text-decoration: none;
-      font-size: 18px;
-      font-weight: 600;
-      border-bottom: 2px solid #f7b731;
-      padding-bottom: 4px;
-      transition: .2s;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .back-home a:hover { opacity: 0.8; }
-
-    .portfolio {
-      padding: 30px 0 50px;
-    }
-    .portfolio-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
-    }
-    .portfolio-item {
-      background: rgba(255,255,255,0.04);
-      border-radius: 24px;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.06);
-      transition: .3s;
-      text-decoration: none;
-      color: inherit;
-      display: block;
-    }
-    .portfolio-item:hover { transform: translateY(-6px); border-color: rgba(247, 183, 49, 0.2); }
-    .portfolio-item .preview {
-      height: 200px;
-      background-size: cover;
-      background-position: center;
-      background-color: rgba(255,255,255,0.03);
-      border-bottom: 1px solid rgba(255,255,255,0.04);
-    }
-    .portfolio-item .info { padding: 20px 24px 24px; }
-    .portfolio-item .info .tag {
-      font-size: 12px;
-      color: #f7b731;
-      background: rgba(247, 183, 49, 0.12);
-      padding: 4px 14px;
-      border-radius: 20px;
-      display: inline-block;
-      margin-bottom: 8px;
-    }
-    .portfolio-item .info h4 { font-size: 20px; margin-bottom: 4px; color: #fff; }
-    .portfolio-item .info p { font-size: 14px; color: rgba(255,255,255,0.4); }
-    .portfolio-item .info .link {
-      margin-top: 12px;
-      color: #f7b731;
-      font-weight: 600;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .portfolio-item .info .link i { font-size: 14px; transition: .2s; }
-    .portfolio-item:hover .info .link i { transform: translateX(4px); }
-
-    @media (max-width: 700px) {
-      .portfolio-grid { grid-template-columns: 1fr; }
-    }
-
-    .reviews {
-      padding: 30px 0 50px;
-    }
-    .reviews-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
-    }
-    .review {
-      background: rgba(255,255,255,0.04);
-      padding: 28px 24px;
-      border-radius: 24px;
-      border: 1px solid rgba(255,255,255,0.06);
-    }
-    .review .stars { color: #f7b731; font-size: 18px; margin-bottom: 12px; letter-spacing: 2px; }
-    .review .text { font-size: 15px; color: rgba(255,255,255,0.7); line-height: 1.6; margin-bottom: 14px; font-style: italic; }
-    .review .author { font-weight: 600; color: #fff; }
-    .review .company { font-size: 13px; color: rgba(255,255,255,0.3); }
-
-    @media (max-width: 700px) {
-      .reviews-grid { grid-template-columns: 1fr; }
-    }
-
-    .form-section { padding: 40px 0; scroll-margin-top: 20px; }
-    .form-card { max-width: 700px; margin: 0 auto; background: rgba(255,255,255,0.05); backdrop-filter: blur(16px); padding: 40px 36px; border-radius: 40px; border: 1px solid rgba(255,255,255,0.06); box-shadow: 0 8px 40px rgba(0,0,0,0.3); }
-    .form-card h2 { font-size: 28px; font-weight: 700; color: #fff; margin-bottom: 8px; text-align: center; }
-    .form-card .sub { color: rgba(255,255,255,0.5); margin-bottom: 24px; text-align: center; }
+    .header-tag { font-size: 14px; background: #1d3d72; padding: 6px 14px; border-radius: 40px; display: inline-block; font-weight: 400; }
+    .hero { padding: 40px 0 20px; background: #fff; border-bottom: 1px solid #e6edf5; }
+    .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: center; }
+    .hero-left h1 { font-size: 38px; font-weight: 700; line-height: 1.2; color: #0b2b5c; }
+    .hero-left h1 i { color: #f7b731; margin-right: 8px; }
+    .hero-left p { font-size: 18px; color: #334155; margin: 16px 0 24px; max-width: 500px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px 20px; margin-top: 28px; }
+    .hero-btn { display: inline-flex; align-items: center; gap: 12px; background: #f1f6fc; padding: 14px 28px; border-radius: 60px; font-weight: 600; font-size: 16px; color: #0b2b5c; text-decoration: none; transition: .2s; border: 1px solid transparent; box-shadow: 0 2px 6px rgba(0,0,0,.02); flex: 1 0 auto; min-width: 180px; justify-content: center; }
+    .hero-btn i { font-size: 20px; color: #f7b731; }
+    .hero-btn:hover { background: #e3edf9; border-color: #cbddee; transform: translateY(-2px); }
+    .hero-btn.primary { background: #0b2b5c; color: #fff; }
+    .hero-btn.primary i { color: #f7b731; }
+    .hero-btn.primary:hover { background: #1a3d72; }
+    .hero-right { background: #f2f7fe; border-radius: 30px; padding: 28px 30px; box-shadow: 0 8px 20px rgba(11,43,92,.06); }
+    .hero-right .cta-line { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; }
+    .hero-right .cta-btn { display: inline-flex; align-items: center; gap: 12px; background: #fff; padding: 16px 28px; border-radius: 60px; font-weight: 600; font-size: 18px; color: #0b2b5c; text-decoration: none; box-shadow: 0 4px 10px rgba(0,0,0,.02); border: 1px solid #dbe7f2; transition: .2s; flex: 1 1 auto; justify-content: center; }
+    .hero-right .cta-btn i { font-size: 22px; color: #f7b731; }
+    .hero-right .cta-btn.telegram { background: #0b2b5c; color: #fff; border-color: #0b2b5c; }
+    .hero-right .cta-btn.telegram i { color: #f7b731; }
+    .hero-right .cta-btn.telegram:hover { background: #1a3d72; }
+    .hero-right .cta-btn:hover { background: #e9f0f8; }
+    .hero-right .subnote { margin-top: 16px; font-size: 14px; color: #4b5b6e; text-align: center; border-top: 1px dashed #cddcec; padding-top: 16px; }
+    .services { padding: 50px 0 30px; background: #fff; }
+    .services h2 { font-size: 30px; font-weight: 700; color: #0b2b5c; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+    .services h2 i { color: #f7b731; }
+    .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; margin-top: 12px; }
+    .service-item { background: #f8fcff; padding: 20px 16px 24px; border-radius: 20px; text-align: center; border: 1px solid #eaf1f9; transition: .2s; text-decoration: none; color: inherit; display: flex; flex-direction: column; align-items: center; }
+    .service-item:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(0,0,0,.05); }
+    .service-item img { width: 100%; height: 180px; object-fit: cover; border-radius: 16px; margin-bottom: 12px; background: #dce6f0; }
+    .service-item h4 { font-weight: 600; font-size: 18px; margin-bottom: 4px; }
+    .service-item p { font-size: 14px; color: #4b5b6e; margin-top: 6px; }
+    .service-item .view-link { display: inline-flex; align-items: center; gap: 6px; margin-top: 14px; font-weight: 600; font-size: 15px; color: #0b2b5c; border-bottom: 2px solid #f7b731; padding-bottom: 2px; transition: .2s; text-decoration: none; }
+    .service-item .view-link i { font-size: 14px; transition: transform .2s; }
+    .service-item .view-link:hover i { transform: translateX(4px); }
+    .service-item .view-link:hover { color: #f7b731; }
+    .more-link { display: inline-block; margin-top: 20px; font-weight: 600; color: #0b2b5c; text-decoration: none; border-bottom: 2px solid #f7b731; padding-bottom: 2px; }
+    .form-section { padding: 40px 0; background: #f2f7fe; }
+    .form-card { max-width: 700px; margin: 0 auto; background: #fff; padding: 40px 36px; border-radius: 36px; box-shadow: 0 12px 30px rgba(11,43,92,.06); }
+    .form-card h2 { font-size: 28px; font-weight: 700; color: #0b2b5c; margin-bottom: 8px; }
+    .form-card .sub { color: #4b5b6e; margin-bottom: 24px; }
     .form-group { margin-bottom: 20px; }
-    .form-group label { font-weight: 500; display: block; margin-bottom: 6px; color: rgba(255,255,255,0.7); }
-    .form-group input, .form-group select, .form-group textarea {
-      width: 100%; padding: 14px 18px; border: 1px solid rgba(255,255,255,0.08); border-radius: 30px;
-      font-size: 16px; background: rgba(255,255,255,0.04); color: #fff; transition: .2s;
-    }
-    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: #f7b731; outline: none; background: rgba(255,255,255,0.08); }
-    .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,0.3); }
-    .form-group textarea { resize: vertical; min-height: 80px; border-radius: 20px; }
-    .form-group select option { background: #0a0e1a; color: #fff; }
-    .form-btn { background: #f7b731; color: #0b1a2f; border: none; padding: 16px 32px; font-size: 18px; font-weight: 700; border-radius: 60px; width: 100%; cursor: pointer; transition: .2s; display: flex; align-items: center; justify-content: center; gap: 12px; }
-    .form-btn i { color: #0b1a2f; }
-    .form-btn:hover { background: #ffcc5e; transform: scale(1.02); }
-    .form-agree { font-size: 13px; color: rgba(255,255,255,0.3); margin-top: 16px; text-align: center; }
-
-    .cta-final { padding: 40px 0; text-align: center; border-top: 1px solid rgba(255,255,255,0.04); }
-    .cta-final h2 { font-size: 30px; font-weight: 700; margin-bottom: 12px; }
-    .cta-final p { font-size: 18px; opacity: .6; margin-bottom: 28px; }
+    .form-group label { font-weight: 500; display: block; margin-bottom: 6px; color: #1e293b; }
+    .form-group input, .form-group select { width: 100%; padding: 14px 18px; border: 1px solid #dce6f0; border-radius: 30px; font-size: 16px; background: #fafcff; transition: .2s; }
+    .form-group input:focus { border-color: #0b2b5c; outline: none; background: #fff; box-shadow: 0 0 0 4px rgba(11,43,92,.05); }
+    .form-btn { background: #0b2b5c; color: #fff; border: none; padding: 16px 32px; font-size: 18px; font-weight: 600; border-radius: 60px; width: 100%; cursor: pointer; transition: .2s; display: flex; align-items: center; justify-content: center; gap: 12px; }
+    .form-btn i { color: #f7b731; }
+    .form-btn:hover { background: #1a3d72; transform: scale(1.01); }
+    .form-agree { font-size: 13px; color: #6b7b8e; margin-top: 16px; text-align: center; }
+    .reviews { padding: 50px 0 30px; background: #fff; }
+    .reviews h2 { font-size: 30px; font-weight: 700; color: #0b2b5c; margin-bottom: 28px; }
+    .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+    .review-card { background: #f8fcff; border-radius: 24px; padding: 24px 28px; border: 1px solid #eaf1f9; }
+    .review-card .stars { color: #f7b731; letter-spacing: 2px; font-size: 18px; }
+    .review-card .name { font-weight: 600; font-size: 18px; margin: 6px 0 4px; }
+    .review-card .text { color: #2d3a4f; line-height: 1.5; margin: 8px 0; }
+    .review-card .verified { color: #0e7b3a; font-size: 14px; font-weight: 500; }
+    .review-card .verified i { margin-right: 4px; }
+    .gallery { padding: 40px 0 30px; background: #f2f7fe; }
+    .gallery h2 { font-size: 30px; font-weight: 700; color: #0b2b5c; margin-bottom: 24px; }
+    .gallery-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
+    .gallery-item { aspect-ratio: 1/1; border-radius: 24px; overflow: hidden; border: 2px solid #fff; box-shadow: 0 4px 12px rgba(0,0,0,.02); background: #dce6f0; display: flex; align-items: center; justify-content: center; transition: .2s; }
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .gallery-item:hover { transform: scale(1.03); box-shadow: 0 8px 20px rgba(0,0,0,.1); }
+    .why-us { padding: 50px 0 30px; background: #fff; }
+    .why-us h2 { font-size: 30px; font-weight: 700; color: #0b2b5c; margin-bottom: 30px; }
+    .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; }
+    .why-item { background: #f8fcff; padding: 24px 20px; border-radius: 28px; border: 1px solid #eaf1f9; text-align: center; }
+    .why-item i { font-size: 32px; color: #f7b731; background: #eaf4ff; padding: 14px; border-radius: 20px; margin-bottom: 12px; }
+    .why-item h4 { font-weight: 700; font-size: 20px; margin-bottom: 4px; }
+    .why-item p { color: #4b5b6e; }
+    .cta-final { padding: 50px 0 30px; background: #0b2b5c; color: #fff; text-align: center; }
+    .cta-final h2 { font-size: 34px; font-weight: 700; margin-bottom: 12px; }
+    .cta-final p { font-size: 18px; opacity: .9; margin-bottom: 28px; }
     .cta-final .final-links { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
-    .cta-final .final-links a { display: inline-flex; align-items: center; gap: 14px; background: rgba(255,255,255,0.04); backdrop-filter: blur(8px); color: #fff; padding: 16px 34px; border-radius: 60px; text-decoration: none; font-weight: 600; font-size: 20px; transition: .2s; border: 1px solid rgba(255,255,255,0.06); }
+    .cta-final .final-links a { display: inline-flex; align-items: center; gap: 14px; background: #fff; color: #0b2b5c; padding: 16px 34px; border-radius: 60px; text-decoration: none; font-weight: 600; font-size: 20px; transition: .2s; }
     .cta-final .final-links a i { color: #f7b731; font-size: 24px; }
-    .cta-final .final-links a.telegram { background: #f7b731; color: #0b1a2f; }
-    .cta-final .final-links a.telegram i { color: #0b1a2f; }
-    .cta-final .final-links a:hover { transform: scale(1.05); background: rgba(255,255,255,0.08); }
-
-    .footer { 
-      background: rgba(7, 11, 23, 0.7); 
-      backdrop-filter: blur(6px);
-      padding: 24px 0; 
-      color: rgba(255,255,255,.4); 
-      border-top: 1px solid rgba(255,255,255,0.03);
-    }
-    .footer .container { 
-      display: flex; 
-      flex-wrap: wrap; 
-      justify-content: space-between; 
-      align-items: center; 
-      gap: 16px;
-    }
-    .footer .footer-logo a { 
-      color: #fff; 
-      font-weight: 600; 
-      font-size: 18px; 
-      display: flex; 
-      align-items: center; 
-      gap: 8px; 
-      text-decoration: none;
-    }
-    .footer .footer-logo img { height: 28px; width: auto; border-radius: 6px; }
-    
-    .footer .social-links {
-      display: flex;
-      gap: 14px;
-      align-items: center;
-    }
-    .footer .social-links a {
-      color: rgba(255,255,255,0.4);
-      background: rgba(255,255,255,0.04);
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-      transition: 0.25s;
-      text-decoration: none;
-      border: 1px solid rgba(255,255,255,0.04);
-    }
-    .footer .social-links a:hover {
-      color: #f7b731;
-      background: rgba(247, 183, 49, 0.12);
-      border-color: rgba(247, 183, 49, 0.2);
-      transform: translateY(-2px);
-    }
+    .cta-final .final-links a.telegram { background: #f7b731; color: #0b2b5c; }
+    .cta-final .final-links a.telegram i { color: #0b2b5c; }
+    .cta-final .final-links a:hover { transform: scale(1.04); box-shadow: 0 8px 20px rgba(0,0,0,.2); }
+    .footer .social-links { display: flex; gap: 16px; align-items: center; }
+    .footer .social-links a { color: rgba(255,255,255,0.7); font-size: 24px; transition: color 0.2s; text-decoration: none; }
+    .footer .social-links a:hover { color: #f7b731; }
+    .footer { background: #061f41; padding: 24px 0; color: rgba(255,255,255,.7); border-top: 1px solid #1a3d72; }
+    .footer .container { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; }
     .footer .copy { font-size: 14px; }
-
-    @media(max-width:600px){ 
-      .footer .container { flex-direction: column; text-align: center; justify-content: center; }
-      .services-grid { grid-template-columns: 1fr; }
-    }
+    .footer .footer-logo { color: #fff; font-weight: 600; font-size: 18px; display: flex; align-items: center; gap: 8px; }
+    .footer .footer-logo img { height: 28px; width: auto; border-radius: 6px; }
+    @media(max-width:900px){ .hero-grid { grid-template-columns: 1fr; } .gallery-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media(max-width:600px){ .hero-left h1 { font-size: 28px; } .hero-actions { flex-direction: column; } .hero-right .cta-line { flex-direction: column; } .gallery-grid { grid-template-columns: repeat(2, 1fr); } .form-card { padding: 28px 18px; } .cta-final h2 { font-size: 26px; } }
   </style>
 </head>
 <body>
-
-<div class="bg-fixed"></div>
-
-<div class="content">
-
   <header class="header">
     <div class="container">
       <div class="logo-area">
-        <div class="logo-text">
-          <a href="/">
-            <img src="/images/logo.png" alt="Moskitki.uz"> Moskitki.<span>uz</span>
-          </a>
-        </div>
+        <div class="logo-text"><img src="/images/logo.png" alt="Логотип"> Moskitki.<span>uz</span></div>
       </div>
       <div class="lang-switch" id="langSwitcher">
         <a data-lang="ru" class="active"><span class="flag">🇷🇺</span> RU</a>
@@ -438,236 +136,161 @@
   </header>
 
   <section class="hero">
-    <div class="container">
-      <h1 data-i18n="hero-title">Создаём сайты, которые <span>приносят клиентов</span></h1>
-      <p data-i18n="hero-desc">Разрабатываем современные сайты для бизнеса: от лендингов до интернет-магазинов. С адаптацией под смартфоны и настройкой под ваш проект.</p>
+    <div class="container hero-grid">
+      <div class="hero-left">
+        <h1><i class="fas fa-wind"></i> <span data-i18n="hero-title">Создание сайтов, москитные сетки, жалюзи, ремонт окон, кондиционеры</span></h1>
+        <p data-i18n="hero-desc">Создание сайтов, москитные сетки, жалюзи, ремонт окон, кондиционеры в Ташкенте. Бесплатный замер, гарантия 1 год.</p>
+        <div class="hero-actions">
+          <a href="#" class="hero-btn"><i class="fas fa-ruler"></i> <span data-i18n="hero-btn1">Бесплатный замер</span></a>
+          <a href="#" class="hero-btn"><i class="fas fa-check-circle"></i> <span data-i18n="hero-btn2">Гарантия 1 год</span></a>
+          <a href="#" class="hero-btn"><i class="fas fa-clock"></i> <span data-i18n="hero-btn3">Изготовление за 3 дня</span></a>
+          <a href="#" class="hero-btn"><i class="fas fa-user-friends"></i> <span data-i18n="hero-btn4">8200+ клиентов</span></a>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="cta-line">
+          <a href="tel:+998990550660" class="cta-btn"><i class="fas fa-phone-alt"></i> <span data-i18n="call">Позвонить</span></a>
+          <a href="https://t.me/moskitki_uz" class="cta-btn telegram" target="_blank"><i class="fab fa-telegram-plane"></i> <span data-i18n="telegram">Написать в Telegram</span></a>
+        </div>
+        <div class="subnote"><i class="fas fa-shield-alt" style="color:#0b2b5c;"></i> <span data-i18n="free-master">Бесплатный выезд мастера</span></div>
+      </div>
     </div>
   </section>
 
-  <!-- ===== БЛОК РУКОВОДИТЕЛЯ С ФОТО ===== -->
-  <div class="container">
-    <div class="about-leader">
-      <div class="photo">
-        <!-- ЗАМЕНИТЕ /images/leader.png НА ВАШЕ ФОТО -->
-        <img src="/images/leader.png" alt="Руководитель" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-user-tie\'></i>';">
-      </div>
-      <div class="info">
-        <h3 data-i18n="leader-name">Иброхим Азимбоев</h3>
-        <div class="position" data-i18n="leader-position">Руководитель / Project Manager</div>
-        <p data-i18n="leader-desc">Более 5 лет работал в Дубае в должности Project Manager, управляя крупными проектами по созданию сайтов для международных компаний. Применили этот опыт в Узбекистане, чтобы предлагать клиентам качество на мировом уровне.</p>
-        <span class="badge-dubai">🇦🇪 Опыт работы в Дубае</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- ===== УСЛУГИ ===== -->
   <section class="services">
     <div class="container">
-      <h2 class="section-title" data-i18n="services-title">Что мы создаём</h2>
-      <p class="section-sub" data-i18n="services-sub">Выберите тип сайта, который подходит вашему бизнесу</p>
-      <div class="services-grid">
-        
-        <!-- LANDING -->
-        <div class="service-item" onclick="scrollToForm(this)" data-service="Лендинг">
-          <div class="icon-wrap"><i class="fas fa-file-alt"></i></div>
-          <div class="badge">LANDING</div>
-          <h4 data-i18n="serv1-title">Лендинг (Landing Page)</h4>
-          <div class="subtitle" data-i18n="serv1-sub">Продающая страница для товара или услуги</div>
-          <ul>
-            <li><i class="fas fa-check"></i> <span data-i18n="serv1-li1">1 страница</span></li>
-            <li><i class="fas fa-check"></i> <span data-i18n="serv1-li2">адаптивный дизайн</span></li>
-            <li><i class="fas fa-check"></i> <span data-i18n="serv1-li3">форма заявки</span></li>
-            <li><i class="fas fa-check"></i> <span data-i18n="serv1-li4">Telegram</span></li>
-            <li><i class="fas fa-check"></i> <span data-i18n="serv1-li5">базовая SEO-настройка</span></li>
-            <li><i class="fas fa-check"></i> <span data-i18n="serv1-li6">подключение аналитики</span></li>
-          </ul>
-          <div class="time"><i class="far fa-clock"></i> <span data-i18n="serv1-time">Срок: от 3 дней</span></div>
-          <div class="price-block">
-            <div class="price" data-i18n="serv1-price">от 840 000 сум</div>
-          </div>
-          <div class="price-note" data-i18n="serv1-note">* финальная стоимость зависит от количества страниц и функционала</div>
-        </div>
-
-        <!-- BUSINESS -->
-        <div class="service-item" onclick="scrollToForm(this)" data-service="Корпоративный сайт">
-          <div class="icon-wrap"><i class="fas fa-building"></i></div>
-          <div class="badge">BUSINESS</div>
-          <h4 data-i18n="serv2-title">Корпоративный сайт</h4>
-          <div class="subtitle" data-i18n="serv2-sub">Сайт компании с уникальным дизайном</div>
-          <ul>
-            <li><i class="fas fa-check"></i> <span data-i18n="serv2-li1">до 10 страниц</span></li>
-            <li><i class="fas fa-check"></i> <span data-i18n="serv2-li2">уникальный дизайн</span></li>
-            <li><i class="fas fa-check"></i> <span data-i18n="serv2-li3">адаптивная версия</span></li>
-            <li><i class="fas fa-check"></i> <span data-i18n="serv2-li4">CMS</span></li>
-            <li><i class="fas fa-check"></i> <span data-i18n="serv2-li5">формы заявок</span></li>
-            <li><i class="fas fa-check"></i> <span data-i18n="serv2-li6">SEO-основа</span></li>
-          </ul>
-          <div class="time"><i class="far fa-clock"></i> <span data-i18n="serv2-time">Срок: от 7 дней</span></div>
-          <div class="price-block">
-            <div class="price" data-i18n="serv2-price">от 1 190 000 сум</div>
-          </div>
-          <div class="price-note" data-i18n="serv2-note">* финальная стоимость зависит от количества страниц и функционала</div>
-        </div>
-
-        <!-- ИНТЕРНЕТ-МАГАЗИН -->
-        <div class="service-item" onclick="scrollToForm(this)" data-service="Интернет-магазин">
-          <div class="icon-wrap"><i class="fas fa-shopping-cart"></i></div>
-          <div class="badge">E-COMMERCE</div>
-          <h4 data-i18n="serv3-title">Интернет-магазин</h4>
-          <div class="subtitle" data-i18n="serv3-sub">Полноценный магазин для продажи товаров</div>
-          <ul>
-            <li><i class="fas fa-check"></i> <span data-i18n="serv3-li1">каталог товаров</span></li>
-            <li><i class="fas fa-check"></i> <span data-i18n="serv3-li2">корзина и оформление заказа</span></li>
-            <li><i class="fas fa-check"></i> <span data-i18n="serv3-li3">интеграция с оплатой</span></li>
-            <li><i class="fas fa-check"></i> <span data-i18n="serv3-li4">адаптивная версия</span></li>
-            <li><i class="fas fa-check"></i> <span data-i18n="serv3-li5">CMS</span></li>
-            <li><i class="fas fa-check"></i> <span data-i18n="serv3-li6">SEO-основа</span></li>
-          </ul>
-          <div class="time"><i class="far fa-clock"></i> <span data-i18n="serv3-time">Срок: от 10–14 дней</span></div>
-          <div class="price-block">
-            <div class="price" data-i18n="serv3-price">от 1 960 000 сум</div>
-          </div>
-          <div class="price-note" data-i18n="serv3-note">* финальная стоимость зависит от количества страниц и функционала</div>
-        </div>
-
-        <!-- РЕДИЗАЙН -->
-        <div class="service-item" onclick="scrollToForm(this)" data-service="Редизайн">
-          <div class="icon-wrap"><i class="fas fa-paint-brush"></i></div>
-          <div class="badge">REDESIGN</div>
-          <h4 data-i18n="serv4-title">Редизайн и доработка</h4>
-          <div class="subtitle" data-i18n="serv4-sub">Обновление дизайна и улучшение сайта</div>
-          <ul>
-            <li><i class="fas fa-check"></i> <span data-i18n="serv4-li1">обновление дизайна</span></li>
-            <li><i class="fas fa-check"></i> <span data-i18n="serv4-li2">улучшение юзабилити</span></li>
-            <li><i class="fas fa-check"></i> <span data-i18n="serv4-li3">оптимизация скорости</span></li>
-            <li><i class="fas fa-check"></i> <span data-i18n="serv4-li4">адаптивная вёрстка</span></li>
-            <li><i class="fas fa-check"></i> <span data-i18n="serv4-li5">доработка функционала</span></li>
-            <li><i class="fas fa-check"></i> <span data-i18n="serv4-li6">SEO-настройка</span></li>
-          </ul>
-          <div class="time"><i class="far fa-clock"></i> <span data-i18n="serv4-time">Срок: от 3–7 дней</span></div>
-          <div class="price-block">
-            <div class="price" data-i18n="serv4-price">от 560 000 сум</div>
-          </div>
-          <div class="price-note" data-i18n="serv4-note">* финальная стоимость зависит от объёма работ</div>
-        </div>
-
-      </div>
-
-      <div class="back-home">
-        <a href="/"><i class="fas fa-arrow-left"></i> <span data-i18n="back-home">На главную</span></a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== ПОРТФОЛИО ===== -->
-  <section class="portfolio" id="portfolio">
-    <div class="container">
-      <h2 class="section-title" data-i18n="portfolio-title">Наши проекты</h2>
-      <p class="section-sub" data-i18n="portfolio-sub">Реальные сайты, которые мы разработали</p>
-      <div class="portfolio-grid">
-        <a href="https://jalyuzitashkent.uz" target="_blank" class="portfolio-item">
-          <div class="preview" style="background-image: url('/images/jalyuzi.png');"></div>
-          <div class="info">
-            <span class="tag" data-i18n="portfolio-tag1">Сайт компании</span>
-            <h4 data-i18n="portfolio-name1">JalyuziTashkent.uz</h4>
-            <p data-i18n="portfolio-desc1">Москитные сетки, жалюзи, ремонт окон</p>
-            <span class="link" data-i18n="portfolio-link">Посмотреть проект <i class="fas fa-arrow-right"></i></span>
-          </div>
+      <h2><i class="fas fa-boxes"></i> <span data-i18n="services-title">Наши продукты и сервисы</span></h2>
+      <div class="service-grid">
+        <a href="sozdanie-saitov.html" class="service-item">
+          <img src="/images/sait.png" alt="Создание сайтов">
+          <h4 data-i18n="service5-title">Создание сайтов</h4>
+          <p data-i18n="service5-desc">Помощь переделать сайт, Создать новый</p>
+          <span class="view-link" data-i18n="view-service">Посмотреть услугу <i class="fas fa-arrow-right"></i></span>
         </a>
-        <a href="https://moskitki.uz" target="_blank" class="portfolio-item">
-          <div class="preview" style="background-image: url('/images/moskitki.png');"></div>
-          <div class="info">
-            <span class="tag" data-i18n="portfolio-tag2">Мультиуслуги</span>
-            <h4 data-i18n="portfolio-name2">Moskitki.uz</h4>
-            <p data-i18n="portfolio-desc2">Создание сайтов, сетки, жалюзи, кондиционеры</p>
-            <span class="link" data-i18n="portfolio-link">Посмотреть проект <i class="fas fa-arrow-right"></i></span>
-          </div>
+        <a href="moskitnye-setki.html" class="service-item">
+          <img src="/images/setki.png" alt="Москитные сетки">
+          <h4 data-i18n="service1-title">Москитные сетки</h4>
+          <p data-i18n="service1-desc">Стандартные, Синакс, Уни, Плиссе</p>
+          <span class="view-link" data-i18n="view-product">Посмотреть товар <i class="fas fa-arrow-right"></i></span>
         </a>
-        <a href="https://inflexestate.com" target="_blank" class="portfolio-item">
-          <div class="preview" style="background-image: url('/images/inflex.png');"></div>
-          <div class="info">
-            <span class="tag" data-i18n="portfolio-tag3">Недвижимость</span>
-            <h4 data-i18n="portfolio-name3">InflexEstate.com</h4>
-            <p data-i18n="portfolio-desc3">Международное агентство недвижимости</p>
-            <span class="link" data-i18n="portfolio-link">Посмотреть проект <i class="fas fa-arrow-right"></i></span>
-          </div>
+        <a href="zhalyuzi.html" class="service-item">
+          <img src="/images/zhalyuzi.png" alt="Жалюзи">
+          <h4 data-i18n="service2-title">Жалюзи</h4>
+          <p data-i18n="service2-desc">Ролло, Плиссе</p>
+          <span class="view-link" data-i18n="view-product">Посмотреть товар <i class="fas fa-arrow-right"></i></span>
+        </a>
+        <a href="konditsionery.html" class="service-item">
+          <img src="/images/konditsioner.png" alt="Кондиционеры">
+          <h4 data-i18n="service3-title">Кондиционеры</h4>
+          <p data-i18n="service3-desc">Монтаж, Демонтаж, Заправка фреона</p>
+          <span class="view-link" data-i18n="view-service">Посмотреть услугу <i class="fas fa-arrow-right"></i></span>
+        </a>
+        <a href="remont-okon.html" class="service-item">
+          <img src="/images/remont-okon.png" alt="Ремонт окон">
+          <h4 data-i18n="service4-title">Ремонт окон</h4>
+          <p data-i18n="service4-desc">Регулировка, Замена фурнитуры, Механизмов</p>
+          <span class="view-link" data-i18n="view-service">Посмотреть услугу <i class="fas fa-arrow-right"></i></span>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- ===== ОТЗЫВЫ ===== -->
-  <section class="reviews">
-    <div class="container">
-      <h2 class="section-title" data-i18n="reviews-title">Отзывы наших клиентов</h2>
-      <p class="section-sub" data-i18n="reviews-sub">Реальные отзывы от реальных людей</p>
-      <div class="reviews-grid">
-        <div class="review">
-          <div class="stars">★★★★★</div>
-          <div class="text" data-i18n="review1-text">«Заказывал сайт для недвижимости. Сделали всё быстро, учли все пожелания. Ребята знают своё дело. Рекомендую!»</div>
-          <div class="author">Сергей Н.</div>
-          <div class="company">Недвижимость</div>
-        </div>
-        <div class="review">
-          <div class="stars">★★★★★</div>
-          <div class="text" data-i18n="review2-text">«Отличная работа! Сделали сайт для жалюзи. Всё красиво, удобно, клиенты звонят каждый день. Спасибо большое!»</div>
-          <div class="author">Ахмад Л.</div>
-          <div class="company">Жалюзи</div>
-        </div>
-        <div class="review">
-          <div class="stars">★★★★★</div>
-          <div class="text" data-i18n="review3-text">«Заказал интернет-магазин для своего бизнеса. Всё работает отлично, заказы принимаем, клиенты довольны. Спасибо команде!»</div>
-          <div class="author">Рустам К.</div>
-          <div class="company">E-commerce</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== ФОРМА ===== -->
-  <section class="form-section" id="formSection">
+  <section class="form-section">
     <div class="container">
       <div class="form-card">
-        <h2><i class="fas fa-calculator" style="color:#f7b731;"></i> <span data-i18n="form-title">Рассчитаем стоимость вашего сайта</span></h2>
-        <p class="sub" data-i18n="form-sub">Ответим в рабочее время</p>
+        <h2><i class="fas fa-pencil-alt" style="color:#f7b731;"></i> <span data-i18n="form-title">Оставьте заявку</span></h2>
+        <p class="sub" data-i18n="form-sub">Мы перезвоним в течение 15 минут</p>
         <form id="orderForm">
           <div class="form-group">
-            <label data-i18n="form-name">Ваше имя</label>
-            <input type="text" name="name" placeholder="Имя" required>
-          </div>
-          <div class="form-group">
-            <label data-i18n="form-phone">Телефон</label>
-            <div style="display: flex; align-items: center; border: 1px solid rgba(255,255,255,0.08); border-radius: 30px; background: rgba(255,255,255,0.04); padding: 0 18px;">
-              <span style="font-weight: 600; color: #f7b731; padding-right: 6px;">+998</span>
-              <input type="tel" id="phoneInput" name="phone" placeholder="99 055 06 60" 
-                     style="border: none; outline: none; background: transparent; width: 100%; padding: 14px 0; font-size: 16px; color:#fff;"
-                     required pattern="[0-9]{9}" maxlength="9" title="Введите 9 цифр после +998">
-            </div>
-          </div>
-          <div class="form-group">
-            <label data-i18n="form-service">Какой сайт вам нужен?</label>
+            <label data-i18n="form-service">Услуга</label>
             <select name="usluga" id="uslugaSelect">
-              <option value="Лендинг" data-i18n="form-opt1">Лендинг (Landing Page)</option>
-              <option value="Корпоративный сайт" data-i18n="form-opt2">Корпоративный сайт</option>
-              <option value="Интернет-магазин" data-i18n="form-opt3">Интернет-магазин</option>
-              <option value="Редизайн" data-i18n="form-opt4">Редизайн и доработка</option>
+              <option value="Создание сайта" data-i18n="form-opt5">Создание сайта</option>
+              <option value="Монтаж, демонтаж и заправка кондиционера" data-i18n="form-opt1">Монтаж, демонтаж и заправка кондиционера</option>
+              <option value="Москитная сетка" data-i18n="form-opt2">Москитная сетка</option>
+              <option value="Ремонт окон" data-i18n="form-opt3">Ремонт окон</option>
+              <option value="Жалюзи" data-i18n="form-opt4">Жалюзи</option>
             </select>
           </div>
           <div class="form-group">
-            <label data-i18n="form-project">Расскажите о проекте</label>
-            <textarea name="project" placeholder="Кратко опишите задачу, чтобы мы точнее рассчитали стоимость"></textarea>
+            <label data-i18n="form-name">Ваше имя</label>
+            <input type="text" name="name" placeholder="Ваше имя" required>
           </div>
-          <button type="submit" class="form-btn"><i class="fas fa-paper-plane"></i> <span data-i18n="form-submit">Получить расчёт</span></button>
+          <div class="form-group">
+            <label data-i18n="form-phone">Номер телефона</label>
+            <div style="display: flex; align-items: center; border: 1px solid #dce6f0; border-radius: 30px; background: #fafcff; padding: 0 18px;">
+              <span style="font-weight: 600; color: #0b2b5c; padding-right: 6px;">+998</span>
+              <input type="tel" id="phoneInput" name="phone" placeholder="99 055 06 60" style="border: none; outline: none; background: transparent; width: 100%; padding: 14px 0; font-size: 16px;" required pattern="[0-9]{9}" maxlength="9" title="Введите 9 цифр после +998">
+            </div>
+          </div>
+          <button type="submit" class="form-btn"><i class="fas fa-paper-plane"></i> <span data-i18n="form-submit">Отправить заявку</span></button>
           <div class="form-agree" data-i18n="form-agree">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных</div>
         </form>
       </div>
     </div>
   </section>
 
+  <section class="reviews">
+    <div class="container">
+      <h2><i class="fas fa-star" style="color:#f7b731;"></i> <span data-i18n="reviews-title">Отзывы</span></h2>
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <div class="name" data-i18n="review1-name">Анна К.</div>
+          <div class="text" data-i18n="review1-text">Заказала москитную сетку, приехали на следующий день, всё аккуратно установили. Рекомендую!</div>
+          <div class="verified"><i class="fas fa-check-circle"></i> <span data-i18n="verified">Проверенный отзыв</span></div>
+        </div>
+        <div class="review-card">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <div class="name" data-i18n="review2-name">Миржамол Б.</div>
+          <div class="text" data-i18n="review2-text">Заказывал жалюзи на все окна. Приехали, замерили, установили за 2 дня. Качество отличное.</div>
+          <div class="verified"><i class="fas fa-check-circle"></i> <span data-i18n="verified">Проверенный отзыв</span></div>
+        </div>
+        <div class="review-card">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <div class="name" data-i18n="review3-name">Елена В.</div>
+          <div class="text" data-i18n="review3-text">Делали ремонт окон – заменили уплотнители и фурнитуру. Стало тепло и тихо. Спасибо мастерам!</div>
+          <div class="verified"><i class="fas fa-check-circle"></i> <span data-i18n="verified">Проверенный отзыв</span></div>
+        </div>
+        <div class="review-card">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <div class="name" data-i18n="review4-name">Баходир А.</div>
+          <div class="text" data-i18n="review4-text">Установили кондиционер, заправили фреон. Работают быстро и чисто. Всё объясняют. Буду рекомендовать.</div>
+          <div class="verified"><i class="fas fa-check-circle"></i> <span data-i18n="verified">Проверенный отзыв</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="gallery">
+    <div class="container">
+      <h2><i class="fas fa-images" style="color:#f7b731;"></i> <span data-i18n="gallery-title">Наша команда и работы</span></h2>
+      <div class="gallery-grid">
+        <div class="gallery-item"><img src="/images/gallery-komanda.png" alt="Команда"></div>
+        <div class="gallery-item"><img src="/images/gallery-setki.png" alt="Сетки"></div>
+        <div class="gallery-item"><img src="/images/gallery-montazh.png" alt="Монтаж"></div>
+        <div class="gallery-item"><img src="/images/gallery-zhalyuzi.png" alt="Жалюзи"></div>
+        <div class="gallery-item"><img src="/images/gallery-konditsionery.png" alt="Кондиционеры"></div>
+        <div class="gallery-item"><img src="/images/gallery-sajty.png" alt="Сайты"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="why-us">
+    <div class="container">
+      <h2><i class="fas fa-medal" style="color:#f7b731;"></i> <span data-i18n="why-title">Почему мы</span></h2>
+      <div class="why-grid">
+        <div class="why-item"><i class="fas fa-industry"></i><h4 data-i18n="why1-title">Свое производство</h4><p data-i18n="why1-desc">Собственный цех в Ташкенте</p></div>
+        <div class="why-item"><i class="fas fa-check-double"></i><h4 data-i18n="why2-title">Качество материала</h4><p data-i18n="why2-desc">Только проверенные поставщики</p></div>
+        <div class="why-item"><i class="fas fa-user-graduate"></i><h4 data-i18n="why3-title">Квалифицированные сотрудники</h4><p data-i18n="why3-desc">Опыт от 5 лет, сертификаты</p></div>
+        <div class="why-item"><i class="fas fa-clock"></i><h4 data-i18n="why4-title">Скорость</h4><p data-i18n="why4-desc">Изготовление от 3 дней</p></div>
+      </div>
+    </div>
+  </section>
+
   <section class="cta-final">
     <div class="container">
-      <h2 data-i18n="cta-title">Готовы обсудить проект?</h2>
-      <p data-i18n="cta-desc">Позвоните или напишите в Telegram — мы ответим на все вопросы</p>
+      <h2 data-i18n="cta-title">Готовы сделать заказ?</h2>
+      <p data-i18n="cta-desc">Позвоните или напишите нам в Telegram – мы ответим на все вопросы.</p>
       <div class="final-links">
         <a href="tel:+998990550660"><i class="fas fa-phone-alt"></i> +998 99 055 06 60</a>
         <a href="https://t.me/moskitki_uz" class="telegram" target="_blank"><i class="fab fa-telegram-plane"></i> <span data-i18n="cta-telegram">Написать в Telegram</span></a>
@@ -677,11 +300,7 @@
 
   <footer class="footer">
     <div class="container">
-      <div class="footer-logo">
-        <a href="/">
-          <img src="/images/logo.png" alt="Moskitki.uz"> Moskitki.uz
-        </a>
-      </div>
+      <div class="footer-logo"><img src="/images/logo.png" alt="Moskitki.uz"> Moskitki.uz</div>
       <div class="social-links">
         <a href="https://t.me/moskitki_uz" target="_blank" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
         <a href="https://instagram.com/moskitki.uz" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
@@ -692,375 +311,243 @@
     </div>
   </footer>
 
-</div>
-
-<script>
-  function scrollToForm(el) {
-    const service = el.getAttribute('data-service');
-    const select = document.getElementById('uslugaSelect');
-    if (select) {
-      for (let option of select.options) {
-        if (option.value === service) {
-          option.selected = true;
-          break;
-        }
+  <script>
+    const translations = {
+      ru: {
+        "header-tag": "Ташкент с 2019",
+        "hero-title": "Создание сайтов, москитные сетки, жалюзи, ремонт окон, кондиционеры",
+        "hero-desc": "Создание сайтов, москитные сетки, жалюзи, ремонт окон, кондиционеры в Ташкенте. Бесплатный замер, гарантия 1 год.",
+        "hero-btn1": "Бесплатный замер",
+        "hero-btn2": "Гарантия 1 год",
+        "hero-btn3": "Изготовление за 3 дня",
+        "hero-btn4": "8200+ клиентов",
+        "call": "Позвонить",
+        "telegram": "Написать в Telegram",
+        "free-master": "Бесплатный выезд мастера",
+        "services-title": "Наши продукты и сервисы",
+        "service1-title": "Москитные сетки",
+        "service1-desc": "Стандартные, Синакс, Уни, Плиссе",
+        "service2-title": "Жалюзи",
+        "service2-desc": "Ролло, Плиссе",
+        "service3-title": "Кондиционеры",
+        "service3-desc": "Монтаж, Демонтаж, Заправка фреона",
+        "service4-title": "Ремонт окон",
+        "service4-desc": "Регулировка, Замена фурнитуры, механизмов",
+        "service5-title": "Создание сайтов",
+        "service5-desc": "Помощь переделать сайт, Создать новый",
+        "view-product": "Посмотреть товар →",
+        "view-service": "Посмотреть услугу →",
+        "form-title": "Оставьте заявку",
+        "form-sub": "Мы перезвоним в течение 15 минут",
+        "form-service": "Услуга",
+        "form-opt1": "Монтаж, демонтаж и заправка кондиционера",
+        "form-opt2": "Москитная сетка",
+        "form-opt3": "Ремонт окон",
+        "form-opt4": "Жалюзи",
+        "form-opt5": "Создание сайта",
+        "form-name": "Ваше имя",
+        "form-phone": "Номер телефона",
+        "form-submit": "Отправить заявку",
+        "form-agree": "Нажимая кнопку, вы соглашаетесь с обработкой персональных данных",
+        "reviews-title": "Отзывы",
+        "review1-name": "Анна К.",
+        "review1-text": "Заказала москитную сетку, приехали на следующий день, всё аккуратно установили. Рекомендую!",
+        "review2-name": "Миржамол Б.",
+        "review2-text": "Заказывал жалюзи на все окна. Приехали, замерили, установили за 2 дня. Качество отличное.",
+        "review3-name": "Елена В.",
+        "review3-text": "Делали ремонт окон – заменили уплотнители и фурнитуру. Стало тепло и тихо. Спасибо мастерам!",
+        "review4-name": "Баходир А.",
+        "review4-text": "Установили кондиционер, заправили фреон. Работают быстро и чисто. Всё объясняют. Буду рекомендовать.",
+        "verified": "Проверенный отзыв",
+        "gallery-title": "Наша команда и работы",
+        "why-title": "Почему мы",
+        "why1-title": "Свое производство",
+        "why1-desc": "Собственный цех в Ташкенте",
+        "why2-title": "Качество материала",
+        "why2-desc": "Только проверенные поставщики",
+        "why3-title": "Квалифицированные сотрудники",
+        "why3-desc": "Опыт от 5 лет, сертификаты",
+        "why4-title": "Скорость",
+        "why4-desc": "Изготовление от 3 дней",
+        "cta-title": "Готовы сделать заказ?",
+        "cta-desc": "Позвоните или напишите нам в Telegram – мы ответим на все вопросы.",
+        "cta-telegram": "Написать в Telegram"
+      },
+      uz: {
+        "header-tag": "Toshkent 2019 dan",
+        "hero-title": "Veb-sayt yaratish, chivin to‘rlari, jalyuzi, deraza ta'miri, konditsionerlar",
+        "hero-desc": "Toshkentda - Veb-sayt yaratish, chivin to‘rlari, jalyuzi, deraza ta'miri, konditsionerlarni o‘rnatish. Bepul o‘lchov, 1 yil kafolat.",
+        "hero-btn1": "Bepul o‘lchov",
+        "hero-btn2": "1 yil kafolat",
+        "hero-btn3": "3 kun ichida tayyor",
+        "hero-btn4": "8200+ mijoz",
+        "call": "Qo‘ng‘iroq qilish",
+        "telegram": "Telegramda yozish",
+        "free-master": "Ustaning bepul chiqishi",
+        "services-title": "Bizning mahsulot va xizmatlar",
+        "service1-title": "Chivin to‘rlari",
+        "service1-desc": "Standart, Synax, Uni, Plise",
+        "service2-title": "Jalyuzi",
+        "service2-desc": "Rollo, Plisse",
+        "service3-title": "Konditsionerlar",
+        "service3-desc": "O‘rnatish, Demontaj, Freon quyish",
+        "service4-title": "Deraza ta'miri",
+        "service4-desc": "Sozlash, Aksessuarlarni almashtirish, mexanizmlar",
+        "service5-title": "Veb-sayt yaratish",
+        "service5-desc": "Saytni qayta tuzish, Yangi yaratish",
+        "view-product": "Mahsulotni ko‘rish →",
+        "view-service": "Xizmatni ko‘rish →",
+        "form-title": "Ariza qoldiring",
+        "form-sub": "15 daqiqa ichida qayta qo‘ng‘iroq qilamiz",
+        "form-service": "Xizmat",
+        "form-opt1": "Konditsionerni o‘rnatish, demontaj va freon quyish",
+        "form-opt2": "Chivin to‘ri",
+        "form-opt3": "Deraza ta'miri",
+        "form-opt4": "Jalyuzi",
+        "form-opt5": "Veb-sayt yaratish",
+        "form-name": "Ismingiz",
+        "form-phone": "Telefon raqam",
+        "form-submit": "Arizani yuborish",
+        "form-agree": "Tugmani bosish orqali siz shaxsiy ma'lumotlarni qayta ishlashga rozilik bildirasiz",
+        "reviews-title": "Sharhlar",
+        "review1-name": "Anna K.",
+        "review1-text": "Chivin to‘rini buyurtma qildim, ertasi kuni kelib o‘rnatishdi. Hammasi yaxshi. Tavsiya qilaman!",
+        "review2-name": "Mirjamol B.",
+        "review2-text": "Barcha derazalarga jalyuzi buyurtma qildim. Kelishdi, o‘lchashdi, 2 kunda o‘rnatishdi. Sifat a'lo.",
+        "review3-name": "Yelena V.",
+        "review3-text": "Deraza ta'miri – muhrlar va aksessuarlar almashtirildi. Issiq va tinch bo‘ldi. Ustalarga rahmat!",
+        "review4-name": "Bahodir A.",
+        "review4-text": "Konditsioner o‘rnatishdi, freon quyishdi. Tez va toza ishlashdi. Hammasini tushuntirishdi. Tavsiya qilaman.",
+        "verified": "Tasdiqlangan sharh",
+        "gallery-title": "Bizning jamoa va ishlar",
+        "why-title": "Nega biz",
+        "why1-title": "O‘z ishlab chiqarish",
+        "why1-desc": "Toshkentdagi o‘z ustaxonasi",
+        "why2-title": "Material sifat",
+        "why2-desc": "Faqat tekshirilgan yetkazib beruvchilar",
+        "why3-title": "Malakali xodimlar",
+        "why3-desc": "5 yildan ortiq tajriba, sertifikatlar",
+        "why4-title": "Tezlik",
+        "why4-desc": "3 kundan boshlab tayyor",
+        "cta-title": "Buyurtma berishga tayyormisiz?",
+        "cta-desc": "Qo‘ng‘iroq qiling yoki Telegramda yozing – barcha savollarga javob beramiz.",
+        "cta-telegram": "Telegramda yozish"
+      },
+      en: {
+        "header-tag": "Tashkent since 2019",
+        "hero-title": "Website creation, mosquito nets, blinds, window repair, air conditioners",
+        "hero-desc": "Website creation, mosquito nets, blinds, window repair, Air conditioner installation in Tashkent. Free measurement, 1 year warranty.",
+        "hero-btn1": "Free measurement",
+        "hero-btn2": "1 year warranty",
+        "hero-btn3": "Production in 3 days",
+        "hero-btn4": "8200+ clients",
+        "call": "Call",
+        "telegram": "Write to Telegram",
+        "free-master": "Free master visit",
+        "services-title": "Our products and services",
+        "service1-title": "Mosquito nets",
+        "service1-desc": "Standard, Synax, Uni, Plise",
+        "service2-title": "Blinds",
+        "service2-desc": "Rollo, Pleated",
+        "service3-title": "Air conditioners",
+        "service3-desc": "Installation, Dismantling, Refrigerant charging",
+        "service4-title": "Window repair",
+        "service4-desc": "Adjustment, Replacement of fittings and mechanisms",
+        "service5-title": "Website creation",
+        "service5-desc": "Website redesign, Create a new one",
+        "view-product": "View product →",
+        "view-service": "View service →",
+        "form-title": "Leave a request",
+        "form-sub": "We will call you back within 15 minutes",
+        "form-service": "Service",
+        "form-opt1": "Installation, dismantling and refrigerant charging",
+        "form-opt2": "Mosquito net",
+        "form-opt3": "Window repair",
+        "form-opt4": "Blinds",
+        "form-opt5": "Website creation",
+        "form-name": "Your name",
+        "form-phone": "Phone number",
+        "form-submit": "Submit request",
+        "form-agree": "By clicking the button, you agree to the processing of personal data",
+        "reviews-title": "Reviews",
+        "review1-name": "Anna K.",
+        "review1-text": "Ordered a mosquito net, they came the next day and installed it neatly. I recommend!",
+        "review2-name": "Mirjamol B.",
+        "review2-text": "Ordered blinds for all windows. They came, measured, installed in 2 days. Excellent quality.",
+        "review3-name": "Elena V.",
+        "review3-text": "Had window repair – replaced seals and fittings. It became warm and quiet. Thanks to the masters!",
+        "review4-name": "Bahodir A.",
+        "review4-text": "Installed an air conditioner, recharged refrigerant. They work fast and clean. They explain everything. Will recommend.",
+        "verified": "Verified review",
+        "gallery-title": "Our team and works",
+        "why-title": "Why us",
+        "why1-title": "Own production",
+        "why1-desc": "Own workshop in Tashkent",
+        "why2-title": "Material quality",
+        "why2-desc": "Only verified suppliers",
+        "why3-title": "Qualified employees",
+        "why3-desc": "Experience over 5 years, certificates",
+        "why4-title": "Speed",
+        "why4-desc": "Production from 3 days",
+        "cta-title": "Ready to order?",
+        "cta-desc": "Call or write to Telegram – we will answer all questions.",
+        "cta-telegram": "Write to Telegram"
       }
-    }
-    const formSection = document.getElementById('formSection');
-    if (formSection) {
-      formSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
-  }
-
-  const translations = {
-    ru: {
-      "header-tag": "Ташкент с 2019",
-      "hero-title": "Создаём сайты, которые приносят клиентов",
-      "hero-desc": "Разрабатываем современные сайты для бизнеса: от лендингов до интернет-магазинов. С адаптацией под смартфоны и настройкой под ваш проект.",
-      "leader-name": "Иброхим Азимбоев",
-      "leader-position": "Руководитель / Project Manager",
-      "leader-desc": "Более 5 лет работал в Дубае в должности Project Manager, управляя крупными проектами по созданию сайтов для международных компаний. Применили этот опыт в Узбекистане, чтобы предлагать клиентам качество на мировом уровне.",
-      "services-title": "Что мы создаём",
-      "services-sub": "Выберите тип сайта, который подходит вашему бизнесу",
-      "serv1-title": "Лендинг (Landing Page)",
-      "serv1-sub": "Продающая страница для товара или услуги",
-      "serv1-li1": "1 страница",
-      "serv1-li2": "адаптивный дизайн",
-      "serv1-li3": "форма заявки",
-      "serv1-li4": "Telegram",
-      "serv1-li5": "базовая SEO-настройка",
-      "serv1-li6": "подключение аналитики",
-      "serv1-time": "Срок: от 3 дней",
-      "serv1-price": "от 840 000 сум",
-      "serv1-note": "* финальная стоимость зависит от количества страниц и функционала",
-      "serv2-title": "Корпоративный сайт",
-      "serv2-sub": "Сайт компании с уникальным дизайном",
-      "serv2-li1": "до 10 страниц",
-      "serv2-li2": "уникальный дизайн",
-      "serv2-li3": "адаптивная версия",
-      "serv2-li4": "CMS",
-      "serv2-li5": "формы заявок",
-      "serv2-li6": "SEO-основа",
-      "serv2-time": "Срок: от 7 дней",
-      "serv2-price": "от 1 190 000 сум",
-      "serv2-note": "* финальная стоимость зависит от количества страниц и функционала",
-      "serv3-title": "Интернет-магазин",
-      "serv3-sub": "Полноценный магазин для продажи товаров",
-      "serv3-li1": "каталог товаров",
-      "serv3-li2": "корзина и оформление заказа",
-      "serv3-li3": "интеграция с оплатой",
-      "serv3-li4": "адаптивная версия",
-      "serv3-li5": "CMS",
-      "serv3-li6": "SEO-основа",
-      "serv3-time": "Срок: от 10–14 дней",
-      "serv3-price": "от 1 960 000 сум",
-      "serv3-note": "* финальная стоимость зависит от количества страниц и функционала",
-      "serv4-title": "Редизайн и доработка",
-      "serv4-sub": "Обновление дизайна и улучшение сайта",
-      "serv4-li1": "обновление дизайна",
-      "serv4-li2": "улучшение юзабилити",
-      "serv4-li3": "оптимизация скорости",
-      "serv4-li4": "адаптивная вёрстка",
-      "serv4-li5": "доработка функционала",
-      "serv4-li6": "SEO-настройка",
-      "serv4-time": "Срок: от 3–7 дней",
-      "serv4-price": "от 560 000 сум",
-      "serv4-note": "* финальная стоимость зависит от объёма работ",
-      "portfolio-title": "Наши проекты",
-      "portfolio-sub": "Реальные сайты, которые мы разработали",
-      "portfolio-tag1": "Сайт компании",
-      "portfolio-name1": "JalyuziTashkent.uz",
-      "portfolio-desc1": "Москитные сетки, жалюзи, ремонт окон",
-      "portfolio-tag2": "Мультиуслуги",
-      "portfolio-name2": "Moskitki.uz",
-      "portfolio-desc2": "Создание сайтов, сетки, жалюзи, кондиционеры",
-      "portfolio-tag3": "Недвижимость",
-      "portfolio-name3": "InflexEstate.com",
-      "portfolio-desc3": "Международное агентство недвижимости",
-      "portfolio-link": "Посмотреть проект →",
-      "reviews-title": "Отзывы наших клиентов",
-      "reviews-sub": "Реальные отзывы от реальных людей",
-      "review1-text": "«Заказывал сайт для недвижимости. Сделали всё быстро, учли все пожелания. Ребята знают своё дело. Рекомендую!»",
-      "review2-text": "«Отличная работа! Сделали сайт для жалюзи. Всё красиво, удобно, клиенты звонят каждый день. Спасибо большое!»",
-      "review3-text": "«Заказал интернет-магазин для своего бизнеса. Всё работает отлично, заказы принимаем, клиенты довольны. Спасибо команде!»",
-      "form-title": "Рассчитаем стоимость вашего сайта",
-      "form-sub": "Ответим в рабочее время",
-      "form-name": "Ваше имя",
-      "form-phone": "Телефон",
-      "form-service": "Какой сайт вам нужен?",
-      "form-opt1": "Лендинг (Landing Page)",
-      "form-opt2": "Корпоративный сайт",
-      "form-opt3": "Интернет-магазин",
-      "form-opt4": "Редизайн и доработка",
-      "form-project": "Расскажите о проекте",
-      "form-submit": "Получить расчёт",
-      "form-agree": "Нажимая кнопку, вы соглашаетесь с обработкой персональных данных",
-      "cta-title": "Готовы обсудить проект?",
-      "cta-desc": "Позвоните или напишите в Telegram — мы ответим на все вопросы",
-      "cta-telegram": "Написать в Telegram",
-      "back-home": "На главную"
-    },
-    uz: {
-      "header-tag": "Toshkent 2019 dan",
-      "hero-title": "Biznesga mijozlar olib keladigan saytlarni yaratamiz",
-      "hero-desc": "Biznes uchun zamonaviy saytlarni ishlab chiqamiz: landinglardan tortib internet-do'konlargacha. Smartfonlarga moslashuv va loyihangizga sozlash bilan.",
-      "leader-name": "Ibroxim Azimboyev",
-      "leader-position": "Rahbar / Project Manager",
-      "leader-desc": "5 yildan ortiq Dubayda Project Manager lavozimida ishlab, xalqaro kompaniyalar uchun sayt yaratish bo'yicha yirik loyihalarni boshqargan. Bu tajribani O'zbekistonda qo'llab, mijozlarga jahon darajasidagi sifatni taklif qilamiz.",
-      "services-title": "Nima yaratamiz",
-      "services-sub": "Biznesingizga mos sayt turini tanlang",
-      "serv1-title": "Landing Page",
-      "serv1-sub": "Mahsulot yoki xizmat uchun sotuvchi sahifa",
-      "serv1-li1": "1 sahifa",
-      "serv1-li2": "moslashuvchan dizayn",
-      "serv1-li3": "ariza shakli",
-      "serv1-li4": "Telegram",
-      "serv1-li5": "asosiy SEO-sozlash",
-      "serv1-li6": "analitikani ulash",
-      "serv1-time": "Muddat: 3 kundan",
-      "serv1-price": "840 000 so'mdan",
-      "serv1-note": "* yakuniy narx sahifalar soni va funksionallikka bog'liq",
-      "serv2-title": "Korporativ sayt",
-      "serv2-sub": "Noyob dizaynli kompaniya sayti",
-      "serv2-li1": "10 sahifagacha",
-      "serv2-li2": "noyob dizayn",
-      "serv2-li3": "moslashuvchan versiya",
-      "serv2-li4": "CMS",
-      "serv2-li5": "ariza shakllari",
-      "serv2-li6": "SEO-asos",
-      "serv2-time": "Muddat: 7 kundan",
-      "serv2-price": "1 190 000 so'mdan",
-      "serv2-note": "* yakuniy narx sahifalar soni va funksionallikka bog'liq",
-      "serv3-title": "Internet-do'kon",
-      "serv3-sub": "Tovarlarni sotish uchun to'liq do'kon",
-      "serv3-li1": "tovar katalogi",
-      "serv3-li2": "savat va buyurtma rasmiylashtirish",
-      "serv3-li3": "to'lov integratsiyasi",
-      "serv3-li4": "moslashuvchan versiya",
-      "serv3-li5": "CMS",
-      "serv3-li6": "SEO-asos",
-      "serv3-time": "Muddat: 10–14 kundan",
-      "serv3-price": "1 960 000 so'mdan",
-      "serv3-note": "* yakuniy narx sahifalar soni va funksionallikka bog'liq",
-      "serv4-title": "Redizayn va takomillashtirish",
-      "serv4-sub": "Dizaynni yangilash va saytni yaxshilash",
-      "serv4-li1": "dizaynni yangilash",
-      "serv4-li2": "foydalanish qulayligini yaxshilash",
-      "serv4-li3": "tezlikni optimallashtirish",
-      "serv4-li4": "moslashuvchan maket",
-      "serv4-li5": "funksionallikni takomillashtirish",
-      "serv4-li6": "SEO-sozlash",
-      "serv4-time": "Muddat: 3–7 kundan",
-      "serv4-price": "560 000 so'mdan",
-      "serv4-note": "* yakuniy narx ish hajmiga bog'liq",
-      "portfolio-title": "Loyihalarimiz",
-      "portfolio-sub": "Biz ishlab chiqqan haqiqiy saytlar",
-      "portfolio-tag1": "Kompaniya sayti",
-      "portfolio-name1": "JalyuziTashkent.uz",
-      "portfolio-desc1": "Chivin to'rlar, jalyuzi, deraza ta'miri",
-      "portfolio-tag2": "Ko'p xizmatlar",
-      "portfolio-name2": "Moskitki.uz",
-      "portfolio-desc2": "Sayt yaratish, to'rlar, jalyuzi, konditsionerlar",
-      "portfolio-tag3": "Ko'chmas mulk",
-      "portfolio-name3": "InflexEstate.com",
-      "portfolio-desc3": "Xalqaro ko'chmas mulk agentligi",
-      "portfolio-link": "Loyihani ko'rish →",
-      "reviews-title": "Mijozlarimizning fikrlari",
-      "reviews-sub": "Haqiqiy odamlarning haqiqiy fikrlari",
-      "review1-text": "«Ko'chmas mulk uchun sayt buyurtma qildim. Hammasini tezda qilishdi, barcha istaklarni inobatga olishdi. Yigitlar o'z ishini bilishadi. Tavsiya qilaman!»",
-      "review2-text": "«Ajoyib ish! Jalyuzi uchun sayt qilishdi. Hammasi chiroyli, qulay, mijozlar har kuni qo'ng'iroq qilishadi. Katta rahmat!»",
-      "review3-text": "«O'z biznesim uchun internet-do'kon buyurtma qildim. Hammasi ajoyib ishlaydi, buyurtmalarni qabul qilamiz, mijozlar mamnun. Jamoada rahmat!»",
-      "form-title": "Saytingiz narxini hisoblab beramiz",
-      "form-sub": "Ish vaqtida javob beramiz",
-      "form-name": "Ismingiz",
-      "form-phone": "Telefon",
-      "form-service": "Qanday sayt kerak?",
-      "form-opt1": "Landing Page",
-      "form-opt2": "Korporativ sayt",
-      "form-opt3": "Internet-do'kon",
-      "form-opt4": "Redizayn va takomillashtirish",
-      "form-project": "Loyiha haqida qisqacha",
-      "form-submit": "Hisob-kitob olish",
-      "form-agree": "Tugmani bosish orqali siz shaxsiy ma'lumotlarni qayta ishlashga rozilik bildirasiz",
-      "cta-title": "Loyihani muhokama qilishga tayyormisiz?",
-      "cta-desc": "Qo'ng'iroq qiling yoki Telegramda yozing — barcha savollarga javob beramiz",
-      "cta-telegram": "Telegramda yozish",
-      "back-home": "Bosh sahifaga"
-    },
-    en: {
-      "header-tag": "Tashkent since 2019",
-      "hero-title": "We create websites that bring customers",
-      "hero-desc": "We develop modern websites for businesses: from landing pages to online stores. With mobile adaptation and customization for your project.",
-      "leader-name": "Ibrokhim Azimboev",
-      "leader-position": "Director / Project Manager",
-      "leader-desc": "Over 5 years of experience as a Project Manager in Dubai, managing large-scale website development projects for international companies. We apply this experience in Uzbekistan to offer clients world-class quality.",
-      "services-title": "What we create",
-      "services-sub": "Choose the type of website that suits your business",
-      "serv1-title": "Landing Page",
-      "serv1-sub": "A sales page for a product or service",
-      "serv1-li1": "1 page",
-      "serv1-li2": "responsive design",
-      "serv1-li3": "contact form",
-      "serv1-li4": "Telegram",
-      "serv1-li5": "basic SEO setup",
-      "serv1-li6": "analytics integration",
-      "serv1-time": "Delivery: from 3 days",
-      "serv1-price": "from 840,000 UZS",
-      "serv1-note": "* final price depends on number of pages and functionality",
-      "serv2-title": "Corporate website",
-      "serv2-sub": "Company website with unique design",
-      "serv2-li1": "up to 10 pages",
-      "serv2-li2": "unique design",
-      "serv2-li3": "responsive version",
-      "serv2-li4": "CMS",
-      "serv2-li5": "contact forms",
-      "serv2-li6": "SEO foundation",
-      "serv2-time": "Delivery: from 7 days",
-      "serv2-price": "from 1,190,000 UZS",
-      "serv2-note": "* final price depends on number of pages and functionality",
-      "serv3-title": "Online store",
-      "serv3-sub": "Full-featured store for selling products",
-      "serv3-li1": "product catalog",
-      "serv3-li2": "cart and checkout",
-      "serv3-li3": "payment integration",
-      "serv3-li4": "responsive version",
-      "serv3-li5": "CMS",
-      "serv3-li6": "SEO foundation",
-      "serv3-time": "Delivery: from 10–14 days",
-      "serv3-price": "from 1,960,000 UZS",
-      "serv3-note": "* final price depends on number of pages and functionality",
-      "serv4-title": "Redesign and improvement",
-      "serv4-sub": "Design update and website improvement",
-      "serv4-li1": "design update",
-      "serv4-li2": "usability improvement",
-      "serv4-li3": "speed optimization",
-      "serv4-li4": "responsive layout",
-      "serv4-li5": "functionality improvement",
-      "serv4-li6": "SEO setup",
-      "serv4-time": "Delivery: from 3–7 days",
-      "serv4-price": "from 560,000 UZS",
-      "serv4-note": "* final price depends on scope of work",
-      "portfolio-title": "Our projects",
-      "portfolio-sub": "Real websites we have developed",
-      "portfolio-tag1": "Company website",
-      "portfolio-name1": "JalyuziTashkent.uz",
-      "portfolio-desc1": "Mosquito nets, blinds, window repair",
-      "portfolio-tag2": "Multi-service",
-      "portfolio-name2": "Moskitki.uz",
-      "portfolio-desc2": "Website creation, nets, blinds, air conditioners",
-      "portfolio-tag3": "Real estate",
-      "portfolio-name3": "InflexEstate.com",
-      "portfolio-desc3": "International real estate agency",
-      "portfolio-link": "View project →",
-      "reviews-title": "Client reviews",
-      "reviews-sub": "Real reviews from real people",
-      "review1-text": "«Ordered a website for real estate. Everything was done quickly, all wishes were taken into account. The guys know their stuff. I recommend!»",
-      "review2-text": "«Great job! They made a website for blinds. Everything is beautiful, convenient, clients call every day. Thank you very much!»",
-      "review3-text": "«Ordered an online store for my business. Everything works perfectly, we receive orders, clients are satisfied. Thanks to the team!»",
-      "form-title": "Calculate the cost of your website",
-      "form-sub": "We will respond during business hours",
-      "form-name": "Your name",
-      "form-phone": "Phone",
-      "form-service": "What type of website do you need?",
-      "form-opt1": "Landing Page",
-      "form-opt2": "Corporate website",
-      "form-opt3": "Online store",
-      "form-opt4": "Redesign and improvement",
-      "form-project": "Tell us about your project",
-      "form-submit": "Get a quote",
-      "form-agree": "By clicking the button, you agree to the processing of personal data",
-      "cta-title": "Ready to discuss your project?",
-      "cta-desc": "Call or write to Telegram — we will answer all questions",
-      "cta-telegram": "Write to Telegram",
-      "back-home": "Main page"
-    }
-  };
-
-  let currentLang = 'ru';
-  function setLanguage(lang) {
-    currentLang = lang;
-    document.querySelectorAll('.lang-switch a[data-lang]').forEach(el => {
-      el.classList.toggle('active', el.dataset.lang === lang);
-    });
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-      const key = el.dataset.i18n;
-      if (translations[lang] && translations[lang][key]) {
-        el.textContent = translations[lang][key];
-      }
-    });
-    localStorage.setItem('lang', lang);
-  }
-  document.querySelectorAll('.lang-switch a[data-lang]').forEach(el => {
-    el.addEventListener('click', function(e) {
-      e.preventDefault();
-      setLanguage(this.dataset.lang);
-    });
-  });
-  const savedLang = localStorage.getItem('lang') || 'ru';
-  setLanguage(savedLang);
-
-  document.getElementById('phoneInput')?.addEventListener('input', function(e) {
-    this.value = this.value.replace(/\D/g, '').slice(0, 9);
-  });
-
-  document.getElementById('orderForm')?.addEventListener('submit', async function(e) {
-    e.preventDefault();
-    const formData = new FormData(this);
-    const data = {
-      usluga: formData.get('usluga'),
-      name: formData.get('name'),
-      phone: '+998' + formData.get('phone'),
-      project: formData.get('project') || ''
     };
-    try {
-      const response = await fetch('/api/order', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-      });
-      const result = await response.json();
-      if (response.ok) {
-        alert('✅ Заявка отправлена! Мы свяжемся с вами.');
-        this.reset();
-        document.getElementById('phoneInput').value = '';
-      } else {
-        alert('❌ Ошибка: ' + (result.error || 'Неизвестная ошибка'));
-      }
-    } catch (err) {
-      alert('❌ Не удалось отправить заявку. Попробуйте позже.');
-    }
-  });
 
-  (function() {
-    const params = new URLSearchParams(window.location.search);
-    const usluga = params.get('usluga');
-    if (usluga) {
-      const select = document.getElementById('uslugaSelect');
-      if (select) {
-        let found = false;
-        for (let option of select.options) {
-          if (option.value === usluga) {
-            option.selected = true;
-            found = true;
-            break;
-          }
+    let currentLang = 'ru';
+    function setLanguage(lang) {
+      currentLang = lang;
+      document.querySelectorAll('.lang-switch a[data-lang]').forEach(el => {
+        el.classList.toggle('active', el.dataset.lang === lang);
+      });
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.dataset.i18n;
+        if (translations[lang] && translations[lang][key]) {
+          el.textContent = translations[lang][key];
         }
-        if (!found) {
-          const newOpt = document.createElement('option');
-          newOpt.value = usluga;
-          newOpt.textContent = usluga;
-          newOpt.selected = true;
-          select.appendChild(newOpt);
-        }
-        setTimeout(() => {
-          const formCard = document.querySelector('.form-card');
-          if (formCard) {
-            formCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          }
-        }, 300);
-      }
+      });
+      localStorage.setItem('lang', lang);
     }
-  })();
-</script>
+    document.querySelectorAll('.lang-switch a[data-lang]').forEach(el => {
+      el.addEventListener('click', function(e) {
+        e.preventDefault();
+        setLanguage(this.dataset.lang);
+      });
+    });
+    const savedLang = localStorage.getItem('lang') || 'ru';
+    setLanguage(savedLang);
+
+    document.getElementById('phoneInput')?.addEventListener('input', function(e) {
+      this.value = this.value.replace(/\D/g, '').slice(0, 9);
+    });
+
+    document.getElementById('orderForm')?.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+      const data = {
+        usluga: formData.get('usluga'),
+        name: formData.get('name'),
+        phone: '+998' + formData.get('phone')
+      };
+      try {
+        const response = await fetch('/api/order', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        const result = await response.json();
+        if (response.ok) {
+          alert('✅ Заявка отправлена! Мы свяжемся с вами.');
+          this.reset();
+          document.getElementById('phoneInput').value = '';
+        } else {
+          alert('❌ Ошибка: ' + (result.error || 'Неизвестная ошибка'));
+        }
+      } catch (err) {
+        alert('❌ Не удалось отправить заявку. Попробуйте позже.');
+      }
+    });
+  </script>
 </body>
 </html>
