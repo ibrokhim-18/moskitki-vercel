@@ -54,12 +54,16 @@
     .services { padding: 50px 0 30px; background: #fff; }
     .services h2 { font-size: 30px; font-weight: 700; color: #0b2b5c; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
     .services h2 i { color: #f7b731; }
-    .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; margin-top: 12px; }
-    .service-item { background: #f8fcff; padding: 20px 16px; border-radius: 20px; text-align: center; border: 1px solid #eaf1f9; transition: .2s; text-decoration: none; color: inherit; display: block; }
+    .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; margin-top: 12px; }
+    .service-item { background: #f8fcff; padding: 20px 16px 24px; border-radius: 20px; text-align: center; border: 1px solid #eaf1f9; transition: .2s; text-decoration: none; color: inherit; display: flex; flex-direction: column; align-items: center; }
     .service-item:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(0,0,0,.05); }
     .service-item img { width: 100%; height: 180px; object-fit: cover; border-radius: 16px; margin-bottom: 12px; background: #dce6f0; }
-    .service-item h4 { font-weight: 600; font-size: 18px; }
+    .service-item h4 { font-weight: 600; font-size: 18px; margin-bottom: 4px; }
     .service-item p { font-size: 14px; color: #4b5b6e; margin-top: 6px; }
+    .service-item .view-link { display: inline-flex; align-items: center; gap: 6px; margin-top: 14px; font-weight: 600; font-size: 15px; color: #0b2b5c; border-bottom: 2px solid #f7b731; padding-bottom: 2px; transition: .2s; text-decoration: none; }
+    .service-item .view-link i { font-size: 14px; transition: transform .2s; }
+    .service-item .view-link:hover i { transform: translateX(4px); }
+    .service-item .view-link:hover { color: #f7b731; }
     .more-link { display: inline-block; margin-top: 20px; font-weight: 600; color: #0b2b5c; text-decoration: none; border-bottom: 2px solid #f7b731; padding-bottom: 2px; }
     .form-section { padding: 40px 0; background: #f2f7fe; }
     .form-card { max-width: 700px; margin: 0 auto; background: #fff; padding: 40px 36px; border-radius: 36px; box-shadow: 0 12px 30px rgba(11,43,92,.06); }
@@ -161,26 +165,31 @@
           <img src="/images/sait.png" alt="Создание сайтов">
           <h4 data-i18n="service5-title">Создание сайтов</h4>
           <p data-i18n="service5-desc">Помощь переделать сайт, Создать новый</p>
+          <span class="view-link" data-i18n="view-service">Посмотреть услугу <i class="fas fa-arrow-right"></i></span>
         </a>
         <a href="moskitnye-setki.html" class="service-item">
           <img src="/images/setki.png" alt="Москитные сетки">
           <h4 data-i18n="service1-title">Москитные сетки</h4>
           <p data-i18n="service1-desc">Стандартные, Синакс, Уни, Плиссе</p>
+          <span class="view-link" data-i18n="view-product">Посмотреть товар <i class="fas fa-arrow-right"></i></span>
         </a>
         <a href="zhalyuzi.html" class="service-item">
           <img src="/images/zhalyuzi.png" alt="Жалюзи">
           <h4 data-i18n="service2-title">Жалюзи</h4>
           <p data-i18n="service2-desc">Ролло, Плиссе</p>
+          <span class="view-link" data-i18n="view-product">Посмотреть товар <i class="fas fa-arrow-right"></i></span>
         </a>
         <a href="konditsionery.html" class="service-item">
           <img src="/images/konditsioner.png" alt="Кондиционеры">
           <h4 data-i18n="service3-title">Кондиционеры</h4>
           <p data-i18n="service3-desc">Монтаж, Демонтаж, Заправка фреона</p>
+          <span class="view-link" data-i18n="view-service">Посмотреть услугу <i class="fas fa-arrow-right"></i></span>
         </a>
         <a href="remont-okon.html" class="service-item">
           <img src="/images/remont-okon.png" alt="Ремонт окон">
           <h4 data-i18n="service4-title">Ремонт окон</h4>
           <p data-i18n="service4-desc">Регулировка, Замена фурнитуры, Механизмов</p>
+          <span class="view-link" data-i18n="view-service">Посмотреть услугу <i class="fas fa-arrow-right"></i></span>
         </a>
       </div>
     </div>
@@ -326,6 +335,8 @@
         "service4-desc": "Регулировка, Замена фурнитуры, механизмов",
         "service5-title": "Создание сайтов",
         "service5-desc": "Помощь переделать сайт, Создать новый",
+        "view-product": "Посмотреть товар →",
+        "view-service": "Посмотреть услугу →",
         "form-title": "Оставьте заявку",
         "form-sub": "Мы перезвоним в течение 15 минут",
         "form-service": "Услуга",
@@ -384,6 +395,8 @@
         "service4-desc": "Sozlash, Aksessuarlarni almashtirish, mexanizmlar",
         "service5-title": "Veb-sayt yaratish",
         "service5-desc": "Saytni qayta tuzish, Yangi yaratish",
+        "view-product": "Mahsulotni ko‘rish →",
+        "view-service": "Xizmatni ko‘rish →",
         "form-title": "Ariza qoldiring",
         "form-sub": "15 daqiqa ichida qayta qo‘ng‘iroq qilamiz",
         "form-service": "Xizmat",
@@ -442,6 +455,8 @@
         "service4-desc": "Adjustment, Replacement of fittings and mechanisms",
         "service5-title": "Website creation",
         "service5-desc": "Website redesign, Create a new one",
+        "view-product": "View product →",
+        "view-service": "View service →",
         "form-title": "Leave a request",
         "form-sub": "We will call you back within 15 minutes",
         "form-service": "Service",
