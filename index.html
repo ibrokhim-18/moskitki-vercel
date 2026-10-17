@@ -6,14 +6,16 @@
   <title>Moskitki.uz</title>
   <meta property="og:title" content="Moskitki.uz — Создание сайтов, москитные сетки, жалюзи, ремонт окон, кондиционеры" />
   <meta property="og:description" content="Создание сайтов, москитные сетки, жалюзи, ремонт окон, кондиционеры в Ташкенте. Бесплатный замер, гарантия 1 год." />
-  <meta property="og:image" content="https://moskitki.uz/images/logo.png" />
+  <!-- Рекомендую конвертировать и OG-картинку тоже в webp -->
+  <meta property="og:image" content="https://moskitki.uz/images/logo.webp" />
   <meta property="og:url" content="https://moskitki.uz/" />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Moskitki.uz — Создание сайтов, москитные сетки, жалюзи, ремонт окон, кондиционеры" />
   <meta name="twitter:description" content="Создание сайтов, москитные сетки, жалюзи, ремонт окон, кондиционеры в Ташкенте." />
-  <meta name="twitter:image" content="https://moskitki.uz/images/logo.png" />
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo.png">
+  <meta name="twitter:image" content="https://moskitki.uz/images/logo.webp" />
+  <link rel="icon" type="image/webp" sizes="32x32" href="/images/logo.webp">
+  <!-- Подключение FontAwesome. Для ускорения можно вырезать только нужные иконки, но пока оставим так -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, system-ui, sans-serif; }
@@ -124,7 +126,10 @@
   <header class="header">
     <div class="container">
       <div class="logo-area">
-        <div class="logo-text"><img src="/images/logo.png" alt="Логотип"> Moskitki.<span>uz</span></div>
+        <div class="logo-text">
+          <!-- Логотип в шапке не должен быть lazy, он грузится первым -->
+          <img src="/images/logo.webp" width="36" height="36" alt="Логотип"> Moskitki.<span>uz</span>
+        </div>
       </div>
       <div class="lang-switch" id="langSwitcher">
         <a data-lang="ru" class="active"><span class="flag">🇷🇺</span> RU</a>
@@ -161,37 +166,38 @@
     <div class="container">
       <h2><i class="fas fa-boxes"></i> <span data-i18n="services-title">Наши продукты и сервисы</span></h2>
       <div class="service-grid">
-        <!-- Создание сайтов - ссылка на существующую страницу -->
+        <!-- Создание сайтов -->
         <a href="sozdanie-saitov.html" class="service-item">
-          <img src="/images/sait.png" alt="Создание сайтов">
+          <!-- Добавлен loading="lazy" и width/height -->
+          <img src="/images/sait.webp" loading="lazy" width="300" height="180" alt="Создание сайтов">
           <h4 data-i18n="service5-title">Создание сайтов</h4>
           <p data-i18n="service5-desc">Помощь переделать сайт, Создать новый</p>
           <span class="view-link" data-i18n="view-service">Посмотреть услугу →</span>
         </a>
         <!-- Москитные сетки -->
         <a href="moskitnye-setki.html" class="service-item">
-          <img src="/images/setki.png" alt="Москитные сетки">
+          <img src="/images/setki.webp" loading="lazy" width="300" height="180" alt="Москитные сетки">
           <h4 data-i18n="service1-title">Москитные сетки</h4>
           <p data-i18n="service1-desc">Стандартные, Синакс, Уни, Плиссе</p>
           <span class="view-link" data-i18n="view-product">Посмотреть товар →</span>
         </a>
         <!-- Жалюзи -->
         <a href="zhalyuzi.html" class="service-item">
-          <img src="/images/zhalyuzi.png" alt="Жалюзи">
+          <img src="/images/zhalyuzi.webp" loading="lazy" width="300" height="180" alt="Жалюзи">
           <h4 data-i18n="service2-title">Жалюзи</h4>
           <p data-i18n="service2-desc">Ролло, Плиссе</p>
           <span class="view-link" data-i18n="view-product">Посмотреть товар →</span>
         </a>
         <!-- Кондиционеры -->
         <a href="konditsionery.html" class="service-item">
-          <img src="/images/konditsioner.png" alt="Кондиционеры">
+          <img src="/images/konditsioner.webp" loading="lazy" width="300" height="180" alt="Кондиционеры">
           <h4 data-i18n="service3-title">Кондиционеры</h4>
           <p data-i18n="service3-desc">Монтаж, Демонтаж, Заправка фреона</p>
           <span class="view-link" data-i18n="view-service">Посмотреть услугу →</span>
         </a>
         <!-- Ремонт окон -->
         <a href="remont-okon.html" class="service-item">
-          <img src="/images/remont-okon.png" alt="Ремонт окон">
+          <img src="/images/remont-okon.webp" loading="lazy" width="300" height="180" alt="Ремонт окон">
           <h4 data-i18n="service4-title">Ремонт окон</h4>
           <p data-i18n="service4-desc">Регулировка, Замена фурнитуры, Механизмов</p>
           <span class="view-link" data-i18n="view-service">Посмотреть услугу →</span>
@@ -270,12 +276,13 @@
     <div class="container">
       <h2><i class="fas fa-images" style="color:#f7b731;"></i> <span data-i18n="gallery-title">Наша команда и работы</span></h2>
       <div class="gallery-grid">
-        <div class="gallery-item"><img src="/images/gallery-komanda.png" alt="Команда"></div>
-        <div class="gallery-item"><img src="/images/gallery-setki.png" alt="Сетки"></div>
-        <div class="gallery-item"><img src="/images/gallery-montazh.png" alt="Монтаж"></div>
-        <div class="gallery-item"><img src="/images/gallery-zhalyuzi.png" alt="Жалюзи"></div>
-        <div class="gallery-item"><img src="/images/gallery-konditsionery.png" alt="Кондиционеры"></div>
-        <div class="gallery-item"><img src="/images/gallery-sajty.png" alt="Сайты"></div>
+        <!-- Ко всем картинкам галереи добавлен lazy load и размеры -->
+        <div class="gallery-item"><img src="/images/gallery-komanda.webp" loading="lazy" width="200" height="200" alt="Команда"></div>
+        <div class="gallery-item"><img src="/images/gallery-setki.webp" loading="lazy" width="200" height="200" alt="Сетки"></div>
+        <div class="gallery-item"><img src="/images/gallery-montazh.webp" loading="lazy" width="200" height="200" alt="Монтаж"></div>
+        <div class="gallery-item"><img src="/images/gallery-zhalyuzi.webp" loading="lazy" width="200" height="200" alt="Жалюзи"></div>
+        <div class="gallery-item"><img src="/images/gallery-konditsionery.webp" loading="lazy" width="200" height="200" alt="Кондиционеры"></div>
+        <div class="gallery-item"><img src="/images/gallery-sajty.webp" loading="lazy" width="200" height="200" alt="Сайты"></div>
       </div>
     </div>
   </section>
@@ -305,7 +312,9 @@
 
   <footer class="footer">
     <div class="container">
-      <div class="footer-logo"><img src="/images/logo.png" alt="Moskitki.uz"> Moskitki.uz</div>
+      <div class="footer-logo">
+        <img src="/images/logo.webp" loading="lazy" width="28" height="28" alt="Moskitki.uz"> Moskitki.uz
+      </div>
       <div class="social-links">
         <a href="https://t.me/moskitki_uz" target="_blank" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
         <a href="https://instagram.com/moskitki.uz" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
@@ -555,4 +564,3 @@
     });
   </script>
 </body>
-</html>
