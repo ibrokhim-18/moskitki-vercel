@@ -2,11 +2,14 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-  <title>Moskitki.uz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Moskitki.uz — Создание сайтов, москитные сетки, жалюзи, ремонт окон, кондиционеры</title>
+  
+  <!-- ДОБАВЛЕНО: Метаописание для SEO -->
+  <meta name="description" content="Создание сайтов, москитные сетки, жалюзи, ремонт окон и кондиционеры в Ташкенте. Бесплатный замер, гарантия 1 год, изготовление от 3 дней. Более 8200 довольных клиентов." />
+  
   <meta property="og:title" content="Moskitki.uz — Создание сайтов, москитные сетки, жалюзи, ремонт окон, кондиционеры" />
   <meta property="og:description" content="Создание сайтов, москитные сетки, жалюзи, ремонт окон, кондиционеры в Ташкенте. Бесплатный замер, гарантия 1 год." />
-  <!-- Рекомендую конвертировать и OG-картинку тоже в webp -->
   <meta property="og:image" content="https://moskitki.uz/images/logo.webp" />
   <meta property="og:url" content="https://moskitki.uz/" />
   <meta property="og:type" content="website" />
@@ -15,8 +18,11 @@
   <meta name="twitter:description" content="Создание сайтов, москитные сетки, жалюзи, ремонт окон, кондиционеры в Ташкенте." />
   <meta name="twitter:image" content="https://moskitki.uz/images/logo.webp" />
   <link rel="icon" type="image/webp" sizes="32x32" href="/images/logo.webp">
-  <!-- Подключение FontAwesome. Для ускорения можно вырезать только нужные иконки, но пока оставим так -->
+  
+  <!-- ДОБАВЛЕНО: preconnect для ускорения загрузки шрифтов -->
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, system-ui, sans-serif; }
     body { background: #f8faff; color: #1e293b; }
@@ -38,7 +44,7 @@
     .hero-left h1 i { color: #f7b731; margin-right: 8px; }
     .hero-left p { font-size: 18px; color: #334155; margin: 16px 0 24px; max-width: 500px; }
     .hero-actions { display: flex; flex-wrap: wrap; gap: 14px 20px; margin-top: 28px; }
-    .hero-btn { display: inline-flex; align-items: center; gap: 12px; background: #f1f6fc; padding: 14px 28px; border-radius: 60px; font-weight: 600; font-size: 16px; color: #0b2b5c; text-decoration: none; transition: .2s; border: 1px solid transparent; box-shadow: 0 2px 6px rgba(0,0,0,.02); flex: 1 0 auto; min-width: 180px; justify-content: center; }
+    .hero-btn { display: inline-flex; align-items: center; gap: 12px; background: #f1f6fc; padding: 14px 28px; border-radius: 60px; font-weight: 600; font-size: 16px; color: #0b2b5c; text-decoration: none; transition: .2s; border: 1px solid transparent; box-shadow: 0 2px 6px rgba(0,0,0,.02); flex: 1 0 auto; min-width: 180px; justify-content: center; cursor: default; }
     .hero-btn i { font-size: 20px; color: #f7b731; }
     .hero-btn:hover { background: #e3edf9; border-color: #cbddee; transform: translateY(-2px); }
     .hero-btn.primary { background: #0b2b5c; color: #fff; }
@@ -60,7 +66,7 @@
     .service-item { background: #f8fcff; padding: 20px 16px 24px; border-radius: 20px; text-align: center; border: 1px solid #eaf1f9; transition: .2s; text-decoration: none; color: inherit; display: flex; flex-direction: column; align-items: center; }
     .service-item:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(0,0,0,.05); }
     .service-item img { width: 100%; height: 180px; object-fit: cover; border-radius: 16px; margin-bottom: 12px; background: #dce6f0; }
-    .service-item h4 { font-weight: 600; font-size: 18px; margin-bottom: 4px; }
+    .service-item h3 { font-weight: 600; font-size: 18px; margin-bottom: 4px; } /* ИЗМЕНЕНО С h4 НА h3 */
     .service-item p { font-size: 14px; color: #4b5b6e; margin-top: 6px; }
     .service-item .view-link { display: inline-flex; align-items: center; gap: 6px; margin-top: 14px; font-weight: 600; font-size: 15px; color: #0b2b5c; border-bottom: 2px solid #f7b731; padding-bottom: 2px; transition: .2s; text-decoration: none; }
     .service-item .view-link i { font-size: 14px; transition: transform .2s; }
@@ -99,7 +105,7 @@
     .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; }
     .why-item { background: #f8fcff; padding: 24px 20px; border-radius: 28px; border: 1px solid #eaf1f9; text-align: center; }
     .why-item i { font-size: 32px; color: #f7b731; background: #eaf4ff; padding: 14px; border-radius: 20px; margin-bottom: 12px; }
-    .why-item h4 { font-weight: 700; font-size: 20px; margin-bottom: 4px; }
+    .why-item h3 { font-weight: 700; font-size: 20px; margin-bottom: 4px; } /* ИЗМЕНЕНО С h4 НА h3 */
     .why-item p { color: #4b5b6e; }
     .cta-final { padding: 50px 0 30px; background: #0b2b5c; color: #fff; text-align: center; }
     .cta-final h2 { font-size: 34px; font-weight: 700; margin-bottom: 12px; }
@@ -127,8 +133,7 @@
     <div class="container">
       <div class="logo-area">
         <div class="logo-text">
-          <!-- Логотип в шапке не должен быть lazy, он грузится первым -->
-          <img src="/images/logo.webp" width="36" height="36" alt="Логотип"> Moskitki.<span>uz</span>
+          <img src="/images/logo.webp" width="36" height="36" alt="Логотип Moskitki.uz"> Moskitki.<span>uz</span>
         </div>
       </div>
       <div class="lang-switch" id="langSwitcher">
@@ -140,175 +145,175 @@
     </div>
   </header>
 
-  <section class="hero">
-    <div class="container hero-grid">
-      <div class="hero-left">
-        <h1><i class="fas fa-wind"></i> <span data-i18n="hero-title">Создание сайтов, москитные сетки, жалюзи, ремонт окон, кондиционеры</span></h1>
-        <p data-i18n="hero-desc">Создание сайтов, москитные сетки, жалюзи, ремонт окон, кондиционеры в Ташкенте. Бесплатный замер, гарантия 1 год.</p>
-        <div class="hero-actions">
-          <a href="#" class="hero-btn"><i class="fas fa-ruler"></i> <span data-i18n="hero-btn1">Бесплатный замер</span></a>
-          <a href="#" class="hero-btn"><i class="fas fa-check-circle"></i> <span data-i18n="hero-btn2">Гарантия 1 год</span></a>
-          <a href="#" class="hero-btn"><i class="fas fa-clock"></i> <span data-i18n="hero-btn3">Изготовление за 3 дня</span></a>
-          <a href="#" class="hero-btn"><i class="fas fa-user-friends"></i> <span data-i18n="hero-btn4">8200+ клиентов</span></a>
+  <!-- ДОБАВЛЕНО: Семантический тег <main> -->
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-left">
+          <h1><i class="fas fa-wind"></i> <span data-i18n="hero-title">Создание сайтов, москитные сетки, жалюзи, ремонт окон, кондиционеры</span></h1>
+          <p data-i18n="hero-desc">Создание сайтов, москитные сетки, жалюзи, ремонт окон, кондиционеры в Ташкенте. Бесплатный замер, гарантия 1 год.</p>
+          <div class="hero-actions">
+            <!-- ИЗМЕНЕНО: Ссылки-заглушки <a href="#"> заменены на <span>, чтобы не сбивать SEO -->
+            <span class="hero-btn"><i class="fas fa-ruler"></i> <span data-i18n="hero-btn1">Бесплатный замер</span></span>
+            <span class="hero-btn"><i class="fas fa-check-circle"></i> <span data-i18n="hero-btn2">Гарантия 1 год</span></span>
+            <span class="hero-btn"><i class="fas fa-clock"></i> <span data-i18n="hero-btn3">Изготовление за 3 дня</span></span>
+            <span class="hero-btn"><i class="fas fa-user-friends"></i> <span data-i18n="hero-btn4">8200+ клиентов</span></span>
+          </div>
+        </div>
+        <div class="hero-right">
+          <div class="cta-line">
+            <a href="tel:+998990550660" class="cta-btn"><i class="fas fa-phone-alt"></i> <span data-i18n="call">Позвонить</span></a>
+            <a href="https://t.me/moskitki_uz" class="cta-btn telegram" target="_blank" rel="noopener"><i class="fab fa-telegram-plane"></i> <span data-i18n="telegram">Написать в Telegram</span></a>
+          </div>
+          <div class="subnote"><i class="fas fa-shield-alt" style="color:#0b2b5c;"></i> <span data-i18n="free-master">Бесплатный выезд мастера</span></div>
         </div>
       </div>
-      <div class="hero-right">
-        <div class="cta-line">
-          <a href="tel:+998990550660" class="cta-btn"><i class="fas fa-phone-alt"></i> <span data-i18n="call">Позвонить</span></a>
-          <a href="https://t.me/moskitki_uz" class="cta-btn telegram" target="_blank"><i class="fab fa-telegram-plane"></i> <span data-i18n="telegram">Написать в Telegram</span></a>
+    </section>
+
+    <section class="services">
+      <div class="container">
+        <h2><i class="fas fa-boxes"></i> <span data-i18n="services-title">Наши продукты и сервисы</span></h2>
+        <div class="service-grid">
+          <a href="sozdanie-saitov.html" class="service-item">
+            <img src="/images/sait.webp" loading="lazy" width="300" height="180" alt="Создание сайтов">
+            <h3 data-i18n="service5-title">Создание сайтов</h3>
+            <p data-i18n="service5-desc">Помощь переделать сайт, Создать новый</p>
+            <span class="view-link" data-i18n="view-service">Посмотреть услугу →</span>
+          </a>
+          <a href="moskitnye-setki.html" class="service-item">
+            <img src="/images/setki.webp" loading="lazy" width="300" height="180" alt="Москитные сетки">
+            <h3 data-i18n="service1-title">Москитные сетки</h3>
+            <p data-i18n="service1-desc">Стандартные, Синакс, Уни, Плиссе</p>
+            <span class="view-link" data-i18n="view-product">Посмотреть товар →</span>
+          </a>
+          <a href="zhalyuzi.html" class="service-item">
+            <img src="/images/zhalyuzi.webp" loading="lazy" width="300" height="180" alt="Жалюзи">
+            <h3 data-i18n="service2-title">Жалюзи</h3>
+            <p data-i18n="service2-desc">Ролло, Плиссе</p>
+            <span class="view-link" data-i18n="view-product">Посмотреть товар →</span>
+          </a>
+          <a href="konditsionery.html" class="service-item">
+            <img src="/images/konditsioner.webp" loading="lazy" width="300" height="180" alt="Кондиционеры">
+            <h3 data-i18n="service3-title">Кондиционеры</h3>
+            <p data-i18n="service3-desc">Монтаж, Демонтаж, Заправка фреона</p>
+            <span class="view-link" data-i18n="view-service">Посмотреть услугу →</span>
+          </a>
+          <a href="remont-okon.html" class="service-item">
+            <img src="/images/remont-okon.webp" loading="lazy" width="300" height="180" alt="Ремонт окон">
+            <h3 data-i18n="service4-title">Ремонт окон</h3>
+            <p data-i18n="service4-desc">Регулировка, Замена фурнитуры, Механизмов</p>
+            <span class="view-link" data-i18n="view-service">Посмотреть услугу →</span>
+          </a>
         </div>
-        <div class="subnote"><i class="fas fa-shield-alt" style="color:#0b2b5c;"></i> <span data-i18n="free-master">Бесплатный выезд мастера</span></div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="services">
-    <div class="container">
-      <h2><i class="fas fa-boxes"></i> <span data-i18n="services-title">Наши продукты и сервисы</span></h2>
-      <div class="service-grid">
-        <!-- Создание сайтов -->
-        <a href="sozdanie-saitov.html" class="service-item">
-          <!-- Добавлен loading="lazy" и width/height -->
-          <img src="/images/sait.webp" loading="lazy" width="300" height="180" alt="Создание сайтов">
-          <h4 data-i18n="service5-title">Создание сайтов</h4>
-          <p data-i18n="service5-desc">Помощь переделать сайт, Создать новый</p>
-          <span class="view-link" data-i18n="view-service">Посмотреть услугу →</span>
-        </a>
-        <!-- Москитные сетки -->
-        <a href="moskitnye-setki.html" class="service-item">
-          <img src="/images/setki.webp" loading="lazy" width="300" height="180" alt="Москитные сетки">
-          <h4 data-i18n="service1-title">Москитные сетки</h4>
-          <p data-i18n="service1-desc">Стандартные, Синакс, Уни, Плиссе</p>
-          <span class="view-link" data-i18n="view-product">Посмотреть товар →</span>
-        </a>
-        <!-- Жалюзи -->
-        <a href="zhalyuzi.html" class="service-item">
-          <img src="/images/zhalyuzi.webp" loading="lazy" width="300" height="180" alt="Жалюзи">
-          <h4 data-i18n="service2-title">Жалюзи</h4>
-          <p data-i18n="service2-desc">Ролло, Плиссе</p>
-          <span class="view-link" data-i18n="view-product">Посмотреть товар →</span>
-        </a>
-        <!-- Кондиционеры -->
-        <a href="konditsionery.html" class="service-item">
-          <img src="/images/konditsioner.webp" loading="lazy" width="300" height="180" alt="Кондиционеры">
-          <h4 data-i18n="service3-title">Кондиционеры</h4>
-          <p data-i18n="service3-desc">Монтаж, Демонтаж, Заправка фреона</p>
-          <span class="view-link" data-i18n="view-service">Посмотреть услугу →</span>
-        </a>
-        <!-- Ремонт окон -->
-        <a href="remont-okon.html" class="service-item">
-          <img src="/images/remont-okon.webp" loading="lazy" width="300" height="180" alt="Ремонт окон">
-          <h4 data-i18n="service4-title">Ремонт окон</h4>
-          <p data-i18n="service4-desc">Регулировка, Замена фурнитуры, Механизмов</p>
-          <span class="view-link" data-i18n="view-service">Посмотреть услугу →</span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <section class="form-section">
-    <div class="container">
-      <div class="form-card">
-        <h2><i class="fas fa-pencil-alt" style="color:#f7b731;"></i> <span data-i18n="form-title">Оставьте заявку</span></h2>
-        <p class="sub" data-i18n="form-sub">Мы перезвоним в течение 15 минут</p>
-        <form id="orderForm">
-          <div class="form-group">
-            <label data-i18n="form-service">Услуга</label>
-            <select name="usluga" id="uslugaSelect">
-              <option value="Создание сайта" data-i18n="form-opt5">Создание сайта</option>
-              <option value="Монтаж, демонтаж и заправка кондиционера" data-i18n="form-opt1">Монтаж, демонтаж и заправка кондиционера</option>
-              <option value="Москитная сетка" data-i18n="form-opt2">Москитная сетка</option>
-              <option value="Ремонт окон" data-i18n="form-opt3">Ремонт окон</option>
-              <option value="Жалюзи" data-i18n="form-opt4">Жалюзи</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label data-i18n="form-name">Ваше имя</label>
-            <input type="text" name="name" placeholder="Ваше имя" required>
-          </div>
-          <div class="form-group">
-            <label data-i18n="form-phone">Номер телефона</label>
-            <div style="display: flex; align-items: center; border: 1px solid #dce6f0; border-radius: 30px; background: #fafcff; padding: 0 18px;">
-              <span style="font-weight: 600; color: #0b2b5c; padding-right: 6px;">+998</span>
-              <input type="tel" id="phoneInput" name="phone" placeholder="99 055 06 60" style="border: none; outline: none; background: transparent; width: 100%; padding: 14px 0; font-size: 16px;" required pattern="[0-9]{9}" maxlength="9" title="Введите 9 цифр после +998">
+    <section class="form-section">
+      <div class="container">
+        <div class="form-card">
+          <h2><i class="fas fa-pencil-alt" style="color:#f7b731;"></i> <span data-i18n="form-title">Оставьте заявку</span></h2>
+          <p class="sub" data-i18n="form-sub">Мы перезвоним в течение 15 минут</p>
+          <form id="orderForm">
+            <div class="form-group">
+              <!-- ИЗМЕНЕНО: Добавлен for для связи с select -->
+              <label for="uslugaSelect" data-i18n="form-service">Услуга</label>
+              <select name="usluga" id="uslugaSelect">
+                <option value="Создание сайта" data-i18n="form-opt5">Создание сайта</option>
+                <option value="Монтаж, демонтаж и заправка кондиционера" data-i18n="form-opt1">Монтаж, демонтаж и заправка кондиционера</option>
+                <option value="Москитная сетка" data-i18n="form-opt2">Москитная сетка</option>
+                <option value="Ремонт окон" data-i18n="form-opt3">Ремонт окон</option>
+                <option value="Жалюзи" data-i18n="form-opt4">Жалюзи</option>
+              </select>
             </div>
+            <div class="form-group">
+              <!-- ИЗМЕНЕНО: Добавлен for="nameInput", а полю добавлен id -->
+              <label for="nameInput" data-i18n="form-name">Ваше имя</label>
+              <input type="text" id="nameInput" name="name" placeholder="Ваше имя" required>
+            </div>
+            <div class="form-group">
+              <!-- ИЗМЕНЕНО: Добавлен for="phoneInput" -->
+              <label for="phoneInput" data-i18n="form-phone">Номер телефона</label>
+              <div style="display: flex; align-items: center; border: 1px solid #dce6f0; border-radius: 30px; background: #fafcff; padding: 0 18px;">
+                <span style="font-weight: 600; color: #0b2b5c; padding-right: 6px;">+998</span>
+                <input type="tel" id="phoneInput" name="phone" placeholder="99 055 06 60" style="border: none; outline: none; background: transparent; width: 100%; padding: 14px 0; font-size: 16px;" required pattern="[0-9]{9}" maxlength="9" title="Введите 9 цифр после +998">
+              </div>
+            </div>
+            <button type="submit" class="form-btn"><i class="fas fa-paper-plane"></i> <span data-i18n="form-submit">Отправить заявку</span></button>
+            <div class="form-agree" data-i18n="form-agree">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных</div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="reviews">
+      <div class="container">
+        <h2><i class="fas fa-star" style="color:#f7b731;"></i> <span data-i18n="reviews-title">Отзывы</span></h2>
+        <div class="reviews-grid">
+          <div class="review-card">
+            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <div class="name" data-i18n="review1-name">Анна К.</div>
+            <div class="text" data-i18n="review1-text">Заказала москитную сетку, приехали на следующий день, всё аккуратно установили. Рекомендую!</div>
+            <div class="verified"><i class="fas fa-check-circle"></i> <span data-i18n="verified">Проверенный отзыв</span></div>
           </div>
-          <button type="submit" class="form-btn"><i class="fas fa-paper-plane"></i> <span data-i18n="form-submit">Отправить заявку</span></button>
-          <div class="form-agree" data-i18n="form-agree">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных</div>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <section class="reviews">
-    <div class="container">
-      <h2><i class="fas fa-star" style="color:#f7b731;"></i> <span data-i18n="reviews-title">Отзывы</span></h2>
-      <div class="reviews-grid">
-        <div class="review-card">
-          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-          <div class="name" data-i18n="review1-name">Анна К.</div>
-          <div class="text" data-i18n="review1-text">Заказала москитную сетку, приехали на следующий день, всё аккуратно установили. Рекомендую!</div>
-          <div class="verified"><i class="fas fa-check-circle"></i> <span data-i18n="verified">Проверенный отзыв</span></div>
-        </div>
-        <div class="review-card">
-          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-          <div class="name" data-i18n="review2-name">Миржамол Б.</div>
-          <div class="text" data-i18n="review2-text">Заказывал жалюзи на все окна. Приехали, замерили, установили за 2 дня. Качество отличное.</div>
-          <div class="verified"><i class="fas fa-check-circle"></i> <span data-i18n="verified">Проверенный отзыв</span></div>
-        </div>
-        <div class="review-card">
-          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-          <div class="name" data-i18n="review3-name">Елена В.</div>
-          <div class="text" data-i18n="review3-text">Делали ремонт окон – заменили уплотнители и фурнитуру. Стало тепло и тихо. Спасибо мастерам!</div>
-          <div class="verified"><i class="fas fa-check-circle"></i> <span data-i18n="verified">Проверенный отзыв</span></div>
-        </div>
-        <div class="review-card">
-          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-          <div class="name" data-i18n="review4-name">Баходир А.</div>
-          <div class="text" data-i18n="review4-text">Установили кондиционер, заправили фреон. Работают быстро и чисто. Всё объясняют. Буду рекомендовать.</div>
-          <div class="verified"><i class="fas fa-check-circle"></i> <span data-i18n="verified">Проверенный отзыв</span></div>
+          <div class="review-card">
+            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <div class="name" data-i18n="review2-name">Миржамол Б.</div>
+            <div class="text" data-i18n="review2-text">Заказывал жалюзи на все окна. Приехали, замерили, установили за 2 дня. Качество отличное.</div>
+            <div class="verified"><i class="fas fa-check-circle"></i> <span data-i18n="verified">Проверенный отзыв</span></div>
+          </div>
+          <div class="review-card">
+            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <div class="name" data-i18n="review3-name">Елена В.</div>
+            <div class="text" data-i18n="review3-text">Делали ремонт окон – заменили уплотнители и фурнитуру. Стало тепло и тихо. Спасибо мастерам!</div>
+            <div class="verified"><i class="fas fa-check-circle"></i> <span data-i18n="verified">Проверенный отзыв</span></div>
+          </div>
+          <div class="review-card">
+            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <div class="name" data-i18n="review4-name">Баходир А.</div>
+            <div class="text" data-i18n="review4-text">Установили кондиционер, заправили фреон. Работают быстро и чисто. Всё объясняют. Буду рекомендовать.</div>
+            <div class="verified"><i class="fas fa-check-circle"></i> <span data-i18n="verified">Проверенный отзыв</span></div>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="gallery">
-    <div class="container">
-      <h2><i class="fas fa-images" style="color:#f7b731;"></i> <span data-i18n="gallery-title">Наша команда и работы</span></h2>
-      <div class="gallery-grid">
-        <!-- Ко всем картинкам галереи добавлен lazy load и размеры -->
-        <div class="gallery-item"><img src="/images/gallery-komanda.webp" loading="lazy" width="200" height="200" alt="Команда"></div>
-        <div class="gallery-item"><img src="/images/gallery-setki.webp" loading="lazy" width="200" height="200" alt="Сетки"></div>
-        <div class="gallery-item"><img src="/images/gallery-montazh.webp" loading="lazy" width="200" height="200" alt="Монтаж"></div>
-        <div class="gallery-item"><img src="/images/gallery-zhalyuzi.webp" loading="lazy" width="200" height="200" alt="Жалюзи"></div>
-        <div class="gallery-item"><img src="/images/gallery-konditsionery.webp" loading="lazy" width="200" height="200" alt="Кондиционеры"></div>
-        <div class="gallery-item"><img src="/images/gallery-sajty.webp" loading="lazy" width="200" height="200" alt="Сайты"></div>
+    <section class="gallery">
+      <div class="container">
+        <h2><i class="fas fa-images" style="color:#f7b731;"></i> <span data-i18n="gallery-title">Наша команда и работы</span></h2>
+        <div class="gallery-grid">
+          <div class="gallery-item"><img src="/images/gallery-komanda.webp" loading="lazy" width="200" height="200" alt="Команда"></div>
+          <div class="gallery-item"><img src="/images/gallery-setki.webp" loading="lazy" width="200" height="200" alt="Сетки"></div>
+          <div class="gallery-item"><img src="/images/gallery-montazh.webp" loading="lazy" width="200" height="200" alt="Монтаж"></div>
+          <div class="gallery-item"><img src="/images/gallery-zhalyuzi.webp" loading="lazy" width="200" height="200" alt="Жалюзи"></div>
+          <div class="gallery-item"><img src="/images/gallery-konditsionery.webp" loading="lazy" width="200" height="200" alt="Кондиционеры"></div>
+          <div class="gallery-item"><img src="/images/gallery-sajty.webp" loading="lazy" width="200" height="200" alt="Сайты"></div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="why-us">
-    <div class="container">
-      <h2><i class="fas fa-medal" style="color:#f7b731;"></i> <span data-i18n="why-title">Почему мы</span></h2>
-      <div class="why-grid">
-        <div class="why-item"><i class="fas fa-industry"></i><h4 data-i18n="why1-title">Свое производство</h4><p data-i18n="why1-desc">Собственный цех в Ташкенте</p></div>
-        <div class="why-item"><i class="fas fa-check-double"></i><h4 data-i18n="why2-title">Качество материала</h4><p data-i18n="why2-desc">Только проверенные поставщики</p></div>
-        <div class="why-item"><i class="fas fa-user-graduate"></i><h4 data-i18n="why3-title">Квалифицированные сотрудники</h4><p data-i18n="why3-desc">Опыт от 5 лет, сертификаты</p></div>
-        <div class="why-item"><i class="fas fa-clock"></i><h4 data-i18n="why4-title">Скорость</h4><p data-i18n="why4-desc">Изготовление от 3 дней</p></div>
+    <section class="why-us">
+      <div class="container">
+        <h2><i class="fas fa-medal" style="color:#f7b731;"></i> <span data-i18n="why-title">Почему мы</span></h2>
+        <div class="why-grid">
+          <div class="why-item"><i class="fas fa-industry"></i><h3 data-i18n="why1-title">Свое производство</h3><p data-i18n="why1-desc">Собственный цех в Ташкенте</p></div>
+          <div class="why-item"><i class="fas fa-check-double"></i><h3 data-i18n="why2-title">Качество материала</h3><p data-i18n="why2-desc">Только проверенные поставщики</p></div>
+          <div class="why-item"><i class="fas fa-user-graduate"></i><h3 data-i18n="why3-title">Квалифицированные сотрудники</h3><p data-i18n="why3-desc">Опыт от 5 лет, сертификаты</p></div>
+          <div class="why-item"><i class="fas fa-clock"></i><h3 data-i18n="why4-title">Скорость</h3><p data-i18n="why4-desc">Изготовление от 3 дней</p></div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="cta-final">
-    <div class="container">
-      <h2 data-i18n="cta-title">Готовы сделать заказ?</h2>
-      <p data-i18n="cta-desc">Позвоните или напишите нам в Telegram – мы ответим на все вопросы.</p>
-      <div class="final-links">
-        <a href="tel:+998990550660"><i class="fas fa-phone-alt"></i> +998 99 055 06 60</a>
-        <a href="https://t.me/moskitki_uz" class="telegram" target="_blank"><i class="fab fa-telegram-plane"></i> <span data-i18n="cta-telegram">Написать в Telegram</span></a>
+    <section class="cta-final">
+      <div class="container">
+        <h2 data-i18n="cta-title">Готовы сделать заказ?</h2>
+        <p data-i18n="cta-desc">Позвоните или напишите нам в Telegram – мы ответим на все вопросы.</p>
+        <div class="final-links">
+          <a href="tel:+998990550660"><i class="fas fa-phone-alt"></i> +998 99 055 06 60</a>
+          <a href="https://t.me/moskitki_uz" class="telegram" target="_blank" rel="noopener"><i class="fab fa-telegram-plane"></i> <span data-i18n="cta-telegram">Написать в Telegram</span></a>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
   <footer class="footer">
     <div class="container">
@@ -316,10 +321,10 @@
         <img src="/images/logo.webp" loading="lazy" width="28" height="28" alt="Moskitki.uz"> Moskitki.uz
       </div>
       <div class="social-links">
-        <a href="https://t.me/moskitki_uz" target="_blank" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
-        <a href="https://instagram.com/moskitki.uz" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="https://wa.me/998990550660" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-        <a href="https://facebook.com/moskitki.uz" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://t.me/moskitki_uz" target="_blank" rel="noopener" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+        <a href="https://instagram.com/moskitki.uz" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://wa.me/998990550660" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://facebook.com/moskitki.uz" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
       </div>
       <div class="copy">© 2019 – 2026 — Toshkent</div>
     </div>
@@ -564,3 +569,4 @@
     });
   </script>
 </body>
+</html>
